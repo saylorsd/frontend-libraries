@@ -59,5 +59,6 @@
     "@react-aria/tabs": "^3.1.0 ",
     "@react-stately/tabs": "^3.0.1",
     "@wprdc-types/tabs": "^0.0.2"
-  }
+  },
+  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
 }

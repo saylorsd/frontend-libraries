@@ -58,5 +58,6 @@
   "dependencies": {
     "@wprdc-types/tag": "^0.0.2",
     "classnames": "^2.3.1"
-  }
+  },
+  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
 }

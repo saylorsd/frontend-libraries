@@ -29,5 +29,6 @@
     "@react-stately/tree": "^3.2.0",
     "@react-types/menu": "^3.4.1",
     "@react-types/shared": "^3.10.0"
-  }
+  },
+  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
 }

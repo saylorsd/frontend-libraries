@@ -31,5 +31,6 @@
     "@wprdc-types/viz": "^0.0.2",
     "react-map-gl": "^6.1.18",
     "react-table": "^7.7.0"
-  }
+  },
+  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
 }
