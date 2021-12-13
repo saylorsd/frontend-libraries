@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/geo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -54,13 +54,13 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-connections/api": "0.0.1",
-    "@wprdc-components/util": "0.0.1",
-    "@wprdc-types/api": "0.0.1",
-    "@wprdc-types/geo": "0.0.1",
-    "@wprdc-types/viz": "0.0.1",
-    "@wprdc-types/profiles": "0.0.1",
-    "@wprdc-types/neighborhood-assets": "0.0.1",
-    "@wprdc-types/shared": "0.0.1"
+    "@wprdc-components/util": "^0.0.2",
+    "@wprdc-connections/api": "^0.0.2",
+    "@wprdc-types/api": "^0.0.2",
+    "@wprdc-types/geo": "^0.0.2",
+    "@wprdc-types/neighborhood-assets": "^0.0.2",
+    "@wprdc-types/profiles": "^0.0.2",
+    "@wprdc-types/shared": "^0.0.2",
+    "@wprdc-types/viz": "^0.0.2"
   }
 }

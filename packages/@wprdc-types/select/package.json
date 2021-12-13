@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/select",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/menu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -17,16 +17,15 @@
   "engines": {
     "node": ">=10.0.0"
   },
-
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
-    "scripts": {
+  "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c"
   },
-"devDependencies": {
+  "devDependencies": {
     "@babel/core": "^7.9.0",
     "@rollup/plugin-commonjs": "^19.0.2",
     "@rollup/plugin-node-resolve": "^13.0.6",
@@ -57,12 +56,11 @@
     "typescript": "^4.5.3"
   },
   "dependencies": {
-    "@react-stately/tree": "^3.2.0",
-    "@react-aria/separator":"^3.1.3 ",
     "@react-aria/interactions": "^3.7.0 ",
-    "@react-aria/utils":"^3.10.0 ",
     "@react-aria/menu": "^3.3.0 ",
-    "@wprdc-types/menu":"0.0.1"
-
+    "@react-aria/separator": "^3.1.3 ",
+    "@react-aria/utils": "^3.10.0 ",
+    "@react-stately/tree": "^3.2.0",
+    "@wprdc-types/menu": "^0.0.2"
   }
 }

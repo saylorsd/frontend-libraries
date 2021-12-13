@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/tags",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -25,6 +25,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-types/tag": "0.0.1"
+    "@wprdc-types/tag": "^0.0.2"
   }
 }

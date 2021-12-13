@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -53,6 +53,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-types/api": "0.0.1"
+    "@wprdc-types/api": "^0.0.2"
   }
 }

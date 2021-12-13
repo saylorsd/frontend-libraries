@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/profiles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -25,10 +25,10 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-types/geo": "0.0.1",
-    "@wprdc-types/viz": "0.0.1",
     "@types/react": "^17.0.37",
-    "@wprdc-types/shared": "0.0.1",
+    "@wprdc-types/geo": "^0.0.2",
+    "@wprdc-types/shared": "^0.0.2",
+    "@wprdc-types/viz": "^0.0.2",
     "react-map-gl": "^6.1.18",
     "react-table": "^7.7.0"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/menu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -25,9 +25,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@react-types/menu": "^3.4.1",
+    "@react-aria/menu": "^3.3.0",
     "@react-stately/tree": "^3.2.0",
-    "@react-types/shared": "^3.10.0",
-    "@react-aria/menu": "^3.3.0"
+    "@react-types/menu": "^3.4.1",
+    "@react-types/shared": "^3.10.0"
   }
 }
