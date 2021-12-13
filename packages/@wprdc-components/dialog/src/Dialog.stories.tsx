@@ -20,14 +20,14 @@ export const Default = () => {
     {
       onPress: () => state.open(),
     },
-    openButtonRef
+    openButtonRef,
   );
 
   let { buttonProps: closeButtonProps } = useButton(
     {
       onPress: () => state.close(),
     },
-    closeButtonRef
+    closeButtonRef,
   );
 
   return (

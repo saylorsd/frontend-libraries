@@ -15,7 +15,7 @@ import { DataChipGroupProps } from '@wprdc-types/data-chip-group';
 export const DataChipGroup: React.FC<DataChipGroupProps> = ({ children }) => {
   return (
     <div className={styles.container}>
-      {children.map(child => (
+      {children.map((child) => (
         <div className={styles.chipWrapper}>{child}</div>
       ))}
     </div>

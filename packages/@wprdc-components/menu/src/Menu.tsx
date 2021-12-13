@@ -31,7 +31,7 @@ export const Menu = <T extends object>(props: MenuProps<T>): JSX.Element => {
 
   return (
     <ul {...menuProps} ref={ref} className={styles.menu}>
-      {items.map(item => {
+      {items.map((item) => {
         if (item.type === 'section') {
           return (
             <MenuSection<T>
@@ -114,7 +114,7 @@ function MenuSection<T>({
           </span>
         )}
         <ul {...groupProps} className={styles.section}>
-          {nodes.map(node => (
+          {nodes.map((node) => (
             <MenuItem
               key={node.key}
               item={node}

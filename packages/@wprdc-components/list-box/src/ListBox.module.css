@@ -35,7 +35,7 @@
 
 .option {
   @apply flex pl-1 cursor-pointer text-gray-900 bg-background
-  text-sm hover:bg-gray-100 hover:text-black;
+    text-sm hover:bg-gray-100 hover:text-black;
 }
 
 .option-selected {

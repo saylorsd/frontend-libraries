@@ -14,7 +14,7 @@ import { LinkProps } from '@wprdc-types/link';
 import { useLink } from '@react-aria/link';
 // import { RiExternalLinkLine } from 'react-icons/ri';
 
-export const Link: React.FC<LinkProps> = props => {
+export const Link: React.FC<LinkProps> = (props) => {
   const { external } = props;
 
   const ref = React.useRef<HTMLAnchorElement>(null);

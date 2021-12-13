@@ -13,7 +13,7 @@ import { Heading } from '@wprdc-components/heading';
 import { BreadcrumbItem, Breadcrumbs } from '@wprdc-components/breadcrumbs';
 import { GeogBrief, GeographyType } from '@wprdc-types/geo';
 
-export const GeographySection: React.FC<GeographySectionProps> = props => {
+export const GeographySection: React.FC<GeographySectionProps> = (props) => {
   const { geog, geogIsLoading, headingLevel = 1 } = props;
 
   let hierarchy: GeogBrief[] = [
@@ -36,7 +36,7 @@ export const GeographySection: React.FC<GeographySectionProps> = props => {
             {!!geog && (
               <>
                 <Breadcrumbs>
-                  {hierarchy.concat(geog.hierarchy.concat(geog)).map(item => (
+                  {hierarchy.concat(geog.hierarchy.concat(geog)).map((item) => (
                     <BreadcrumbItem key={item.name}>
                       {item.title}
                     </BreadcrumbItem>

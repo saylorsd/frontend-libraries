@@ -25,7 +25,7 @@ export function SourceList(props: Props) {
     <div className={styles.container}>
       <div className={styles.title}>Sources</div>
       <ul className={styles.list}>
-        {sources.map(source => (
+        {sources.map((source) => (
           <li key={source.slug} className={styles.listItem}>
             <Tooltip
               title={source.name}

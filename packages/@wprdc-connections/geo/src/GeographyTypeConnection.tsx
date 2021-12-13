@@ -16,6 +16,6 @@ export class GeographyTypeConnection implements ListConnection<GeogLevel> {
       cursor: undefined,
     };
   };
-  public renderItem = item => <Item key={item.id}>{item.name}</Item>;
-  public getKey = item => item.id.toString();
+  public renderItem = (item) => <Item key={item.id}>{item.name}</Item>;
+  public getKey = (item) => item.id.toString();
 }

@@ -17,7 +17,7 @@ export const Tags: React.FC<TagsProps> = ({ tags, ...props }) => {
   return (
     <div {...props}>
       <ul className={styles.list}>
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <li className={styles.listItem}>
             <Tag {...tag} />
           </li>

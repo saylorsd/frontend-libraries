@@ -35,7 +35,7 @@ export function BigValue(props: Props) {
     typeof value === 'number'
       ? value.toLocaleString(
           'en-US',
-          primaryVariable ? primaryVariable.localeOptions : undefined
+          primaryVariable ? primaryVariable.localeOptions : undefined,
         )
       : undefined;
 
@@ -57,7 +57,7 @@ export function BigValue(props: Props) {
         {' /'}
         {denom.toLocaleString(
           'en-US',
-          denomVariable ? denomVariable.localeOptions : undefined
+          denomVariable ? denomVariable.localeOptions : undefined,
         )}
       </span>
     ) : undefined;

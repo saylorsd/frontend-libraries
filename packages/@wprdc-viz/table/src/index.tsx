@@ -51,7 +51,7 @@ function makeCellValue(d: TableDatum, v: Variable) {
   if (typeof d.value === 'number') {
     displayValue = d.value.toLocaleString(
       undefined,
-      v.localeOptions || undefined
+      v.localeOptions || undefined,
     );
   }
   return (
@@ -73,14 +73,14 @@ function MoE({ moe }: { moe: number }) {
 function getPercentRows(
   table: Downloaded<TableViz, TableData>,
   variable: Variable,
-  idx: number
+  idx: number,
 ) {
   return variable.denominators.map((denom) => ({
     key: `${table.slug}/${variable.slug}/${denom.slug}`,
     label: denom.percentLabel,
     ...table.timeAxis.timeParts.reduce(
       percentRowValuesReducer(table, idx, denom),
-      {}
+      {},
     ),
     className: 'subrow',
   }));
@@ -97,7 +97,7 @@ function getPercentValue(
   table: Downloaded<TableViz, TableData>,
   idx: number,
   _: Variable,
-  cur: TimePart
+  cur: TimePart,
 ) {
   const percentValue = table.data[idx][cur.slug].percent;
   return formatPercent(percentValue);

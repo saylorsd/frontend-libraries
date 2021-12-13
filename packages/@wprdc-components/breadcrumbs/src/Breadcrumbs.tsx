@@ -57,13 +57,8 @@ export function Breadcrumbs<T>(props: BreadcrumbsProps<T>) {
 }
 
 export function BreadcrumbItem(props: BreadcrumbItemProps) {
-  const {
-    LinkComponent,
-    TitleComponent,
-    divider,
-    hideDivider,
-    bigTitle,
-  } = props;
+  const { LinkComponent, TitleComponent, divider, hideDivider, bigTitle } =
+    props;
 
   const ref = React.useRef(null);
   const { itemProps } = useBreadcrumbItem(props, ref);

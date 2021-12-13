@@ -16,7 +16,7 @@ import { ButtonProps } from '@wprdc-types/button';
 import './main.css';
 import styles from './Button.module.css';
 
-export const Button: React.FC<ButtonProps> = props => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const ref = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(props, ref);
   const { children, color = 'default' } = props;

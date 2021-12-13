@@ -21,6 +21,9 @@
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c"
@@ -58,5 +61,5 @@
   "dependencies": {
     "@wprdc-types/error-message": "^0.0.2"
   },
-  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
+  "gitHead": "6b8eac92d995ba762e05713f26205bb621813ee9"
 }

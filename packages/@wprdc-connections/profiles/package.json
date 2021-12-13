@@ -17,6 +17,9 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c"
@@ -59,5 +62,5 @@
     "@wprdc-types/profiles": "^0.0.2",
     "@wprdc-types/viz": "^0.0.2"
   },
-  "gitHead": "69ea8df99e6bf6929b8c21a62749416b27d16668"
+  "gitHead": "6b8eac92d995ba762e05713f26205bb621813ee9"
 }

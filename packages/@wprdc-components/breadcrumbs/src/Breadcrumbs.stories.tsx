@@ -9,7 +9,7 @@ export default {
   component: Breadcrumbs,
 };
 
-const Template: Story<BreadcrumbsProps<string>> = args => (
+const Template: Story<BreadcrumbsProps<string>> = (args) => (
   <Breadcrumbs {...args} />
 );
 

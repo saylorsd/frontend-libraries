@@ -13,9 +13,8 @@ import classNames from 'classnames';
 
 import { DataChipProps } from '@wprdc-types/data-chip';
 
-
 //todo: bring back icons
-export const DataChip: React.FC<DataChipProps> = props => {
+export const DataChip: React.FC<DataChipProps> = (props) => {
   const {
     value,
     numberFormatOptions,

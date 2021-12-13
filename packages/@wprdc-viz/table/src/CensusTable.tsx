@@ -31,7 +31,7 @@ export const CensusTable: React.FC<Props> = ({ columns, data, inPreview }) => {
         data: allData,
         initialState: {},
       },
-      useExpanded
+      useExpanded,
     );
   return (
     <div

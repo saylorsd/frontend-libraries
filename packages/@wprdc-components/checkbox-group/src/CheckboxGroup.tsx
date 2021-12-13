@@ -35,7 +35,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
       </span>
       <CheckboxGroupContext.Provider value={state}>
         <div className={styles.itemsWrapper}>
-          {children || (items && items.map(item => <Checkbox {...item} />))}
+          {children || (items && items.map((item) => <Checkbox {...item} />))}
         </div>
       </CheckboxGroupContext.Provider>
     </div>
