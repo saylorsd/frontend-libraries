@@ -1,0 +1,14 @@
+.container {
+}
+
+.popover {
+  @apply bg-background p-2.5 border shadow-lg;
+}
+
+.popover:focus-visible {
+  outline: none;
+}
+
+.popoverTitle {
+  @apply font-semibold;
+}

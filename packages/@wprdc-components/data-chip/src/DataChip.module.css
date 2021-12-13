@@ -1,0 +1,38 @@
+.container {
+  @apply border-black border rounded w-max flex flex-row align-middle inline;
+}
+
+.label {
+  @apply flex-grow-0 px-1 border-r border-black rounded-l flex items-center font-medium;
+}
+
+.value {
+  @apply px-1.5 flex-auto overflow-auto;
+}
+
+.icon {
+}
+
+.labelText {
+  @apply px-0.5;
+}
+
+.text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+  max-width: 100%;
+}
+
+.size-S {
+  @apply text-xs;
+}
+
+.size-M {
+  @apply text-sm;
+}
+
+.size-L {
+  /*@apply;*/
+}

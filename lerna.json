@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "./packages/**"
+  ],
+  "command": {
+    "bootstrap": {
+      "ignore": [
+        "@wprdc-viz/*"
+      ],
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    }
+  },
+  "npmClient": "npm",
+  "version": "independent"
+}

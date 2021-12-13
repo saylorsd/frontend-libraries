@@ -1,0 +1,24 @@
+.container {
+}
+
+.tabList {
+  @apply flex border-b-2 border-gray-500 overflow-x-auto pt-0.5;
+}
+
+.tab {
+  @apply px-2 py-1.5 ml-3 first:ml-1 cursor-pointer text-sm font-medium
+  box-border border whitespace-nowrap border-b-0 rounded-t-md
+  transition duration-300 hover:bg-gray-100;
+}
+
+.selected {
+  @apply font-semibold bg-primary-200 border-primary-900 border-2 border-b-0 focus:ring-2 focus:ring-blue-700;
+}
+
+.disabled {
+  @apply opacity-50;
+}
+
+.tabPanel {
+  @apply overflow-y-auto;
+}

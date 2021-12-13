@@ -1,0 +1,5 @@
+example/
+*.stories.tsx
+
+src/icons
+templates/

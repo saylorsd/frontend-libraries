@@ -1,0 +1,31 @@
+{
+  "name": "@wprdc-types/neighborhood-assets",
+  "version": "0.0.1",
+  "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
+  "keywords": [],
+  "author": "saylorsd <steven.saylor@pitt.edu>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wprdc/frontend-libraries"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --declaration --emitDeclarationOnly",
+    "prepare": "tsc --declaration --emitDeclarationOnly"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0-rc.1",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "geojson": "^0.5.0",
+    "@wprdc-types/shared": "0.0.1"
+  }
+}

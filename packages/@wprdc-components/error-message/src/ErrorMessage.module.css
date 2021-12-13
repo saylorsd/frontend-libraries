@@ -1,0 +1,23 @@
+.centeredTitle {
+  @apply font-bold;
+}
+
+.centeredMessage {
+  @apply font-medium;
+}
+
+.centeredContainer {
+  @apply text-center text-red-700 w-full;
+}
+
+.inlineTitle {
+  @apply font-semibold;
+}
+
+.inlineMessage {
+  @apply font-medium;
+}
+
+.inlineContainer {
+  @apply text-red-700 border-red-900 border rounded py-0.5 px-1;
+}
