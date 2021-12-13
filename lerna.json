@@ -3,6 +3,11 @@
     "./packages/**"
   ],
   "command": {
+    "publish": {
+      "ignore": [
+        "@wprdc-viz/*"
+      ]
+    },
     "bootstrap": {
       "ignore": [
         "@wprdc-viz/*"
