@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/button",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@react-aria/button": "^3.3.4",
-    "@wprdc-types/button": "^0.0.2",
+    "@wprdc-types/button": "^0.0.3",
     "classnames": "^2.3.1"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"

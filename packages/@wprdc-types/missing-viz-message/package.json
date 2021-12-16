@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/missing-viz-message",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",

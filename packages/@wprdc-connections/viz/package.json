@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/viz",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -53,22 +53,22 @@
     "typescript": "^4.5.3"
   },
   "peerDependencies": {
+    "@wprdc-components/map": "^0.0.1",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "@wprdc-components/map": "^0.0.1"
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-components/radio-group": "^0.0.2",
-    "@wprdc-components/map": "^0.0.1",
-    "@wprdc-components/util": "^0.0.2",
-    "@wprdc-connections/api": "^0.0.2",
-    "@wprdc-connections/util": "^0.0.2",
-    "@wprdc-types/api": "^0.0.2",
-    "@wprdc-types/geo": "^0.0.2",
-    "@wprdc-types/map": "^0.0.1",
-    "@wprdc-types/profiles": "^0.0.2",
-    "@wprdc-types/shared": "^0.0.2",
-    "@wprdc-types/viz": "^0.0.2"
+    "@wprdc-components/map": "^0.0.2",
+    "@wprdc-components/radio-group": "^0.0.3",
+    "@wprdc-components/util": "^0.0.3",
+    "@wprdc-connections/api": "^0.0.3",
+    "@wprdc-connections/util": "^0.0.3",
+    "@wprdc-types/api": "^0.0.3",
+    "@wprdc-types/geo": "^0.0.3",
+    "@wprdc-types/map": "^0.0.2",
+    "@wprdc-types/profiles": "^0.0.3",
+    "@wprdc-types/shared": "^0.0.3",
+    "@wprdc-types/viz": "^0.0.3"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"
 }

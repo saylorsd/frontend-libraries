@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/map",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -60,12 +60,12 @@
     "typescript": "^4.5.3"
   },
   "dependencies": {
-    "@wprdc-types/geo": "^0.0.2",
-    "@wprdc-types/map": "^0.0.1",
-    "@wprdc-types/shared": "^0.0.2",
-    "@wprdc-types/neighborhood-assets": "^0.0.2",
-    "@wprdc-components/checkbox-group": "^0.0.2",
-    "@wprdc-components/provider": "^0.0.2",
+    "@wprdc-components/checkbox-group": "^0.0.3",
+    "@wprdc-components/provider": "^0.0.3",
+    "@wprdc-types/geo": "^0.0.3",
+    "@wprdc-types/map": "^0.0.2",
+    "@wprdc-types/neighborhood-assets": "^0.0.3",
+    "@wprdc-types/shared": "^0.0.3",
     "mapbox-gl": "^2.6.1",
     "react-map-gl": "^6.1.18"
   }

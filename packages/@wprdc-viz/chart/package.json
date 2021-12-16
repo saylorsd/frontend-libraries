@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/chart",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -56,8 +56,8 @@
     "typescript": "^4.5.3"
   },
   "dependencies": {
-    "@wprdc-types/geo": "^0.0.2",
-    "@wprdc-types/viz": "^0.0.2",
+    "@wprdc-types/geo": "^0.0.3",
+    "@wprdc-types/viz": "^0.0.3",
     "react-vega": "^7.4.4",
     "vega": "^5.21.0"
   },

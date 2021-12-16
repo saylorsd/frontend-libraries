@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/dialog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@react-aria/overlays": "^3.7.3",
     "@react-types/dialog": "^3.3.1",
-    "@wprdc-types/heading": "^0.0.2"
+    "@wprdc-types/heading": "^0.0.3"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"
 }

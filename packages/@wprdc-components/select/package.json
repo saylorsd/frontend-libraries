@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/select",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -66,9 +66,9 @@
     "@react-aria/select": "^3.6.0 ",
     "@react-aria/utils": "^3.10.0 ",
     "@react-stately/select": "^3.1.3 ",
-    "@wprdc-components/list-box": "^0.0.2",
-    "@wprdc-components/popover": "^0.0.2",
-    "@wprdc-types/select": "^0.0.2"
+    "@wprdc-components/list-box": "^0.0.3",
+    "@wprdc-components/popover": "^0.0.3",
+    "@wprdc-types/select": "^0.0.3"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"
 }
