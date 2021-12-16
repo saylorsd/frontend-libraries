@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/tabs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -62,7 +62,7 @@
   "dependencies": {
     "@react-aria/tabs": "^3.1.0 ",
     "@react-stately/tabs": "^3.0.1",
-    "@wprdc-types/tabs": "^0.0.3"
+    "@wprdc-types/tabs": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/popover",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -62,7 +62,7 @@
   "dependencies": {
     "@react-aria/focus": "^3.5.0",
     "@react-aria/overlays": "^3.7.3",
-    "@wprdc-types/popover": "^0.0.3"
+    "@wprdc-types/popover": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

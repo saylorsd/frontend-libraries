@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/dialog",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -63,8 +63,8 @@
     "@react-aria/dialog": "^3.1.4",
     "@react-aria/focus": "^3.5.0",
     "@react-aria/overlays": "^3.7.3",
-    "@wprdc-components/heading": "^0.0.3",
-    "@wprdc-types/dialog": "^0.0.3",
+    "@wprdc-components/heading": "^0.0.4",
+    "@wprdc-types/dialog": "^0.0.4",
     "classnames": "^2.3.1"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

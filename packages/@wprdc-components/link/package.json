@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/link",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@react-aria/link": "^3.2.0",
-    "@wprdc-types/link": "^0.0.3"
+    "@wprdc-types/link": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

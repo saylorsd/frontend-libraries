@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/menu-item",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",

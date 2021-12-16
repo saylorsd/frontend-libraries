@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/sentence",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -60,11 +60,11 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-components/provider": "^0.0.3",
-    "@wprdc-components/map": "^0.0.2",
-    "@wprdc-types/geo": "^0.0.3",
-    "@wprdc-types/shared": "^0.0.3",
-    "@wprdc-types/viz": "^0.0.3"
+    "@wprdc-components/map": "^0.0.3",
+    "@wprdc-components/provider": "^0.0.4",
+    "@wprdc-types/geo": "^0.0.4",
+    "@wprdc-types/shared": "^0.0.4",
+    "@wprdc-types/viz": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

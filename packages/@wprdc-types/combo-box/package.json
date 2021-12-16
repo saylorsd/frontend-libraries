@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/combo-box",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@react-types/combobox": "^3.2.0",
     "@react-types/shared": "^3.10.0",
-    "@wprdc-types/shared": "^0.0.3"
+    "@wprdc-types/shared": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }
