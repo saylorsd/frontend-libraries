@@ -3,18 +3,13 @@
  * ComboBox types
  *
  **/
-import { AsyncListLoadFunction, AsyncListOptions } from '@react-stately/data';
 import { LoadingState } from '@react-types/shared';
+import { ListConnectableComponent } from '@wprdc-types/shared';
 import { ComboBoxProps as RTComboBoxProps } from '@react-types/combobox';
 
-export interface ComboBoxProps<T> extends RTComboBoxProps<T> {
+export interface ComboBoxProps<T extends object>
+  extends RTComboBoxProps<T>,
+    ListConnectableComponent<T> {
   loadingState?: LoadingState;
   onLoadMore?: () => void;
-}
-
-export interface ComboBoxConnection<T, C = string>
-  extends AsyncListOptions<T, C> {
-  load: AsyncListLoadFunction<T, C>;
-  /** Function that describes how to render each item. */
-  renderItem: (item: T) => JSX.Element;
 }

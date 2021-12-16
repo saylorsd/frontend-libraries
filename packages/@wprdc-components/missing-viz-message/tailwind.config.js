@@ -2,12 +2,12 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
-        primary: colors.blueGray,
-        secondary: colors.lightBlue,
+        primary: colors.slate,
+        secondary: colors.sky,
         background: colors.white,
       },
       maxHeight: {

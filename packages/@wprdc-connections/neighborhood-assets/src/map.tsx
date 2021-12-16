@@ -1,24 +1,44 @@
-import { MapPluginConnection } from '../types';
-import { AssetMapProperties, AssetType } from '../../../types/communityAssets';
-import { fetchCartoVectorSource } from '../utils';
-import { makeAssetLayer, makeAssetLegendItems } from '../layers/assets';
-import { LegendSection } from '../parts/LegendSection';
-import { LegendItem } from '../parts/LegendItem';
+/**
+ * Connecting neighborhood assets to the @wprdc/map
+ */
 
 import * as React from 'react';
-import { Layer, Source } from 'react-map-gl';
+
+import * as chroma from 'chroma-js';
+
+import { Layer, Source, LayerProps } from 'react-map-gl';
 
 import {
-  ASSETS_CARTO_SQL,
+  Expression,
+  ExpressionName,
+  CategoricalLegendItemProps,
+} from '@wprdc-types/map';
+
+import {
+  AssetMapProperties,
+  AssetType,
+} from '@wprdc-types/neighborhood-assets';
+import { MapPluginConnection } from '@wprdc-types/map';
+import { ColorScheme } from '@wprdc-types/shared';
+
+import { fetchCartoVectorSource } from '@wprdc-connections/util';
+
+import { LegendSection, LegendItem } from '@wprdc-components/map';
+import { CheckboxGroup, Checkbox } from '@wprdc-components/checkbox-group';
+
+import {
   ASSETS_LAYER_ID,
   ASSETS_SOURCE_ID,
+  ASSETS_CARTO_SQL,
 } from './settings';
+import { useMapPlugin } from '@wprdc-connections/util';
 
 export const assetMapConnection: MapPluginConnection<
   AssetType,
   AssetMapProperties
 > = {
   name: 'assets',
+  use: useMapPlugin,
   getSources: (_, __, setSources) => {
     fetchCartoVectorSource(ASSETS_SOURCE_ID, ASSETS_CARTO_SQL).then(
       (source) => setSources([source]),
@@ -95,4 +115,122 @@ export const assetMapConnection: MapPluginConnection<
       ? items
       : items.filter((item) => selection.has(item.name));
   },
+  makeLayerPanelSection(setLayerPanelSection, items, handleChange) {
+    setLayerPanelSection(
+      <div className="pt-2">
+        <CheckboxGroup
+          label="Select neighborhood assets to display"
+          aria-label="select neighborhood asset layers to display"
+          onChange={handleChange}
+        >
+          {items.map((item) => (
+            <Checkbox key={`assets/${item.name}`} value={`assets/${item.name}`}>
+              {item.title}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
+      </div>,
+    );
+  },
 };
+
+export const makeAssetLegendItems = (
+  availableAssetTypes: AssetType[],
+  selectedAssetTypes: React.Key[],
+  colorScheme: ColorScheme = ColorScheme.Light,
+) => {
+  return availableAssetTypes
+    .filter((at) => selectedAssetTypes.includes(at.name))
+    .map((at) => ({
+      variant: 'categorical',
+      key: at.name,
+      label: at.title,
+      marker: categoryColors(
+        selectedAssetTypes.map((t) => t.toString()),
+        colorScheme,
+      )[at.name],
+    })) as CategoricalLegendItemProps[];
+};
+
+export const makeAssetLayer = (
+  categories: React.Key[],
+  colorScheme: ColorScheme = ColorScheme.Light,
+  field: string = 'asset_type',
+): LayerProps => ({
+  id: ASSETS_LAYER_ID,
+  source: ASSETS_SOURCE_ID,
+  'source-layer': ASSETS_SOURCE_ID,
+  type: 'circle',
+  filter: ['in', field, ...categories],
+  paint: {
+    'circle-radius': [
+      'interpolate',
+      ['cubic-bezier', 0.5, 0, 0.5, 1],
+      ['zoom'],
+      8,
+      3,
+      22,
+      12,
+    ],
+    'circle-color': colorExpression(
+      categories.map((c) => `${c}`),
+      colorScheme,
+      field,
+    ),
+    'circle-stroke-width': 1,
+    'circle-stroke-color': 'rgb(55,65,81)',
+    'circle-stroke-opacity': {
+      stops: [
+        [0, 0],
+        [9, 0.5],
+        [12, 1],
+      ],
+    },
+  },
+});
+
+/**
+ * Generates Mapbox expression that colors map points based on category
+ *
+ * @param {string[]} categories
+ * @param {'light' | 'dark'} colorScheme
+ * @param field
+ */
+const colorExpression = (
+  categories: string[],
+  colorScheme: ColorScheme = ColorScheme.Light,
+  field: string = 'asset_type',
+): Expression | string => {
+  const colors = Object.entries(categoryColors(categories, colorScheme)).reduce(
+    (expression, [cat, color]) => [...expression, [cat], color] as string[],
+    [] as string[],
+  );
+
+  if (!colors || !colors.length) {
+    return 'black';
+  }
+
+  const result = [
+    'match' as ExpressionName,
+    ['get', field],
+    ...colors,
+    'hsl(0, 0%, 0%)',
+  ] as Expression;
+
+  return result;
+};
+
+const categoryColors = (
+  categories: string[],
+  colorScheme: ColorScheme = ColorScheme.Light,
+) =>
+  categories.reduce(
+    (record, category, index) => ({
+      ...record,
+      [category]:
+        colorScheme === 'light'
+          ? chroma.brewer.Set1[index]
+          : chroma.brewer.Set1[index],
+    }),
+    {} as Record<string, string>,
+  );

@@ -5,12 +5,14 @@
  * Functions and settings to communicate with Community Assets backend server.
  *
  */
-import { createAPI, Method } from '@wprdc-connections/api';
+import { createAPI } from '@wprdc-connections/api';
 import {
   Asset,
   AssetBrief,
   AssetCategory,
 } from '@wprdc-types/neighborhood-assets';
+
+import { Method } from '@wprdc-types/api';
 
 // project specific settings
 const host = 'https://assets.wprdc.org/api/dev/assets';

@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "prepare": "rollup -c"
+    "prepare": "rollup -c",
+    "watch": "rollup -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -58,7 +59,7 @@
   "dependencies": {
     "@wprdc-connections/api": "^0.0.2",
     "@wprdc-types/api": "^0.0.2",
-    "@wprdc-types/geo": "^0.0.2",
+    "@wprdc-types/map": "^0.0.1",
     "@wprdc-types/housecat": "^0.0.2"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"

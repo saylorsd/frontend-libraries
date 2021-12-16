@@ -1,9 +1,8 @@
 *.log
 .idea
+.trash/
 .DS_Store
 *.pem
-
-.trash/
 
 node_modules
 dist
@@ -16,3 +15,6 @@ dist
 
 # typescript
 *.tsbuildinfo
+
+# for now
+.run

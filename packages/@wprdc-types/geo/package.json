@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "tsc --declaration --emitDeclarationOnly",
+    "watch": "tsc --declaration --emitDeclarationOnly --watch",
     "prepare": "tsc --declaration --emitDeclarationOnly"
   },
   "peerDependencies": {

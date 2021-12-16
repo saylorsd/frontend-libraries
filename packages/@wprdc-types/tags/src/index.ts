@@ -5,7 +5,7 @@
  **/
 import { TagProps } from '@wprdc-types/tag';
 
-// todo: merge with tab
+// todo: merge with tag
 export interface TagsProps {
   tags: TagProps[];
 }

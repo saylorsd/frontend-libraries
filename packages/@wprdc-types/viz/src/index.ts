@@ -7,7 +7,8 @@ import React, { PropsWithChildren } from 'react';
 import { LayerProps, SourceProps } from 'react-map-gl';
 import { Column } from 'react-table';
 
-import { Geog, GeogBrief, LegendItemProps, MapProps } from '@wprdc-types/geo';
+import { Geog, GeogBrief } from '@wprdc-types/geo';
+import { LegendItemProps, MapProps } from '@wprdc-types/map';
 import { ColorScheme, DataVizType, Described } from '@wprdc-types/shared';
 
 import { TimeAxis } from './time';
@@ -96,7 +97,7 @@ export type DownloadedMiniMap = Downloaded<MiniMapViz, null, MiniMapOptions>;
 export type Downloaded<
   T extends DataVizBase,
   D = DataVizData,
-  O = Record<string, any>
+  O = Record<string, any>,
 > = T & {
   data: D;
   options: O;
@@ -139,7 +140,7 @@ export interface TableOptions {
 export type VizProps<
   T extends DataVizBase,
   D extends DataVizData | null,
-  P extends Record<string, any> = {}
+  P extends Record<string, any> = {},
 > = PropsWithChildren<
   {
     dataViz: Downloaded<T, D>;

@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "prepare": "rollup -c"
+    "prepare": "rollup -c",
+    "watch": "rollup -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -53,12 +54,20 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "@wprdc-components/map": "^0.0.1"
   },
   "dependencies": {
+    "@wprdc-components/radio-group": "^0.0.2",
+    "@wprdc-components/map": "^0.0.1",
+    "@wprdc-components/util": "^0.0.2",
     "@wprdc-connections/api": "^0.0.2",
+    "@wprdc-connections/util": "^0.0.2",
     "@wprdc-types/api": "^0.0.2",
     "@wprdc-types/geo": "^0.0.2",
+    "@wprdc-types/map": "^0.0.1",
+    "@wprdc-types/profiles": "^0.0.2",
+    "@wprdc-types/shared": "^0.0.2",
     "@wprdc-types/viz": "^0.0.2"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"

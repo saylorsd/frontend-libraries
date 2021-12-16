@@ -6,7 +6,6 @@
  * create product-specific functional APIs.
  *
  */
-export { Method, Endpoint } from '@wprdc-types/api';
 import {
   ResponsePackage,
   Method,

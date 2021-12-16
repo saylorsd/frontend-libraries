@@ -17,16 +17,18 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration --emitDeclarationOnly",
-    "prepare": "tsc --declaration --emitDeclarationOnly"
+    "build": "tsc",
+    "prepare": "tsc",
+    "watch": "tsc -w"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@react-stately/data": "^3.4.3",
-    "@react-types/combobox": "^3.2.0"
+    "@react-types/combobox": "^3.2.0",
+    "@react-types/shared": "^3.10.0",
+    "@wprdc-types/shared": "^0.0.2"
   },
   "gitHead": "6b8eac92d995ba762e05713f26205bb621813ee9"
 }

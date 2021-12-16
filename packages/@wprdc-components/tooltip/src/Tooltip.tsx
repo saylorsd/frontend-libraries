@@ -5,8 +5,7 @@
  * Little popover with extra information
  *
  */
-import * as React from 'react';
-import { MutableRefObject } from 'react';
+import React, { MutableRefObject } from 'react';
 
 import './main.css';
 import styles from './Tooltip.module.css';

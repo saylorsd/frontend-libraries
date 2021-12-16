@@ -17,8 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration --emitDeclarationOnly",
-    "prepare": "tsc --declaration --emitDeclarationOnly"
+    "build": "tsc",
+    "prepare": "tsc",
+    "watch": "tsc -w"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1",
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "@wprdc-types/geo": "^0.0.2",
+    "@wprdc-types/map": "^0.0.1",
     "@wprdc-types/shared": "^0.0.2"
   },
   "gitHead": "8fe23d51ba0d0d51e6f78e233cf812685776dbd4"

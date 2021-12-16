@@ -1,10 +1,16 @@
 /*
  * Shared types
  */
-import { AsyncListLoadFunction, AsyncListOptions } from '@react-stately/data';
-export { AsyncListLoadOptions } from '@react-stately/data';
+import { FC } from 'react';
 
-export { CollectionBase } from '@react-types/shared';
+import {
+  AsyncListLoadFunction,
+  AsyncListLoadOptions,
+  AsyncListOptions,
+} from '@react-stately/data';
+
+export { AsyncListLoadOptions } from '@react-stately/data';
+export { CollectionBase, Selection } from '@react-types/shared';
 
 export interface Described<K extends string | number = string | number> {
   id: K;
@@ -31,7 +37,8 @@ export enum DataVizType {
 }
 
 /** Connection that handles data that comes in a list format. */
-export interface ListConnection<T, C = string> extends AsyncListOptions<T, C> {
+export interface ListConnection<T extends object, C = string>
+  extends AsyncListOptions<T, C> {
   // T = Type, C = cursor, K = key
   load: AsyncListLoadFunction<T, C>;
 
@@ -39,7 +46,20 @@ export interface ListConnection<T, C = string> extends AsyncListOptions<T, C> {
   renderItem: (item: T) => JSX.Element;
 }
 
-/** A component taht can except a connection */
-export interface ConnectableComponent<T> {
+/** A component that can except a connection */
+export interface ListConnectableComponentProps<T extends object> {
   connection: ListConnection<T>;
 }
+
+export type ListConnectableComponent<T extends object> = FC<
+  ListConnectableComponentProps<T>
+>;
+
+// add project strings for auto complete
+export type ProjectKey =
+  | 'viz'
+  | 'neighborhood-assets'
+  | 'geo'
+  | 'profiles'
+  | 'housecat'
+  | string;

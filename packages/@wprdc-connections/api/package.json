@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "prepare": "rollup -c"
+    "prepare": "rollup -c",
+    "watch": "rollup -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

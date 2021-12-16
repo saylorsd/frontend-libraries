@@ -17,8 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration",
-    "prepare": "tsc --declaration"
+    "build": "tsc",
+    "prepare": "tsc",
+    "watch": "tsc -w"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1",

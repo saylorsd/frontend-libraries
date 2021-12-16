@@ -1,4 +1,4 @@
-/*
+|/*
  * Asset Map Settings
  */
 // noinspection SqlResolve
