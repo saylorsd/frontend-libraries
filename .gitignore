@@ -4,8 +4,10 @@
 .DS_Store
 *.pem
 
+# build / dev
 node_modules
 dist
+packages/*/*/src/*.js*
 
 # local env files
 .env.local
@@ -18,3 +20,4 @@ dist
 
 # for now
 .run
+
