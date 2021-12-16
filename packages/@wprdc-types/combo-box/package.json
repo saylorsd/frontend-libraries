@@ -27,7 +27,10 @@
   },
   "dependencies": {
     "@react-types/combobox": "^3.2.0",
+    "@react-aria/combobox": "^3.2.0",
+    "@react-aria/i18n": "^3.2.0",
     "@react-types/shared": "^3.10.0",
+    "@wprdc-types/combo-box": "^0.0.4",
     "@wprdc-types/shared": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

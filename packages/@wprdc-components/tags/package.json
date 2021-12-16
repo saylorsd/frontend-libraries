@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c",
-    "watch": "rollup -w"
+    "watch": "rollup -c -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -61,7 +61,8 @@
   },
   "dependencies": {
     "@wprdc-components/tag": "^0.0.4",
-    "@wprdc-types/tags": "^0.0.4"
+    "@wprdc-types/tags": "^0.0.4",
+    "@wprdc-types/tag": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

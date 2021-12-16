@@ -1,5 +1,3 @@
-import Tabs from './Tabs';
-
 export * from './Tabs';
 
-export default Tabs;
+export { Item, Section } from '@wprdc-components/util';

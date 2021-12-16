@@ -1,5 +1,2 @@
-import Select from './Select';
-
 export * from './Select';
-
-export default Select;
+export { Item, Section } from '@wprdc-components/util';

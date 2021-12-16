@@ -1,5 +1,5 @@
 {
-  "name": "@wprdc-components/data-chop-group",
+  "name": "@wprdc-components/data-chip-group",
   "version": "0.0.4",
   "description": "",
   "keywords": [],
@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c",
-    "watch": "rollup -w"
+    "watch": "rollup -c -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

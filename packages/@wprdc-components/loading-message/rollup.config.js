@@ -8,6 +8,7 @@ const packageJson = require('./package.json');
 
 export default {
   input: 'src/index.ts',
+  cache: true,
   output: [
     {
       file: packageJson.main,
@@ -22,6 +23,9 @@ export default {
       exports: 'named',
     },
   ],
+  watch: {
+    include: 'src/**',
+  },
   plugins: [
     peerDepsExternal(),
     postcss({ modules: true }),

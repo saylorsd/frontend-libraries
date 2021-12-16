@@ -1,4 +1,3 @@
-import Menu from './Menu';
-
 export * from './Menu';
-export default Menu;
+
+export { Item, Section } from '@wprdc-components/util';

@@ -9,7 +9,7 @@ import {
   ViewportProps,
 } from 'react-map-gl';
 
-import { ColorScheme, ProjectKey } from '@wprdc-types/shared';
+import { ColorScheme, ProjectKey } from '../../../@wprdc-types/shared';
 
 import { PopupContentComponent, PopupProps } from './popup';
 import { LegendItemProps } from './legend';

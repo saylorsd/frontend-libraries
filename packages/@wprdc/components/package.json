@@ -1,0 +1,42 @@
+{
+  "name": "@wprdc/components",
+  "version": "0.0.1",
+  "description": "Collection of all components used at WPRDC.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve Saylor <steven.saylor@pitt.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "@wprdc-components/breadcrumbs": "^0.0.4",
+    "@wprdc-components/button":"^0.0.4",
+    "@wprdc-components/checkbox-group": "^0.0.4",
+    "@wprdc-components/combo-box":"^0.0.4",
+    "@wprdc-components/data-chip": "^0.0.4",
+    "@wprdc-components/dialog": "^0.0.4",
+    "@wprdc-components/divider":"^0.0.4",
+    "@wprdc-components/error-message": "^0.0.4",
+    "@wprdc-components/geography-section":"^0.0.4",
+    "@wprdc-components/heading": "^0.0.4",
+    "@wprdc-components/link":"^0.0.4",
+    "@wprdc-components/list-box": "^0.0.4",
+    "@wprdc-components/loading-message":"^0.0.4",
+    "@wprdc-components/map": "^0.0.3",
+    "@wprdc-components/menu":"^0.0.4",
+    "@wprdc-components/menu-item": "^0.0.4",
+    "@wprdc-components/missing-viz-message":"^0.0.4",
+    "@wprdc-components/popover": "^0.0.4",
+    "@wprdc-components/provider":"^0.0.4",
+    "@wprdc-components/radio-group": "^0.0.4",
+    "@wprdc-components/search-box":"^0.0.4",
+    "@wprdc-components/select": "^0.0.4",
+    "@wprdc-components/source-list":"^0.0.4",
+    "@wprdc-components/spinner": "^0.0.4",
+    "@wprdc-components/tabs":"^0.0.4",
+    "@wprdc-components/tag": "^0.0.4",
+    "@wprdc-components/tags":"^0.0.4",
+    "@wprdc-components/tooltip": "^0.0.4",
+    "@wprdc-components/util":"^0.0.4"
+  }
+}

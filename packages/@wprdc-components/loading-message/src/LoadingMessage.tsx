@@ -9,7 +9,7 @@ import './main.css';
 import styles from './LoadingMessage.module.css';
 
 import { LoadingMessageProps } from '@wprdc-types/loading-message';
-import { Spinner } from '@wprdc-components/spinner';
+// import { Spinner } from '@wprdc-components/spinner';
 
 export const LoadingMessage: React.FC<LoadingMessageProps> = ({ name }) => {
   const displayName = !!name ? ` ${name}` : '';
@@ -17,9 +17,6 @@ export const LoadingMessage: React.FC<LoadingMessageProps> = ({ name }) => {
   return (
     <div className={styles.container}>
       <div>
-        <div>
-          <Spinner aria-hidden />
-        </div>
         <div>
           <p>Loading{displayName}...</p>
         </div>

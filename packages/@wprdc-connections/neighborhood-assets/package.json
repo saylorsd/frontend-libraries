@@ -21,9 +21,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c ",
     "prepare": "rollup -c",
-    "watch": "rollup -w"
+    "watch": "rollup -c -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rollup -c",
     "prepare": "rollup -c",
-    "watch": "rollup -w"
+    "watch": "rollup -c -w"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -62,7 +62,8 @@
   "dependencies": {
     "@react-aria/tabs": "^3.1.0 ",
     "@react-stately/tabs": "^3.0.1",
-    "@wprdc-types/tabs": "^0.0.4"
+    "@wprdc-types/tabs": "^0.0.4",
+    "@wprdc-components/util": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

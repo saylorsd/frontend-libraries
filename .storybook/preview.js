@@ -1,6 +1,4 @@
-import '../src/styles/global.css';
-import { Provider } from '../src/components/Provider';
-import { GeogIdentifier, GeographyType } from '../src';
+import { Provider } from '../packages/@wprdc-components/provider';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

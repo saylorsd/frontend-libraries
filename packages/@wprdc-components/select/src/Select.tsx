@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './main.css';
 
 import { HiddenSelect, useSelect } from '@react-aria/select';
 import { mergeProps } from '@react-aria/utils';
