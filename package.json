@@ -12,6 +12,7 @@
   },
   "scripts": {
     "bootstrap": "lerna clean -y && lerna bootstrap --hoist",
+    "publish": "lerna publish",
     "pretest": "eslint packages",
     "watch": "lerna run --parallel watch",
     "watch-types": "lerna run --scope '@wprdc-types/*' --parallel watch",
