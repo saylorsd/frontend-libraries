@@ -19,7 +19,7 @@
   "scripts": {
     "build": "tsc --declaration",
     "prepare": "tsc --declaration",
-    "watch": "tsc -w"
+    "watch": "tsc -w --declaration"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1",

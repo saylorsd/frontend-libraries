@@ -3,8 +3,7 @@ import React, { Reducer, useContext, useReducer } from 'react';
 import { SSRProvider } from '@react-aria/ssr';
 import { OverlayProvider } from '@react-aria/overlays';
 
-import { Geog, GeogIdentifier } from '@wprdc-types/geo';
-import { GeoAPI } from '@wprdc-connections/geo';
+import { Geog } from '@wprdc-types/geo';
 import {
   ProviderAction,
   ProviderContext,
@@ -15,7 +14,6 @@ import {
 const Context = React.createContext<ProviderContext>({
   dispatch: () => {},
   setGeog: () => {},
-  fetchAndSetGeog: () => {},
 });
 Context.displayName = 'ProviderContext';
 
@@ -50,17 +48,9 @@ export const Provider: React.FC<ProviderProps> = (props) => {
       payload: geog,
     });
   }
-
-  async function fetchAndSetGeog(geogID: GeogIdentifier) {
-    const { data } = await GeoAPI.requestGeogDetails(geogID);
-    if (!!data) setGeog(data);
-    else console.error('No geography found');
-  }
-
   const context: ProviderContext = Object.assign({}, state, {
     dispatch,
     setGeog,
-    fetchAndSetGeog,
   });
 
   if (usingSSR) {

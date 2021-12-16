@@ -4,14 +4,10 @@
   ],
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "@wprdc-viz/*"
-      ]
+      "ignoreChanges": ["*.md"]
     },
     "bootstrap": {
-      "ignore": [
-        "@wprdc-viz/*"
-      ],
+      "ignore": [],
       "npmClientArgs": [
         "--no-package-lock"
       ]

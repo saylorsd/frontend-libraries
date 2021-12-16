@@ -3,17 +3,17 @@
   "private": true,
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "prettier": "^2.5.1",
     "lerna": "^4.0.0",
+    "prettier": "^2.5.1",
     "rollup-plugin-peer-deps-external": "^2.2.4"
   },
   "peerDependencies": {
     "typescript": "^4.5.3"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist --scope '@wprdc-types/*' --scope '@wprdc-connections/*' --scope '@wprdc-components/*'",
+    "bootstrap": "lerna clean -y && lerna bootstrap --hoist",
     "pretest": "eslint packages",
-    "watch": "lerna run --scope '@wprdc-types/*' --scope '@wprdc-connections/*' --scope '@wprdc-components/*' --parallel watch",
+    "watch": "lerna run --parallel watch",
     "watch-types": "lerna run --scope '@wprdc-types/*' --parallel watch",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
@@ -34,6 +34,7 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@wprdc-types/neighborhood-assets": "^0.0.2",
+    "@wprdc-types/viz": "^0.0.3",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^10.0.0",

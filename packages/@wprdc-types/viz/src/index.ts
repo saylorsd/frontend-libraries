@@ -174,3 +174,19 @@ export enum VizMenuItem {
   Share = 'Share',
   API = 'API',
 }
+
+interface CensusTableProps {
+  columns: Column<CensusTableRowRecord>[];
+  data: CensusTableRowRecord[];
+}
+
+export type TableProps = VizProps<TableViz, TableData, CensusTableProps>;
+
+export interface CensusTableRowRecord extends Record<string, React.ReactNode> {
+  key: React.Key;
+  label?: React.ReactNode;
+  children?: CensusTableRowRecord[];
+  className?: string;
+}
+
+export { Column };
