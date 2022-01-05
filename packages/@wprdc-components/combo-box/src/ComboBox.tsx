@@ -1,4 +1,8 @@
 import * as React from 'react';
+
+import './main.css';
+import styles from './ComboBox.module.css';
+
 import { useComboBoxState } from '@react-stately/combobox';
 
 import { useFilter } from '@react-aria/i18n';
@@ -8,8 +12,9 @@ import { useButton } from '@react-aria/button';
 import { Popover } from '@wprdc-components/popover';
 import { StatelessListBox } from '@wprdc-components/list-box';
 import { ComboBoxProps } from '@wprdc-types/combo-box';
+import { Resource } from '@wprdc-types/shared';
 
-export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
+export function ComboBox<T extends Resource>(props: ComboBoxProps<T>) {
   let { contains } = useFilter({ sensitivity: 'base' });
   let state = useComboBoxState({ ...props, defaultFilter: contains });
 
@@ -37,17 +42,15 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
   let { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
-    <div className="inline-flex flex-col relative">
+    <div className="inline-flex flex-col relative border-2 border-black">
       <label
         {...labelProps}
-        className="block text-sm font-medium text-gray-700 text-left"
+        className="block text-xs font-mono text-gray-700 text-left"
       >
         {props.label}
       </label>
       <div
-        className={`relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 ${
-          state.isFocused ? 'border-pink-500' : 'border-gray-300'
-        }`}
+        className={`relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 border-black`}
       >
         <input
           {...inputProps}

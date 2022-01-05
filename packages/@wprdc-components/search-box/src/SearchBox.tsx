@@ -23,10 +23,11 @@ import { useSearchField } from '@react-aria/searchfield';
 import { Popover } from '@wprdc-components/popover';
 import { StatelessListBox } from '@wprdc-components/list-box';
 import { SearchBoxProps } from '@wprdc-types/search-box';
+import { Resource } from '@wprdc-types/shared';
 
 import classNames from 'classnames';
 
-export function SearchBox<T extends object>(props: SearchBoxProps<T>) {
+export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
   const { loadingState } = props;
   const { contains } = useFilter({ sensitivity: 'base' });
   const state = useComboBoxState({ ...props, defaultFilter: contains });

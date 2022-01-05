@@ -3,9 +3,9 @@
  * Source types
  *
  */
-import { Described } from '@wprdc-types/shared';
+import { Resource } from '@wprdc-types/shared';
 
-export interface SourceBase extends Described {
+export interface SourceBase extends Resource {
   infoLink: string;
 }
 

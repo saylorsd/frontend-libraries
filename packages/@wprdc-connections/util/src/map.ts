@@ -3,41 +3,43 @@ import { useState, useEffect, Key } from 'react';
 import theme from './theme';
 
 import { GeographyType } from '@wprdc-types/geo';
+
+import { MapPluginHookArgs, MapPluginToolbox } from '@wprdc-types/connections';
+
 import {
-  MapPluginToolbox,
   SourceProps,
   LayerProps,
   LegendItemProps,
   Expression,
   MapEvent,
-  MapPluginHookArgs,
 } from '@wprdc-types/map';
-
+import { Resource, Selection } from '@wprdc-types/shared';
 import { useProvider } from '@wprdc-components/provider';
-import { Selection } from '@wprdc-types/shared';
 
 export const CARTO_USER = 'wprdc';
 export const MAPS_API_ENDPOINT = `https://${CARTO_USER}.carto.com/api/v1/map`;
 
-export function useMapPlugin<T extends object, E>({
+export function useMapPlugin<T extends Resource, E>({
   connection,
   layerItems,
   layerSelection,
   selectedMapItem,
+  options,
   context,
   setContext,
 }: MapPluginHookArgs<T, E>): MapPluginToolbox<T, E> {
   const { colorScheme } = useProvider();
+  // Mapbox spec/props
   const [sources, setSources] = useState<SourceProps[]>();
   const [layers, setLayers] = useState<LayerProps[]>();
+  // Content
   const [legendItems, setLegendItems] = useState<LegendItemProps[]>();
   const [legendSection, setLegendSection] = useState<JSX.Element>();
+  const [layerPanelSection, setLayerPanelSection] = useState<JSX.Element>();
   const [mapSection, setMapSection] = useState<JSX.Element>();
   const [selection, setSelection] = useState<Selection>(
     layerSelection || (new Set() as Set<Key>),
   );
-  const [selectedItems, setSelectedItems] = useState<T[]>([]);
-  const [interactiveLayerIDs, setInteractiveLayerIDs] = useState<string[]>([]);
   // for filtering styled layers for interaction states
   const [hoveredFilter, setHoveredFilter] = useState<Expression>(
     clearLayerFilter(),
@@ -45,22 +47,27 @@ export function useMapPlugin<T extends object, E>({
   const [selectedFilter, setSelectedFilter] = useState<Expression>(
     clearLayerFilter(),
   );
+  const [interactiveLayerIDs, setInteractiveLayerIDs] = useState<string[]>([]);
+  const [selectedItems, setSelectedItems] = useState<T[]>([]);
 
+  // When a selection is provided, it needs to override the inside state
   useEffect(() => {
-    // When a selection is provided, it needs to overide the inside state
     if (!!layerSelection) setSelection(layerSelection);
   }, [layerSelection]);
 
+  // Update map contents when source or layer data change
   useEffect(() => {
     connection.makeMapSection(setMapSection, sources, layers);
   }, [sources, layers]);
 
+  // Update filters on selection change
   useEffect(() => {
     if (selectedMapItem)
       setSelectedFilter(connection.makeFilter(selectedMapItem));
     else setSelectedFilter(clearLayerFilter());
   }, [selectedMapItem]);
 
+  // Update filters on hover change
   useEffect(() => {
     // When the user hovers over the map or selects something, we only need to
     // update the layers as those interactions don't affect the deeper map state
@@ -73,10 +80,13 @@ export function useMapPlugin<T extends object, E>({
     }
   }, [hoveredFilter, selectedFilter]);
 
+  // Update map data on selection or option change
   useEffect(() => {
-    // When the available categories/layers change, or when one or many are
-    // selected, we need to update the map data.
     if (!!layerItems) {
+      // signal that the first layer is the only layer to render, and is always rendered
+      if (!!options && !!options.permanentLayer) {
+        setSelection(new Set(layerItems[0].name));
+      }
       // get mapbox source tiles
       connection.getSources(layerItems, selection, setSources, {
         ...context,
@@ -101,12 +111,24 @@ export function useMapPlugin<T extends object, E>({
     }
   }, [layerItems, selection]);
 
+  // Update the section element when the legend items change
   useEffect(() => {
-    // When the legend items change, we need to update the section element.
     connection.makeLegendSection(setLegendSection, legendItems);
   }, [legendItems]);
+
+  // Update layer panel section when the available layers change
+  useEffect(() => {
+    connection.makeLayerPanelSection(
+      setLayerPanelSection,
+      layerItems,
+      selectedItems,
+      handleLayerSelection,
+    );
+  }, [layerItems, selectedItems]);
+
   /**
-   * Runs when a layer or category is selected in the map's menu.
+   * Runs when a layer is selected in the map's menu.
+   *
    * @param selection
    */
   const handleLayerSelection = (selection: Selection) => {
@@ -116,14 +138,15 @@ export function useMapPlugin<T extends object, E>({
   /**
    * The map's mouse event handler will call this function as part of what
    * it does on hover events.
+   *
    * @param event
    */
   const handleHover = (event: MapEvent) => {
-    const items: E[] = connection.parseMapEvent(event, {
+    const hoveredItems: E[] = connection.parseMapEvent(event, {
       selectedLayers: selection,
     });
-    setHoveredFilter(connection.makeFilter(items));
-    return items;
+    setHoveredFilter(connection.makeFilter(hoveredItems));
+    return hoveredItems;
   };
 
   /**
@@ -137,18 +160,24 @@ export function useMapPlugin<T extends object, E>({
     return clickedItems;
   };
 
+  const { makeHoverContent, makeClickContent } = connection;
+
   return {
+    name: connection.name,
     layerItems,
     sources,
     layers,
     legendItems,
     legendSection,
+    layerPanelSection,
     interactiveLayerIDs,
     mapSection,
     selectedItems,
     handleLayerSelection,
     handleHover,
     handleClick,
+    makeHoverContent,
+    makeClickContent,
   };
 }
 

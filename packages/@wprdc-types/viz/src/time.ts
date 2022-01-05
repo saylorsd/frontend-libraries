@@ -3,7 +3,7 @@
  * Series types
  *
  */
-import { Described } from '@wprdc-types/shared';
+import { Resource } from '@wprdc-types/shared';
 
 export type Time = YearSeries; // union any more new series
 
@@ -11,7 +11,7 @@ export enum SeriesResourceType {
   YearSeries = 'YearSeries',
 }
 
-export interface SeriesBase extends Described {
+export interface SeriesBase extends Resource {
   resourcetype: SeriesResourceType;
 }
 
@@ -27,7 +27,7 @@ export interface TimePart {
   time_unit: number;
 }
 
-export interface TimeAxis extends Described {
+export interface TimeAxis extends Resource {
   unit: number;
   timeParts: TimePart[];
 }

@@ -1,7 +1,7 @@
 import { createAPI } from '@wprdc-connections/api';
 
 import { ResponsePackage, Method } from '@wprdc-types/api';
-import { APIMapBoxResponse } from '@wprdc-types/map';
+import { APIMapBoxResponse } from '@wprdc-types/connections';
 import { ProjectIndexDetails } from '@wprdc-types/housecat';
 
 const HOST = 'https://api.profiles.wprdc.org';

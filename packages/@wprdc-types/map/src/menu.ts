@@ -1,7 +1,6 @@
 import { LayerProps } from 'react-map-gl';
 
 import { GeographyType } from '@wprdc-types/geo';
-import { WithToolboxes } from './connections';
 
 export enum LayerPanelVariant {
   Left = 'left',
@@ -22,5 +21,3 @@ export interface MenuLayerItem {
   };
   layers: (LayerProps & { 'source-layer': string; id: string })[];
 }
-
-export interface LayerPanelProps extends WithToolboxes {}

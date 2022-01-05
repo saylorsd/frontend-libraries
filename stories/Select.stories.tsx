@@ -9,7 +9,7 @@ export default {
 export const Default = () => (
   <div>
     <label id="selectLabel" className="m-0 border border-blue-800">
-      stuff
+      Select an animal
     </label>
     <Select aria-labelledby="selectLabel">
       <Item key="red panda">Red Panda</Item>

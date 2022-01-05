@@ -12,14 +12,16 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration --emitDeclarationOnly",
-    "watch": "tsc -w --declaration --emitDeclarationOnly",
-    "prepare": "tsc --declaration --emitDeclarationOnly"
+    "build": "rimraf dist && tsc --declaration",
+    "watch": "tsc -w --declaration",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1",

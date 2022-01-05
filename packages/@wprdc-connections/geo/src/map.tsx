@@ -10,58 +10,41 @@
 //   ? ctxGeogType.defaultGeog
 //   : undefined;
 import React from 'react';
-import { MapPluginConnection } from '@wprdc-types/map';
-import { GeogLevel, GeogBrief, GeographyType } from '@wprdc-types/geo';
-import { LayerProps } from '@wprdc-types/map';
-import { Source, Layer } from '@wprdc-components/map';
-import { RadioGroup, Radio } from '@wprdc-components/radio-group';
+import { MapPluginConnection } from '@wprdc-types/connections';
+import { GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
+import { fetchCartoVectorSource, Layer, Source } from '@wprdc-components/map';
+import { Radio, RadioGroup } from '@wprdc-components/radio-group';
 import {
-  fetchCartoVectorSource,
-  makeLayers,
   clearLayerFilter,
+  makeLayers,
+  useMapPlugin,
 } from '@wprdc-connections/util';
-import { useMapPlugin } from '@wprdc-connections/util';
+import { ProjectKey } from '@wprdc-types/shared';
+
+//maps.v_neighborhood
 
 export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
-  name: 'menu',
+  name: ProjectKey.GeoMenu,
   use: useMapPlugin,
-  // todo: use available menu geog layers from profiles for this
-  // todo: this will be a single selection
   getSources: (items, _, setSources) => {
-    if (!!items) {
-      const requests = items.map((item) =>
-        fetchCartoVectorSource(`menu/${item.id}`, item.cartoSql),
-      );
-      Promise.all(requests).then((sources) => setSources(sources));
-    }
+    fetchCartoVectorSource(
+      `menu/${GeographyType.Neighborhood}`,
+      'SELECT * from pgh_neighborhoods',
+    ).then((sources) => setSources([sources]));
   },
   getLayers: (items, selected, setLayers, options) => {
     const { hoveredFilter, selectedFilter } = options || {};
-    const selectedItems =
-      selected === 'all'
-        ? items.map((i) => i.id)
-        : (selected as Set<GeographyType>);
-
+    // todo: build source based on selection.  or just put them all up at once tbh
     setLayers(
-      Array.from(selectedItems).reduce<LayerProps[]>(
-        (result, item) => [
-          ...result,
-          ...makeLayers(item, hoveredFilter, selectedFilter),
-        ],
-        [],
-      ),
+      makeLayers(GeographyType.Neighborhood, hoveredFilter, selectedFilter),
     );
   },
   getLegendItems: () => {
     // for now, we don't show a legend item for the menu, so this will be a noop.
   },
   getInteractiveLayerIDs: (items, selected) => {
-    const selectedItems =
-      selected === 'all'
-        ? items.map((i) => i.id)
-        : (selected as Set<GeographyType>);
-    // interact on just the fill layer for now if not forever.
-    return Array.from(selectedItems).map((item) => `${item}/fill`);
+    // todo: implement this property look at old veriosn in git history
+    return [`${GeographyType.Neighborhood}/fill`];
   },
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
@@ -115,21 +98,40 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
       ? items
       : items.filter((item) => selection.has(item.id));
   },
-  makeLayerPanelSection(setLayerPanelSection, items, handleChange) {
-    setLayerPanelSection(
-      <div>
-        <RadioGroup
-          label="Select a menu layer"
-          aria-label="select the geographic menu layer to display"
-          onChange={handleChange}
-        >
-          {items.map((item) => (
-            <Radio key={`menu/${item.id}`} value={`menu/${item.id}`}>
-              {item.name}
-            </Radio>
-          ))}
-        </RadioGroup>
-      </div>,
-    );
+  makeHoverContent: (hoveredItems, event) => {
+    if (!!hoveredItems && !!hoveredItems.length)
+      return <div className="text-xs">{hoveredItems[0].name}</div>;
+  },
+  makeClickContent: (clickedItems, event) => {
+    return null;
+  },
+  makeLayerPanelSection(
+    setLayerPanelSection,
+    items,
+    selectedItems,
+    handleChange,
+  ) {
+    function _handleChange(val: string) {
+      handleChange(new Set([val]));
+    }
+    if (items.length === 1) {
+      setLayerPanelSection(null);
+    } else {
+      setLayerPanelSection(
+        <div key={'geo-menu'}>
+          <RadioGroup
+            label="Select a menu layer"
+            aria-label="select the geographic menu layer to display"
+            onChange={_handleChange}
+          >
+            {items.map((item) => (
+              <Radio key={`menu/${item.id}`} value={`menu/${item.id}`}>
+                {item.name}
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>,
+      );
+    }
   },
 };

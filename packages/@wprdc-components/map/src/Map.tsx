@@ -5,39 +5,56 @@
  *
  */
 
-import React, { useState } from 'react';
+import * as React from 'react';
 
-import './main.css';
 import styles from './Map.module.css';
 
 import InteractiveMap, {
   Layer,
+  LayerProps,
   MapEvent,
   NavigationControl,
   Source,
+  SourceProps,
   ViewportProps,
 } from 'react-map-gl';
-import { InteractiveState } from 'react-map-gl/src/utils/map-state';
 
 import {
   LayerPanelVariant,
-  MapProps,
   PopupContentProps,
   ViewportOptions,
+} from '@wprdc-types/map';
+
+import {
   MouseEventHandler,
   MapPluginToolbox,
-} from '@wprdc-types/map';
+  ConnectableMapProps,
+  ConnectedLayerPanelProps,
+} from '@wprdc-types/connections';
+
 import { ColorScheme } from '@wprdc-types/shared';
 import { useProvider } from '@wprdc-components/provider';
 
 import { basemaps, DEFAULT_BASEMAP_STYLE, DEFAULT_VIEWPORT } from './settings';
-import { hasFeatures, makeContentProps } from './utils';
+import {
+  handleMouseEventForToolboxes,
+  hasFeatures,
+  makeContentProps,
+} from './utils';
 
-import { LayerPanel, LayerPanelProps } from './parts/LayerPanel';
-import { Legend } from './parts/Legend';
-import { LegendItem } from './parts/LegendItem';
-import { HoverPopup } from './parts/HoverPopup';
-import { ClickPopup } from './parts/ClickPopup';
+import { LayerPanel } from './layerpanel';
+import { Legend, LegendItem } from './legend';
+import { HoverPopup, ClickPopup } from './popup';
+import { useMemo } from 'react';
+
+// from 'react-map-gl'
+type InteractiveState = Partial<{
+  startPanLngLat: Array<number>;
+  startZoomLngLat: Array<number>;
+  startBearing: number;
+  startPitch: number;
+  startZoom: number;
+}>;
 
 export const userPrefersDark =
   !(typeof window === 'undefined') &&
@@ -48,9 +65,9 @@ export const DEFAULT_COLOR_SCHEME = userPrefersDark
   ? ColorScheme.Dark
   : ColorScheme.Light;
 
-export const Map: React.FC<MapProps> = ({
-  connections,
-  connectionHookArgs,
+export function Map({
+  connections = [],
+  connectionHookArgs = {},
 
   layerPanelVariant,
   colorScheme,
@@ -73,25 +90,11 @@ export const Map: React.FC<MapProps> = ({
   useFeaturelessEvents,
   interactiveLayerIds: _interactiveLayerIDs = [],
   ...otherInteractiveMapProps
-}) => {
+}: ConnectableMapProps) {
   // context record to share data across plugins
-  const [pluginContext, setPluginContext] = useState<Record<string, any>>({});
-  const [toolboxes, setToolboxes] =
-    useState<MapPluginToolbox<any, any>[]>(null);
-  // if any connections are provided, run through
-  // todo: get rid of the connectionHookArgs and the process for
-  //  getting a connection involve a closure
-  //  eg: makeConnection(args: ConnectionHookArgs) => MapPluginConnection
-  if (!!connections) {
-    connections.forEach((connection) =>
-      connection.use({
-        connection,
-        ...connectionHookArgs,
-        context: pluginContext,
-        setContext: setPluginContext,
-      }),
-    );
-  }
+  const [pluginContext, setPluginContext] = React.useState<Record<string, any>>(
+    {}
+  );
 
   // Internal state
   // ------------------------------------------------------------------------
@@ -108,12 +111,25 @@ export const Map: React.FC<MapProps> = ({
     ? basemaps[basemapStyle]
     : DEFAULT_BASEMAP_STYLE;
 
+  // if any connections are provided, run through
+  const toolboxes: MapPluginToolbox<any, any>[] = connections.map(
+    (connection) => {
+      const hookArgs = connectionHookArgs[connection.name] || {};
+      return connection.use({
+        connection,
+        ...hookArgs,
+        context: pluginContext,
+        setContext: setPluginContext,
+      });
+    }
+  );
+
   // Wrappers around commonly-used event handlers
   // ------------------------------------------------------------------------
   const handleViewportChange = (
     viewState: ViewportProps,
     interactionState: InteractiveState,
-    oldViewState: ViewportProps,
+    oldViewState: ViewportProps
   ) => {
     if (onViewportChange) {
       onViewportChange(viewState, interactionState, oldViewState);
@@ -125,12 +141,12 @@ export const Map: React.FC<MapProps> = ({
    * Handle the primary Mouse Events over the Map (click and hover for now).
    */
   const handleMouseEvent: MouseEventHandler = (
+    eventType,
     event,
     Popup,
     setPopup,
-    connections,
     CustomContentComponent,
-    callback,
+    callback
   ) => {
     const _isOverInteractiveLayer = (event: MapEvent) =>
       !!event.features &&
@@ -140,44 +156,57 @@ export const Map: React.FC<MapProps> = ({
     if (useFeaturelessEvents || hasFeatures(event)) {
       if (_isOverInteractiveLayer(event)) {
         const [lng, lat] = event.lngLat;
+        // allow for outside provided content
         let customContents: React.ReactNode = undefined;
         if (!!CustomContentComponent) {
           const contentProps: PopupContentProps = makeContentProps(event);
           customContents = <CustomContentComponent {...contentProps} />;
         }
-        setPopup(
-          <Popup longitude={lng} latitude={lat} connections={connections}>
-            {customContents}
-          </Popup>,
+
+        // todo: change this to just get the items
+        //  then use them to make content and also pass them
+        //  to the callback
+        // get toolbox content and remove any nulls
+        const { toolboxItems, toolboxContents } = handleMouseEventForToolboxes(
+          toolboxes,
+          event,
+          eventType
         );
+
+        if (!!customContents || (!!toolboxContents && !!toolboxContents.length))
+          setPopup(
+            <Popup longitude={lng} latitude={lat}>
+              {customContents}
+              {toolboxContents}
+            </Popup>
+          );
         if (!!callback) {
-          callback(event, connections);
+          callback(event, toolboxes, toolboxItems);
         }
       } else {
         setPopup(null);
       }
     }
   };
-
   const handleHover = (event: MapEvent) => {
     handleMouseEvent(
+      'hover',
       event,
       HoverPopup,
       setHoverPopup,
-      connections,
       CustomHoverContents,
-      onHover,
+      onHover
     );
   };
 
   const handleClick = (event: MapEvent) => {
     return handleMouseEvent(
+      'click',
       event,
       ClickPopup,
       setClickPopup,
-      connections,
       CustomClickContents,
-      onClick,
+      onClick
     );
   };
 
@@ -194,8 +223,15 @@ export const Map: React.FC<MapProps> = ({
 
   // update the full set of interactive layer IDs when any change.
   const interactiveLayerIDs = React.useMemo(
-    () => _interactiveLayerIDs.concat(),
-    [_interactiveLayerIDs, connections],
+    () =>
+      _interactiveLayerIDs.concat(
+        toolboxes.reduce((intIDs, tb) => {
+          if (!!tb.interactiveLayerIDs)
+            return [...intIDs, ...tb.interactiveLayerIDs];
+          return intIDs;
+        }, [] as string[])
+      ),
+    [_interactiveLayerIDs, connections]
   );
 
   const customLegendContent = React.useMemo(() => {
@@ -210,6 +246,24 @@ export const Map: React.FC<MapProps> = ({
   const showLegend =
     !!customLegendContent ||
     !!toolboxes.find((tb) => !!tb.legendItems && !!tb.legendItems.length);
+
+  console.log(toolboxes);
+
+  const { tbSources, tbLayers } = useMemo(() => {
+    return toolboxes.reduce(
+      (result, tb) => {
+        let tmpS = result.tbSources;
+        let tmpL = result.tbLayers;
+        if (!!tb.sources) tmpS = [...result.tbSources, ...tb.sources];
+        if (!!tb.layers) tmpL = [...result.tbLayers, ...tb.layers];
+        return { tbSources: tmpS, tbLayers: tmpL };
+      },
+      {
+        tbSources: [] as SourceProps[],
+        tbLayers: [] as LayerProps[],
+      }
+    );
+  }, [toolboxes]);
 
   return (
     <div className={styles.container}>
@@ -234,7 +288,11 @@ export const Map: React.FC<MapProps> = ({
           height="100%"
         >
           {/* Plugin layers */}
-          {Object.values(toolboxes).map((tb) => tb.mapSection)}
+          {!!tbSources &&
+            tbSources.map((source) => <Source key={source.id} {...source} />)}
+          {!!tbSources &&
+            !!tbLayers &&
+            tbLayers.map((layer) => <Layer key={layer.id} {...layer} />)}
 
           {/* Custom Layers */}
           {!!sources &&
@@ -278,7 +336,7 @@ export const Map: React.FC<MapProps> = ({
       )}
     </div>
   );
-};
+}
 
 Map.defaultProps = {
   basemapStyle: 'light',
@@ -286,13 +344,13 @@ Map.defaultProps = {
   colorScheme: DEFAULT_COLOR_SCHEME,
 };
 
-const OutsideLayerPanel = (props: LayerPanelProps) => (
+const OutsideLayerPanel = (props: ConnectedLayerPanelProps) => (
   <div className={styles.outsideLayerPanel}>
     <LayerPanel {...props} />
   </div>
 );
 
-const InsideLayerPanel = (props: LayerPanelProps) => (
+const InsideLayerPanel = (props: ConnectedLayerPanelProps) => (
   <div className={styles.insideLayerPanel}>
     <LayerPanel {...props} />
   </div>

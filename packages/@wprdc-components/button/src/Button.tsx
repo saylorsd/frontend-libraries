@@ -8,15 +8,15 @@
 import * as React from 'react';
 import { useRef } from 'react';
 
+import './main.css';
+import styles from './Button.module.css';
+
 import classNames from 'classnames';
 
 import { useButton } from '@react-aria/button';
 import { ButtonProps } from '@wprdc-types/button';
 
-import './main.css';
-import styles from './Button.module.css';
-
-export const Button: React.FC<ButtonProps> = (props) => {
+export function Button(props: ButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(props, ref);
   const { children, color = 'default' } = props;
@@ -38,6 +38,4 @@ export const Button: React.FC<ButtonProps> = (props) => {
       {children}
     </button>
   );
-};
-
-export default Button;
+}

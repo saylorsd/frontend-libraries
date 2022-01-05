@@ -13,7 +13,7 @@ export interface DataVizState {
 /** Data and state of its collection for some dataviz at some geog*/
 export interface DataVizDataRecord<
   T extends DataVizBase = DataVizBase,
-  D extends DataVizData = DataVizData
+  D extends DataVizData = DataVizData,
 > {
   dataViz: Downloaded<T, D>;
   isLoading: boolean;

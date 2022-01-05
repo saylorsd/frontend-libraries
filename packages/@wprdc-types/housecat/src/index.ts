@@ -1,7 +1,7 @@
 /** Primary index of housing projects **/
-import { Described } from '@wprdc-types/shared';
+import { Resource } from '@wprdc-types/shared';
 
-export interface ProjectIndex extends Described {
+export interface ProjectIndex extends Resource {
   id: number;
   url: string;
   propertyId?: string | null;

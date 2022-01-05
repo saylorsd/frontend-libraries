@@ -7,7 +7,6 @@
       "ignoreChanges": ["*.md"]
     },
     "bootstrap": {
-      "ignore": [],
       "npmClientArgs": [
         "--no-package-lock"
       ]

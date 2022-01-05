@@ -1,0 +1,27 @@
+.menu {
+  @apply flex-shrink p-3 pb-0;
+}
+
+.input {
+  @apply w-full relative flex flex-row items-center;
+  @apply px-2 py-1;
+  @apply overflow-x-hidden;
+  @apply rounded-md shadow-sm border-2;
+}
+
+.icon {
+  @apply text-left w-8;
+}
+
+.valueBox {
+  @apply h-6 flex-auto;
+  @apply inline-block text-left whitespace-nowrap overflow-x-hidden overflow-ellipsis;
+}
+
+.container {
+  @apply w-full flex flex-col items-stretch;
+}
+
+.label {
+  @apply block text-sm font-medium text-gray-700 text-left;
+}

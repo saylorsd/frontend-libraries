@@ -1,7 +1,7 @@
 /*
  * Shared types
  */
-import { FC } from 'react';
+import { ReactElement } from 'react';
 
 import {
   AsyncListLoadFunction,
@@ -9,14 +9,24 @@ import {
   AsyncListOptions,
 } from '@react-stately/data';
 
+import { Resource } from './resources';
+
+export * from './resources';
+
 export { AsyncListLoadOptions } from '@react-stately/data';
 export { CollectionBase, Selection } from '@react-types/shared';
 
-export interface Described<K extends string | number = string | number> {
-  id: K;
-  name: string;
-  slug: string;
-  description?: string;
+// todo: maybe move this to ../api
+/** Backend API resource base properties. */
+
+// todo: replace with enum
+/** Slugs used to represent projects across connections */
+export enum ProjectKey {
+  Viz = 'viz',
+  NeighborhoodAssets = 'neighborhood-assets',
+  GeoMenu = 'geo-menu',
+  Profiles = 'profiles',
+  Housecat = 'housecat',
 }
 
 export type SizeCategory = 'S' | 'M' | 'L';
@@ -37,7 +47,7 @@ export enum DataVizType {
 }
 
 /** Connection that handles data that comes in a list format. */
-export interface ListConnection<T extends object, C = string>
+export interface ListConnection<T extends Resource, C = string>
   extends AsyncListOptions<T, C> {
   // T = Type, C = cursor, K = key
   load: AsyncListLoadFunction<T, C>;
@@ -47,19 +57,12 @@ export interface ListConnection<T extends object, C = string>
 }
 
 /** A component that can except a connection */
-export interface ListConnectableComponentProps<T extends object> {
-  connection: ListConnection<T>;
+export interface ListConnectableComponentProps<T extends Resource> {
+  connection?: ListConnection<T>;
 }
 
-export type ListConnectableComponent<T extends object> = FC<
-  ListConnectableComponentProps<T>
->;
+export type ListConnectableComponent<T extends Resource> = (
+  props: ListConnectableComponentProps<T>,
+) => ReactElement | null;
 
 // add project strings for auto complete
-export type ProjectKey =
-  | 'viz'
-  | 'neighborhood-assets'
-  | 'geo'
-  | 'profiles'
-  | 'housecat'
-  | string;

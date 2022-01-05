@@ -20,8 +20,9 @@ import { mergeProps } from '@react-aria/utils';
 import { useMenu, useMenuItem, useMenuSection } from '@react-aria/menu';
 
 import { MenuItemProps, MenuProps, MenuSectionProps } from '@wprdc-types/menu';
+import { Resource } from '@wprdc-types/shared';
 
-export const Menu = <T extends object>(props: MenuProps<T>): JSX.Element => {
+export const Menu = <T extends Resource>(props: MenuProps<T>): JSX.Element => {
   const state = useTreeState({ ...props });
 
   const items = Array.from(state.collection);

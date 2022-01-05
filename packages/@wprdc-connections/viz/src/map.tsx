@@ -1,17 +1,13 @@
 import React from 'react';
+import { MapPluginConnection } from '@wprdc-types/connections';
+
+import { LayerProps, LegendItemProps, SourceProps } from '@wprdc-types/map';
 import {
-  MapPluginConnection,
-  LayerProps,
-  LegendItemProps,
-  SourceProps,
-} from '@wprdc-types/map';
-import {
-  LegendSection,
-  LegendItem,
-  Source,
   Layer,
+  LegendItem,
+  LegendSection,
+  Source,
 } from '@wprdc-components/map';
-import { RadioGroup, Radio } from '@wprdc-components/radio-group';
 import { DataVizID, DownloadedMiniMap } from '@wprdc-types/viz';
 import { ProfilesMapProperties } from '@wprdc-types/profiles';
 import { ResponsePackage } from '@wprdc-types/api';
@@ -19,14 +15,15 @@ import { ResponsePackage } from '@wprdc-types/api';
 import { useMapPlugin } from '@wprdc-connections/util';
 
 import { VizAPI } from './api';
+import { ProjectKey } from '@wprdc-types/shared';
 
 const VIZ_SOURCE_ID = '@viz';
 
-export const profilesConnection: MapPluginConnection<
+export const vizMapConnection: MapPluginConnection<
   DataVizID,
   ProfilesMapProperties
 > = {
-  name: 'profiles',
+  name: ProjectKey.Profiles,
   use: useMapPlugin,
   getSources(items, _, setSources, options) {
     const { geography } = options || {};
@@ -50,7 +47,6 @@ export const profilesConnection: MapPluginConnection<
       );
     }
   },
-
   getLayers(items, selected, setLayers, options) {
     const { geography } = options || {};
 
@@ -73,7 +69,6 @@ export const profilesConnection: MapPluginConnection<
       );
     }
   },
-
   getLegendItems(items, selected, setLegendItems, options) {
     const { geography } = options || {};
 
@@ -96,7 +91,6 @@ export const profilesConnection: MapPluginConnection<
       );
     }
   },
-
   getInteractiveLayerIDs(items, selected) {
     const categories =
       selected === 'all'
@@ -104,7 +98,6 @@ export const profilesConnection: MapPluginConnection<
         : Array.from(selected);
     return categories.map((c) => c.toString());
   },
-
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
       const features = event.features.filter(
@@ -120,12 +113,10 @@ export const profilesConnection: MapPluginConnection<
     }
     return [];
   },
-
   makeFilter: (item) => {
     if (Array.isArray(item)) return ['in', 'geoid', item.map((i) => i.id)];
     return ['==', 'id', item.id];
   },
-
   makeLegendSection: (setLegendSection, items) => {
     if (!!items && !!items.length)
       setLegendSection(
@@ -152,21 +143,18 @@ export const profilesConnection: MapPluginConnection<
       ? items
       : items.filter((item) => selection.has(item.id));
   },
-  makeLayerPanelSection(setLayerPanelSection, items, handleChange) {
-    return (
-      <div>
-        <RadioGroup
-          label="Select a menu layer"
-          aria-label="select the geographic menu layer to display"
-          onChange={handleChange}
-        >
-          {items.map((item) => (
-            <Radio key={`profiles/${item.id}`} value={`profiles/${item.id}`}>
-              {item.name}
-            </Radio>
-          ))}
-        </RadioGroup>
-      </div>
-    );
+  makeLayerPanelSection(
+    setLayerPanelSection,
+    items,
+    selectedItems,
+    handleChange,
+  ) {
+    // todo: implement
+  },
+  makeHoverContent: (hoveredItems, event) => {
+    return null; // todo: implement
+  },
+  makeClickContent: (clickedItems, event) => {
+    return null; // todo: implement
   },
 };

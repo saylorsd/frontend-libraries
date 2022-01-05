@@ -1,12 +1,12 @@
-import { Described } from '@wprdc-types/shared';
+import { Resource } from '@wprdc-types/shared';
 import { DataVizID } from '@wprdc-types/viz';
 
 interface IndicatorHierarchy {
-  domain: Described;
-  subdomain: Described;
+  domain: Resource;
+  subdomain: Resource;
 }
 
-export interface Indicator extends Described {
+export interface Indicator extends Resource {
   longDescription: string;
   limitations: string;
   importance: string;
@@ -16,11 +16,11 @@ export interface Indicator extends Described {
   hierarchies: IndicatorHierarchy[];
 }
 
-export interface Subdomain extends Described {
+export interface Subdomain extends Resource {
   indicators: Indicator[];
 }
 
-export interface Domain extends Described {
+export interface Domain extends Resource {
   subdomains: Subdomain[];
 }
 
@@ -36,4 +36,4 @@ type URLNavParamKeys =
 
 export type URLNavParams = Record<URLNavParamKeys, string>;
 
-export interface ProfilesMapProperties extends Described {}
+export interface ProfilesMapProperties extends Resource {}

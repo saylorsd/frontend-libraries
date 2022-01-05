@@ -2,11 +2,15 @@ export * from 'geojson';
 
 import { MapboxGeoJSONFeature } from 'mapbox-gl';
 
-export interface Geog extends GeogBase {
+import { Resource } from '@wprdc-types/shared';
+
+export interface Geog extends GeogBrief {
   hierarchy: GeogBrief[];
 }
 
-export interface GeogBrief extends GeogBase {}
+export interface GeogBrief extends GeogIdentifier, Resource {
+  title: string;
+}
 
 export enum GeographyType {
   BlockGroup = 'blockGroup',
@@ -19,25 +23,15 @@ export enum GeographyType {
   State = 'state',
 }
 
-export interface GeogLevel {
+export interface GeogLevel extends Resource {
   name: string;
   id: GeographyType;
-  tableName: string;
-  cartoSql: string;
-  description: string;
-  defaultGeog: GeogBrief;
+  description?: string;
 }
 
 export interface GeogIdentifier {
   geogType: GeographyType;
   geogID: string;
-}
-
-export interface GeogBase extends GeogIdentifier {
-  id: number;
-  name: string;
-  title: string;
-  description?: string;
 }
 
 export type Feature = MapboxGeoJSONFeature;

@@ -12,13 +12,15 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration",
-    "prepare": "tsc --declaration",
+    "build": "rimraf dist && tsc",
+    "prepare": "npm run build",
     "watch": "tsc -w --declaration"
   },
   "peerDependencies": {
@@ -28,6 +30,7 @@
   "dependencies": {
     "@react-types/shared": "^3.10.0",
     "@wprdc-types/geo": "^0.0.4",
+    "@wprdc-types/neighborhood-assets": "^0.0.4",
     "@wprdc-types/shared": "^0.0.4",
     "geojson": "0.5.0",
     "mapbox-gl": "^2.6.1",

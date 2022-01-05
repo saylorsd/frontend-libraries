@@ -9,6 +9,10 @@ import { GeographyType } from '@wprdc-types/geo';
 import { Expression } from 'mapbox-gl';
 import { AssetMapProperties } from '@wprdc-types/neighborhood-assets';
 import { PopupContentProps } from '@wprdc-types/map';
+import {
+  ConnectionResourcesRecord,
+  MapPluginToolbox,
+} from '@wprdc-types/connections';
 
 export function makeContentProps(event: MapEvent): PopupContentProps {
   const features: Feature[] = event.features || [];
@@ -55,10 +59,10 @@ export function fetchCartoVectorSource(
   apiKey?: string,
   type = 'vector',
   minzoom = 0,
-  maxzoom = 22,
+  maxzoom = 22
 ): PromiseLike<SourceProps> {
   const config = encodeURIComponent(
-    JSON.stringify(cartoInstantiationParams(id, sql)),
+    JSON.stringify(cartoInstantiationParams(id, sql))
   );
 
   const keyParam = apiKey ? `&api_key=${apiKey}` : '';
@@ -72,7 +76,7 @@ export function fetchCartoVectorSource(
     })
       .then(
         (response) => response.json(),
-        (error) => reject(error),
+        (error) => reject(error)
       )
       .then(
         (data) => {
@@ -84,14 +88,14 @@ export function fetchCartoVectorSource(
             maxzoom,
           });
         },
-        (error) => reject(error),
+        (error) => reject(error)
       );
   });
 }
 
 export function getHoverPopupItems(
   features: any[],
-  menuGeogType?: GeographyType,
+  menuGeogType?: GeographyType
 ): {
   assetsItems: AssetMapProperties[];
   profilesItems: Record<string, any>[];
@@ -112,7 +116,7 @@ export function getHoverPopupItems(
  */
 function sortFeatures(
   features: any[],
-  menuGeogType?: GeographyType,
+  menuGeogType?: GeographyType
 ): {
   w__assets: AssetMapProperties[];
   w__profiles: Record<string, any>[];
@@ -128,7 +132,7 @@ function sortFeatures(
     if (!feature || !feature.source || !feature.properties) continue;
     if (feature.source in sortedFeatures) {
       sortedFeatures[feature.source as keyof typeof sortedFeatures].push(
-        feature.properties as Record<string, any>,
+        feature.properties as Record<string, any>
       );
     }
     if (menuGeogType && feature.source === menuGeogType) {
@@ -159,7 +163,7 @@ export function clearLayerFilter(): Expression {
 export function filteredLayers(
   layers: LayerProps[],
   hoveredFilter: Expression,
-  selectedFilter: Expression,
+  selectedFilter: Expression
 ): LayerProps[] {
   return layers.map((layer) => {
     switch (getLayerType(layer)) {
@@ -176,6 +180,44 @@ export function filteredLayers(
 export function getLayerType(layer: LayerProps) {
   if (!!layer.id) return layer.id.split('/')[1];
   return '';
+}
+
+/**
+ *  Runs the proper map event handler on each toolbox and returns the items
+ *  generated from the event and the popup content to render for those items.
+ */
+export function handleMouseEventForToolboxes(
+  toolboxes: MapPluginToolbox<any, any>[],
+  event: MapEvent,
+  eventType: 'click' | 'hover'
+): {
+  toolboxContents: JSX.Element[];
+  toolboxItems: ConnectionResourcesRecord;
+} {
+  return toolboxes.reduce(
+    (result, tb) => {
+      let items: any[] = [];
+      let content: JSX.Element[] = [];
+      if (eventType === 'click') {
+        items = tb.handleClick(event);
+        const tmpContent = tb.makeClickContent(items || [], event);
+        if (!!tmpContent) content.push(tmpContent);
+      }
+      if (eventType === 'hover') {
+        items = tb.handleHover(event);
+        const tmpContent = tb.makeHoverContent(items || [], event);
+        if (!!tmpContent) content.push(tmpContent);
+      }
+      return {
+        toolboxItems: { ...result.toolboxItems, [tb.name]: items },
+        toolboxContents: [...result.toolboxContents, ...content],
+      };
+    },
+    {
+      toolboxItems: {} as ConnectionResourcesRecord,
+      toolboxContents: [] as JSX.Element[],
+    }
+  );
 }
 
 export const DEFAULT_GEOIDS: Record<GeographyType, string> = {

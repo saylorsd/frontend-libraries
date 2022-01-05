@@ -1,0 +1,29 @@
+.container {
+  @apply flex flex-col items-stretch;
+}
+
+/* Navmenu parts */
+.menu {
+  @apply flex-shrink pb-0;
+}
+
+.menuItem {
+  @apply flex align-middle items-center mt-1;
+}
+
+.map {
+  @apply flex-grow h-64 w-96 mt-1.5;
+  @apply border border-gray-400 shadow;
+}
+
+.labelText {
+  @apply m-0 font-semibold text-xs text-gray-700 uppercase block;
+}
+
+.dropdown {
+  @apply py-0.5 flex-grow;
+}
+
+.orBreak {
+  @apply text-gray-400 p-0.5 font-medium italic;
+}

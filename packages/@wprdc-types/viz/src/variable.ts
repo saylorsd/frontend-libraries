@@ -3,7 +3,7 @@
  * Variable types
  *
  */
-import { Described } from '@wprdc-types/shared';
+import { Resource } from '@wprdc-types/shared';
 import { VariableSource } from './source';
 
 export type Variable = VariableBase;
@@ -12,7 +12,7 @@ export interface VizVariable extends VariableBase {
   options: VizVariableOptions;
 }
 
-export interface VariableBase extends Described {
+export interface VariableBase extends Resource {
   shortName?: string;
   displayName: string;
   units?: string;

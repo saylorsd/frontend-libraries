@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { Item } from '@wprdc-components/util';
 
-import { ListConnection, Described } from '@wprdc-types/shared';
+import { ListConnection, Resource } from '@wprdc-types/shared';
 import { Indicator } from '@wprdc-types/profiles';
 
-function makeProfilesConnection<T extends Described>(
+function makeProfilesConnection<T extends Resource>(
   itemType: string,
 ): ListConnection<T> {
   return {

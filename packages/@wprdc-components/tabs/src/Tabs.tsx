@@ -16,8 +16,9 @@ import { useTab, useTabList, useTabPanel } from '@react-aria/tabs';
 import { useTabListState } from '@react-stately/tabs';
 
 import { TabPanelProps, TabProps, TabsProps } from '@wprdc-types/tabs';
+import { Resource } from '@wprdc-types/shared';
 
-export function Tabs<T extends object>(props: TabsProps<T>) {
+export function Tabs<T extends Resource>(props: TabsProps<T>) {
   let state = useTabListState(props);
   let ref = React.useRef<HTMLDivElement>(null);
   let { tabListProps } = useTabList(props, state, ref);
@@ -35,7 +36,7 @@ export function Tabs<T extends object>(props: TabsProps<T>) {
   );
 }
 
-export function Tab<T extends object>({ item, state }: TabProps<T>) {
+export function Tab<T extends Resource>({ item, state }: TabProps<T>) {
   let { key, rendered } = item;
   let ref = React.useRef<HTMLDivElement>(null);
   let { tabProps } = useTab({ key }, state, ref);
@@ -55,7 +56,7 @@ export function Tab<T extends object>({ item, state }: TabProps<T>) {
   );
 }
 
-export function TabPanel<T extends object>({
+export function TabPanel<T extends Resource>({
   state,
   ...props
 }: TabPanelProps<T>) {

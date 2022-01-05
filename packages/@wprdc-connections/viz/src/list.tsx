@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Item } from '@wprdc-components/util';
 
 import { DataVizID, VariableBase } from '@wprdc-types/viz';
-import { Described, ListConnection } from '@wprdc-types/shared';
+import { Resource, ListConnection } from '@wprdc-types/shared';
 
-function makeProfilesConnection<T extends Described>(
+function makeProfilesConnection<T extends Resource>(
   itemType: string,
 ): ListConnection<T> {
   return {

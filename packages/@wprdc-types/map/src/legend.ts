@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { BackgroundColorValue, ViewStyleProps } from '@react-types/shared';
-import { WithToolboxes } from './index';
 
 export interface MultiLegendProps extends ViewStyleProps {
   title?: React.ReactNode;
@@ -9,7 +8,7 @@ export interface MultiLegendProps extends ViewStyleProps {
   localeOptions?: Partial<Intl.NumberFormatOptions>;
 }
 
-export interface LegendProps extends Partial<WithToolboxes> {
+export interface LegendProps {
   title?: React.ReactNode;
 }
 

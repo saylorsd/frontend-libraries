@@ -1,0 +1,76 @@
+{
+  "name": "@wprdc-widgets/geogrpahy-picker",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "saylorsd <steven.saylor@pitt.edu>",
+  "main": "dist/index.js",
+  "module": "dist/map.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "npm run build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "size-limit": [
+    {
+      "path": "dist/map.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/map.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.4",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "husky": "^7.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "size-limit": "^7.0.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^3.9.10",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "dependencies": {
+    "@wprdc-types/connections": "^0.0.1",
+    "@wprdc-types/geo": "^0.0.4",
+    "@wprdc-types/map": "^0.0.3",
+    "@wprdc-types/shared": "^0.0.4",
+    "react-icons": "^4.3.1",
+    "@wprdc-components/tooltip": "^0.0.4",
+    "@react-aria/label": "^3.2.1",
+    "@react-stately/collections": "^3.3.4",
+    "@wprdc-connections/geo": "^0.0.4",
+    "@wprdc-components/search-box": "^0.0.4",
+    "@wprdc-components/map": "^0.0.3",
+    "@wprdc-components/select": "^0.0.4"
+  }
+}

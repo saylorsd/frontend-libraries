@@ -6,6 +6,8 @@
  *
  */
 import * as React from 'react';
+import './main.css';
+import styles from './CheckboxGroup.module.css';
 
 import {
   CheckboxGroupState,
@@ -15,9 +17,6 @@ import {
 import { useCheckboxGroup, useCheckboxGroupItem } from '@react-aria/checkbox';
 
 import { CheckboxGroupProps, CheckboxProps } from '@wprdc-types/checkbox-group';
-
-import './main.css';
-import styles from './CheckboxGroup.module.css';
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
   null,

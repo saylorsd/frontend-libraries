@@ -48,6 +48,7 @@ export const Provider: React.FC<ProviderProps> = (props) => {
       payload: geog,
     });
   }
+
   const context: ProviderContext = Object.assign({}, state, {
     dispatch,
     setGeog,

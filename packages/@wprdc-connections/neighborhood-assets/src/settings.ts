@@ -1,8 +1,6 @@
-|/*
+/*
  * Asset Map Settings
  */
-// noinspection SqlResolve
-
 export const ASSETS_SOURCE_ID = 'w__assets';
 export const ASSETS_LAYER_ID = 'w__assets';
 

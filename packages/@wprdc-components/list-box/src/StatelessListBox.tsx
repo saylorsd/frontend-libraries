@@ -23,6 +23,7 @@ import {
   useOption,
 } from '@react-aria/listbox';
 
+// todo: get icons
 // import { RiCheckFill } from 'react-icons/ri';
 
 import {
@@ -30,8 +31,9 @@ import {
   OptionProps,
   StatelessListBoxProps,
 } from '@wprdc-types/list-box';
+import { Resource } from '@wprdc-types/shared';
 
-export const StatelessListBox = <T extends object>(
+export const StatelessListBox = <T extends Resource>(
   props: StatelessListBoxProps<T>,
 ): JSX.Element => {
   const { listBoxRef, state, fullWidth, isLoading } = props;
@@ -71,7 +73,7 @@ export const StatelessListBox = <T extends object>(
   );
 };
 
-export const ListBoxSection = <T extends object>({
+export const ListBoxSection = <T extends Resource>({
   section,
   state,
 }: ListBoxSectionProps<T>) => {
@@ -109,7 +111,7 @@ export const ListBoxSection = <T extends object>({
   );
 };
 
-export const Option = <T extends object>({ item, state }: OptionProps<T>) => {
+export const Option = <T extends Resource>({ item, state }: OptionProps<T>) => {
   // Get props for the option element
   const ref = React.useRef<HTMLLIElement>(null);
   const isDisabled = state.disabledKeys.has(item.key);

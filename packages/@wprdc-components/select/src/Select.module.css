@@ -1,2 +1,30 @@
 .container {
+  @apply inline-flex flex-col relative w-full space-x-0;
+}
+
+.label {
+  @apply block text-sm font-medium text-gray-700 text-left cursor-default;
+}
+
+.button {
+  @apply p-1 pl-3 py-1 relative inline-flex flex-row items-center;
+  @apply justify-between rounded-md overflow-hidden cursor-default;
+  @apply shadow-sm border-2 outline-none;
+  @apply border border-gray-800;
+}
+
+.focusVis {
+  @apply border-pink-600;
+}
+
+.value {
+  @apply text-gray-500;
+}
+
+.selected {
+  @apply text-gray-800;
+}
+
+.icon {
+  @apply w-5 h-5;
 }

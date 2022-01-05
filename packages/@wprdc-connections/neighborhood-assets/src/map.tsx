@@ -18,8 +18,8 @@ import {
   AssetMapProperties,
   AssetType,
 } from '@wprdc-types/neighborhood-assets';
-import { MapPluginConnection } from '@wprdc-types/map';
-import { ColorScheme } from '@wprdc-types/shared';
+import { MapPluginConnection } from '@wprdc-types/connections';
+import { ColorScheme, ProjectKey } from '@wprdc-types/shared';
 
 import { fetchCartoVectorSource } from '@wprdc-connections/util';
 
@@ -37,7 +37,7 @@ export const assetMapConnection: MapPluginConnection<
   AssetType,
   AssetMapProperties
 > = {
-  name: 'assets',
+  name: ProjectKey.NeighborhoodAssets,
   use: useMapPlugin,
   getSources: (_, __, setSources) => {
     fetchCartoVectorSource(ASSETS_SOURCE_ID, ASSETS_CARTO_SQL).then(
@@ -71,7 +71,6 @@ export const assetMapConnection: MapPluginConnection<
     if (!!categories.length) return [ASSETS_LAYER_ID];
     return [];
   },
-
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
       const features = event.features.filter(
@@ -115,22 +114,42 @@ export const assetMapConnection: MapPluginConnection<
       ? items
       : items.filter((item) => selection.has(item.name));
   },
-  makeLayerPanelSection(setLayerPanelSection, items, handleChange) {
-    setLayerPanelSection(
-      <div className="pt-2">
-        <CheckboxGroup
-          label="Select neighborhood assets to display"
-          aria-label="select neighborhood asset layers to display"
-          onChange={handleChange}
-        >
-          {items.map((item) => (
-            <Checkbox key={`assets/${item.name}`} value={`assets/${item.name}`}>
-              {item.title}
-            </Checkbox>
-          ))}
-        </CheckboxGroup>
-      </div>,
-    );
+  makeLayerPanelSection(
+    setLayerPanelSection,
+    items,
+    selectedItems,
+    handleChange,
+  ) {
+    function _handleChange(val: string[]) {
+      handleChange(new Set(val));
+    }
+
+    if (!!items && !!items.length)
+      setLayerPanelSection(
+        <div className="pt-2">
+          <CheckboxGroup
+            label="Select neighborhood assets to display"
+            aria-label="select neighborhood asset layers to display"
+            onChange={_handleChange}
+          >
+            {items.map((item) => (
+              <Checkbox
+                key={`assets/${item.name}`}
+                value={`assets/${item.name}`}
+              >
+                {item.title}
+              </Checkbox>
+            ))}
+          </CheckboxGroup>
+        </div>,
+      );
+  },
+  makeHoverContent: (hoveredItems, event) => {
+    if (!!hoveredItems && !!hoveredItems.length)
+      return <div className="text-xs">{hoveredItems[0].name}</div>;
+  },
+  makeClickContent: (clickedItems, event) => {
+    return null;
   },
 };
 
@@ -234,3 +253,4 @@ const categoryColors = (
     }),
     {} as Record<string, string>,
   );
+2;

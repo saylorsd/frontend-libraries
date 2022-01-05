@@ -1,7 +1,7 @@
 import { Feature, MultiPoint } from 'geojson';
+import { Resource } from '@wprdc-types/shared';
 
-export interface AssetType {
-  name: string;
+export interface AssetType extends Resource {
   title: string;
   category?: any;
 }
@@ -69,7 +69,7 @@ export enum Localizability {
   Cyber = 'cyber',
 }
 
-export interface AssetBrief {
+export interface AssetBrief extends Resource {
   id: AssetID;
   name: string;
   category: AssetCategory;

@@ -12,13 +12,15 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --declaration",
-    "prepare": "tsc --declaration",
+    "build": "rimraf dist && tsc --declaration",
+    "prepare": "npm run build",
     "watch": "tsc -w --declaration"
   },
   "peerDependencies": {
@@ -28,7 +30,8 @@
   "dependencies": {
     "@react-stately/data": "^3.4.3",
     "@react-types/combobox": "^3.2.0",
-    "@react-types/shared": "^3.10.0"
+    "@react-types/shared": "^3.10.0",
+    "@wprdc-types/shared": "^0.0.4"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

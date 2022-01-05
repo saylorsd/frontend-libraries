@@ -9,18 +9,17 @@ import {
   ViewportProps,
 } from 'react-map-gl';
 
-import { ColorScheme, ProjectKey } from '../../../@wprdc-types/shared';
+import { ColorScheme } from '@wprdc-types/shared';
 
-import { PopupContentComponent, PopupProps } from './popup';
+import {
+  ClickPopupProps,
+  HoverPopupProps,
+  PopupContentComponent,
+  PopupProps,
+} from './popup';
 import { LegendItemProps } from './legend';
 import { LayerPanelVariant } from './menu';
-import {
-  MapPluginConnection,
-  ConnectionHookArgs,
-  ConnectionCollection,
-} from './connections';
 
-export * from './connections';
 export * from './legend';
 export * from './menu';
 export * from './popup';
@@ -93,27 +92,10 @@ export interface MapProps extends InteractiveMapProps {
    */
   colorScheme?: ColorScheme;
 
-  onHover?: (evt: MapEvent) => void;
-  onClick?: (evt: MapEvent) => void;
-
   CustomHoverContents?: PopupContentComponent;
   CustomClickContents?: PopupContentComponent;
 
   mapboxApiAccessToken?: string;
-
-  connections?: ConnectionCollection;
-  connectionHookArgs?: Record<ProjectKey, ConnectionHookArgs<object, any>>;
 }
 
-export interface ConnectedPopupProps extends PopupProps {
-  connections: ConnectionCollection;
-}
-
-export type MouseEventHandler = (
-  event: MapEvent,
-  Popup: React.FC<ConnectedPopupProps>,
-  setPopup: React.Dispatch<JSX.Element | null | undefined>,
-  connections?: ConnectionCollection,
-  CustomContentComponent?: PopupContentComponent,
-  callback?: (evt: MapEvent, connections: ConnectionCollection) => void,
-) => void;
+export interface LayerPanelProps {}
