@@ -58,7 +58,7 @@ export function GeographyPicker(props: GeographyPickerProps) {
         size="full"
         isOpen={isOpen}
         onOpenChange={setIsOpen}
-        title={PLACEHOLDER}
+        title="Select a geography"
         content={
           <GeographyPickerMenu
             selectedGeog={geog}
