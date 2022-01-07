@@ -1,10 +1,15 @@
 .container {
+  @apply focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1;
+}
+
+.focused {
 }
 
 .label {
 }
 
 .list {
+  @apply outline-0;
 }
 
 .listHidden {
@@ -34,8 +39,8 @@
 }
 
 .option {
-  @apply flex pl-1 cursor-pointer text-gray-900 bg-background
-    text-sm hover:bg-gray-100 hover:text-black;
+  @apply m-1 rounded-md py-1.5 px-2 text-sm outline-none cursor-default flex items-center justify-between;
+  @apply hover:bg-gray-100 hover:text-black;
 }
 
 .option-selected {
@@ -46,4 +51,9 @@
 }
 
 .option-focused {
+  @apply bg-gray-100 text-black border border-pink-500;
+}
+
+.dense {
+  @apply py-0.5 px-1 m-0.5;
 }

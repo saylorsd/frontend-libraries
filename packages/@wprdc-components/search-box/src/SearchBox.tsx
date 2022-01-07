@@ -18,14 +18,12 @@ import { useButton } from '@react-aria/button';
 import { useSearchField } from '@react-aria/searchfield';
 
 //todo: get icons
-// import { RiCloseLine, RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine } from 'react-icons/ri';
 
 import { Popover } from '@wprdc-components/popover';
 import { StatelessListBox } from '@wprdc-components/list-box';
 import { SearchBoxProps } from '@wprdc-types/search-box';
 import { Resource } from '@wprdc-types/shared';
-
-import classNames from 'classnames';
 
 export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
   const { loadingState } = props;
@@ -35,8 +33,8 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listBoxRef = React.useRef<HTMLUListElement>(null);
   const popoverRef = React.useRef<HTMLDivElement>(null);
+
   const clearButtonRef = React.useRef<HTMLButtonElement>(null);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const { inputProps, listBoxProps, labelProps } = useComboBox(
     {
@@ -44,7 +42,6 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
       inputRef,
       listBoxRef,
       popoverRef,
-      buttonRef,
     },
     state,
   );
@@ -71,6 +68,8 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
   /*
    * Switch boolean loading state based on categorical loading state.
    * States that don't affect the switch are 'sorting', 'loadingMore' and 'filtering'
+   * fixme: mimic loadingMore state when typing.  i.e. don't display loading as
+   *  the user types their query, just continue to filter results
    */
   React.useEffect(() => {
     if (!props.loadingState) setIsLoading(false);
@@ -90,35 +89,20 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
           {props.label}
         </label>
       )}
-      <div
-        className={classNames(styles.box, {
-          [styles.focusedBox]: state.isFocused,
-        })}
-      >
-        {/*<RiSearchLine aria-hidden="true" className="w-5 h-5 text-gray-500" />*/}
+      <div className={styles.box}>
+        <span className={styles.iconDiv}>
+          <RiSearchLine aria-hidden="true" className={styles.icon} />
+        </span>
         <input {...inputProps} ref={inputRef} className={styles.realInput} />
-        <button
-          {...buttonProps}
-          ref={clearButtonRef}
-          style={{ visibility: state.inputValue !== '' ? 'visible' : 'hidden' }}
-          className={styles.button}
-        >
-          {/*<RiCloseLine aria-hidden="true" className="w-4 h-4" />*/}
-        </button>
       </div>
 
       {state.isOpen && (
-        <Popover
-          popoverRef={popoverRef}
-          isOpen={state.isOpen}
-          onClose={state.close}
-        >
+        <Popover isOpen={state.isOpen} onClose={state.close}>
           <StatelessListBox<T>
             fullWidth
             listBoxRef={listBoxRef}
             {...listBoxProps}
             state={state}
-            isLoading={isLoading}
           />
         </Popover>
       )}

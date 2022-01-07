@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './main.css';
 
+import './main.css';
 import styles from './Select.module.css';
 
 import classnames from 'classnames';
@@ -18,6 +18,8 @@ import { StatelessListBox } from '@wprdc-components/list-box';
 
 import { SelectProps } from '@wprdc-types/select';
 import { Resource } from '@wprdc-types/shared';
+
+import { Selection } from '@wprdc-types/shared';
 
 // todo: get icons
 import { HiSelector } from 'react-icons/hi';
@@ -50,12 +52,10 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
   let { focusProps, isFocusVisible } = useFocusRing();
   return (
     <div className={styles.container}>
-      {props.label && (
-        <div {...labelProps} className={styles.label}>
-          {props.label}
-        </div>
-      )}
-      <HiddenSelect<T>
+      <div {...labelProps} className={styles.label}>
+        {props.label}
+      </div>
+      <HiddenSelect
         state={state}
         triggerRef={ref}
         label={props.label}
@@ -69,26 +69,28 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
         })}
       >
         <span
-          className={classnames(styles.value, {
-            [styles.selected]: !!state.selectedItem,
-          })}
+          className={classnames(
+            styles.value,
+            state.selectedItem ? styles.selected : styles.placeholder,
+          )}
           {...valueProps}
         >
           {state.selectedItem
             ? state.selectedItem.rendered
             : 'Select an option'}
         </span>
-        <HiSelector
-          className={classnames(styles.icon, {
-            [styles.focusVis]: isFocusVisible,
-          })}
-        />
+        <span>
+          <HiSelector
+            className={classnames(styles.icon, {
+              [styles.focusVis]: isFocusVisible,
+            })}
+          />
+        </span>
       </button>
       {state.isOpen && (
         <Popover isOpen={state.isOpen} onClose={state.close}>
           <StatelessListBox<T>
             fullWidth
-            listBoxRef={listBoxRef}
             {...(menuProps as AriaListBoxOptions<T>)}
             state={state}
           />
@@ -97,5 +99,3 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
     </div>
   );
 }
-
-export default Select;

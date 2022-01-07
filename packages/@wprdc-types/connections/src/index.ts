@@ -216,9 +216,9 @@ export type Connected<T> = T & {
 };
 
 export interface ConnectionResourcesRecord {
-  [ProjectKey.GeoMenu]: GeogBrief;
-  [ProjectKey.Viz]: DataVizID;
-  [ProjectKey.NeighborhoodAssets]: AssetType;
+  [ProjectKey.GeoMenu]: GeogBrief[];
+  [ProjectKey.Viz]: DataVizID[];
+  [ProjectKey.NeighborhoodAssets]: AssetType[];
   // todo: add projects here as we need them
 }
 

@@ -63,10 +63,16 @@ export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
 
   const handleClick: ConnectedMapEventHandler = (_, __, toolboxItems) => {
     if (!!toolboxItems) {
-      const selection = toolboxItems[ProjectKey.GeoMenu];
-      if (!!selection) handleGeogSelection(selection);
+      const clickedGeogs: GeogBrief[] | undefined =
+        toolboxItems[ProjectKey.GeoMenu];
+      if (!!clickedGeogs && !!clickedGeogs.length)
+        handleGeogSelection(clickedGeogs[0]);
     }
   };
+
+  function handleSelection(item: GeogLevel) {
+    setSelectedGeogLevel(item);
+  }
 
   const geogTypeSelection: Set<string> = useMemo(() => {
     if (!!selectedGeogLevel) return new Set([selectedGeogLevel.id]);
@@ -80,12 +86,11 @@ export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
       <div className={styles.menu}>
         <div className={styles.menuItem}>
           <div className={styles.dropdown}>
-            <div className={styles.labelText}>Pick a type of area</div>
             <Select<GeogLevel>
-              aria-label="Type of area"
+              label="Type of area"
               items={geogLevels}
               selectedKey={selectedGeogLevel.id}
-              onSelection={(item) => setSelectedGeogLevel(item)}
+              onSelection={handleSelection}
             >
               {(item) => <Item key={item.id}>{item.name}</Item>}
             </Select>
@@ -93,10 +98,8 @@ export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
         </div>
         <div className={styles.menuItem}>
           <div className={styles.dropdown}>
-            <div className={styles.labelText}>
-              Search for a {selectedGeogLevel.name}
-            </div>
             <ConnectedSearchBox
+              label={`Search for a ${selectedGeogLevel.name}`}
               connection={new GeographyConnection(selectedGeogLevel.id)}
               onSelection={handleGeogSelection}
             />
@@ -111,7 +114,7 @@ export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
           onClick={handleClick}
           connectionHookArgs={{
             [ProjectKey.GeoMenu]: {
-              layerItems: [],
+              layerItems: geogLevels,
               layerSelection: geogTypeSelection,
             },
           }}

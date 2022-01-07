@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 import './main.css';
 import styles from './GeographyPicker.module.css';
 
+import classnames from 'classnames';
+
 import { RiRoadMapFill as MapIcon } from 'react-icons/ri';
 import { useField } from '@react-aria/label';
 
@@ -13,6 +15,8 @@ import { GeogBrief, GeographyType } from '@wprdc-types/geo';
 import { GeographyPickerProps } from './types';
 
 import GeographyPickerMenu from './GeographyPickerMenu';
+
+const PLACEHOLDER = 'Click here to search for a geography...';
 
 export function GeographyPicker(props: GeographyPickerProps) {
   const [isOpen, setIsOpen] = useState<boolean>();
@@ -29,7 +33,7 @@ export function GeographyPicker(props: GeographyPickerProps) {
   );
 
   const displayValue: string | undefined = useMemo(
-    () => (geog ? getGeogIDTitle(geog) : 'Pick a geography'),
+    () => (geog ? geog.title : PLACEHOLDER),
     [geog]
   );
 
@@ -49,11 +53,12 @@ export function GeographyPicker(props: GeographyPickerProps) {
         </div>
       )}
       <input hidden aria-hidden="true" {...fieldProps} value={value} />
+
       <Tooltip
         size="full"
         isOpen={isOpen}
         onOpenChange={setIsOpen}
-        title={'Select an area'}
+        title={PLACEHOLDER}
         content={
           <GeographyPickerMenu
             selectedGeog={geog}
@@ -62,10 +67,16 @@ export function GeographyPicker(props: GeographyPickerProps) {
         }
       >
         <div className={styles.input}>
-          <div className={styles.icon}>
-            <MapIcon aria-hidden="true" className="w-5 h-5 text-gray-500" />
-          </div>
-          <div className={styles.valueBox}>{displayValue}</div>
+          <span>
+            <MapIcon aria-hidden="true" className={styles.icon} />
+          </span>
+          <span
+            className={classnames(styles.value, {
+              [styles.placeholder]: !geog,
+            })}
+          >
+            {displayValue}
+          </span>
         </div>
       </Tooltip>
       {props.description && (
@@ -89,6 +100,8 @@ export default GeographyPicker;
  * @param geog
  */
 export function getGeogIDTitle(geog: GeogBrief): string {
+  console.log({ geog });
+
   switch (geog.geogType) {
     case GeographyType.County:
       return `${geog.name} County`;

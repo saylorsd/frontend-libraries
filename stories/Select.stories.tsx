@@ -8,10 +8,7 @@ export default {
 
 export const Default = () => (
   <div>
-    <label id="selectLabel" className="m-0 border border-blue-800">
-      Select an animal
-    </label>
-    <Select aria-labelledby="selectLabel">
+    <Select label="Select an Animal" onSelectionChange={console.log}>
       <Item key="red panda">Red Panda</Item>
       <Item key="cat">Cat</Item>
       <Item key="dog">Dog</Item>
@@ -19,5 +16,6 @@ export const Default = () => (
       <Item key="kangaroo">Kangaroo</Item>
       <Item key="snake">Snake</Item>
     </Select>
+    <div>Bottom tfasdf adsf asd fasd fa sfasdfext</div>
   </div>
 );

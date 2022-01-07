@@ -24,7 +24,7 @@ import {
 } from '@react-aria/listbox';
 
 // todo: get icons
-// import { RiCheckFill } from 'react-icons/ri';
+import { RiCheckFill } from 'react-icons/ri';
 
 import {
   ListBoxSectionProps,
@@ -36,37 +36,43 @@ import { Resource } from '@wprdc-types/shared';
 export const StatelessListBox = <T extends Resource>(
   props: StatelessListBoxProps<T>,
 ): JSX.Element => {
-  const { listBoxRef, state, fullWidth, isLoading } = props;
+  const defaultRef = React.useRef<HTMLUListElement>(null);
+  const { listBoxRef = defaultRef, state, fullWidth, dense } = props;
   const { listBoxProps, labelProps } = useListBox<T>(props, state, listBoxRef);
 
   const layerItems = Array.from(state.collection);
+
   return (
     <div
-      className={classNames([
+      className={classNames(
         styles.container,
         fullWidth ? 'w-full' : 'w-max max-w-96',
-      ])}
+      )}
     >
       <div {...labelProps} className={styles.label}>
         {props.label}
       </div>
-      {isLoading && (
-        <div className={styles.loadingMessage}>
-          {props.loadingMessage || 'Loading...'}
-        </div>
-      )}
       <ul
         {...listBoxProps}
         ref={listBoxRef}
-        className={classNames(styles.list, { [styles.listHidden]: isLoading })}
+        className={classNames(styles.list, {
+          [styles.focused]: state.isFocused,
+        })}
       >
         {layerItems.map((item) => {
           if (item.type === 'section') {
             return (
-              <ListBoxSection<T> key={item.key} section={item} state={state} />
+              <ListBoxSection<T>
+                key={item.key}
+                section={item}
+                state={state}
+                dense={dense}
+              />
             );
           }
-          return <Option<T> key={item.key} item={item} state={state} />;
+          return (
+            <Option<T> key={item.key} item={item} state={state} dense={dense} />
+          );
         })}
       </ul>
     </div>
@@ -76,6 +82,7 @@ export const StatelessListBox = <T extends Resource>(
 export const ListBoxSection = <T extends Resource>({
   section,
   state,
+  dense,
 }: ListBoxSectionProps<T>) => {
   const { itemProps, headingProps, groupProps }: ListBoxSectionAria =
     useListBoxSection({
@@ -103,7 +110,14 @@ export const ListBoxSection = <T extends Resource>({
         <ul {...groupProps} className={styles.optionList}>
           {nodes.map(
             (node) =>
-              !!node && <Option key={node.key} item={node} state={state} />,
+              !!node && (
+                <Option
+                  key={node.key}
+                  item={node}
+                  state={state}
+                  dense={dense}
+                />
+              ),
           )}
         </ul>
       </li>
@@ -111,7 +125,11 @@ export const ListBoxSection = <T extends Resource>({
   );
 };
 
-export const Option = <T extends Resource>({ item, state }: OptionProps<T>) => {
+export const Option = <T extends Resource>({
+  item,
+  state,
+  dense,
+}: OptionProps<T>) => {
   // Get props for the option element
   const ref = React.useRef<HTMLLIElement>(null);
   const isDisabled = state.disabledKeys.has(item.key);
@@ -145,11 +163,17 @@ export const Option = <T extends Resource>({ item, state }: OptionProps<T>) => {
     <li
       {...mergeProps(optionProps, focusProps)}
       ref={ref}
-      className={classNames([styles.option, styles[`option-${stateStyle}`]])}
+      className={classNames(styles.option, styles[`option-${stateStyle}`], {
+        [styles.dense]: dense,
+      })}
     >
       <div className="flex-grow">{item.rendered}</div>
-      <div className="flex layerItems-center">
-        <div className="w-5 ml-2" />
+      <div className="flex items-center">
+        {isSelected ? (
+          <RiCheckFill className="w-5 ml-2" />
+        ) : (
+          <div className="w-5 ml-2" />
+        )}
       </div>
     </li>
   );

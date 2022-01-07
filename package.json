@@ -6,6 +6,7 @@
     "@react-aria/button": "^3.3.4",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
+    "@storybook/addon-a11y": "^6.4.9",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.4.9",
@@ -67,6 +68,7 @@
     "watch-types-am": "lerna run --scope '@wprdc-types/[a-m]*' --parallel watch",
     "watch-types-nz": "lerna run --scope '@wprdc-types/[n-z]*' --parallel watch",
     "watch-viz": "lerna run --scope '@wprdc-viz/*' --parallel watch",
+    "watch-widgets": "lerna run --scope '@wprdc-widgets/*' --parallel watch",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

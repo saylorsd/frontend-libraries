@@ -162,16 +162,13 @@ export function Map({
           const contentProps: PopupContentProps = makeContentProps(event);
           customContents = <CustomContentComponent {...contentProps} />;
         }
-
-        // todo: change this to just get the items
-        //  then use them to make content and also pass them
-        //  to the callback
-        // get toolbox content and remove any nulls
         const { toolboxItems, toolboxContents } = handleMouseEventForToolboxes(
           toolboxes,
           event,
           eventType
         );
+
+        console.log({ toolboxItems });
 
         if (!!customContents || (!!toolboxContents && !!toolboxContents.length))
           setPopup(
@@ -246,8 +243,6 @@ export function Map({
   const showLegend =
     !!customLegendContent ||
     !!toolboxes.find((tb) => !!tb.legendItems && !!tb.legendItems.length);
-
-  console.log(toolboxes);
 
   const { tbSources, tbLayers } = useMemo(() => {
     return toolboxes.reduce(

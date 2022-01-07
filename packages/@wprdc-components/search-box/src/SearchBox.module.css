@@ -3,23 +3,41 @@
 }
 
 .label {
-  @apply block text-sm font-medium text-gray-700 text-left;
+  @apply block text-xs font-semibold text-gray-500 text-left cursor-default;
 }
 
 .box {
-  @apply relative inline-flex flex-row items-center;
-  @apply overflow-hidden px-2;
-  @apply rounded-md shadow-sm border-2;
+  @apply relative;
 }
 
-.focusedBox {
-  @apply border-2;
+.placeholder {
+  @apply text-gray-500;
+}
+
+.focusVis {
+  @apply border-pink-600;
+}
+
+.value {
+  @apply text-sm;
+}
+
+.iconDiv {
+  @apply absolute inset-y-0 left-0 flex items-center pl-2;
+}
+
+.icon {
+  @apply w-5 h-5 text-gray-500;
 }
 
 .realInput {
-  @apply outline-none px-3 py-1 appearance-none w-full;
+  @apply block;
+  @apply placeholder:italic placeholder:text-gray-400;
+  @apply bg-white w-full border border-gray-300;
+  @apply rounded-md py-2 pl-9 pr-3 shadow-sm  sm:text-sm;
+  @apply focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1;
 }
 
-.button {
-  @apply cursor-default text-gray-500 hover:text-gray-600;
+.clearButton {
+  @apply cursor-pointer hover:text-gray-600;
 }

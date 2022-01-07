@@ -1,15 +1,4 @@
-// when using profiles layers and menu controls, let the menu control what
-// geography to use for profiles
-// todo: have Geo connection do this
-// const ctxGeogType =
-//   !!menuToolbox.selectedItems && !!menuToolbox.selectedItems.length
-//     ? menuToolbox.selectedItems[0]
-//     : undefined;
-//
-// const ctxGeog: GeogBrief | undefined = !!ctxGeogType
-//   ? ctxGeogType.defaultGeog
-//   : undefined;
-import React from 'react';
+import React, { Key } from 'react';
 import { MapPluginConnection } from '@wprdc-types/connections';
 import { GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
 import { fetchCartoVectorSource, Layer, Source } from '@wprdc-components/map';
@@ -26,25 +15,39 @@ import { ProjectKey } from '@wprdc-types/shared';
 export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
   name: ProjectKey.GeoMenu,
   use: useMapPlugin,
-  getSources: (items, _, setSources) => {
-    fetchCartoVectorSource(
-      `menu/${GeographyType.Neighborhood}`,
-      'SELECT * from pgh_neighborhoods',
-    ).then((sources) => setSources([sources]));
+  getSources: (items, selection, setSources) => {
+    // menu doesn't allow select many
+    if (typeof selection === 'string')
+      throw Error('Multiple select should not be available in map menu.');
+    const selectedLayer = items.find((item) => selection.has(item.id));
+
+    if (!!selectedLayer)
+      setSources([
+        {
+          id: `menu/${selectedLayer.id}`,
+          type: 'vector',
+          url: `https://api.profiles.wprdc.org/tiles/maps.v_${selectedLayer.id.toLowerCase()}.json`,
+        },
+      ]);
   },
   getLayers: (items, selected, setLayers, options) => {
+    if (typeof selected === 'string')
+      throw Error('Multiple select should not be available in map menu.');
+    const selectedLayer = items.find((item) => selected.has(item.id));
     const { hoveredFilter, selectedFilter } = options || {};
     // todo: build source based on selection.  or just put them all up at once tbh
-    setLayers(
-      makeLayers(GeographyType.Neighborhood, hoveredFilter, selectedFilter),
-    );
+    if (!!selectedLayer)
+      setLayers(makeLayers(selectedLayer.id, hoveredFilter, selectedFilter));
   },
   getLegendItems: () => {
     // for now, we don't show a legend item for the menu, so this will be a noop.
   },
   getInteractiveLayerIDs: (items, selected) => {
+    if (typeof selected === 'string')
+      throw Error('Multiple select should not be available in map menu.');
+    const selectedLayer = items.find((item) => selected.has(item.id));
     // todo: implement this property look at old veriosn in git history
-    return [`${GeographyType.Neighborhood}/fill`];
+    return [`${selectedLayer.id}/fill`];
   },
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
@@ -60,10 +63,12 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
         ({ properties }) =>
           ({
             id: properties.id,
-            title: properties.title,
-            geogType: properties.geogtype,
-            geogID: properties.geogid,
             name: properties.name,
+            title: properties.display_name,
+            slug: properties.slug,
+            description: properties.description,
+            geogType: properties.geog_type,
+            geogID: properties.global_geoid,
           } as GeogBrief),
       );
     }
@@ -114,6 +119,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
     function _handleChange(val: string) {
       handleChange(new Set([val]));
     }
+
     if (items.length === 1) {
       setLayerPanelSection(null);
     } else {

@@ -1,24 +1,20 @@
 .container {
-  @apply inline-flex flex-col relative w-full space-x-0;
+  @apply inline-flex flex-col relative w-full;
 }
 
 .label {
-  @apply block text-sm font-medium text-gray-700 text-left cursor-default;
+  @apply block text-xs font-semibold text-gray-500 text-left cursor-default;
 }
 
 .button {
-  @apply p-1 pl-3 py-1 relative inline-flex flex-row items-center;
-  @apply justify-between rounded-md overflow-hidden cursor-default;
-  @apply shadow-sm border-2 outline-none;
-  @apply border border-gray-800;
-}
-
-.focusVis {
-  @apply border-pink-600;
+  @apply relative inline-flex flex-row  w-full;
+  @apply bg-white border border-gray-300;
+  @apply rounded-md py-2 px-3 shadow-sm  sm:text-sm;
+  @apply focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1;
 }
 
 .value {
-  @apply text-gray-500;
+  @apply text-sm flex-grow text-left;
 }
 
 .selected {
@@ -27,4 +23,11 @@
 
 .icon {
   @apply w-5 h-5;
+}
+
+.clearButton {
+  @apply p-1 pl-3;
+  @apply relative inline-flex flex-row items-center;
+  @apply justify-between rounded-md overflow-hidden cursor-default;
+  @apply shadow outline-none border border-gray-800;
 }

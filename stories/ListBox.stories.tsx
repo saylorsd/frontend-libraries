@@ -24,3 +24,20 @@ export const Default = () => (
     </ListBox>
   </div>
 );
+
+export const Dense = () => (
+  <div className="w-h">
+    <ListBox selectionMode="multiple" dense>
+      <Section title="section">
+        <Item>A thing</Item>
+        <Item>Another thing</Item>
+        <Item>One more thing</Item>
+      </Section>
+      <Section title="Section 2">
+        <Item>Imbers velum</Item>
+        <Item>Nunquam anhelare eleates</Item>
+        <Item>Resistentia clemens</Item>
+      </Section>
+    </ListBox>
+  </div>
+);

@@ -1,11 +1,5 @@
 .container {
-  @apply bg-background p-2.5 rounded-sm shadow-lg border;
-}
-
-.title {
-  @apply font-medium;
-}
-
-.description {
-  @apply text-sm;
+  @apply absolute z-10 top-full;
+  @apply w-full mt-2 rounded-md shadow-lg;
+  @apply bg-white border border-gray-300;
 }

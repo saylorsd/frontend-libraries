@@ -251,12 +251,15 @@ export function makeLayers(
   hoveredFilter?: Expression,
   selectedFilter?: Expression,
 ): LayerProps[] {
+  const source = `menu/${geogType}`;
+  const sourceLayer = `maps.v_${geogType.toLowerCase()}`;
+
   return [
     {
       id: `${geogType}/hover`,
       type: 'fill',
-      source: `menu/${geogType}`,
-      'source-layer': `menu/${geogType}`,
+      source,
+      'source-layer': sourceLayer,
       layout: {},
       paint: {
         'fill-opacity': theme.polygons.fillOpacity.standard,
@@ -267,8 +270,8 @@ export function makeLayers(
     {
       id: `${geogType}/selected`,
       type: 'fill',
-      source: `menu/${geogType}`,
-      'source-layer': `menu/${geogType}`,
+      source,
+      'source-layer': sourceLayer,
       layout: {},
       paint: {
         'fill-opacity': theme.polygons.fillOpacity.standard,
@@ -279,8 +282,8 @@ export function makeLayers(
     {
       id: `${geogType}/borders`,
       type: 'line',
-      source: `menu/${geogType}`,
-      'source-layer': `menu/${geogType}`,
+      source,
+      'source-layer': sourceLayer,
       layout: {
         'line-join': 'round',
       },
@@ -293,8 +296,8 @@ export function makeLayers(
     {
       id: `${geogType}/fill`,
       type: 'fill',
-      source: `menu/${geogType}`,
-      'source-layer': `menu/${geogType}`,
+      source,
+      'source-layer': sourceLayer,
       layout: {},
       paint: {
         'fill-opacity': theme.polygons.fillOpacity.selection,

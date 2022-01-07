@@ -13,7 +13,11 @@ const Template: Story<GeographyPickerProps> = (args) => {
   const [geog, setGeog] = useState<GeogBrief>();
   return (
     <div className="w-64">
-      <GeographyPicker {...args} onSelection={setGeog} />
+      <GeographyPicker
+        {...args}
+        onSelection={setGeog}
+        label="Pick a place to see details"
+      />
       {geog && (
         <div className="mt-3 p-1 border">
           <pre>{JSON.stringify(geog, null, 2)}</pre>
