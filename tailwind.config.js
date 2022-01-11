@@ -3,7 +3,10 @@ const path = require('path');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: ['./packages/**/src/*.{js,jsx,ts,tsx}'],
+  content: [
+    './packages/**/src/*.{js,jsx,ts,tsx}',
+    './stories/*.{js,jsx,ts,tsx}',
+  ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
