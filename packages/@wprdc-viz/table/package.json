@@ -23,6 +23,9 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": ">=16"
   },
