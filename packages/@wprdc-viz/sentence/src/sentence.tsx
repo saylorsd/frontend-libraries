@@ -7,9 +7,9 @@ import React from 'react';
 import './main.css';
 // import { SentenceViz, TabularData, VizProps } from '../../types';
 
-// interface Props extends VizProps<SentenceViz, TabularData> {}
+// interface Props extends VizProps<DownloadedSentenceViz> {}
 
-export const Sentence = (/*props: Props*/) => {
+export const Sentence = (/*props: SentenceVizProps*/) => {
   // const { dataViz } = props;
   // const cleanSentence = parseSentence(dataViz.data);
   return (

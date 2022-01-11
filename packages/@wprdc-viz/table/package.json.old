@@ -1,0 +1,38 @@
+{
+  "name": "@wprdc-viz/table",
+  "version": "0.0.4",
+  "description": "",
+  "keywords": [],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "author": "saylorsd <steven.saylor@pitt.edu>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "prepare": "npm run build",
+    "watch": "rollup -c -w"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@wprdc-types/viz": "^0.0.4",
+    "classnames": "^2.3.1",
+    "react-table": "^7.7.0"
+  },
+  "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
+}

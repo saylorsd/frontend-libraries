@@ -1,0 +1,71 @@
+.container {
+  @apply relative flex-col flex h-full;
+}
+
+.containerCard {
+  @apply w-64 shadow-md rounded border;
+}
+
+.vizPane {
+  @apply h-48 relative;
+}
+
+.details {
+  @apply pt-1 pb-3;
+}
+
+.title {
+  @apply text-lg font-semibold pt-1.5 px-1;
+}
+
+.bigTitle {
+  @apply text-4xl font-bold;
+}
+
+.descriptionContainer {
+}
+
+.description {
+  @apply text-lg my-1 pt-0.5 pb-1;
+  @apply border-b;
+}
+
+.cardDescription {
+  @apply text-xs;
+  @apply p-1;
+}
+
+.menuSection {
+  @apply border-b rounded-b p-2;
+}
+
+.vizList {
+  @apply grid gap-4 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+}
+
+.vizListItem {
+  @apply min-h-0 min-w-0;
+}
+
+.subtitle {
+  @apply font-medium text-gray-600 py-1 mb-2;
+}
+
+.blurbs {
+  @apply mb-4;
+}
+
+.blurbList {
+}
+
+.blurbListItem {
+  @apply inline-block;
+}
+
+.vizes {
+  @apply my-2;
+}
+
+.stretchy {
+  @apply flex-grow;
+}

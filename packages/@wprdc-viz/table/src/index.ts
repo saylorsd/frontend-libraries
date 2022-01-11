@@ -1,1 +1,2 @@
-export * from './table';
+export * from './Table';
+// export * from './CensusTable';

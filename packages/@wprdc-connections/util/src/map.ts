@@ -13,8 +13,7 @@ import {
   Expression,
   MapEvent,
 } from '@wprdc-types/map';
-import { Resource, Selection } from '@wprdc-types/shared';
-import { useProvider } from '@wprdc-components/provider';
+import { ColorScheme, Resource, Selection } from '@wprdc-types/shared';
 
 export const CARTO_USER = 'wprdc';
 export const MAPS_API_ENDPOINT = `https://${CARTO_USER}.carto.com/api/v1/map`;
@@ -28,7 +27,7 @@ export function useMapPlugin<T extends Resource, E>({
   context,
   setContext,
 }: MapPluginHookArgs<T, E>): MapPluginToolbox<T, E> {
-  const { colorScheme } = useProvider();
+  const colorScheme = ColorScheme.Light;
   // Mapbox spec/props
   const [sources, setSources] = useState<SourceProps[]>();
   const [layers, setLayers] = useState<LayerProps[]>();

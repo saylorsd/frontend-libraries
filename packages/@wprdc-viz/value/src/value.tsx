@@ -5,12 +5,15 @@
  */
 import React from 'react';
 
-import { BigValueViz, TabularData, VizProps } from '@wprdc-types/viz';
+import {
+  DownloadedValueViz,
+  TabularData,
+  ValueVizProps,
+  VizProps,
+} from '@wprdc-types/viz';
 import classNames from 'classnames';
 
-interface Props extends VizProps<BigValueViz, TabularData> {}
-
-export function BigValue(props: Props) {
+export function BigValue(props: ValueVizProps) {
   const { dataViz, inPreview } = props;
   const { data, error } = dataViz;
 

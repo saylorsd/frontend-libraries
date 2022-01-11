@@ -8,7 +8,6 @@
 
 import * as React from 'react';
 import './main.css';
-// todo: convert to module
 import './CensusTable.css';
 
 import { Cell, Column, useExpanded, useTable } from 'react-table';
@@ -31,7 +30,7 @@ export const CensusTable: React.FC<Props> = ({ columns, data, inPreview }) => {
         data: allData,
         initialState: {},
       },
-      useExpanded,
+      useExpanded
     );
   return (
     <div

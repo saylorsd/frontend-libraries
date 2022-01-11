@@ -11,18 +11,16 @@ import { PlainObject, Vega } from 'react-vega';
 import { GeogBrief } from '@wprdc-types/geo';
 import {
   ChartViz,
+  ChartVizProps,
   DataVizBase,
   Downloaded,
   RowRecord,
   TabularData,
-  VizProps,
 } from '@wprdc-types/viz';
 
 import { specs } from './specs';
 
-interface Props extends VizProps<ChartViz, TabularData> {}
-
-export function Chart(props: Props) {
+export function Chart(props: ChartVizProps) {
   const { dataViz, geog, vizHeight, vizWidth } = props;
   const data = prepDataForVega(dataViz);
   const spec = getSpec(dataViz);

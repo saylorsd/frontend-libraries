@@ -22,6 +22,10 @@ tr:not(:first-child) > td {
   @apply border-t;
 }
 
+tr {
+  font-style: normal;
+}
+
 tr.subrow {
   color: #777;
   font-style: italic;

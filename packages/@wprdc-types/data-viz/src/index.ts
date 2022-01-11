@@ -1,7 +1,7 @@
 import { DataVizBase, DataVizData, Downloaded } from '@wprdc-types/viz';
 
 import { GeogBrief } from '@wprdc-types/geo';
-import { VizMenuItem, VizWrapperProps } from '@wprdc-types/viz';
+import { VizWrapperProps } from '@wprdc-types/viz';
 
 import React from 'react';
 
@@ -32,12 +32,6 @@ export enum DataVizVariant {
   Card,
 }
 
-export interface MenuItem {
-  key: VizMenuItem;
-  label: React.ReactNode;
-  icon?: React.ReactNode;
-}
-
 export enum AvailableDialogs {
   Report,
   Share,
@@ -62,4 +56,8 @@ export interface ConnectedDataVizProps {
   variant: DataVizVariant;
   showGeog?: boolean;
   onExplore?: (dataViz: DataVizBase) => unknown;
+}
+
+export interface MissingVizMessageProps {
+  error?: string;
 }

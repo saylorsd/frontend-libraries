@@ -31,7 +31,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-components/provider": "^0.0.4",
     "@wprdc-components/util": "^0.0.4",
     "@wprdc-types/connections": "^0.0.1",
     "@wprdc-types/geo": "^0.0.4",

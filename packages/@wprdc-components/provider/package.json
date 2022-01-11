@@ -32,7 +32,6 @@
   "dependencies": {
     "@react-aria/overlays": "^3.7.3",
     "@react-aria/ssr": "^3.1.0",
-    "@wprdc-connections/geo": "@wprdc-connections/geo",
     "@wprdc-types/geo": "^0.0.4",
     "@wprdc-types/provider": "^0.0.4"
   },

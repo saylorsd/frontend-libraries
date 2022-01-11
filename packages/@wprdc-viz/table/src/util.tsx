@@ -15,7 +15,7 @@ export function formatPercent(value?: number): React.ReactNode {
  * Extracts title  from `Variable` and formats it.
  * @param {Variable} variable
  */
-export function formatCategory(variable: Variable): React.ReactNode {
+export function extractAndFormatLabel(variable: Variable): React.ReactNode {
   const dashes = Array(variable.depth).join('-');
   let category;
   if (!!variable.shortName)

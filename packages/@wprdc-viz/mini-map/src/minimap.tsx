@@ -11,13 +11,11 @@ import { Map } from '@wprdc-components/map';
 
 import { PopupContentProps, LayerPanelVariant } from '@wprdc-types/map';
 import { ColorScheme } from '@wprdc-types/shared';
-import { VizProps, MiniMapViz, MiniMapOptions } from '@wprdc-types/viz';
+import { MiniMapVizProps } from '@wprdc-types/viz';
 
 import styles from './MiniMap.module.css';
 
-interface Props extends VizProps<MiniMapViz, null, MiniMapOptions> {}
-
-export function MiniMap(props: Props) {
+export function MiniMap(props: MiniMapVizProps) {
   const { dataViz } = props;
   const { options, error } = dataViz;
 
