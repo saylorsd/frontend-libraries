@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/indicator-view",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "saylorsd <steven.saylor@pitt.edu>",
   "main": "dist/index.js",
@@ -54,26 +54,25 @@
     "husky": "^7.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup-plugin-postcss": "^4.0.2",
     "size-limit": "^7.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.3",
-    "rollup-plugin-postcss": "^4.0.2"
+    "typescript": "^4.5.3"
   },
   "dependencies": {
-    "@wprdc-types/connections": "^0.0.1",
-    "classnames": "^2.3.1",
-    "@wprdc-types/indicator-view": "^0.0.1",
-    "@wprdc-components/divider": "^0.0.4",
-    "@wprdc-components/provider": "^0.0.4",
-    "@wprdc-components/loading-message": "^0.0.4",
-    "@wprdc-components/button": "^0.0.4",
-    "@wprdc-components/data-viz": "^0.0.1",
-    "@wprdc-types/data-viz": "^0.0.4",
-    "@wprdc-types/shared": "^0.0.4",
-    "@wprdc-types/viz": "^0.0.4",
-    "@wprdc-components/error-message": "^0.0.4",
-    "@wprdc-connections/profiles": "^0.0.4"
-
+    "@wprdc-components/button": "^0.0.5",
+    "@wprdc-components/data-viz": "^0.0.2",
+    "@wprdc-components/divider": "^0.0.5",
+    "@wprdc-components/error-message": "^0.0.5",
+    "@wprdc-components/loading-message": "^0.0.5",
+    "@wprdc-components/provider": "^0.0.5",
+    "@wprdc-connections/profiles": "^0.0.5",
+    "@wprdc-types/connections": "^0.0.2",
+    "@wprdc-types/data-viz": "^0.0.5",
+    "@wprdc-types/indicator-view": "^0.0.2",
+    "@wprdc-types/shared": "^0.0.5",
+    "@wprdc-types/viz": "^0.0.5",
+    "classnames": "^2.3.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/divider",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -27,7 +27,5 @@
     "react": "^16.8.0 || ^17.0.0-rc.1",
     "react-dom": ">=16.8.0"
   },
-  "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c",
-  "dependencies": {
-  }
+  "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

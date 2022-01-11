@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/button",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.esm.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@react-aria/button": "^3.3.4",
-    "@wprdc-types/button": "^0.0.4",
+    "@wprdc-types/button": "^0.0.5",
     "classnames": "^2.3.1"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

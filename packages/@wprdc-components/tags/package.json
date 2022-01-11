@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/tags",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -30,9 +30,9 @@
     "watch": "rollup -c -w"
   },
   "dependencies": {
-    "@wprdc-components/tag": "^0.0.4",
-    "@wprdc-types/tag": "^0.0.4",
-    "@wprdc-types/tags": "^0.0.4"
+    "@wprdc-components/tag": "^0.0.5",
+    "@wprdc-types/tag": "^0.0.5",
+    "@wprdc-types/tags": "^0.0.5"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

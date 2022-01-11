@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/housecat",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -31,12 +31,12 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-connections/api": "^0.0.4",
-    "@wprdc-types/api": "^0.0.4",
-    "@wprdc-types/housecat": "^0.0.4",
-    "@wprdc-types/connections": "^0.0.1",
-    "@wprdc-types/map": "^0.0.3",
-    "@wprdc-types/shared": "^0.0.4"
+    "@wprdc-connections/api": "^0.0.5",
+    "@wprdc-types/api": "^0.0.5",
+    "@wprdc-types/connections": "^0.0.2",
+    "@wprdc-types/housecat": "^0.0.5",
+    "@wprdc-types/map": "^0.0.4",
+    "@wprdc-types/shared": "^0.0.5"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/data-chip-group",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -30,8 +30,8 @@
     "watch": "rollup -c -w"
   },
   "dependencies": {
-    "@wprdc-types/data-chip": "^0.0.4",
-    "@wprdc-types/data-chip-group": "^0.0.4"
+    "@wprdc-types/data-chip": "^0.0.5",
+    "@wprdc-types/data-chip-group": "^0.0.5"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

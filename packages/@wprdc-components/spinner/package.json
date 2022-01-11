@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/spinner",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -30,8 +30,8 @@
     "watch": "rollup -c -w"
   },
   "dependencies": {
-    "@wprdc-types/shared": "^0.0.4",
-    "@wprdc-types/spinner": "^0.0.4",
+    "@wprdc-types/shared": "^0.0.5",
+    "@wprdc-types/spinner": "^0.0.5",
     "svg-loaders-react": "^2.2.1"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

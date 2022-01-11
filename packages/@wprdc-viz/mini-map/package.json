@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/mini-map",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -30,12 +30,12 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-components/map": "^0.0.3",
-    "@wprdc-components/provider": "^0.0.4",
-    "@wprdc-types/geo": "^0.0.4",
-    "@wprdc-types/map": "^0.0.3",
-    "@wprdc-types/shared": "^0.0.4",
-    "@wprdc-types/viz": "^0.0.4"
+    "@wprdc-components/map": "^0.0.4",
+    "@wprdc-components/provider": "^0.0.5",
+    "@wprdc-types/geo": "^0.0.5",
+    "@wprdc-types/map": "^0.0.4",
+    "@wprdc-types/shared": "^0.0.5",
+    "@wprdc-types/viz": "^0.0.5"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }
