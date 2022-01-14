@@ -4,7 +4,7 @@ import { ListBox } from '../packages/@wprdc-components/list-box';
 import { Item, Section } from '@react-stately/collections';
 
 export default {
-  title: 'ListBox',
+  title: 'Components/ListBox',
   component: ListBox,
 };
 

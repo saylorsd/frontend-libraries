@@ -10,7 +10,7 @@ import {
 } from '../packages/@wprdc-connections/neighborhood-assets';
 
 export default {
-  title: 'SearchBox',
+  title: 'Components/SearchBox',
   component: SearchBox,
 };
 

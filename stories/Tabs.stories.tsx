@@ -5,7 +5,7 @@ import { Tabs, Item } from '../packages/@wprdc-components/tabs';
 import { TabsProps } from '../packages/@wprdc-types/tabs';
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
 };
 

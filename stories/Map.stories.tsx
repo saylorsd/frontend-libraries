@@ -1,29 +1,22 @@
 import * as React from 'react';
-import { Map } from '../packages/@wprdc-components/map';
+import { Map } from '../packages/@wprdc-widgets/map';
 
 import 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import {
-  ConnectionCollection,
-  LayerPanelVariant,
-} from '../packages/@wprdc-types/map';
+import { LayerPanelVariant } from '../packages/@wprdc-types/map';
 
 // import { assetMapConnection } from '../packages/@wprdc-connections/neighborhood-assets';
 
 import { menuLayerConnection } from '../packages/@wprdc-connections/geo';
 import { GeogLevel, GeographyType } from '../packages/@wprdc-types/geo';
+import { ConnectionCollection } from '../packages/@wprdc-types/connections';
 
 export default {
-  title: 'Map',
+  title: 'Components/Map',
   component: Map,
 };
 
 export const Default: React.FC = () => {
-  //todo: one way to todo connections
-  //
-
-  console.log(menuLayerConnection);
-
   return (
     <div style={{ height: '400px', border: '2px solid black' }}>
       <Map
@@ -46,6 +39,7 @@ export const Default: React.FC = () => {
 const menuLayers: GeogLevel[] = [
   {
     name: 'Neighborhood',
+    slug: GeographyType.Neighborhood,
     id: GeographyType.Neighborhood,
     description: 'Official City of Pittsburgh neighborhood boundaries',
   },

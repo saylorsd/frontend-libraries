@@ -46,6 +46,19 @@ export enum DataVizType {
   BigValue = 'BigValue',
 }
 
+//class ErrorLevel(Enum):
+//     OK = 0
+//     EMPTY = 1
+//     WARNING = 10
+//     ERROR = 100
+
+export enum ErrorLevel {
+  OK = 0,
+  EMPTY = 1,
+  WARNING = 10,
+  ERROR = 100,
+}
+
 /** Connection that handles data that comes in a list format. */
 export interface ListConnection<T extends Resource, C = string>
   extends AsyncListOptions<T, C> {

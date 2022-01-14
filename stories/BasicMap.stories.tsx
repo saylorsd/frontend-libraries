@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { InteractiveMap } from 'react-map-gl';
 
 export default {
-  title: 'Basic Map',
+  title: 'Components/Basic Map',
   component: Map,
 };
 

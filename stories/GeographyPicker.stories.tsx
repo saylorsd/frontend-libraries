@@ -5,7 +5,7 @@ import { GeographyPickerProps } from '../packages/@wprdc-types/geography-picker'
 import { GeogBrief } from '../packages/@wprdc-types/geo';
 
 export default {
-  title: 'GeographyPicker',
+  title: 'Components/GeographyPicker',
   component: GeographyPicker,
 };
 

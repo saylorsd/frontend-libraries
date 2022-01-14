@@ -1,9 +1,14 @@
 .container {
-  @apply border-black border rounded w-max flex flex-row align-middle inline;
+  @apply flex flex-row align-middle inline;
+  @apply rounded-md border border-gray-300;
+  @apply py-1 pl-2 pr-2 w-max;
+  @apply bg-white shadow-sm sm:text-sm;
 }
 
 .label {
-  @apply flex-grow-0 px-1 border-r border-black rounded-l flex items-center font-medium;
+  @apply px-1 border-r rounded-l;
+  @apply flex-grow-0 flex items-center;
+  @apply font-medium text-sm text-gray-600;
 }
 
 .value {
@@ -35,4 +40,8 @@
 
 .size-L {
   /*@apply;*/
+}
+
+.full {
+  @apply w-full;
 }

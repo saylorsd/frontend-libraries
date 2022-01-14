@@ -5,7 +5,7 @@ import { Popover } from '../packages/@wprdc-components/popover';
 import { PopoverProps } from '../packages/@wprdc-types/popover';
 
 export default {
-  title: 'Popover',
+  title: 'Components/Popover',
   component: Popover,
 };
 

@@ -4,8 +4,8 @@
   "license": "MIT",
   "author": "saylorsd <steven.saylor@pitt.edu>",
   "main": "dist/index.js",
-  "module": "dist/map.esm.js",
-  "typings": "dist/index.d.ts",
+  "module": "dist/indicator-view.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@wprdc-components/button": "^0.0.5",
-    "@wprdc-components/data-viz": "^0.0.2",
+    "@wprdc-widgets/data-viz": "^0.0.2",
     "@wprdc-components/divider": "^0.0.5",
     "@wprdc-components/error-message": "^0.0.5",
     "@wprdc-components/loading-message": "^0.0.5",

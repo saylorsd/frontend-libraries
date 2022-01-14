@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Item, Select } from '../packages/@wprdc-components/select';
 
 export default {
-  title: 'Select',
+  title: 'Components/Select',
   component: Select,
 };
 

@@ -7,7 +7,7 @@ import { useButton } from '@react-aria/button';
 import { Dialog } from '../packages/@wprdc-components/dialog';
 
 export default {
-  title: 'Dialog',
+  title: 'Components/Dialog',
 };
 
 export const Default = () => {

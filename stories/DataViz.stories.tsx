@@ -3,8 +3,9 @@ import { Meta, Story } from '@storybook/react';
 
 import {
   ConnectedDataViz,
-  Skeleton,
-} from '../packages/@wprdc-components/data-viz';
+  DataVizCardSkeleton,
+  DataVizMiniSkeleton,
+} from '../packages/@wprdc-widgets/data-viz';
 import { DataVizID } from '../packages/@wprdc-types/viz';
 import { DataVizType } from '../packages/@wprdc-types/shared';
 import { GeogBrief, GeographyType } from '../packages/@wprdc-types/geo';
@@ -14,7 +15,7 @@ import {
 } from '../packages/@wprdc-types/data-viz';
 
 export default {
-  title: 'Data Viz',
+  title: 'Components/Data Viz',
   component: ConnectedDataViz,
 } as Meta;
 
@@ -54,13 +55,13 @@ const Template: Story<ConnectedDataVizProps> = (args) => (
   <ConnectedDataViz {...args} />
 );
 
-export const CardSkeleton = () => <Skeleton />;
-
 export const Card = Template.bind({});
+export const CardSkeleton = () => <DataVizCardSkeleton />;
 
 export const Preview = Template.bind({});
 
 export const Blurb = Template.bind({});
+export const BlurbSkeleton = () => <DataVizMiniSkeleton />;
 
 export const Details = Template.bind({});
 

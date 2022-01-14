@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "saylorsd <steven.saylor@pitt.edu>",
   "main": "dist/index.js",
-  "module": "dist/map.esm.js",
+  "module": "dist/geography-picker.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -63,7 +63,7 @@
   "dependencies": {
     "@react-aria/label": "^3.2.1",
     "@react-stately/collections": "^3.3.4",
-    "@wprdc-components/map": "^0.0.4",
+    "@wprdc-widgets/map": "^0.0.4",
     "@wprdc-components/search-box": "^0.0.5",
     "@wprdc-components/select": "^0.0.5",
     "@wprdc-components/tooltip": "^0.0.5",

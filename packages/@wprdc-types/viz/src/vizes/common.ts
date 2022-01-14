@@ -27,7 +27,7 @@ export interface ErrorRecord {
 }
 
 //
-// Simple Tablue Data
+// Simple Table Data
 // ================
 /** Data provided to rows */
 export interface RowRecord {

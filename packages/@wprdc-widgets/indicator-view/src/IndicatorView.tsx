@@ -18,7 +18,7 @@ import { DataVizID } from '@wprdc-types/viz';
 import { DataVizVariant } from '@wprdc-types/data-viz';
 
 import { LoadingMessage } from '@wprdc-components/loading-message';
-import { ConnectedDataViz } from '@wprdc-components/data-viz';
+import { ConnectedDataViz } from '@wprdc-widgets/data-viz';
 import { Button } from '@wprdc-components/button';
 import { Divider } from '@wprdc-components/divider';
 
@@ -33,17 +33,7 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
   if (!!isLoading) return <LoadingMessage />;
   if (!indicator) return <div />;
 
-  const {
-    name,
-    description,
-    // slug,
-    // longDescription,
-    // limitations,
-    // importance,
-    // source,
-    // provenance,
-    dataVizes,
-  } = indicator || {};
+  const { name, description, dataVizes } = indicator || {};
 
   // load first data viz (will eventually be some sort of master one or something)
   const primaryDataViz = !!dataVizes && dataVizes[0];
@@ -85,13 +75,15 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
       >
         <div>
           {!!name && (
-            <div className="flex">
-              <div className="flex-grow">
+            <div className={styles.titleBar}>
+              <div className={styles.titleDiv}>
                 <h5 className={card ? styles.title : styles.bigTitle}>
                   {name}
                 </h5>
               </div>
-              <div>{/* todo: add menu button*/}</div>
+              <div className={styles.menuButtonDiv}>
+                {/* todo: add menu button*/}
+              </div>
             </div>
           )}
         </div>

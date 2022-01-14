@@ -10,7 +10,7 @@ import * as React from 'react';
 import './main.css';
 import styles from './DataChip.module.css';
 import classNames from 'classnames';
-
+import { icons } from './icons';
 import { DataChipProps } from '@wprdc-types/data-chip';
 
 //todo: bring back icons
@@ -31,19 +31,18 @@ export const DataChip: React.FC<DataChipProps> = (props) => {
   if (numberFormatOptions && typeof value === 'number') {
     displayValue = value.toLocaleString('en-US', numberFormatOptions);
   }
+
   const title = `${displayValue}`;
-  // const Icon = typeof icon === 'string' ? icons[icon] : icon;
+  const Icon = typeof icon === 'string' ? icons[icon] : icon;
 
   return (
     <div
-      className={classNames(
-        styles.container,
-        styles[`size-${size}`],
-        fullWidth ? 'w-full' : '',
-      )}
+      className={classNames(styles.container, styles[`size-${size}`], {
+        [styles.full]: fullWidth,
+      })}
     >
       <div className={classNames(styles.label, `bg-${color}-300`)}>
-        {/*{!!Icon && <Icon {...iconProps} className={styles.icon} />}*/}
+        {!!Icon && <Icon {...iconProps} className={styles.icon} />}
         {!!label && <div className={styles.labelText}>{label}</div>}
       </div>
       <div className={styles.value}>

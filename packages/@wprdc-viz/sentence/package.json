@@ -30,7 +30,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-components/map": "^0.0.4",
+    "@wprdc-widgets/map": "^0.0.4",
     "@wprdc-components/provider": "^0.0.5",
     "@wprdc-types/geo": "^0.0.5",
     "@wprdc-types/shared": "^0.0.5",

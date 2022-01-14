@@ -72,6 +72,8 @@ export function useMapPlugin<T extends Resource, E>({
     // update the layers as those interactions don't affect the deeper map state
     if (!!layerItems) {
       connection.getLayers(layerItems, selection, setLayers, {
+        ...options,
+        ...context,
         colorScheme,
         hoveredFilter,
         selectedFilter,
@@ -88,11 +90,13 @@ export function useMapPlugin<T extends Resource, E>({
       }
       // get mapbox source tiles
       connection.getSources(layerItems, selection, setSources, {
+        ...options,
         ...context,
         colorScheme,
       });
       // get mapbox layers
       connection.getLayers(layerItems, selection, setLayers, {
+        ...options,
         ...context,
         colorScheme,
         hoveredFilter,
@@ -100,6 +104,8 @@ export function useMapPlugin<T extends Resource, E>({
       });
       // get legend props
       connection.getLegendItems(layerItems, selection, setLegendItems, {
+        ...options,
+        ...context,
         colorScheme,
       });
       setInteractiveLayerIDs(

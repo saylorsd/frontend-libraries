@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: [
     '../stories/**/*.stories.mdx',
     '../stories/**/*.stories.@(js|jsx|ts|tsx)',
@@ -12,6 +15,9 @@ module.exports = {
     {
       name: '@storybook/addon-postcss',
       options: {
+        cssLoaderOptions: {
+          modules: true,
+        },
         postcssLoaderOptions: {
           implementation: require('postcss'),
         },

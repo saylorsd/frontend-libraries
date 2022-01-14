@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Spinner } from '../packages/@wprdc-components/spinner';
 
 export default {
-  title: 'Spinner',
+  title: 'Components/Spinner',
   component: Spinner,
 };
 

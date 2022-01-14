@@ -27,14 +27,13 @@
     "watch": "rollup -c -w"
   },
   "peerDependencies": {
-    "@wprdc-components/map": "^0.0.3",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-map-gl": "^6.1.18"
   },
   "dependencies": {
     "@wprdc-components/checkbox-group": "^0.0.5",
-    "@wprdc-components/map": "^0.0.4",
+    "@wprdc-widgets/map": "^0.0.4",
     "@wprdc-components/util": "^0.0.5",
     "@wprdc-connections/api": "^0.0.5",
     "@wprdc-connections/util": "^0.0.5",

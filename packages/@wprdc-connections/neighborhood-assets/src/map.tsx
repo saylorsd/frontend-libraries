@@ -23,7 +23,7 @@ import { ColorScheme, ProjectKey } from '@wprdc-types/shared';
 
 import { fetchCartoVectorSource } from '@wprdc-connections/util';
 
-import { LegendSection, LegendItem } from '@wprdc-components/map';
+import { LegendSection, LegendItem } from '@wprdc-widgets/map';
 import { CheckboxGroup, Checkbox } from '@wprdc-components/checkbox-group';
 
 import {

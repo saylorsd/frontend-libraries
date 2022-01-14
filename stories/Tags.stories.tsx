@@ -5,7 +5,7 @@ import { TagsProps } from '../packages/@wprdc-types/tags';
 import { Story } from '@storybook/react';
 
 export default {
-  title: 'Tags',
+  title: 'Components/Tags',
 };
 
 const exampleTags: TagProps[] = [

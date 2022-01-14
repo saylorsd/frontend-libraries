@@ -1,7 +1,7 @@
 import React, { Key } from 'react';
 import { MapPluginConnection } from '@wprdc-types/connections';
 import { GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
-import { fetchCartoVectorSource, Layer, Source } from '@wprdc-components/map';
+import { fetchCartoVectorSource, Layer, Source } from '@wprdc-widgets/map';
 import { Radio, RadioGroup } from '@wprdc-components/radio-group';
 import {
   clearLayerFilter,
@@ -36,6 +36,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
     const selectedLayer = items.find((item) => selected.has(item.id));
     const { hoveredFilter, selectedFilter } = options || {};
     // todo: build source based on selection.  or just put them all up at once tbh
+    console.log({ hoveredFilter, selectedFilter });
     if (!!selectedLayer)
       setLayers(makeLayers(selectedLayer.id, hoveredFilter, selectedFilter));
   },
@@ -46,8 +47,8 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
     if (typeof selected === 'string')
       throw Error('Multiple select should not be available in map menu.');
     const selectedLayer = items.find((item) => selected.has(item.id));
-    // todo: implement this property look at old veriosn in git history
-    return [`${selectedLayer.id}/fill`];
+    if (!!selectedLayer) return [`${selectedLayer.id}/fill`];
+    return [];
   },
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
@@ -77,10 +78,10 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
   makeFilter: (item) => {
     if (Array.isArray(item)) {
       if (!item.length) return clearLayerFilter();
-      if (item.length === 1) return ['==', 'geogid', item[0].geogID];
-      return ['in', 'geogid', item.map((i) => i.geogID)];
+      if (item.length === 1) return ['==', 'global_geoid', item[0].geogID];
+      return ['in', 'global_geoid', item.map((i) => i.geogID)];
     }
-    return ['==', 'geogid', item.geogID];
+    return ['==', 'global_geoid', item.geogID];
   },
   // the menu layer doesn't need to be indicated in the legend section for now
   makeLegendSection: (setLegendSection) => setLegendSection(),

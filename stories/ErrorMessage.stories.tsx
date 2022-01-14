@@ -5,7 +5,7 @@ import { ErrorMessage } from '../packages/@wprdc-components/error-message';
 import { ErrorMessageProps } from '../packages/@wprdc-types/error-message';
 
 export default {
-  title: 'ErrorMessage',
+  title: 'Components/ErrorMessage',
   component: ErrorMessage,
 };
 

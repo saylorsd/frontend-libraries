@@ -12,14 +12,16 @@ import {
 import { useProvider } from '../packages/@wprdc-components/provider';
 import { ConnectedIndicatorView } from '../packages/@wprdc-widgets/indicator-view';
 import { useGeography } from '../packages/@wprdc-connections/geo/src';
+import { GeogBrief } from '../packages/@wprdc-types/geo/src';
 
 export default {
-  title: 'Indicator View',
+  title: 'Components/Indicator View',
   component: IndicatorView,
 };
 
-const DEFAULT_GEOG = {
+const DEFAULT_GEOG: GeogBrief = {
   id: 104,
+  slug: 'county-42003',
   name: 'Allegheny',
   title: 'Allegheny',
   geogType: GeographyType.County,
@@ -135,7 +137,7 @@ const OTHER_INDICATOR: Indicator = {
 
 const Template: Story<IndicatorViewProps> = (args) => {
   const context = useProvider();
-  const { geog } = useGeography(DEFAULT_GEOG.geogType, DEFAULT_GEOG.geogID);
+  const { geog } = useGeography(DEFAULT_GEOG);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
@@ -150,7 +152,7 @@ const Template: Story<IndicatorViewProps> = (args) => {
 
 const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
   const context = useProvider();
-  const { geog } = useGeography(DEFAULT_GEOG.geogType, DEFAULT_GEOG.geogID);
+  const { geog } = useGeography(DEFAULT_GEOG);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);

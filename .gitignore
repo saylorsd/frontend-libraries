@@ -21,3 +21,4 @@ packages/*/*/src/*.js*
 # for now
 .run
 
+storybook-static

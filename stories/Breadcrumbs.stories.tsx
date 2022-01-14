@@ -8,7 +8,7 @@ import {
 import { BreadcrumbsProps } from '../packages/@wprdc-types/breadcrumbs';
 
 export default {
-  title: 'Breadcrumbs',
+  title: 'Components/Breadcrumbs',
   component: Breadcrumbs,
 };
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { LoadingMessage } from '../packages/@wprdc-components/loading-message';
 
 export default {
-  title: 'LoadingMessage',
+  title: 'Components/LoadingMessage',
   component: LoadingMessage,
 };
 

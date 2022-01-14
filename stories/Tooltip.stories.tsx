@@ -5,7 +5,7 @@ import { Tooltip } from '../packages/@wprdc-components/tooltip';
 import { TooltipProps } from '../packages/@wprdc-types/tooltip';
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
 };
 

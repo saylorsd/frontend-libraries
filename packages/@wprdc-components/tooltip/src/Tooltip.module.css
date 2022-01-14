@@ -2,7 +2,7 @@
 }
 
 .popover {
-  @apply p-2.5 border shadow-lg;
+  @apply p-2.5 border shadow-lg bg-background;
 }
 
 .popover:focus-visible {

@@ -10,7 +10,7 @@ import { RiRoadMapFill as MapIcon } from 'react-icons/ri';
 import { useField } from '@react-aria/label';
 
 import { Tooltip } from '@wprdc-components/tooltip';
-import { GeogBrief, GeographyType } from '@wprdc-types/geo';
+import { GeogBrief } from '@wprdc-types/geo';
 
 import { GeographyPickerProps } from './types';
 
@@ -94,22 +94,3 @@ export function GeographyPicker(props: GeographyPickerProps) {
 }
 
 export default GeographyPicker;
-
-/**
- * Returns string containing the common name of a location.
- * @param geog
- */
-export function getGeogIDTitle(geog: GeogBrief): string {
-  console.log({ geog });
-
-  switch (geog.geogType) {
-    case GeographyType.County:
-      return `${geog.name} County`;
-    case GeographyType.Tract:
-      return `Tract ${geog.geogID}`;
-    case GeographyType.BlockGroup:
-      return `Block Group ${geog.geogID}`;
-    default:
-      return geog.name || '';
-  }
-}

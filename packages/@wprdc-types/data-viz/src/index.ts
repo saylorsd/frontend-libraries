@@ -7,7 +7,6 @@ import React from 'react';
 
 export interface DataVizState {
   dataVizDataCache: DataVizDataCache;
-  // dataVizMetadataCache: Record<string, DataVisualization>;
 }
 
 /** Data and state of its collection for some dataviz at some geog*/
@@ -25,11 +24,11 @@ export type DataVizDataCache = Record<string, DataVizDataRecord>;
 export type ContainerState = DataVizState;
 
 export enum DataVizVariant {
-  Default,
-  Preview,
-  Blurb,
-  Details,
-  Card,
+  Default = 'default',
+  Preview = 'preview',
+  Blurb = 'blurb',
+  Details = 'details',
+  Card = 'card',
 }
 
 export enum AvailableDialogs {

@@ -5,7 +5,7 @@ import { Divider } from '../packages/@wprdc-components/divider';
 import { DividerProps } from '../packages/@wprdc-types/divider';
 
 export default {
-  title: 'Divider',
+  title: 'Components/Divider',
   component: Divider,
 };
 

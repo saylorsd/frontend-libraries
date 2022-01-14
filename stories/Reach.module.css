@@ -1,0 +1,68 @@
+.wrapper {
+  @apply md:container mx-auto px-2 pt-4;
+}
+
+.main {
+  @apply flex flex-row;
+}
+
+.intro {
+  @apply basis-1/2 pr-4;
+}
+
+.title {
+  @apply font-black text-4xl;
+}
+
+.subtitle {
+  @apply font-semibold text-xl mt-1;
+}
+
+.description {
+  @apply pt-6;
+}
+
+.mapSection {
+  @apply basis-1/2 h-96;
+  @apply border-l-2;
+}
+
+.details {
+  @apply flex flex-col;
+  @apply py-6;
+  @apply border-t-4 border-black;
+}
+
+.geoDetails {
+}
+
+.geogTitle {
+  @apply font-semibold text-6xl mb-1;
+}
+
+.contextDetails {
+}
+
+.dashboard {
+  @apply flex flex-row lg:gap-32;
+}
+
+.subdomainSection {
+  @apply basis-1 lg:basis-1/2 py-2 min-w-0;
+}
+
+.subdomainTitle {
+  @apply text-sm font-bold text-gray-500;
+}
+
+.subdomainContent {
+  @apply mt-4;
+  @apply grid gap-4 sm:grid-cols-1 md:grid-cols-2;
+}
+
+.indicatorSection {
+  @apply my-3 basis-1/2;
+}
+
+.footer {
+}

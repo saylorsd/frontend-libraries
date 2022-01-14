@@ -3,11 +3,11 @@
 }
 
 .containerCard {
-  @apply w-64 shadow-md rounded border;
+  @apply w-full shadow-md rounded border;
 }
 
 .vizPane {
-  @apply h-48 relative;
+  @apply h-48 relative flex;
 }
 
 .details {
@@ -15,32 +15,32 @@
 }
 
 .title {
-  @apply text-lg font-semibold pt-1.5 px-1;
+  @apply text-lg font-semibold pt-2 px-2.5;
 }
 
 .bigTitle {
-  @apply text-4xl font-bold;
+  @apply text-xl font-bold;
 }
 
 .descriptionContainer {
 }
 
 .description {
-  @apply text-lg my-1 pt-0.5 pb-1;
-  @apply border-b;
+  @apply my-1 pt-0.5 pb-1 mb-2;
+  @apply text-sm;
 }
 
 .cardDescription {
   @apply text-xs;
-  @apply p-1;
+  @apply p-2 px-2.5;
 }
 
 .menuSection {
-  @apply border-b rounded-b p-2;
+  @apply border-b rounded-b p-2.5;
 }
 
 .vizList {
-  @apply grid gap-4 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+  @apply grid gap-4 sm:grid-cols-1;
 }
 
 .vizListItem {
@@ -59,7 +59,7 @@
 }
 
 .blurbListItem {
-  @apply inline-block;
+  @apply inline-block m-2;
 }
 
 .vizes {
@@ -68,4 +68,15 @@
 
 .stretchy {
   @apply flex-grow;
+}
+
+.titleBar {
+  @apply flex;
+}
+
+.titleDiv {
+  @apply flex-grow;
+}
+
+.menuButtonDiv {
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Radio, RadioGroup } from '../packages/@wprdc-components/radio-group';
 
 export default {
-  title: 'RadioGroup',
+  title: 'Components/RadioGroup',
   component: RadioGroup,
 };
 

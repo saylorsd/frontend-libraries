@@ -5,7 +5,7 @@ import Link from '../packages/@wprdc-components/link';
 import { LinkProps } from '../packages/@wprdc-types/link';
 
 export default {
-  title: 'Link',
+  title: 'Components/Link',
   component: Link,
 };
 

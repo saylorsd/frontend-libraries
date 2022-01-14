@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ComboBox, Item } from '../packages/@wprdc-components/combo-box';
 
 export default {
-  title: 'ComboBox',
+  title: 'Components/ComboBox',
   component: ComboBox,
 };
 

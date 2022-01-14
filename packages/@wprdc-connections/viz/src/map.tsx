@@ -2,13 +2,8 @@ import React from 'react';
 import { MapPluginConnection } from '@wprdc-types/connections';
 
 import { LayerProps, LegendItemProps, SourceProps } from '@wprdc-types/map';
-import {
-  Layer,
-  LegendItem,
-  LegendSection,
-  Source,
-} from '@wprdc-components/map';
-import { DataVizID, DownloadedMiniMap } from '@wprdc-types/viz';
+import { Layer, LegendItem, LegendSection, Source } from '@wprdc-widgets/map';
+import { DataVizID, DownloadedMiniMapViz } from '@wprdc-types/viz';
 import { ProfilesMapProperties } from '@wprdc-types/profiles';
 import { ResponsePackage } from '@wprdc-types/api';
 
@@ -23,13 +18,13 @@ export const vizMapConnection: MapPluginConnection<
   DataVizID,
   ProfilesMapProperties
 > = {
-  name: ProjectKey.Profiles,
+  name: ProjectKey.Viz,
   use: useMapPlugin,
   getSources(items, _, setSources, options) {
     const { geography } = options || {};
 
     // filter out highlight source and only take the data layer's source
-    function filterResponse(response: ResponsePackage<DownloadedMiniMap>[]) {
+    function filterResponse(response: ResponsePackage<DownloadedMiniMapViz>[]) {
       return response.reduce<SourceProps[]>((result, item) => {
         if (!!item.data) return [...result, ...item.data.options.sources];
         return result;
@@ -38,7 +33,7 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMap>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
       );
 
       // for each one, if there is response data, then put it in the list for setSources
@@ -49,9 +44,8 @@ export const vizMapConnection: MapPluginConnection<
   },
   getLayers(items, selected, setLayers, options) {
     const { geography } = options || {};
-
     // filter out highlight source and only take the data layer's source
-    function filterResponse(response: ResponsePackage<DownloadedMiniMap>[]) {
+    function filterResponse(response: ResponsePackage<DownloadedMiniMapViz>[]) {
       return response.reduce<LayerProps[]>((result, item) => {
         if (!!item.data && (selected === 'all' || selected.has(item.data.slug)))
           return [...result, ...item.data.options.layers];
@@ -61,7 +55,7 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMap>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
       );
       // for each one, if there is response data, then put it in the list for setSources
       Promise.all(requests).then((response) =>
@@ -73,7 +67,7 @@ export const vizMapConnection: MapPluginConnection<
     const { geography } = options || {};
 
     // filter out highlight source and only take the data layer's source
-    function filterResponse(response: ResponsePackage<DownloadedMiniMap>[]) {
+    function filterResponse(response: ResponsePackage<DownloadedMiniMapViz>[]) {
       return response.reduce<LegendItemProps[]>((result, item) => {
         if (!!item.data && (selected === 'all' || selected.has(item.data.slug)))
           return [...result, ...item.data.options.legends];
@@ -83,7 +77,7 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMap>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
       );
       // for each one, if there is response data, then put it in the list for setSources
       Promise.all(requests).then((response) =>

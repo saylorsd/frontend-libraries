@@ -1,3 +1,11 @@
 .container {
   @apply h-full w-full flex flex-col justify-center items-center;
 }
+
+.spinnerDiv {
+  @apply flex flex-col items-center;
+}
+
+.message {
+  @apply italic;
+}

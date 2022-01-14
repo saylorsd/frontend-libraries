@@ -95,6 +95,28 @@ class API<E extends Endpoint> {
       return { error: err as string };
     }
   }
+
+  /** Hack for simple lists */
+  async callAndProcessListEndpoint<T = any>(
+    endpoint: E,
+    method: Method,
+    options?: APIOptions,
+  ): Promise<ResponsePackage<T[]>> {
+    try {
+      const response = await this.callEndpoint(endpoint, method, options);
+      if (response.ok) {
+        const data = (await response.json()) as { results: T[] };
+        return { data: data.results };
+      } else {
+        const message = await response.text();
+        console.warn(response.status, message);
+        return { error: message };
+      }
+    } catch (err) {
+      console.warn(err);
+      return { error: err as string };
+    }
+  }
 }
 
 /**

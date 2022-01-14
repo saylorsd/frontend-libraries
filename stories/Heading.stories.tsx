@@ -5,7 +5,7 @@ import { Heading } from '../packages/@wprdc-components/heading';
 import { HeadingProps } from '../packages/@wprdc-types/heading';
 
 export default {
-  title: 'Heading',
+  title: 'Components/Heading',
   component: Heading,
 };
 

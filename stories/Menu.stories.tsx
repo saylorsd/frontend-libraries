@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Menu, Item } from '../packages/@wprdc-components/menu';
 
 export default {
-  title: 'Menu',
+  title: 'Components/Menu',
   component: Menu,
 };
 

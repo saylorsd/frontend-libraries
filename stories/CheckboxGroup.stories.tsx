@@ -8,7 +8,7 @@ import {
 import { CheckboxGroupProps } from '../packages/@wprdc-types/checkbox-group';
 
 export default {
-  title: 'CheckboxGroup',
+  title: 'Components/CheckboxGroup',
   component: CheckboxGroup,
 };
 

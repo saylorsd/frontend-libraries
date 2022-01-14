@@ -5,7 +5,7 @@ import { MenuItem } from '../packages/@wprdc-components/menu-item';
 import { MenuItemProps } from '../packages/@wprdc-types/menu-item';
 
 export default {
-  title: 'MenuItem',
+  title: 'Components/MenuItem',
   component: MenuItem,
 };
 

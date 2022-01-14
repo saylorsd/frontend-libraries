@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import { DataChip } from '../packages/@wprdc-components/data-chip';
 
 export default {
-  title: 'DataChip',
+  title: 'Components/DataChip',
   component: DataChip,
   decorators: [
     (TheStory: Story) => (

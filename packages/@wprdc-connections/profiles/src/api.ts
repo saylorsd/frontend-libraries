@@ -8,7 +8,7 @@
 import { createAPI } from '@wprdc-connections/api';
 import { Method } from '@wprdc-types/api';
 
-import { Indicator, Taxonomy } from '@wprdc-types/profiles';
+import { Domain, Indicator } from '@wprdc-types/profiles';
 
 const HOST = 'https://api.profiles.wprdc.org';
 
@@ -21,10 +21,7 @@ enum Endpoint {
 const api = createAPI<Endpoint>(HOST);
 
 function requestTaxonomy() {
-  return api.callAndProcessEndpoint<{ results: Taxonomy }>(
-    Endpoint.Domain,
-    Method.GET,
-  );
+  return api.callAndProcessListEndpoint<Domain>(Endpoint.Domain, Method.GET);
 }
 
 function requestIndicator(slug: string) {

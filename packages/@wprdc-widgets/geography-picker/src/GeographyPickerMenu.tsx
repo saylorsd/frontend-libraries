@@ -13,7 +13,7 @@ import styles from './GeographyPickerMenu.module.css';
 
 import { Select } from '@wprdc-components/select';
 import { ConnectedSearchBox } from '@wprdc-components/search-box';
-import { Map } from '@wprdc-components/map';
+import { Map } from '@wprdc-widgets/map';
 
 import {
   menuLayerConnection,

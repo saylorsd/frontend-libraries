@@ -5,7 +5,7 @@ import { Tag } from '../packages/@wprdc-components/tag';
 import { TagProps } from '../packages/@wprdc-types/tag';
 
 export default {
-  title: 'Tag',
+  title: 'Components/Tag',
   component: Tag,
 };
 

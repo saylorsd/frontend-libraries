@@ -5,7 +5,7 @@ import { DataChipGroup } from '../packages/@wprdc-components/data-chip-group';
 import { DataChipGroupProps } from '../packages/@wprdc-types/data-chip-group';
 
 export default {
-  title: 'DataChipGroup',
+  title: 'Components/DataChipGroup',
   component: DataChipGroup,
 };
 
