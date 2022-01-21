@@ -5,9 +5,9 @@
  **/
 import * as React from 'react';
 
-export interface PopoverProps {
+import { OverlayProps } from '@react-aria/overlays';
+
+export interface PopoverProps extends OverlayProps {
   popoverRef?: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
-  isOpen?: boolean;
-  onClose: () => void;
 }

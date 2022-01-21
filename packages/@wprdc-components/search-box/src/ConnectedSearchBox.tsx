@@ -4,11 +4,13 @@ import { SearchBox } from './SearchBox';
 import { useAsyncList } from '@react-stately/data';
 import { ConnectedSearchBoxProps } from '@wprdc-types/search-box';
 import { Resource } from '@wprdc-types/shared';
+import { ResourceOptionTemplateOptions } from '@wprdc-types/list-box';
 
-export function ConnectedSearchBox<T extends Resource>(
-  props: ConnectedSearchBoxProps<T>,
-) {
-  const { connection, label, onSelection } = props;
+export function ConnectedSearchBox<
+  T extends Resource,
+  O extends object = ResourceOptionTemplateOptions<T>,
+>(props: ConnectedSearchBoxProps<T, O>) {
+  const { connection, label, onSelection, listBoxProps } = props;
   const list = useAsyncList<T>(connection);
   if (!!list.error) console.error(list.error);
 
@@ -27,6 +29,7 @@ export function ConnectedSearchBox<T extends Resource>(
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
       onSelectionChange={handleSelection}
+      listBoxProps={listBoxProps}
     >
       {connection.renderItem}
     </SearchBox>

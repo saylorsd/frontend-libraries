@@ -7,7 +7,7 @@
 }
 
 .box {
-  @apply relative;
+  @apply relative flex-row flex;
 }
 
 .placeholder {
@@ -39,5 +39,15 @@
 }
 
 .clearButton {
+  @apply absolute inset-y-0 right-2 flex items-center pl-2;
   @apply cursor-pointer hover:text-gray-600;
+}
+
+.clearX {
+  @apply w-5 h-5;
+}
+
+.popoverContent {
+  @apply bg-background;
+  @apply border border-gray-300 rounded-md;
 }

@@ -194,6 +194,7 @@ export function Map({
   };
 
   const handleClick = (event: MapEvent) => {
+    console.debug('Map Click', event);
     return handleMouseEvent(
       'click',
       event,

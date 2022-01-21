@@ -13,6 +13,13 @@ import {
   ConnectedDataVizProps,
   DataVizVariant,
 } from '../packages/@wprdc-types/data-viz';
+import { useGeography } from '../packages/@wprdc-connections/geo';
+import { useProvider } from '../packages/@wprdc-components/provider';
+import { useEffect } from 'react';
+import { ConnectedSearchBox } from '../packages/@wprdc-components/search-box';
+import { dataVizConnection } from '../packages/@wprdc-connections/viz';
+import { GeographyPicker } from '../packages/@wprdc-widgets/geography-picker';
+import { Divider } from '../packages/@wprdc-components/divider';
 
 export default {
   title: 'Components/Data Viz',
@@ -65,6 +72,47 @@ export const BlurbSkeleton = () => <DataVizMiniSkeleton />;
 
 export const Details = Template.bind({});
 
+export const WithSearch = () => {
+  const context = useProvider();
+
+  const [dataVizSlug, setDataVizSlug] = React.useState<string>(
+    'total-population-bv',
+  );
+  const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
+
+  const { geog } = useGeography(geogBrief);
+
+  useEffect(() => {
+    if (!!geog) context.setGeog(geog);
+  }, [geog]);
+
+  function handleSelection(dataViz: DataVizID) {
+    if (!!dataViz) setDataVizSlug(dataViz.slug);
+  }
+
+  return (
+    <>
+      <ConnectedSearchBox
+        connection={dataVizConnection}
+        label="Find your data viz"
+        onSelection={handleSelection}
+      />
+      <br />
+      <br />
+
+      <GeographyPicker selectedGeog={geog} onSelection={setGeogBrief} />
+      <br />
+      <br />
+      <Divider weight="thick" />
+      <ConnectedDataViz
+        variant={DataVizVariant.Details}
+        dataVizSlug={dataVizSlug}
+        geog={geog}
+      />
+    </>
+  );
+};
+
 Card.args = {
   dataVizSlug: miniMap.slug,
   geog: geog,
@@ -88,4 +136,13 @@ Details.args = {
   dataVizSlug: miniMap.slug,
   geog: geog,
   variant: DataVizVariant.Details,
+};
+
+const DEFAULT_GEOG: GeogBrief = {
+  id: 104,
+  slug: 'county-42003',
+  name: 'Allegheny',
+  title: 'Allegheny',
+  geogType: GeographyType.County,
+  geogID: '42003',
 };

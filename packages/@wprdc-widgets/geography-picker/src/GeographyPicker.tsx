@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import './main.css';
 import styles from './GeographyPicker.module.css';
@@ -7,25 +7,34 @@ import styles from './GeographyPicker.module.css';
 import classnames from 'classnames';
 
 import { RiRoadMapFill as MapIcon } from 'react-icons/ri';
-import { useField } from '@react-aria/label';
 
-import { Tooltip } from '@wprdc-components/tooltip';
+import { useField } from '@react-aria/label';
+import { useButton } from '@react-aria/button';
+
+import { Popover } from '@wprdc-components/popover';
 import { GeogBrief } from '@wprdc-types/geo';
 
 import { GeographyPickerProps } from './types';
-
-import GeographyPickerMenu from './GeographyPickerMenu';
+import { GeographyPickerMenu } from './GeographyPickerMenu';
 
 const PLACEHOLDER = 'Click here to search for a geography...';
 
 export function GeographyPicker(props: GeographyPickerProps) {
   const [isOpen, setIsOpen] = useState<boolean>();
   const [geog, setGeog] = useState<GeogBrief>();
+  const ref = React.useRef(null);
+
+  const { onSelection } = props;
+  const onPress = () => setIsOpen(true);
+
+  let { buttonProps } = useButton({ onPress, ...props }, ref);
 
   let { labelProps, fieldProps, descriptionProps, errorMessageProps } =
     useField({ ...props, labelElementType: 'span' });
 
-  const { onSelection } = props;
+  useEffect(() => {
+    if (props.selectedGeog) setGeog(props.selectedGeog);
+  }, [props.selectedGeog]);
 
   const value: string | undefined = useMemo(
     () => geog && JSON.stringify(geog),
@@ -46,7 +55,7 @@ export function GeographyPicker(props: GeographyPickerProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       {props.label && (
         <div className={styles.label}>
           <span {...labelProps}>{props.label}</span>
@@ -54,31 +63,31 @@ export function GeographyPicker(props: GeographyPickerProps) {
       )}
       <input hidden aria-hidden="true" {...fieldProps} value={value} />
 
-      <Tooltip
-        size="full"
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        title="Select a geography"
-        content={
+      <button {...buttonProps} ref={ref} className={styles.input}>
+        <span>
+          <MapIcon aria-hidden="true" className={styles.icon} />
+        </span>
+        <span
+          className={classnames(styles.value, {
+            [styles.placeholder]: !geog,
+          })}
+        >
+          {displayValue}
+        </span>
+      </button>
+      {isOpen && (
+        <Popover
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          isDismissable={true}
+          isKeyboardDismissDisabled={true}
+        >
           <GeographyPickerMenu
             selectedGeog={geog}
             onSelection={handleSelection}
           />
-        }
-      >
-        <div className={styles.input}>
-          <span>
-            <MapIcon aria-hidden="true" className={styles.icon} />
-          </span>
-          <span
-            className={classnames(styles.value, {
-              [styles.placeholder]: !geog,
-            })}
-          >
-            {displayValue}
-          </span>
-        </div>
-      </Tooltip>
+        </Popover>
+      )}
       {props.description && (
         <div {...descriptionProps} className={styles.description}>
           {props.description}

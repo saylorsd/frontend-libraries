@@ -4,7 +4,7 @@ import { AssetBrief, AssetType } from '@wprdc-types/neighborhood-assets';
 import { Item } from '@wprdc-components/util';
 import { ListConnection } from '@wprdc-types/shared';
 
-const LIMIT = 100;
+const LIMIT = 10;
 
 export const assetsConnection: ListConnection<AssetBrief> = {
   async load({ signal, cursor, filterText }) {

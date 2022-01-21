@@ -18,7 +18,7 @@ import { useButton } from '@react-aria/button';
 import { useSearchField } from '@react-aria/searchfield';
 
 //todo: get icons
-import { RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine, RiCloseLine } from 'react-icons/ri';
 
 import { Popover } from '@wprdc-components/popover';
 import { StatelessListBox } from '@wprdc-components/list-box';
@@ -26,17 +26,20 @@ import { SearchBoxProps } from '@wprdc-types/search-box';
 import { Resource } from '@wprdc-types/shared';
 
 export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
-  const { loadingState } = props;
+  const { loadingState, listBoxProps: extListBoxProps } = props;
   const { contains } = useFilter({ sensitivity: 'base' });
   const state = useComboBoxState({ ...props, defaultFilter: contains });
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listBoxRef = React.useRef<HTMLUListElement>(null);
   const popoverRef = React.useRef<HTMLDivElement>(null);
-
   const clearButtonRef = React.useRef<HTMLButtonElement>(null);
 
-  const { inputProps, listBoxProps, labelProps } = useComboBox(
+  const {
+    inputProps,
+    listBoxProps: comboBoxListBoxProps,
+    labelProps,
+  } = useComboBox(
     {
       ...props,
       inputRef,
@@ -45,6 +48,8 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
     },
     state,
   );
+
+  const listBoxProps = { ...extListBoxProps, ...comboBoxListBoxProps };
 
   const [isLoading, setIsLoading] = React.useState<boolean>(
     loadingState === 'loading',
@@ -94,16 +99,30 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
           <RiSearchLine aria-hidden="true" className={styles.icon} />
         </span>
         <input {...inputProps} ref={inputRef} className={styles.realInput} />
+        <button
+          {...buttonProps}
+          ref={clearButtonRef}
+          style={{ visibility: state.inputValue !== '' ? 'visible' : 'hidden' }}
+          className={styles.clearButton}
+        >
+          <RiCloseLine className={styles.clearX} />
+        </button>
       </div>
 
       {state.isOpen && (
-        <Popover isOpen={state.isOpen} onClose={state.close}>
-          <StatelessListBox<T>
-            fullWidth
-            listBoxRef={listBoxRef}
-            {...listBoxProps}
-            state={state}
-          />
+        <Popover
+          popoverRef={popoverRef}
+          isOpen={state.isOpen}
+          onClose={state.close}
+        >
+          <div className={styles.popoverContent}>
+            <StatelessListBox<T>
+              fullWidth
+              {...listBoxProps}
+              listBoxRef={listBoxRef}
+              state={state}
+            />
+          </div>
         </Popover>
       )}
     </div>

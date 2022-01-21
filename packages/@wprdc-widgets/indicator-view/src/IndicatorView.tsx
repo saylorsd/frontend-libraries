@@ -19,12 +19,13 @@ import { DataVizVariant } from '@wprdc-types/data-viz';
 
 import { LoadingMessage } from '@wprdc-components/loading-message';
 import { ConnectedDataViz } from '@wprdc-widgets/data-viz';
-import { Button } from '@wprdc-components/button';
-import { Divider } from '@wprdc-components/divider';
+
+import { GeographyPicker } from '@wprdc-widgets/geogrpahy-picker';
 
 export const IndicatorView: React.FC<IndicatorViewProps> = ({
   indicator,
   geog,
+  onGeogSelection,
   card,
   onExploreDataViz,
   onExploreIndicator,
@@ -33,7 +34,14 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
   if (!!isLoading) return <LoadingMessage />;
   if (!indicator) return <div />;
 
-  const { name, description, dataVizes } = indicator || {};
+  const {
+    name,
+    description,
+    dataVizes,
+    longDescription,
+    limitations,
+    provenance,
+  } = indicator || {};
 
   // load first data viz (will eventually be some sort of master one or something)
   const primaryDataViz = !!dataVizes && dataVizes[0];
@@ -54,11 +62,14 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
     if (!!onExploreIndicator && !!indicator) onExploreIndicator(indicator);
   }
 
-  return (
-    <div
-      className={classnames(styles.container, { [styles.containerCard]: card })}
-    >
-      {card && (
+  if (!!card)
+    return (
+      <div
+        className={styles.cardContainer}
+        onClick={handleExploreIndicator}
+        role="button"
+        aria-label={`Explore indicator: ${indicator.name}`}
+      >
         <div className={styles.vizPane}>
           {card && primaryDataViz && (
             <ConnectedDataViz
@@ -69,85 +80,94 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
             />
           )}
         </div>
-      )}
-      <div
-        className={classnames(styles.details, { [styles.stretchy]: !!card })}
-      >
-        <div>
-          {!!name && (
-            <div className={styles.titleBar}>
-              <div className={styles.titleDiv}>
-                <h5 className={card ? styles.title : styles.bigTitle}>
-                  {name}
-                </h5>
+        <div className={classnames(styles.details, styles.stretchy)}>
+          <div>
+            {!!name && (
+              <div className={styles.titleBar}>
+                <div className={styles.titleDiv}>
+                  <h5 className={styles.cardTitle}>{name}</h5>
+                </div>
               </div>
-              <div className={styles.menuButtonDiv}>
-                {/* todo: add menu button*/}
-              </div>
-            </div>
-          )}
+            )}
+          </div>
+          <div className={styles.descriptionContainer}>
+            <p className={styles.cardDescription}>{description}</p>
+          </div>
         </div>
-        <div className={styles.descriptionContainer}>
-          <p
-            className={classnames({
-              [styles.description]: !card,
-              [styles.cardDescription]: card,
-            })}
-          >
-            {description}
-          </p>
+      </div>
+    );
+
+  return (
+    <div className={classnames(styles.pageContainer)}>
+      <div className={classnames(styles.titleSection)}>
+        <div className={styles.titleBar}>
+          <div className={styles.titleDiv}>
+            <h1 className={styles.bigTitle}>{name}</h1>
+            <p className={styles.geogPicker}>
+              for
+              <GeographyPicker
+                selectedGeog={geog}
+                onSelection={onGeogSelection}
+              />
+            </p>
+          </div>
         </div>
       </div>
 
-      {!card && (
-        <>
-          {!!blurbs && !!blurbs.length && (
-            <div className={styles.blurbs}>
-              <h6 className={styles.subtitle}>Quick Facts</h6>
-              <ul className={styles.blurbList}>
-                {blurbs.map((blurb) => (
-                  <li className={styles.blurbListItem}>
-                    <ConnectedDataViz
-                      geog={geog}
-                      variant={DataVizVariant.Blurb}
-                      dataVizSlug={blurb.slug}
-                      onExplore={onExploreDataViz}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {!!vizes && !!vizes.length && (
-            <div className={styles.vizes}>
-              <h6 className={styles.subtitle}>Tables and Visualizations</h6>
-              <ul className={styles.vizList}>
-                {vizes.map((viz) => (
-                  <li className={styles.vizListItem}>
-                    <ConnectedDataViz
-                      geog={geog}
-                      variant={DataVizVariant.Card}
-                      dataVizSlug={viz.slug}
-                      onExplore={onExploreDataViz}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </>
+      <div className={classnames(styles.details)}>
+        {longDescription && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Description</h2>
+            <p className={styles.detailsSection}>{longDescription}</p>
+          </>
+        )}
+        {limitations && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Limitations</h2>
+            <p className={styles.detailsSection}>{limitations}</p>
+          </>
+        )}
+        {provenance && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Provenance</h2>
+            <p className={styles.detailsSection}>{provenance}</p>
+          </>
+        )}
+      </div>
+
+      {!!blurbs && !!blurbs.length && (
+        <div className={styles.blurbs}>
+          <h2 className={styles.subtitle}>Quick Facts</h2>
+          <ul className={styles.blurbList}>
+            {blurbs.map((blurb) => (
+              <li className={styles.blurbListItem}>
+                <ConnectedDataViz
+                  geog={geog}
+                  variant={DataVizVariant.Blurb}
+                  dataVizSlug={blurb.slug}
+                  onExplore={onExploreDataViz}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-      {card && (
-        <>
-          <Divider weight="thin" />
-          <div className={styles.menuSection}>
-            <div className="flex">
-              <div />
-              <div className="flex-grow" />
-              <Button onPress={handleExploreIndicator}>Explore</Button>
-            </div>
-          </div>
-        </>
+      {!!vizes && !!vizes.length && (
+        <div className={styles.vizes}>
+          <h2 className={styles.subtitle}>Tables and Visualizations</h2>
+          <ul className={styles.vizList}>
+            {vizes.map((viz) => (
+              <li className={styles.vizListItem}>
+                <ConnectedDataViz
+                  geog={geog}
+                  variant={DataVizVariant.Card}
+                  dataVizSlug={viz.slug}
+                  onExplore={onExploreDataViz}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

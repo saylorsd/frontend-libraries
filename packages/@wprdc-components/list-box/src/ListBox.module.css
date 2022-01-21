@@ -1,4 +1,4 @@
-.container {
+.wrapper {
   @apply focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1;
 }
 
@@ -39,21 +39,28 @@
 }
 
 .option {
-  @apply m-1 rounded-md py-1.5 px-2 text-sm outline-none cursor-default flex items-center justify-between;
+  @apply flex items-center justify-between;
+  @apply m-1 py-1.5 px-2;
+  @apply text-sm;
+  @apply rounded-md outline-none cursor-default;
   @apply hover:bg-gray-100 hover:text-black;
 }
 
-.option-selected {
+.optionSelected {
   @apply bg-blue-50;
 }
 
-.option-disabled {
+.optionDisabled {
 }
 
-.option-focused {
+.optionFocused {
   @apply bg-gray-100 text-black border border-pink-500;
 }
 
 .dense {
   @apply py-0.5 px-1 m-0.5;
+}
+
+.checkMark {
+  @apply w-5 ml-2;
 }

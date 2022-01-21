@@ -40,8 +40,6 @@ export const Default = () => {
     error: taxonomyError,
   } = useTaxonomy();
 
-  console.log({ context });
-
   const handleClick: ConnectedMapEventHandler = (_, __, toolboxItems) => {
     if (!!toolboxItems) {
       const clickedGeogs: GeogBrief[] | undefined =
@@ -80,7 +78,11 @@ export const Default = () => {
           </div>
           <div className={styles.mapSection}>
             <Map
-              defaultViewport={{ zoom: 7 }}
+              defaultViewport={{
+                zoom: 9.5,
+                longitude: -79.92,
+                latitude: 40.37,
+              }}
               layerPanelVariant={LayerPanelVariant.None}
               connections={[menuLayerConnection] as ConnectionCollection}
               onClick={handleClick}
@@ -88,6 +90,13 @@ export const Default = () => {
                 [ProjectKey.GeoMenu]: {
                   layerItems: geogLevels,
                   layerSelection: selectedGeogLevel,
+                  options: {
+                    baseFilter: [
+                      'in',
+                      ['get', 'global_geoid'],
+                      ['literal', REACH_TRACTS],
+                    ],
+                  },
                 },
               }}
             />
@@ -97,12 +106,12 @@ export const Default = () => {
           <div className={styles.geoDetails}>
             {!!geog && <div className={styles.geogTitle}>{geog.title}</div>}
           </div>
-          <div className={styles.contextDetails}>
-            Pius, noster assimilatios mechanice demitto de salvus, audax
-            cannabis. Cum messor mori, omnes compateres imperium grandis, gratis
-            indexes. Cum tabes potus, omnes candidatuses demitto germanus,
-            brevis brabeutaes. Lapsuss sunt musas de barbatus amor.
-          </div>
+          {/*<div className={styles.contextDetails}>*/}
+          {/*  Pius, noster assimilatios mechanice demitto de salvus, audax*/}
+          {/*  cannabis. Cum messor mori, omnes compateres imperium grandis, gratis*/}
+          {/*  indexes. Cum tabes potus, omnes candidatuses demitto germanus,*/}
+          {/*  brevis brabeutaes. Lapsuss sunt musas de barbatus amor.*/}
+          {/*</div>*/}
         </div>
         <div className={styles.dashboard}>
           {!!taxonomyIsLoading && (
@@ -130,21 +139,61 @@ export const Default = () => {
 };
 
 const defaultGeogBrief: GeogBrief = {
-  id: 3048,
-  name: 'Pittsburgh',
-  slug: 'county-subdivision-4200361000',
-  title: 'Pittsburgh',
-  geogType: GeographyType.CountySubdivision,
-  geogID: '4200361000',
+  id: 2213,
+  name: '5140',
+  slug: 'tract-42003514000',
+  title: 'Tract 42003514000',
+  geogType: GeographyType.Tract,
+  geogID: '42003514000',
 };
 
 const geogLevels: GeogLevel[] = [
   {
-    id: GeographyType.CountySubdivision,
-    slug: GeographyType.CountySubdivision,
-    name: 'County Subdivision',
-    description: 'Townships, municipalities, boroughs and cities.',
+    id: GeographyType.Tract,
+    slug: GeographyType.Tract,
+    name: 'Tracts',
+    description: 'Census Tracts',
   },
 ];
 
-const selectedGeogLevel: Set<React.Key> = new Set([geogLevels[0].id]);
+const selectedGeogLevel: Set<React.Key> = new Set([GeographyType.Tract]);
+
+const REACH_TRACTS = [
+  '42003220600',
+  '42003250300',
+  '42003250900',
+  '42003261400',
+  '42003262000',
+  '42003562700',
+  '42003563200',
+  '42003030500',
+  '42003050100',
+  '42003050900',
+  '42003051100',
+  '42003101600',
+  '42003101700',
+  '42003120300',
+  '42003120400',
+  '42003130100',
+  '42003130200',
+  '42003130300',
+  '42003130400',
+  '42003130600',
+  '42003560600',
+  '42003561000',
+  '42003561100',
+  '42003561200',
+  '42003561500',
+  '42003486700',
+  '42003492700',
+  '42003492800',
+  '42003492900',
+  '42003504100',
+  '42003510000',
+  '42003512800',
+  '42003514000',
+  '42003551200',
+  '42003551900',
+  '42003552000',
+  '42003552100',
+];

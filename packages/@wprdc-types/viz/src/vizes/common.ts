@@ -26,41 +26,34 @@ export interface ErrorRecord {
   message?: string;
 }
 
+export enum AxisOption {
+  Variable = 'variable',
+  Time = 'time',
+  Geography = 'geog',
+}
+
+/**
+ * Mapping of axis option keys to slugs
+ */
+export type AxesSlugRecord = { [k in AxisOption]: string };
+
 //
-// Simple Table Data
+// API response data format
 // ================
 /** Data provided to rows */
-export interface RowRecord {
-  variable: string;
-  geog: string;
-  time: string;
+export interface RowRecord extends AxesSlugRecord {
+  /** Primary value */
   value: number;
+
+  /** Optional margin of error value */
   moe?: number;
-  percent?: number;
+
+  /** Value for denominator part of denominator axis given unchanged other axes */
   denom?: number;
+
+  /** value/denom */
+  percent?: number;
 }
 
 /** Collection of rows */
 export type TabularData = RowRecord[];
-
-//
-// Structured Table
-// ================
-/** Represents data at point in time */
-export interface StructuredTableDatum {
-  value: number | string;
-  moe?: number;
-  percent?: number;
-  denom?: number;
-}
-
-/**
- * Describes a row a data. Contains label of variable as well as a mapping of
- * time-axis slugs to the data for the variable at those time points.
- * */
-export type StructuredTableRecord = Record<string, StructuredTableDatum> & {
-  variable: string;
-};
-
-/** Collection of rows */
-export type StructuredTableData = StructuredTableRecord[];

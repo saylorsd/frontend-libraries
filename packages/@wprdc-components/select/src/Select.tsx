@@ -26,7 +26,7 @@ import { HiSelector } from 'react-icons/hi';
 
 export function Select<T extends Resource>(props: SelectProps<T>) {
   // Create state based on the incoming props
-  const { onSelection } = props;
+  const { onSelection, listBoxProps } = props;
   const selectionShim = (key: React.Key) => {
     if (!!onSelection) {
       onSelection(state.collection.getItem(key).value);
@@ -48,8 +48,8 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
 
   // Get props for the button based on the trigger props from useSelect
   let { buttonProps } = useButton(triggerProps, ref);
-
   let { focusProps, isFocusVisible } = useFocusRing();
+
   return (
     <div className={styles.container}>
       <div {...labelProps} className={styles.label}>
@@ -89,11 +89,13 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
       </button>
       {state.isOpen && (
         <Popover isOpen={state.isOpen} onClose={state.close}>
-          <StatelessListBox<T>
-            fullWidth
-            {...(menuProps as AriaListBoxOptions<T>)}
-            state={state}
-          />
+          <div className={styles.popoverContent}>
+            <StatelessListBox<T>
+              {...listBoxProps}
+              {...(menuProps as AriaListBoxOptions<T>)}
+              state={state}
+            />
+          </div>
         </Popover>
       )}
     </div>

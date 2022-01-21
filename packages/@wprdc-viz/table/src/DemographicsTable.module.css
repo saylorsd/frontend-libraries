@@ -3,17 +3,41 @@
   @apply block max-w-full p-0.5;
 }
 
+.previewContainer {
+}
+
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
   @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 
-table {
+.tableElem {
   /* Make sure the inner table is always as wide as needed */
   border-spacing: 0;
   @apply w-full text-sm;
 }
 
+.row {
+}
+
+.mainRow {
+}
+
+.subrow {
+  color: #777;
+  font-style: italic;
+}
+
+.subrow > td {
+  border-top: 0 !important;
+  padding-top: 0;
+}
+
+.subrow > td:first-child {
+  padding-left: 16px;
+}
+
+/* Old stuff */
 tr:first-child > td:not(:first-child) {
   @apply border-t-2 border-gray-900;
 }
@@ -22,39 +46,15 @@ tr:not(:first-child) > td {
   @apply border-t;
 }
 
-tr {
-  font-style: normal;
-}
-
-tr.subrow {
-  color: #777;
-  font-style: italic;
-}
-
-tr.subrow > td {
-  border-top: 0 !important;
-  padding-top: 0;
-}
-
-tr.subrow > td:first-child {
-  padding-left: 16px;
-}
-
-:last-child > td {
-  border-bottom: 0;
-}
-
-th,
-td {
-  margin: 0;
-  padding: 0;
-  width: 1%;
-}
-
-th.field,
-td.field {
+.field {
   white-space: pre;
   width: 0.001%;
+}
+
+.emptyHeader {
+}
+
+.categoryHeader {
 }
 
 th:last-child,
@@ -71,7 +71,7 @@ th.field {
   text-align: center;
 }
 
-span.moe {
-  cursor: help;
-  color: #0123ff;
+.moe {
+  @apply cursor-help;
+  @apply text-sky-700;
 }

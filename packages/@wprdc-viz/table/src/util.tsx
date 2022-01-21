@@ -1,30 +1,45 @@
 import React from 'react';
-import { Variable } from '@wprdc-types/viz';
-
-export function formatPercent(value?: number): React.ReactNode {
-  if (typeof value === 'number')
-    return value.toLocaleString(undefined, {
-      style: 'percent',
-      minimumSignificantDigits: 1,
-      maximumSignificantDigits: 3,
-    });
-  return 'N/A';
-}
+import { AxisItem, AxisOption, DownloadedTableViz } from '@wprdc-types/viz';
 
 /**
  * Extracts title  from `Variable` and formats it.
- * @param {Variable} variable
+ * @param {AxisItem} axisItem
  */
-export function extractAndFormatLabel(variable: Variable): React.ReactNode {
-  const dashes = Array(variable.depth).join('-');
+export function extractAndFormatLabel<T extends AxisItem>(
+  axisItem: T
+): React.ReactNode {
+  const dashes = Array(axisItem.depth).join('-');
   let category;
-  if (!!variable.shortName)
-    category = <abbr title={variable.name}>{variable.shortName}</abbr>;
-  else category = variable.name;
+  if (!!axisItem.shortName)
+    category = <abbr title={axisItem.name}>{axisItem.shortName}</abbr>;
+  else category = axisItem.name;
   return (
     <p>
       {!!dashes && `${dashes} `}
       {category}
     </p>
   );
+}
+
+export function extractAxes(dataViz: DownloadedTableViz) {
+  const { geogs, timeAxis, variables, options } = dataViz;
+  const columnAxisKey: AxisOption = options.columnAxis;
+  const rowAxisKey: AxisOption = options.rowAxis;
+  const viewAxisKey: AxisOption = options.columnAxis;
+
+  const axisLookup: Record<AxisOption, AxisItem[]> = {
+    [AxisOption.Geography]: geogs,
+    [AxisOption.Time]: timeAxis.timeParts,
+    [AxisOption.Variable]: variables,
+  };
+
+  const columnAxis: AxisItem[] = axisLookup[columnAxisKey];
+  const rowAxis: AxisItem[] = axisLookup[rowAxisKey];
+  const viewAxis: AxisItem[] = axisLookup[viewAxisKey];
+
+  return {
+    columnAxis,
+    rowAxis,
+    viewAxis,
+  };
 }

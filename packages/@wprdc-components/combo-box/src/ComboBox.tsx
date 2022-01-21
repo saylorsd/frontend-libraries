@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import './main.css';
-import styles from './ComboBox.module.css';
 
 import { useComboBoxState } from '@react-stately/combobox';
 

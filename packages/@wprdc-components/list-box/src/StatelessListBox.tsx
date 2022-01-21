@@ -13,8 +13,6 @@ import styles from './ListBox.module.css';
 import classNames from 'classnames';
 
 import { useSeparator } from '@react-aria/separator';
-import { useFocusRing } from '@react-aria/focus';
-import { mergeProps } from '@react-aria/utils';
 
 import {
   ListBoxSectionAria,
@@ -37,18 +35,13 @@ export const StatelessListBox = <T extends Resource>(
   props: StatelessListBoxProps<T>,
 ): JSX.Element => {
   const defaultRef = React.useRef<HTMLUListElement>(null);
-  const { listBoxRef = defaultRef, state, fullWidth, dense } = props;
+  const { listBoxRef = defaultRef, state, dense, optionTemplate } = props;
   const { listBoxProps, labelProps } = useListBox<T>(props, state, listBoxRef);
 
-  const layerItems = Array.from(state.collection);
+  const items = Array.from(state.collection);
 
   return (
-    <div
-      className={classNames(
-        styles.container,
-        fullWidth ? 'w-full' : 'w-max max-w-96',
-      )}
-    >
+    <div className={classNames(styles.wrapper)}>
       <div {...labelProps} className={styles.label}>
         {props.label}
       </div>
@@ -59,7 +52,7 @@ export const StatelessListBox = <T extends Resource>(
           [styles.focused]: state.isFocused,
         })}
       >
-        {layerItems.map((item) => {
+        {items.map((item) => {
           if (item.type === 'section') {
             return (
               <ListBoxSection<T>
@@ -67,11 +60,18 @@ export const StatelessListBox = <T extends Resource>(
                 section={item}
                 state={state}
                 dense={dense}
+                optionTemplate={optionTemplate}
               />
             );
           }
           return (
-            <Option<T> key={item.key} item={item} state={state} dense={dense} />
+            <Option<T>
+              key={item.key}
+              item={item}
+              state={state}
+              dense={dense}
+              Template={optionTemplate}
+            />
           );
         })}
       </ul>
@@ -79,11 +79,12 @@ export const StatelessListBox = <T extends Resource>(
   );
 };
 
-export const ListBoxSection = <T extends Resource>({
+export const ListBoxSection = <T extends Resource, O extends object = {}>({
   section,
   state,
   dense,
-}: ListBoxSectionProps<T>) => {
+  optionTemplate,
+}: ListBoxSectionProps<T, O>) => {
   const { itemProps, headingProps, groupProps }: ListBoxSectionAria =
     useListBoxSection({
       heading: section.rendered,
@@ -116,6 +117,7 @@ export const ListBoxSection = <T extends Resource>({
                   item={node}
                   state={state}
                   dense={dense}
+                  Template={optionTemplate}
                 />
               ),
           )}
@@ -125,54 +127,46 @@ export const ListBoxSection = <T extends Resource>({
   );
 };
 
-export const Option = <T extends Resource>({
+export const Option = <T extends Resource, P extends object = {}>({
   item,
   state,
   dense,
-}: OptionProps<T>) => {
-  // Get props for the option element
+  optionTemplate: Template,
+  optionTemplateOptions,
+}: OptionProps<T, P>) => {
   const ref = React.useRef<HTMLLIElement>(null);
-  const isDisabled = state.disabledKeys.has(item.key);
-  const isSelected = state.selectionManager.isSelected(item.key);
 
-  const { optionProps } = useOption(
+  const { optionProps, isDisabled, isSelected, isFocused } = useOption(
     {
       key: item.key,
-      isDisabled,
-      isSelected,
     },
     state,
     ref,
   );
 
-  const { isFocusVisible, focusProps } = useFocusRing();
-
-  // get class name suffix for state-specific styles
-  let stateStyle;
-  if (isDisabled) {
-    stateStyle = 'disabled';
-  } else if (isSelected) {
-    stateStyle = 'selected';
-  } else if (isFocusVisible) {
-    stateStyle = 'focused';
-  } else {
-    stateStyle = '';
-  }
+  const content = React.useMemo(() => {
+    if (!!Template)
+      return <Template item={item.value} {...optionTemplateOptions} />;
+    return item.rendered;
+  }, [item, Template]);
 
   return (
     <li
-      {...mergeProps(optionProps, focusProps)}
+      {...optionProps}
       ref={ref}
-      className={classNames(styles.option, styles[`option-${stateStyle}`], {
+      className={classNames(styles.option, {
+        [styles.optionSelected]: isSelected,
+        [styles.optionDisabled]: isDisabled,
+        [styles.optionFocused]: isFocused,
         [styles.dense]: dense,
       })}
     >
-      <div className="flex-grow">{item.rendered}</div>
+      <div className="flex-grow">{content}</div>
       <div className="flex items-center">
         {isSelected ? (
-          <RiCheckFill className="w-5 ml-2" />
+          <RiCheckFill className={styles.checkMark} />
         ) : (
-          <div className="w-5 ml-2" />
+          <div className={styles.checkMark} />
         )}
       </div>
     </li>

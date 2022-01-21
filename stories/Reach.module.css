@@ -44,11 +44,13 @@
 }
 
 .dashboard {
-  @apply flex flex-row lg:gap-32;
+  @apply md:flex md:flex-row;
+  @apply md:gap-8 lg:gap-32;
+  @apply justify-items-center;
 }
 
 .subdomainSection {
-  @apply basis-1 lg:basis-1/2 py-2 min-w-0;
+  @apply md:basis-1/2 py-2 min-w-0;
 }
 
 .subdomainTitle {
@@ -57,11 +59,11 @@
 
 .subdomainContent {
   @apply mt-4;
-  @apply grid gap-4 sm:grid-cols-1 md:grid-cols-2;
+  @apply grid gap-4 sm:grid-cols-1 xl:grid-cols-2;
 }
 
 .indicatorSection {
-  @apply my-3 basis-1/2;
+  @apply my-3;
 }
 
 .footer {

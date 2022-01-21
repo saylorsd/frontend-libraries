@@ -63,6 +63,7 @@
   "dependencies": {
     "@wprdc-components/button": "^0.0.5",
     "@wprdc-widgets/data-viz": "^0.0.2",
+    "@wprdc-widgets/geogrpahy-picker": "^0.0.2",
     "@wprdc-components/divider": "^0.0.5",
     "@wprdc-components/error-message": "^0.0.5",
     "@wprdc-components/loading-message": "^0.0.5",

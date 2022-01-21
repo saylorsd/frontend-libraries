@@ -62,11 +62,12 @@
   },
   "dependencies": {
     "@react-aria/label": "^3.2.1",
+    "@react-aria/button": "^3.3.4",
     "@react-stately/collections": "^3.3.4",
     "@wprdc-widgets/map": "^0.0.4",
     "@wprdc-components/search-box": "^0.0.5",
     "@wprdc-components/select": "^0.0.5",
-    "@wprdc-components/tooltip": "^0.0.5",
+    "@wprdc-components/popover": "^0.0.5",
     "@wprdc-connections/geo": "^0.0.5",
     "@wprdc-types/connections": "^0.0.2",
     "@wprdc-types/geo": "^0.0.5",

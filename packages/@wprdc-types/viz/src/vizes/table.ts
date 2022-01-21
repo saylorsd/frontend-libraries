@@ -1,6 +1,5 @@
-import { DataVizBase, StructuredTableData } from './common';
+import { AxisOption, DataVizBase, TabularData } from './common';
 import { DataVizType } from '@wprdc-types/shared';
-import { Column } from 'react-table';
 import * as React from 'react';
 
 export { Column } from 'react-table';
@@ -13,25 +12,21 @@ export enum TableStyle {
 }
 
 export interface TableViz extends DataVizBase {
-  data?: StructuredTableData;
+  data?: TabularData;
   vizType: DataVizType.Table;
 }
 
 export interface TableOptions {
   tableStyle: TableStyle;
-  transpose: boolean;
-  showPercent: boolean;
-  columns: Column[];
+  showPercent: true;
+  rowAxis: AxisOption;
+  columnAxis: AxisOption;
+  viewAxis: AxisOption;
 }
 
-interface CensusTableProps {
-  columns: Column<CensusTableRowRecord>[];
-  data: CensusTableRowRecord[];
-}
-
-export interface CensusTableRowRecord extends Record<string, React.ReactNode> {
+export interface TableRowRecord extends Record<string, React.ReactNode> {
   key: React.Key;
   label?: React.ReactNode;
-  children?: CensusTableRowRecord[];
+  children?: TableRowRecord[];
   className?: string;
 }

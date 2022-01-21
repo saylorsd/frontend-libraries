@@ -10,6 +10,7 @@ import { DataVizBase } from '@wprdc-types/viz';
 export interface IndicatorViewProps {
   indicator?: Indicator;
   geog?: GeogBrief;
+  onGeogSelection?: (geog: GeogBrief) => any;
   card?: boolean;
   isLoading?: boolean;
   onExploreIndicator?: (indicator: Indicator) => unknown;

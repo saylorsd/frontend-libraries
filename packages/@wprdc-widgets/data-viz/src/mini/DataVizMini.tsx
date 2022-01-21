@@ -6,7 +6,7 @@
 import React, { memo } from 'react';
 
 import '../main.css';
-import styles from './Mini.module.css';
+import styles from './DataVizMini.module.css';
 
 import Measure from 'react-measure';
 import { DataVizMiniProps } from '@wprdc-types/data-viz';

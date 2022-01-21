@@ -1,8 +1,8 @@
-.container {
+.pageContainer {
   @apply relative flex-col flex h-full;
 }
 
-.containerCard {
+.cardContainer {
   @apply w-full shadow-md rounded border;
 }
 
@@ -10,19 +10,32 @@
   @apply h-48 relative flex;
 }
 
+.titleSection {
+  @apply pt-1 pb-3;
+}
+
 .details {
   @apply pt-1 pb-3;
 }
 
-.title {
+.detailsSection {
+}
+
+.geogPicker {
+  @apply text-xs;
+  @apply max-w-md;
+}
+
+.detailsSectionHeader {
+  @apply text-xs font-bold text-slate-600;
+}
+
+.cardTitle {
   @apply text-lg font-semibold pt-2 px-2.5;
 }
 
 .bigTitle {
-  @apply text-xl font-bold;
-}
-
-.descriptionContainer {
+  @apply text-4xl font-bold;
 }
 
 .description {

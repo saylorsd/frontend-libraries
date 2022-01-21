@@ -11,8 +11,11 @@ import {
 } from '../packages/@wprdc-types/indicator-view';
 import { useProvider } from '../packages/@wprdc-components/provider';
 import { ConnectedIndicatorView } from '../packages/@wprdc-widgets/indicator-view';
-import { useGeography } from '../packages/@wprdc-connections/geo/src';
-import { GeogBrief } from '../packages/@wprdc-types/geo/src';
+import { useGeography } from '../packages/@wprdc-connections/geo';
+import { GeogBrief } from '../packages/@wprdc-types/geo';
+import { ConnectedSearchBox } from '../packages/@wprdc-components/search-box';
+import { indicatorConnection } from '../packages/@wprdc-connections/profiles';
+import { Divider } from '../packages/@wprdc-components/divider';
 
 export default {
   title: 'Components/Indicator View',
@@ -137,7 +140,8 @@ const OTHER_INDICATOR: Indicator = {
 
 const Template: Story<IndicatorViewProps> = (args) => {
   const context = useProvider();
-  const { geog } = useGeography(DEFAULT_GEOG);
+  const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
+  const { geog } = useGeography(geogBrief);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
@@ -145,36 +149,49 @@ const Template: Story<IndicatorViewProps> = (args) => {
 
   return (
     <>
-      <IndicatorView {...args} />
+      <IndicatorView {...args} onGeogSelection={setGeogBrief} />
     </>
   );
 };
 
 const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
   const context = useProvider();
-  const { geog } = useGeography(DEFAULT_GEOG);
+  const [indicatorSlug, setIndicatorSlug] =
+    React.useState<string>('total-population');
+  const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
+
+  const { geog } = useGeography(geogBrief);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
   }, [geog]);
 
+  function handleSelection(indicator: Indicator) {
+    if (!!indicator) setIndicatorSlug(indicator.slug);
+  }
+
   return (
     <>
-      <ConnectedIndicatorView {...args} />
+      <ConnectedSearchBox
+        connection={indicatorConnection}
+        label="Pick your indicator"
+        onSelection={handleSelection}
+      />
+      <br />
+      <br />
+      <Divider weight="thick" />
+
+      <ConnectedIndicatorView
+        {...args}
+        indicatorSlug={indicatorSlug}
+        onGeogSelection={setGeogBrief}
+      />
     </>
   );
 };
 
 export const Connected = ConnectedTemplate.bind({});
-Connected.args = {
-  indicatorSlug: 'pop-by-race',
-};
-
-export const Details = Template.bind({});
-Details.args = {
-  indicator: OTHER_INDICATOR,
-  card: false,
-};
+Connected.args = {};
 
 export const Card = Template.bind({});
 Card.args = {

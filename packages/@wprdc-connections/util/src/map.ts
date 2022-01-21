@@ -255,6 +255,7 @@ export function makeLayers(
   geogType: GeographyType,
   hoveredFilter?: Expression,
   selectedFilter?: Expression,
+  baseFilter?: Expression,
 ): LayerProps[] {
   const source = `menu/${geogType}`;
   const sourceLayer = `maps.v_${geogType.toLowerCase()}`;
@@ -297,6 +298,7 @@ export function makeLayers(
         'line-opacity': theme.polygons.lineOpacity.standard,
         'line-color': theme.polygons.lineColor,
       },
+      filter: baseFilter || ['!=', 'global_geoid', ''],
     },
     {
       id: `${geogType}/fill`,
@@ -308,6 +310,7 @@ export function makeLayers(
         'fill-opacity': theme.polygons.fillOpacity.selection,
         'fill-color': theme.polygons.fillColor,
       },
+      filter: baseFilter || ['!=', 'global_geoid', ''],
     },
   ];
 }

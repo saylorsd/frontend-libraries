@@ -8,7 +8,7 @@ export default {
 
 export const Default = () => (
   <div>
-    <Select label="Select an Animal" onSelectionChange={console.log}>
+    <Select label="Select an Animal">
       <Item key="red panda">Red Panda</Item>
       <Item key="cat">Cat</Item>
       <Item key="dog">Dog</Item>

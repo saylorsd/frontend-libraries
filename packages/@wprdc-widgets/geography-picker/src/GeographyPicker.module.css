@@ -1,5 +1,6 @@
-.container {
+.wrapper {
   @apply w-full flex flex-col items-stretch;
+  @apply relative;
 }
 
 .menu {

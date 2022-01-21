@@ -31,3 +31,8 @@
   @apply justify-between rounded-md overflow-hidden cursor-default;
   @apply shadow outline-none border border-gray-800;
 }
+
+.popoverContent {
+  @apply bg-background;
+  @apply border border-gray-300 rounded-md;
+}

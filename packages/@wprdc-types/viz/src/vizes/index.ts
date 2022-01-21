@@ -1,14 +1,9 @@
-import {
-  DataVizBase,
-  ErrorRecord,
-  StructuredTableData,
-  TabularData,
-} from './common';
+import { DataVizBase, ErrorRecord, TabularData } from './common';
 import { TableOptions, TableViz } from './table';
 import { MiniMapData, MiniMapOptions, MiniMapViz } from './mini-map';
 import { SentenceViz } from './sentence';
 import { BigValueViz } from './value';
-import { Geog, GeogBrief } from '@wprdc-types/geo';
+import { GeogBrief } from '@wprdc-types/geo';
 import * as React from 'react';
 import { ColorScheme } from '@wprdc-types/shared';
 import { ChartViz } from './chart';
@@ -30,7 +25,8 @@ export type Downloaded<
   data: D;
   options: O;
   error: ErrorRecord;
-  geog: Geog;
+  warnings: ErrorRecord;
+  geogs: GeogBrief[];
 };
 
 /** Available data visualizations */
@@ -41,14 +37,14 @@ export type DataVisualization =
   | BigValueViz;
 
 /** Available viz data formats */
-export type DataVizData = TabularData | StructuredTableData | MiniMapData;
+export type DataVizData = TabularData | MiniMapData;
 
 //
 // Viz responses with data and options
 //
 export type DownloadedTableViz = Downloaded<
   TableViz,
-  StructuredTableData,
+  TabularData,
   TableOptions
 >;
 
@@ -107,3 +103,15 @@ export interface VizWrapperProps {
   onExplore?: (dataViz: DataVizBase) => unknown;
   onBreadcrumbClick?: (path: React.ReactText) => void;
 }
+
+export interface AxisItem {
+  name: string;
+  slug: string;
+  shortName?: string;
+  depth?: number;
+  localeOptions?: Intl.NumberFormatOptions;
+  denominators?: AxisItem[];
+  percentLabel?: string;
+}
+
+export interface StyledTableProps extends TableVizProps {}
