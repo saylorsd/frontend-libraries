@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/geography-section",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@wprdc-types/breadcrumbs": "^0.0.5",
-    "@wprdc-types/geo": "^0.0.5"
+    "@wprdc-types/geo": "^0.0.6"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

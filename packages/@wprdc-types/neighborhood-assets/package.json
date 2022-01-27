@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/neighborhood-assets",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -28,7 +28,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-types/shared": "^0.0.5",
+    "@wprdc-types/shared": "^0.0.6",
     "geojson": "^0.5.0"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

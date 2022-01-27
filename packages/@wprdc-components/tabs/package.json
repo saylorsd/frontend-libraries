@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/tabs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -32,9 +32,9 @@
   "dependencies": {
     "@react-aria/tabs": "^3.1.0 ",
     "@react-stately/tabs": "^3.0.1",
-    "@wprdc-components/util": "^0.0.5",
-    "@wprdc-types/shared": "^0.0.5",
-    "@wprdc-types/tabs": "^0.0.5"
+    "@wprdc-components/util": "^0.0.6",
+    "@wprdc-types/shared": "^0.0.6",
+    "@wprdc-types/tabs": "^0.0.6"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

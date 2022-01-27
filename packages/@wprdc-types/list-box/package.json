@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/list-box",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -31,7 +31,7 @@
     "@react-aria/listbox": "^3.4.0",
     "@react-stately/list": "^3.4.0",
     "@react-types/shared": "^3.10.0",
-    "@wprdc-types/shared": "^0.0.5"
+    "@wprdc-types/shared": "^0.0.6"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

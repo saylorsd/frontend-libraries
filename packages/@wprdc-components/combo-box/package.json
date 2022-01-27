@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/combo-box",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -37,11 +37,11 @@
     "@react-stately/combobox": "^3.0.1",
     "@react-stately/data": "^3.4.3",
     "@react-types/combobox": "^3.2.0 ",
-    "@wprdc-components/list-box": "^0.0.5",
-    "@wprdc-components/popover": "^0.0.5",
-    "@wprdc-components/util": "^0.0.5",
-    "@wprdc-types/combo-box": "^0.0.5",
-    "@wprdc-types/shared": "^0.0.5",
+    "@wprdc-components/list-box": "^0.0.6",
+    "@wprdc-components/popover": "^0.0.6",
+    "@wprdc-components/util": "^0.0.6",
+    "@wprdc-types/combo-box": "^0.0.6",
+    "@wprdc-types/shared": "^0.0.6",
     "classnames": "^2.3.1"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"

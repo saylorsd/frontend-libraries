@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/value",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "keywords": [],
   "main": "dist/index.js",
@@ -30,7 +30,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@wprdc-types/viz": "^0.0.5"
+    "@wprdc-types/viz": "^0.0.6"
   },
   "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
 }

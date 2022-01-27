@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/connections",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "author": "saylorsd <steven.saylor@pitt.edu>",
@@ -31,10 +31,10 @@
   "dependencies": {
     "@types/mapbox-gl": "^2.6.0",
     "@types/react-map-gl": "^6.1.1",
-    "@wprdc-types/geo": "^0.0.5",
-    "@wprdc-types/map": "^0.0.4",
-    "@wprdc-types/neighborhood-assets": "^0.0.5",
-    "@wprdc-types/shared": "^0.0.5",
-    "@wprdc-types/viz": "^0.0.5"
+    "@wprdc-types/geo": "^0.0.6",
+    "@wprdc-types/map": "^0.0.5",
+    "@wprdc-types/neighborhood-assets": "^0.0.6",
+    "@wprdc-types/shared": "^0.0.6",
+    "@wprdc-types/viz": "^0.0.6"
   }
 }
