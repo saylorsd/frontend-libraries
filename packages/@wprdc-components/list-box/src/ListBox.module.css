@@ -47,14 +47,14 @@
 }
 
 .optionSelected {
-  @apply bg-blue-50;
+  @apply bg-sky-100;
 }
 
 .optionDisabled {
 }
 
 .optionFocused {
-  @apply bg-gray-100 text-black border border-pink-500;
+  @apply bg-gray-100 text-black border border-cyan-600;
 }
 
 .dense {

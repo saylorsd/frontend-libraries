@@ -17,46 +17,31 @@ import { ListState } from '@react-stately/list';
 import { Resource } from '@wprdc-types/shared';
 
 /**
+ * Set of list box props to allow parent components to control its appearance.
  *
  * T shape of object represent by list box.
  * P props for option template
  */
-export interface ListBoxOptions<T, P = {}> {
+export interface ListBoxOptions<T, O = {}> {
   /** Whether to make the list fill its parent's width */
   fullWidth?: boolean;
   loadingMessage?: string;
   dense?: boolean;
   /** Template to render the displayed value */
-  optionTemplate?: OptionTemplate<T, P>;
+  optionTemplate?: OptionTemplate<T, O>;
   /** Options to send as props to `optionTemplate`s when used */
-  optionTemplateOptions?: P;
+  optionTemplateOptions?: O;
 }
 
-export interface ListBoxProps<T>
-  extends AriaListBoxOptions<T>,
-    ListBoxOptions<T> {
-  children: CollectionChildren<T>;
-}
+/** Function that uses item to generate list box option text */
+export type OptionFieldAccessor<T> = (item: T) => React.ReactNode;
 
-export interface ListBoxState<T> extends ListState<T> {
-  // from SelectState in react-aria
-  /** Whether the select is currently focused. */
-  readonly isFocused?: boolean;
-
-  /** Sets whether the select is focused. */
-  setFocused?(isFocused: boolean): void;
-}
-
-export type OptionTemplateProps<T, P = {}> = P & {
+export type OptionTemplateProps<T, O = {}> = O & {
   item: T;
 };
 
-/** All optoin template types should derive from this */
-export type OptionTemplate<T, P> = React.FC<OptionTemplateProps<T, P>>;
-
-/** Props for `ResourceOptionTemplate` */
-export type ResourceOptionTemplateProps<T extends Resource> =
-  OptionTemplateProps<T, ResourceOptionTemplateOptions<T>>;
+/** All option template types should derive from this */
+export type OptionTemplate<T, O> = React.FC<OptionTemplateProps<T, O>>;
 
 export interface ResourceOptionTemplateOptions<T extends Resource> {
   /**
@@ -74,10 +59,24 @@ export interface ResourceOptionTemplateOptions<T extends Resource> {
    * Setting this with getIcon will use it as a fallback/default.
    */
   Icon?: React.FC<{ item: T } & React.HTMLAttributes<HTMLOrSVGElement>>;
-  /** Field in resource to use for the title */
-  titleField?: keyof T;
-  /** Field in resource to use for the subtitle */
-  subtitleField?: keyof T;
+  /**
+   * Field in resource to use for the title
+   *  or function to find/generate title text from item
+   */
+  titleAccessor?: keyof T | OptionFieldAccessor<T>;
+  /**
+   * Field in resource to use for the subtitle
+   *  or function to find/generate subtitle text from item
+   */
+  subtitleAccessor?: keyof T | OptionFieldAccessor<T>;
+}
+
+// Component Props
+
+export interface ListBoxProps<T>
+  extends AriaListBoxOptions<T>,
+    ListBoxOptions<T> {
+  children: CollectionChildren<T>;
 }
 
 export interface StatelessListBoxProps<T>
@@ -89,22 +88,32 @@ export interface StatelessListBoxProps<T>
   listBoxRef?: RefObject<HTMLUListElement>;
 }
 
-export interface ListBoxSectionProps<T, P> extends AriaListBoxSectionProps {
+export interface ListBoxSectionProps<T, P>
+  extends AriaListBoxSectionProps,
+    ListBoxOptions<T, P> {
   section: Node<T>;
   state: ListState<T>;
-  dense?: boolean;
-
-  /** Template to render the displayed value */
-  optionTemplate?: OptionTemplate<T, P>;
 }
 
-export interface OptionProps<T, P = {}>
+export interface OptionProps<T, O = {}>
   extends AriaOptionProps,
-    ListBoxOptions<T, P> {
+    ListBoxOptions<T, O> {
   item: Node<T>;
   state: ListState<T>;
   onAction?: (key: Key) => void;
-  dense?: boolean;
-  /** Template to render the displayed value */
-  Template?: OptionTemplate<T, P>;
+}
+
+/** Props for `ResourceOptionTemplate` */
+export type ResourceOptionTemplateProps<T extends Resource> =
+  OptionTemplateProps<T, ResourceOptionTemplateOptions<T>>;
+
+// Misc
+
+export interface ListBoxState<T> extends ListState<T> {
+  // from SelectState in react-aria
+  /** Whether the select is currently focused. */
+  readonly isFocused?: boolean;
+
+  /** Sets whether the select is focused. */
+  setFocused?(isFocused: boolean): void;
 }

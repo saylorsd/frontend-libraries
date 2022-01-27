@@ -4,6 +4,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@react-aria/button": "^3.3.4",
+    "@react-types/shared": "^3.10.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@storybook/addon-a11y": "^6.4.9",
@@ -24,6 +25,7 @@
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^10.0.0",
+    "classnames": "^2.3.1",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
@@ -78,6 +80,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@react-stately/collections": "^3.3.4",
+    "@react-types/shared": "^3.10.1",
     "next-transpile-modules": "^9.0.0",
     "react-measure": "^2.5.2"
   }

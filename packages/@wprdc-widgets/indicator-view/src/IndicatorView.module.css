@@ -4,6 +4,9 @@
 
 .cardContainer {
   @apply w-full shadow-md rounded border;
+  @apply hover:shadow-lg hover:outline hover:outline-1 hover:outline-gray-300;
+  @apply focus:outline focus:outline-cyan-600;
+  @apply text-left;
 }
 
 .vizPane {
@@ -52,8 +55,12 @@
   @apply border-b rounded-b p-2.5;
 }
 
+.vizes {
+  @apply my-2;
+}
+
 .vizList {
-  @apply grid gap-4 sm:grid-cols-1;
+  @apply grid gap-4 sm:grid-cols-1 lg:grid-cols-2;
 }
 
 .vizListItem {
@@ -73,10 +80,6 @@
 
 .blurbListItem {
   @apply inline-block m-2;
-}
-
-.vizes {
-  @apply my-2;
 }
 
 .stretchy {

@@ -35,7 +35,13 @@ export const StatelessListBox = <T extends Resource>(
   props: StatelessListBoxProps<T>,
 ): JSX.Element => {
   const defaultRef = React.useRef<HTMLUListElement>(null);
-  const { listBoxRef = defaultRef, state, dense, optionTemplate } = props;
+  const {
+    listBoxRef = defaultRef,
+    state,
+    dense,
+    optionTemplate,
+    optionTemplateOptions,
+  } = props;
   const { listBoxProps, labelProps } = useListBox<T>(props, state, listBoxRef);
 
   const items = Array.from(state.collection);
@@ -61,6 +67,7 @@ export const StatelessListBox = <T extends Resource>(
                 state={state}
                 dense={dense}
                 optionTemplate={optionTemplate}
+                optionTemplateOptions={optionTemplateOptions}
               />
             );
           }
@@ -70,7 +77,8 @@ export const StatelessListBox = <T extends Resource>(
               item={item}
               state={state}
               dense={dense}
-              Template={optionTemplate}
+              optionTemplate={optionTemplate}
+              optionTemplateOptions={optionTemplateOptions}
             />
           );
         })}
@@ -79,12 +87,12 @@ export const StatelessListBox = <T extends Resource>(
   );
 };
 
-export const ListBoxSection = <T extends Resource, O extends object = {}>({
-  section,
-  state,
-  dense,
-  optionTemplate,
-}: ListBoxSectionProps<T, O>) => {
+export const ListBoxSection = <T extends Resource, O extends object = {}>(
+  props: ListBoxSectionProps<T, O>,
+) => {
+  const { section, state, dense, optionTemplate, optionTemplateOptions } =
+    props;
+
   const { itemProps, headingProps, groupProps }: ListBoxSectionAria =
     useListBoxSection({
       heading: section.rendered,
@@ -117,7 +125,8 @@ export const ListBoxSection = <T extends Resource, O extends object = {}>({
                   item={node}
                   state={state}
                   dense={dense}
-                  Template={optionTemplate}
+                  optionTemplate={optionTemplate}
+                  optionTemplateOptions={optionTemplateOptions}
                 />
               ),
           )}

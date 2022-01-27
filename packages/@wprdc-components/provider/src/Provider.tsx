@@ -1,4 +1,5 @@
 import React, { Reducer, useContext, useReducer } from 'react';
+import './main.css';
 
 import { SSRProvider } from '@react-aria/ssr';
 import { OverlayProvider } from '@react-aria/overlays';

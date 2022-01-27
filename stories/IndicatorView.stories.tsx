@@ -14,7 +14,10 @@ import { ConnectedIndicatorView } from '../packages/@wprdc-widgets/indicator-vie
 import { useGeography } from '../packages/@wprdc-connections/geo';
 import { GeogBrief } from '../packages/@wprdc-types/geo';
 import { ConnectedSearchBox } from '../packages/@wprdc-components/search-box';
-import { indicatorConnection } from '../packages/@wprdc-connections/profiles';
+import {
+  indicatorConnection,
+  defaultIndicatorListBoxProps,
+} from '../packages/@wprdc-connections/profiles';
 import { Divider } from '../packages/@wprdc-components/divider';
 
 export default {
@@ -176,6 +179,7 @@ const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
         connection={indicatorConnection}
         label="Pick your indicator"
         onSelection={handleSelection}
+        listBoxProps={defaultIndicatorListBoxProps}
       />
       <br />
       <br />

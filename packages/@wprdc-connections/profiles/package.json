@@ -32,9 +32,11 @@
   },
   "dependencies": {
     "@wprdc-components/util": "^0.0.5",
+    "@wprdc-components/list-box": "^0.0.5",
     "@wprdc-connections/api": "^0.0.5",
     "@wprdc-types/api": "^0.0.5",
     "@wprdc-types/geo": "^0.0.5",
+    "@wprdc-types/list-box": "^0.0.5",
     "@wprdc-types/map": "^0.0.4",
     "@wprdc-types/profiles": "^0.0.5",
     "@wprdc-types/shared": "^0.0.5",

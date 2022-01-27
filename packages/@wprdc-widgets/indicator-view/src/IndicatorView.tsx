@@ -20,7 +20,7 @@ import { DataVizVariant } from '@wprdc-types/data-viz';
 import { LoadingMessage } from '@wprdc-components/loading-message';
 import { ConnectedDataViz } from '@wprdc-widgets/data-viz';
 
-import { GeographyPicker } from '@wprdc-widgets/geogrpahy-picker';
+import { GeographyPicker } from '@wprdc-widgets/geography-picker';
 
 export const IndicatorView: React.FC<IndicatorViewProps> = ({
   indicator,
@@ -64,10 +64,9 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
 
   if (!!card)
     return (
-      <div
+      <button
         className={styles.cardContainer}
         onClick={handleExploreIndicator}
-        role="button"
         aria-label={`Explore indicator: ${indicator.name}`}
       >
         <div className={styles.vizPane}>
@@ -94,7 +93,7 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
             <p className={styles.cardDescription}>{description}</p>
           </div>
         </div>
-      </div>
+      </button>
     );
 
   return (

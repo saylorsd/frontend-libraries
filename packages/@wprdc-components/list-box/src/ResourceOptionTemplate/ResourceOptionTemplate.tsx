@@ -2,7 +2,11 @@ import * as React from 'react';
 
 import '../main.css';
 import styles from './ResourceOptionTemplate.module.css';
-import { ResourceOptionTemplateProps } from '@wprdc-types/list-box';
+
+import {
+  OptionFieldAccessor,
+  ResourceOptionTemplateProps,
+} from '@wprdc-types/list-box';
 import { Resource } from '@wprdc-types/shared';
 
 export function ResourceOptionTemplate<T extends Resource>(
@@ -12,30 +16,39 @@ export function ResourceOptionTemplate<T extends Resource>(
     item,
     getIcon,
     Icon,
-    titleField = 'name',
-    subtitleField = 'description',
+    titleAccessor = 'name',
+    subtitleAccessor = 'description',
   } = props;
+
+  function getContent(accessor: OptionFieldAccessor<T> | keyof T, item: T) {
+    if (typeof accessor == 'function') return accessor(item);
+    return item[accessor];
+  }
 
   // Try `getIcon`, and then `Icon` to generate an icon.
   const DisplayIcon = React.useMemo(() => {
     if (!!getIcon) {
       const result = getIcon(item);
-      if (result) return result;
+      if (!!result) return result;
     }
     return Icon;
   }, [item, getIcon, Icon]);
 
+  const title = React.useMemo(() => {
+    return getContent(titleAccessor, item);
+  }, [titleAccessor, item]);
+
+  const subtitle = React.useMemo(() => {
+    return getContent(subtitleAccessor, item);
+  }, [subtitleAccessor, item]);
+
   return (
     <div className={styles.wrapper}>
-      {!!Icon && (
-        <div className={styles.iconWrapper}>
-          <DisplayIcon className={styles.icon} />
-        </div>
-      )}
-      <div className={styles.content}>
-        <div className={styles.title}>{item[titleField]}</div>
-        <div className={styles.subtitle}>{item[subtitleField]}</div>
+      <div className={styles.titleSection}>
+        {!!DisplayIcon && <DisplayIcon className={styles.icon} />}
+        <div className={styles.title}>{title}</div>
       </div>
+      <div className={styles.subtitle}>{subtitle}</div>
     </div>
   );
 }

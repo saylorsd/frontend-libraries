@@ -1,6 +1,7 @@
 const path = require('path');
 
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -10,6 +11,9 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Public Sans"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         primary: colors.blueGray,
         secondary: colors.lightBlue,

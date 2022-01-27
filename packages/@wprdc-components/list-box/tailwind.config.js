@@ -1,9 +1,16 @@
+const path = require('path');
+
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Public Sans"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         primary: colors.slate,
         secondary: colors.sky,
@@ -14,13 +21,6 @@ module.exports = {
         '1/2': '50%',
         '3/4': '75%',
       },
-    },
-  },
-  variants: {
-    extend: {
-      textColor: ['visited'],
-      margin: ['first'],
-      borderWidth: ['first'],
     },
   },
   plugins: [],

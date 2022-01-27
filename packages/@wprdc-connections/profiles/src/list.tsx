@@ -4,6 +4,13 @@ import { Item } from '@wprdc-components/util';
 
 import { ListConnection, Resource } from '@wprdc-types/shared';
 import { Indicator } from '@wprdc-types/profiles';
+import {
+  ListBoxOptions,
+  ResourceOptionTemplateOptions,
+} from '@wprdc-types/list-box';
+import { ResourceOptionTemplate } from '@wprdc-components/list-box';
+
+import { RiFolderChartLine } from 'react-icons/ri';
 
 function makeProfilesConnection<T extends Resource>(
   itemType: string,
@@ -29,3 +36,15 @@ function makeProfilesConnection<T extends Resource>(
 
 export const indicatorConnection: ListConnection<Indicator> =
   makeProfilesConnection<Indicator>('indicator');
+
+/** style props */
+export const defaultIndicatorListBoxProps: ListBoxOptions<
+  Indicator,
+  ResourceOptionTemplateOptions<Indicator>
+> = {
+  optionTemplate: ResourceOptionTemplate,
+  optionTemplateOptions: {
+    Icon: RiFolderChartLine,
+    subtitleAccessor: 'description',
+  },
+};

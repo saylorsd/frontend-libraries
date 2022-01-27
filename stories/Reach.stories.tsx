@@ -20,6 +20,8 @@ import { useTaxonomy } from '../packages/@wprdc-connections/profiles';
 import { IndicatorView } from '../packages/@wprdc-widgets/indicator-view';
 import { useProvider } from '../packages/@wprdc-components/provider';
 import { LoadingMessage } from '../packages/@wprdc-components/loading-message';
+import { Indicator } from '../packages/@wprdc-types/profiles/src';
+import { DataVizBase } from '../packages/@wprdc-types/viz/src';
 
 export default {
   title: 'Demos/REACH Demo',
@@ -27,6 +29,9 @@ export default {
 
 export const Default = () => {
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(defaultGeogBrief);
+  const [selectedIndicator, setSelectedIndicator] = React.useState<Indicator>();
+  const [dataViz, setDataViz] = React.useState<DataVizBase>();
+
   const context = useProvider();
   const { geog, isLoading, error } = useGeography(geogBrief);
 
@@ -48,6 +53,14 @@ export const Default = () => {
         setGeogBrief(clickedGeogs[0]);
     }
   };
+
+  function handleExploreIndicator(indicator: Indicator) {
+    setSelectedIndicator(indicator);
+  }
+
+  function handleExploreDataViz(dataViz: DataVizBase) {
+    setDataViz(dataViz);
+  }
 
   const domain = React.useMemo(() => {
     if (!!taxonomy)
@@ -102,36 +115,53 @@ export const Default = () => {
             />
           </div>
         </div>
+
         <div className={styles.details}>
           <div className={styles.geoDetails}>
             {!!geog && <div className={styles.geogTitle}>{geog.title}</div>}
           </div>
-          {/*<div className={styles.contextDetails}>*/}
-          {/*  Pius, noster assimilatios mechanice demitto de salvus, audax*/}
-          {/*  cannabis. Cum messor mori, omnes compateres imperium grandis, gratis*/}
-          {/*  indexes. Cum tabes potus, omnes candidatuses demitto germanus,*/}
-          {/*  brevis brabeutaes. Lapsuss sunt musas de barbatus amor.*/}
-          {/*</div>*/}
         </div>
-        <div className={styles.dashboard}>
-          {!!taxonomyIsLoading && (
-            <LoadingMessage message="Loading dashboard..." />
-          )}
-          {!taxonomyIsLoading &&
-            !!domain &&
-            domain.subdomains.map((subdomain) => (
-              <div className={styles.subdomainSection}>
+
+        {!!selectedIndicator && (
+          <IndicatorView
+            indicator={selectedIndicator}
+            geog={geog}
+            onExploreIndicator={handleExploreIndicator}
+            onExploreDataViz={handleExploreDataViz}
+          />
+        )}
+
+        {!selectedIndicator && !taxonomyIsLoading && !!domain && (
+          <div className={styles.dashboard}>
+            {!!taxonomyIsLoading && (
+              <div className={styles.loader}>
+                <LoadingMessage message="Loading dashboard..." />
+              </div>
+            )}
+
+            {domain.subdomains.map((subdomain) => (
+              <div
+                className={styles.subdomainSection}
+                style={{ display: !!selectedIndicator ? 'hidden' : 'visible' }}
+              >
                 <div className={styles.subdomainTitle}>{subdomain.name}</div>
                 <div className={styles.subdomainContent}>
                   {subdomain.indicators.map((indicator) => (
                     <div className={styles.indicatorSection}>
-                      <IndicatorView card indicator={indicator} geog={geog} />
+                      <IndicatorView
+                        card
+                        indicator={indicator}
+                        geog={geog}
+                        onExploreIndicator={handleExploreIndicator}
+                        onExploreDataViz={handleExploreDataViz}
+                      />
                     </div>
                   ))}
                 </div>
               </div>
             ))}
-        </div>
+          </div>
+        )}
         <footer className={styles.footer}></footer>
       </div>
     </div>

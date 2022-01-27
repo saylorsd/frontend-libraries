@@ -27,6 +27,7 @@ import { HiSelector } from 'react-icons/hi';
 export function Select<T extends Resource>(props: SelectProps<T>) {
   // Create state based on the incoming props
   const { onSelection, listBoxProps } = props;
+
   const selectionShim = (key: React.Key) => {
     if (!!onSelection) {
       onSelection(state.collection.getItem(key).value);
