@@ -46,6 +46,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "watch": "tsdx watch",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "npm run build",

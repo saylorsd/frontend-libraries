@@ -11,14 +11,14 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "test": "jest",
-    "watch:explorer": "yarn workspace profiles-explorer dev",
-    "build:lib": "lerna run prepare",
-    "build:explorer": "yarn workspace profiles-explorer build",
     "bootstrap": "lerna clean -y && lerna bootstrap --hoist",
     "publish": "lerna publish",
     "link": "lerna link",
     "pretest": "eslint packages",
+    "test": "jest",
+    "build:lib": "lerna run prepare",
+    "build:profiles-explorer": "yarn workspace profiles-explorer build",
+    "watch:profiles-explorer": "yarn workspace profiles-explorer dev",
     "watch:components-am": "lerna run --scope '@wprdc-components/[a-m]*' --parallel watch",
     "watch:components-nz": "lerna run --scope '@wprdc-components/[n-z]*' --parallel watch",
     "watch:connections": "lerna run --scope '@wprdc-connections/*' --parallel watch",
