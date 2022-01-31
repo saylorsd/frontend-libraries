@@ -78,7 +78,7 @@ class API<E extends Endpoint> {
   async callAndProcessEndpoint<T = any>(
     endpoint: E,
     method: Method,
-    options?: APIOptions,
+    options?: APIOptions
   ): Promise<ResponsePackage<T>> {
     try {
       const response = await this.callEndpoint(endpoint, method, options);
@@ -100,7 +100,7 @@ class API<E extends Endpoint> {
   async callAndProcessListEndpoint<T = any>(
     endpoint: E,
     method: Method,
-    options?: APIOptions,
+    options?: APIOptions
   ): Promise<ResponsePackage<T[]>> {
     try {
       const response = await this.callEndpoint(endpoint, method, options);
@@ -131,7 +131,7 @@ export function serializeParams(params?: object) {
   return `?${Object.entries(params)
     .map(
       ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
     )
     .join('&')}`;
 }

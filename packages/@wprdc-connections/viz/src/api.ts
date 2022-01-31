@@ -21,7 +21,7 @@ const api = createAPI<Endpoint>(HOST);
 
 function requestDataViz<T extends Downloaded<DataVizBase>>(
   dataVizSlug: string,
-  geog: GeogBrief,
+  geog: GeogBrief
 ): Promise<ResponsePackage<T>> {
   const { geogType, geogID } = geog;
   return api.callAndProcessEndpoint<T>(Endpoint.DataViz, Method.GET, {

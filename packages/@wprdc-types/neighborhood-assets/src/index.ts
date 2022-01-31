@@ -13,7 +13,7 @@ export interface AssetCategory {
 
 export type AssetID = number;
 
-export interface Tag {
+export interface AssetTag {
   name: string;
 }
 

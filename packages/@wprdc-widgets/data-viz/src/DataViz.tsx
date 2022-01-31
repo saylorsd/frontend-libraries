@@ -38,6 +38,7 @@ export function DataViz(props: Props) {
     variant = DataVizVariant.Default,
     onExplore,
   } = props;
+
   function handleExplore() {
     if (!!onExplore && !!dataViz) onExplore(dataViz);
   }

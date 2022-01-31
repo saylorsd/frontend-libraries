@@ -1,7 +1,6 @@
 .container {
   @apply relative w-max;
 }
-
 .vizDiv {
   @apply rounded border w-max p-2 shadow-sm;
 }

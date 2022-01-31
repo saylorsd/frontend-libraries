@@ -25,7 +25,6 @@ export function useMapPlugin<T extends Resource, E>({
   selectedMapItem,
   options,
   context,
-  setContext,
 }: MapPluginHookArgs<T, E>): MapPluginToolbox<T, E> {
   const colorScheme = ColorScheme.Light;
   // Mapbox spec/props
@@ -37,14 +36,14 @@ export function useMapPlugin<T extends Resource, E>({
   const [layerPanelSection, setLayerPanelSection] = useState<JSX.Element>();
   const [mapSection, setMapSection] = useState<JSX.Element>();
   const [selection, setSelection] = useState<Selection>(
-    layerSelection || (new Set() as Set<Key>),
+    layerSelection || (new Set() as Set<Key>)
   );
   // for filtering styled layers for interaction states
   const [hoveredFilter, setHoveredFilter] = useState<Expression>(
-    clearLayerFilter(),
+    clearLayerFilter()
   );
   const [selectedFilter, setSelectedFilter] = useState<Expression>(
-    clearLayerFilter(),
+    clearLayerFilter()
   );
   const [interactiveLayerIDs, setInteractiveLayerIDs] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<T[]>([]);
@@ -109,7 +108,7 @@ export function useMapPlugin<T extends Resource, E>({
         colorScheme,
       });
       setInteractiveLayerIDs(
-        connection.getInteractiveLayerIDs(layerItems, selection),
+        connection.getInteractiveLayerIDs(layerItems, selection)
       );
 
       setSelectedItems(connection.getSelectedItems(layerItems, selection));
@@ -127,7 +126,7 @@ export function useMapPlugin<T extends Resource, E>({
       setLayerPanelSection,
       layerItems,
       selectedItems,
-      handleLayerSelection,
+      handleLayerSelection
     );
   }, [layerItems, selectedItems]);
 
@@ -217,10 +216,10 @@ export function fetchCartoVectorSource(
   apiKey?: string,
   type = 'vector',
   minzoom = 0,
-  maxzoom = 22,
+  maxzoom = 22
 ): PromiseLike<SourceProps> {
   const config = encodeURIComponent(
-    JSON.stringify(cartoInstantiationParams(id, sql)),
+    JSON.stringify(cartoInstantiationParams(id, sql))
   );
 
   const keyParam = apiKey ? `&api_key=${apiKey}` : '';
@@ -234,7 +233,7 @@ export function fetchCartoVectorSource(
     })
       .then(
         (response) => response.json(),
-        (error) => reject(error),
+        (error) => reject(error)
       )
       .then(
         (data) => {
@@ -246,7 +245,7 @@ export function fetchCartoVectorSource(
             maxzoom,
           });
         },
-        (error) => reject(error),
+        (error) => reject(error)
       );
   });
 }
@@ -255,7 +254,7 @@ export function makeLayers(
   geogType: GeographyType,
   hoveredFilter?: Expression,
   selectedFilter?: Expression,
-  baseFilter?: Expression,
+  baseFilter?: Expression
 ): LayerProps[] {
   const source = `menu/${geogType}`;
   const sourceLayer = `maps.v_${geogType.toLowerCase()}`;

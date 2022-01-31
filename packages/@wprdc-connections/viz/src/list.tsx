@@ -21,14 +21,14 @@ import {
 } from '@wprdc-types/list-box';
 
 function makeProfilesConnection<T extends Resource>(
-  itemType: string,
+  itemType: string
 ): ListConnection<T> {
   return {
     async load({ signal, cursor, filterText }) {
       const res = await fetch(
         cursor ||
           `https://api.profiles.wprdc.org/${itemType}/?search=${filterText}&limit=10`,
-        { signal },
+        { signal }
       );
       const json = await res.json();
 

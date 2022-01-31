@@ -19,19 +19,21 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --declaration",
+    "build": "tsc --declaration",
     "prepare": "npm run build",
     "watch": "tsc -w --declaration"
   },
   "peerDependencies": {
+    "typescript": "4.5.5",
     "react": "^16.8.0 || ^17.0.0-rc.1",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@types/react": "^17.0.38",
     "@react-aria/combobox": "^3.2.0",
-    "@react-aria/i18n": "^3.2.0",
+    "@react-aria/i18n": "^3.3.4",
     "@react-types/combobox": "^3.2.0",
-    "@react-types/shared": "^3.10.0",
+    "@react-types/shared": "^3.10.1",
     "@wprdc-types/list-box": "^0.0.6",
     "@wprdc-types/shared": "^0.0.6"
   },

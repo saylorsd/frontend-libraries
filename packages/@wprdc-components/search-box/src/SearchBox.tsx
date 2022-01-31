@@ -25,7 +25,9 @@ import { StatelessListBox } from '@wprdc-components/list-box';
 import { SearchBoxProps } from '@wprdc-types/search-box';
 import { Resource } from '@wprdc-types/shared';
 
-export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
+export function SearchBox<T extends Resource, O extends object = {}>(
+  props: SearchBoxProps<T, O>
+) {
   const { loadingState, listBoxProps: extListBoxProps } = props;
   const { contains } = useFilter({ sensitivity: 'base' });
   const state = useComboBoxState({ ...props, defaultFilter: contains });
@@ -46,13 +48,15 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
       listBoxRef,
       popoverRef,
     },
-    state,
+    state
   );
 
-  const listBoxProps = { ...extListBoxProps, ...comboBoxListBoxProps };
+  const listBoxProps = { ...comboBoxListBoxProps, ...extListBoxProps };
 
+  // todo: handling loading state
+  // @ts-ignore
   const [isLoading, setIsLoading] = React.useState<boolean>(
-    loadingState === 'loading',
+    loadingState === 'loading'
   );
 
   // Get props for the clear button from useSearchField
@@ -66,7 +70,7 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
   const { clearButtonProps } = useSearchField(
     searchProps,
     searchState,
-    inputRef,
+    inputRef
   );
   const { buttonProps } = useButton(clearButtonProps, clearButtonRef);
 
@@ -116,7 +120,7 @@ export function SearchBox<T extends Resource>(props: SearchBoxProps<T>) {
           onClose={state.close}
         >
           <div className={styles.popoverContent}>
-            <StatelessListBox<T>
+            <StatelessListBox<T, O>
               fullWidth
               {...listBoxProps}
               listBoxRef={listBoxRef}

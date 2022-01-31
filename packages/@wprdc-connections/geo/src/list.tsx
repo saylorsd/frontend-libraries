@@ -5,6 +5,11 @@ import { Item } from '@wprdc-components/util';
 import { GeographyType, GeogBrief, GeogLevel } from '@wprdc-types/geo';
 import { ListConnection } from '@wprdc-types/shared';
 import { AsyncListLoadOptions } from '@react-stately/data';
+import {
+  ListBoxOptions,
+  ResourceOptionTemplateOptions,
+} from '@wprdc-types/list-box';
+import { ResourceOptionTemplate } from '@wprdc-components/list-box';
 
 export class GeographyConnection implements ListConnection<GeogBrief> {
   geogType: GeographyType;
@@ -21,7 +26,7 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
     const res = await fetch(
       cursor ||
         `https://api.profiles.wprdc.org/geo/${this.geogType}/?search=${filterText}`,
-      { signal },
+      { signal }
     );
     const json = await res.json();
     return {
@@ -36,6 +41,7 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
   public getKey = (item: GeogBrief) => item.id.toString();
 }
 
+// todo: rename to geographyLevelConnection
 export const geographyTypeConnection: ListConnection<GeogLevel> = {
   async load({ signal }) {
     const res = await fetch(`https://api.profiles.wprdc.org/geo/geog-types`, {
@@ -50,4 +56,27 @@ export const geographyTypeConnection: ListConnection<GeogLevel> = {
   },
   renderItem: (item) => <Item key={item.id}>{item.name}</Item>,
   getKey: (item) => item.id.toString(),
+};
+
+export const geographyLevelConnection = geographyTypeConnection;
+
+export const defaultGeogListBoxProps: ListBoxOptions<
+  GeogBrief,
+  ResourceOptionTemplateOptions<GeogBrief>
+> = {
+  optionTemplate: ResourceOptionTemplate,
+  optionTemplateOptions: {
+    titleAccessor: 'title',
+    subtitleAccessor: (_: GeogBrief) => null,
+  },
+};
+
+export const defaultGeogLevelListBoxProps: ListBoxOptions<
+  GeogLevel,
+  ResourceOptionTemplateOptions<GeogLevel>
+> = {
+  optionTemplate: ResourceOptionTemplate,
+  optionTemplateOptions: {
+    subtitleAccessor: (_: GeogLevel) => null,
+  },
 };

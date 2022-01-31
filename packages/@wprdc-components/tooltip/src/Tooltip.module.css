@@ -1,14 +1,11 @@
 .container {
 }
-
 .popover {
   @apply p-2.5 border shadow-lg bg-background;
 }
-
 .popover:focus-visible {
   outline: none;
 }
-
 .popoverTitle {
   @apply font-semibold;
 }

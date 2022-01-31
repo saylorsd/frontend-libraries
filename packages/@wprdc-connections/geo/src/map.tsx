@@ -1,7 +1,7 @@
-import React, { Key } from 'react';
+import React from 'react';
 import { MapPluginConnection } from '@wprdc-types/connections';
-import { GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
-import { fetchCartoVectorSource, Layer, Source } from '@wprdc-widgets/map';
+import { GeogBrief, GeogLevel } from '@wprdc-types/geo';
+import { Layer, Source } from '@wprdc-widgets/map';
 import { Radio, RadioGroup } from '@wprdc-components/radio-group';
 import {
   clearLayerFilter,
@@ -38,7 +38,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
     // todo: build source based on selection.  or just put them all up at once tbh
     if (!!selectedLayer)
       setLayers(
-        makeLayers(selectedLayer.id, hoveredFilter, selectedFilter, baseFilter),
+        makeLayers(selectedLayer.id, hoveredFilter, selectedFilter, baseFilter)
       );
   },
   getLegendItems: () => {
@@ -59,7 +59,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
           !!feature.source &&
           typeof feature.source === 'string' &&
           !!feature.properties &&
-          feature.source.substring(0, 4) === 'menu',
+          feature.source.substring(0, 4) === 'menu'
       );
       return features.map(
         ({ properties }) =>
@@ -71,7 +71,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
             description: properties.description,
             geogType: properties.geog_type,
             geogID: properties.global_geoid,
-          } as GeogBrief),
+          } as GeogBrief)
       );
     }
     return [];
@@ -96,7 +96,7 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
           {layers.map((layer) => (
             <Layer {...layer} key={layer.id} />
           ))}
-        </>,
+        </>
       );
     } else setMapSection();
   },
@@ -105,41 +105,39 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
       ? items
       : items.filter((item) => selection.has(item.id));
   },
-  makeHoverContent: (hoveredItems, event) => {
+  makeHoverContent: (hoveredItems) => {
     if (!!hoveredItems && !!hoveredItems.length)
       return <div className="text-xs">{hoveredItems[0].name}</div>;
-  },
-  makeClickContent: (clickedItems, event) => {
     return null;
   },
-  makeLayerPanelSection(
-    setLayerPanelSection,
-    items,
-    selectedItems,
-    handleChange,
-  ) {
+  makeClickContent: () => {
+    return null;
+  },
+  makeLayerPanelSection(setLayerPanelSection, items, _, handleChange) {
     function _handleChange(val: string) {
-      handleChange(new Set([val]));
+      if (handleChange) handleChange(new Set([val]));
     }
 
-    if (items.length === 1) {
-      setLayerPanelSection(null);
-    } else {
-      setLayerPanelSection(
-        <div key={'geo-menu'}>
-          <RadioGroup
-            label="Select a menu layer"
-            aria-label="select the geographic menu layer to display"
-            onChange={_handleChange}
-          >
-            {items.map((item) => (
-              <Radio key={`menu/${item.id}`} value={`menu/${item.id}`}>
-                {item.name}
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>,
-      );
+    if (!!items) {
+      if (items.length === 1) {
+        setLayerPanelSection(undefined);
+      } else {
+        setLayerPanelSection(
+          <div key={'geo-menu'}>
+            <RadioGroup
+              label="Select a menu layer"
+              aria-label="select the geographic menu layer to display"
+              onChange={_handleChange}
+            >
+              {items.map((item) => (
+                <Radio key={`menu/${item.id}`} value={`menu/${item.id}`}>
+                  {item.name}
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
+        );
+      }
     }
   },
 };

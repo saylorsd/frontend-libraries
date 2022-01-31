@@ -33,17 +33,18 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography)
       );
 
       // for each one, if there is response data, then put it in the list for setSources
       Promise.all(requests).then((response) =>
-        setSources(filterResponse(response)),
+        setSources(filterResponse(response))
       );
     }
   },
   getLayers(items, selected, setLayers, options) {
     const { geography } = options || {};
+
     // filter out highlight source and only take the data layer's source
     function filterResponse(response: ResponsePackage<DownloadedMiniMapViz>[]) {
       return response.reduce<LayerProps[]>((result, item) => {
@@ -55,11 +56,11 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography)
       );
       // for each one, if there is response data, then put it in the list for setSources
       Promise.all(requests).then((response) =>
-        setLayers(filterResponse(response)),
+        setLayers(filterResponse(response))
       );
     }
   },
@@ -77,11 +78,11 @@ export const vizMapConnection: MapPluginConnection<
 
     if (!!items && !!geography) {
       const requests = items.map((item) =>
-        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography),
+        VizAPI.requestDataViz<DownloadedMiniMapViz>(item.slug, geography)
       );
       // for each one, if there is response data, then put it in the list for setSources
       Promise.all(requests).then((response) =>
-        setLegendItems(filterResponse(response)),
+        setLegendItems(filterResponse(response))
       );
     }
   },
@@ -99,10 +100,10 @@ export const vizMapConnection: MapPluginConnection<
           !!feature &&
           !!feature.source &&
           !!feature.properties &&
-          feature.source === VIZ_SOURCE_ID,
+          feature.source === VIZ_SOURCE_ID
       );
       return features.map(
-        ({ properties }) => properties as ProfilesMapProperties,
+        ({ properties }) => properties as ProfilesMapProperties
       );
     }
     return [];
@@ -118,7 +119,7 @@ export const vizMapConnection: MapPluginConnection<
           {items.map((item) => (
             <LegendItem {...item} />
           ))}
-        </LegendSection>,
+        </LegendSection>
       );
     else setLegendSection();
   },
@@ -128,7 +129,7 @@ export const vizMapConnection: MapPluginConnection<
         <>
           <Source {...sources[0]} key={sources[0].id} />
           <Layer {...layers[0]} key={layers[0].id} />
-        </>,
+        </>
       );
     }
   },
@@ -137,18 +138,13 @@ export const vizMapConnection: MapPluginConnection<
       ? items
       : items.filter((item) => selection.has(item.id));
   },
-  makeLayerPanelSection(
-    setLayerPanelSection,
-    items,
-    selectedItems,
-    handleChange,
-  ) {
+  makeLayerPanelSection() {
     // todo: implement
   },
-  makeHoverContent: (hoveredItems, event) => {
+  makeHoverContent: () => {
     return null; // todo: implement
   },
-  makeClickContent: (clickedItems, event) => {
+  makeClickContent: () => {
     return null; // todo: implement
   },
 };

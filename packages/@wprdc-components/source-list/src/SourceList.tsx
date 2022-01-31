@@ -31,8 +31,8 @@ export function SourceList(props: Props) {
               title={source.name}
               content={
                 <div className={styles.popover}>
-                  <Link external href={source.infoLink}>
-                    {source.infoLink}
+                  <Link external>
+                    <a href={source.infoLink}>{source.infoLink}</a>
                   </Link>
                   <p>{source.description}</p>
                 </div>

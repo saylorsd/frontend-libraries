@@ -31,7 +31,7 @@ import { TooltipPopoverProps, TooltipProps } from '@wprdc-types/tooltip';
 const TooltipPopover = React.forwardRef<HTMLDivElement, TooltipPopoverProps>(
   (
     { title, size = 'md', children, isOpen, onClose, style, ...otherProps },
-    ref,
+    ref
   ) => {
     const { overlayProps } = useOverlay(
       {
@@ -39,7 +39,7 @@ const TooltipPopover = React.forwardRef<HTMLDivElement, TooltipPopoverProps>(
         isOpen,
         isDismissable: true,
       },
-      ref as MutableRefObject<HTMLDivElement>,
+      ref as MutableRefObject<HTMLDivElement>
     );
 
     const { modalProps } = useModal();
@@ -47,7 +47,7 @@ const TooltipPopover = React.forwardRef<HTMLDivElement, TooltipPopoverProps>(
     // Get props for the dialog and its title
     const { dialogProps, titleProps } = useDialog(
       {},
-      ref as MutableRefObject<HTMLDivElement>,
+      ref as MutableRefObject<HTMLDivElement>
     );
 
     return (
@@ -66,7 +66,7 @@ const TooltipPopover = React.forwardRef<HTMLDivElement, TooltipPopoverProps>(
         </div>
       </FocusScope>
     );
-  },
+  }
 );
 
 export function Tooltip(props: TooltipProps) {
@@ -80,7 +80,7 @@ export function Tooltip(props: TooltipProps) {
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
     state,
-    triggerRef,
+    triggerRef
   );
 
   const { overlayProps: positionProps } = useOverlayPosition({
@@ -95,7 +95,7 @@ export function Tooltip(props: TooltipProps) {
     {
       onPress: () => state.open(),
     },
-    triggerRef,
+    triggerRef
   );
   return (
     <>

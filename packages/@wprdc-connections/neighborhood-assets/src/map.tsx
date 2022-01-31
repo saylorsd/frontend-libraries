@@ -42,7 +42,7 @@ export const assetMapConnection: MapPluginConnection<
   getSources: (_, __, setSources) => {
     fetchCartoVectorSource(ASSETS_SOURCE_ID, ASSETS_CARTO_SQL).then(
       (source) => setSources([source]),
-      (err) => console.error('CARTO', err),
+      (err) => console.error('CARTO', err)
     );
   },
   getLayers: (items, selected, setLayers, options) => {
@@ -78,7 +78,7 @@ export const assetMapConnection: MapPluginConnection<
           !!feature &&
           !!feature.source &&
           !!feature.properties &&
-          feature.source === ASSETS_SOURCE_ID,
+          feature.source === ASSETS_SOURCE_ID
       );
       return features.map(({ properties }) => properties as AssetMapProperties);
     }
@@ -95,7 +95,7 @@ export const assetMapConnection: MapPluginConnection<
           {items.map((item) => (
             <LegendItem {...item} />
           ))}
-        </LegendSection>,
+        </LegendSection>
       );
     else setLegendSection();
   },
@@ -105,7 +105,7 @@ export const assetMapConnection: MapPluginConnection<
         <>
           <Source {...sources[0]} key={sources[0].id} />
           <Layer {...layers[0]} key={layers[0].id} />
-        </>,
+        </>
       );
     }
   },
@@ -114,14 +114,9 @@ export const assetMapConnection: MapPluginConnection<
       ? items
       : items.filter((item) => selection.has(item.name));
   },
-  makeLayerPanelSection(
-    setLayerPanelSection,
-    items,
-    selectedItems,
-    handleChange,
-  ) {
+  makeLayerPanelSection(setLayerPanelSection, items, _, handleChange) {
     function _handleChange(val: string[]) {
-      handleChange(new Set(val));
+      if (!!handleChange) handleChange(new Set(val));
     }
 
     if (!!items && !!items.length)
@@ -141,14 +136,15 @@ export const assetMapConnection: MapPluginConnection<
               </Checkbox>
             ))}
           </CheckboxGroup>
-        </div>,
+        </div>
       );
   },
-  makeHoverContent: (hoveredItems, event) => {
+  makeHoverContent: (hoveredItems) => {
     if (!!hoveredItems && !!hoveredItems.length)
       return <div className="text-xs">{hoveredItems[0].name}</div>;
+    return null;
   },
-  makeClickContent: (clickedItems, event) => {
+  makeClickContent: () => {
     return null;
   },
 };
@@ -156,7 +152,7 @@ export const assetMapConnection: MapPluginConnection<
 export const makeAssetLegendItems = (
   availableAssetTypes: AssetType[],
   selectedAssetTypes: React.Key[],
-  colorScheme: ColorScheme = ColorScheme.Light,
+  colorScheme: ColorScheme = ColorScheme.Light
 ) => {
   return availableAssetTypes
     .filter((at) => selectedAssetTypes.includes(at.name))
@@ -166,7 +162,7 @@ export const makeAssetLegendItems = (
       label: at.title,
       marker: categoryColors(
         selectedAssetTypes.map((t) => t.toString()),
-        colorScheme,
+        colorScheme
       )[at.name],
     })) as CategoricalLegendItemProps[];
 };
@@ -174,7 +170,7 @@ export const makeAssetLegendItems = (
 export const makeAssetLayer = (
   categories: React.Key[],
   colorScheme: ColorScheme = ColorScheme.Light,
-  field: string = 'asset_type',
+  field: string = 'asset_type'
 ): LayerProps => ({
   id: ASSETS_LAYER_ID,
   source: ASSETS_SOURCE_ID,
@@ -194,7 +190,7 @@ export const makeAssetLayer = (
     'circle-color': colorExpression(
       categories.map((c) => `${c}`),
       colorScheme,
-      field,
+      field
     ),
     'circle-stroke-width': 1,
     'circle-stroke-color': 'rgb(55,65,81)',
@@ -218,11 +214,11 @@ export const makeAssetLayer = (
 const colorExpression = (
   categories: string[],
   colorScheme: ColorScheme = ColorScheme.Light,
-  field: string = 'asset_type',
+  field: string = 'asset_type'
 ): Expression | string => {
   const colors = Object.entries(categoryColors(categories, colorScheme)).reduce(
     (expression, [cat, color]) => [...expression, [cat], color] as string[],
-    [] as string[],
+    [] as string[]
   );
 
   if (!colors || !colors.length) {
@@ -241,7 +237,7 @@ const colorExpression = (
 
 const categoryColors = (
   categories: string[],
-  colorScheme: ColorScheme = ColorScheme.Light,
+  colorScheme: ColorScheme = ColorScheme.Light
 ) =>
   categories.reduce(
     (record, category, index) => ({
@@ -251,6 +247,6 @@ const categoryColors = (
           ? chroma.brewer.Set1[index]
           : chroma.brewer.Set1[index],
     }),
-    {} as Record<string, string>,
+    {} as Record<string, string>
   );
 2;

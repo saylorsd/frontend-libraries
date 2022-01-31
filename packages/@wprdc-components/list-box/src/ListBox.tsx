@@ -6,8 +6,8 @@ import { Resource } from '@wprdc-types/shared';
 
 import { StatelessListBox } from './StatelessListBox';
 
-export function ListBox<T extends Resource>(
-  props: ListBoxProps<T>,
+export function ListBox<T extends Resource, O extends object = {}>(
+  props: ListBoxProps<T, O>
 ): JSX.Element {
   const state = useTreeState<T>(props);
   let listBoxRef = React.useRef<HTMLUListElement>(null);

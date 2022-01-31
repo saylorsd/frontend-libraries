@@ -33,7 +33,7 @@ import { ProjectKey } from '@wprdc-types/shared';
 
 import { Item } from '@react-stately/collections';
 
-import { GeographyPickerMenuProps } from './types';
+import { GeographyPickerMenuProps } from '@wprdc-types/geography-picker';
 
 export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
   selectedGeog,

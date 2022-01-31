@@ -11,7 +11,7 @@ export const assetsConnection: ListConnection<AssetBrief> = {
     const res = await fetch(
       cursor ||
         `https://assets.wprdc.org/api/dev/assets/assets/?limit=${LIMIT}&search=${filterText}`,
-      { signal },
+      { signal }
     );
     const json = await res.json();
 
@@ -28,7 +28,7 @@ export const assetTypeConnection: ListConnection<AssetType> = {
   async load({ signal }) {
     const res = await fetch(
       `https://assets.wprdc.org/api/dev/assets/asset-types`,
-      { signal },
+      { signal }
     );
     const json = await res.json();
     return {

@@ -13,14 +13,14 @@ import { ResourceOptionTemplate } from '@wprdc-components/list-box';
 import { RiFolderChartLine } from 'react-icons/ri';
 
 function makeProfilesConnection<T extends Resource>(
-  itemType: string,
+  itemType: string
 ): ListConnection<T> {
   return {
     async load({ signal, cursor, filterText }) {
       const res = await fetch(
         cursor ||
           `https://api.profiles.wprdc.org/${itemType}/?search=${filterText}`,
-        { signal },
+        { signal }
       );
       const json = await res.json();
 

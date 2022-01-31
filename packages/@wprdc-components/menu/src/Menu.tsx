@@ -67,7 +67,7 @@ function MenuItem<T>({ item, state, onAction }: MenuItemProps<T>): JSX.Element {
       onAction,
     },
     state,
-    ref,
+    ref
   );
 
   const [isFocused, setFocused] = React.useState(false);

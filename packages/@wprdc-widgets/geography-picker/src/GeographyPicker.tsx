@@ -14,7 +14,7 @@ import { useButton } from '@react-aria/button';
 import { Popover } from '@wprdc-components/popover';
 import { GeogBrief } from '@wprdc-types/geo';
 
-import { GeographyPickerProps } from './types';
+import { GeographyPickerProps } from '@wprdc-types/geography-picker';
 import { GeographyPickerMenu } from './GeographyPickerMenu';
 
 const PLACEHOLDER = 'Click here to search for a geography...';

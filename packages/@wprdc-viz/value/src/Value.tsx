@@ -37,7 +37,7 @@ export function BigValue(props: ValueVizProps) {
       <span className={styles.value}>
         {value.toLocaleString(
           'en-US',
-          primaryVariable ? primaryVariable.localeOptions : undefined,
+          primaryVariable ? primaryVariable.localeOptions : undefined
         )}
       </span>
     ) : undefined;
@@ -60,7 +60,7 @@ export function BigValue(props: ValueVizProps) {
         {' /'}
         {denom.toLocaleString(
           'en-US',
-          denomVariable ? denomVariable.localeOptions : undefined,
+          denomVariable ? denomVariable.localeOptions : undefined
         )}
       </span>
     ) : undefined;

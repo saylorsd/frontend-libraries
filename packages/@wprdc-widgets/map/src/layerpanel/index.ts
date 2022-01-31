@@ -1,1 +1,1 @@
-export * from './LayerPanel'
+export * from './LayerPanel';

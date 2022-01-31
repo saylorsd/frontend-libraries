@@ -1,7 +1,6 @@
 /*
  * Components
  */
-export * from '@wprdc-components/basic-map';
 export * from '@wprdc-components/combo-box';
 export * from '@wprdc-components/divider';
 export * from '@wprdc-components/list-box';
@@ -14,7 +13,6 @@ export * from '@wprdc-components/error-message';
 export * from '@wprdc-components/loading-message';
 export * from '@wprdc-components/provider';
 export * from '@wprdc-components/source-list';
-export * from '@wprdc-components/tags';
 export * from '@wprdc-components/button';
 export * from '@wprdc-components/data-chip-group';
 export * from '@wprdc-components/heading';

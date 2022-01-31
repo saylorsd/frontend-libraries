@@ -8,9 +8,10 @@ import { ResourceOptionTemplateOptions } from '@wprdc-types/list-box';
 
 export function ConnectedSearchBox<
   T extends Resource,
-  O extends object = ResourceOptionTemplateOptions<T>,
+  O extends object = ResourceOptionTemplateOptions<T>
 >(props: ConnectedSearchBoxProps<T, O>) {
-  const { connection, label, onSelection, listBoxProps } = props;
+  const { connection, label, onSelection, listBoxProps, ...searchBoxProps } =
+    props;
   const list = useAsyncList<T>(connection);
   if (!!list.error) console.error(list.error);
 
@@ -21,7 +22,7 @@ export function ConnectedSearchBox<
   }
 
   return (
-    <SearchBox<T>
+    <SearchBox<T, O>
       label={label}
       items={list.items}
       inputValue={list.filterText}
@@ -30,6 +31,7 @@ export function ConnectedSearchBox<
       onLoadMore={list.loadMore}
       onSelectionChange={handleSelection}
       listBoxProps={listBoxProps}
+      {...searchBoxProps}
     >
       {connection.renderItem}
     </SearchBox>

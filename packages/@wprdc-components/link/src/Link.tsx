@@ -10,9 +10,10 @@ import * as React from 'react';
 import './main.css';
 import styles from './Link.module.css';
 
+import { FocusRing } from '@react-aria/focus';
 import { LinkProps } from '@wprdc-types/link';
 import { useLink } from '@react-aria/link';
-// import { RiExternalLinkLine } from 'react-icons/ri';
+import { RiExternalLinkLine } from 'react-icons/ri';
 
 export const Link: React.FC<LinkProps> = (props) => {
   const { external } = props;
@@ -21,16 +22,12 @@ export const Link: React.FC<LinkProps> = (props) => {
   const { linkProps } = useLink(props, ref);
 
   return (
-    <a
-      {...linkProps}
-      ref={ref}
-      href={props.href}
-      target={props.target}
-      className={styles.link}
-    >
-      {props.children}
-      {/*{external && <RiExternalLinkLine className={styles.icon} />}*/}
-    </a>
+    <FocusRing focusRingClass={styles.focusRing}>
+      <div>
+        <a {...linkProps} />
+        {!!external && <RiExternalLinkLine className={styles.focusRing} />}
+      </div>
+    </FocusRing>
   );
 };
 

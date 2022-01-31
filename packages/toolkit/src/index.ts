@@ -1,5 +1,5 @@
-export * as WPRDCTypes from './types';
-export * as WPRDCComoponents from './components';
-export * as WPRDCConnections from './connections';
-export * as WPRDCViz from './viz';
-export * as WPRDCWidgets from './widgets';
+export * from './types';
+export * from './components';
+export * from './connections';
+export * from './viz';
+export * from './widgets';

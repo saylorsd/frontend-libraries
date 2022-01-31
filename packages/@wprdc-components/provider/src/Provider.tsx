@@ -20,7 +20,7 @@ Context.displayName = 'ProviderContext';
 
 const defaultReducer: Reducer<ProviderState, ProviderAction> = (
   state,
-  action,
+  action
 ) => {
   switch (action.type) {
     case 'set-mapboxAPIToken':
@@ -72,5 +72,6 @@ export const Provider: React.FC<ProviderProps> = (props) => {
 };
 
 export function useProvider() {
-  return useContext(Context);
+  const context = useContext(Context);
+  return context;
 }

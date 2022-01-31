@@ -12,10 +12,6 @@ export * from './resources';
 export { AsyncListLoadOptions } from '@react-stately/data';
 export { CollectionBase, Selection } from '@react-types/shared';
 
-// todo: maybe move this to ../api
-/** Backend API resource base properties. */
-
-// todo: replace with enum
 /** Slugs used to represent projects across connections */
 export enum ProjectKey {
   Viz = 'viz',
@@ -42,12 +38,6 @@ export enum DataVizType {
   BigValue = 'BigValue',
 }
 
-//class ErrorLevel(Enum):
-//     OK = 0
-//     EMPTY = 1
-//     WARNING = 10
-//     ERROR = 100
-
 export enum ErrorLevel {
   OK = 0,
   EMPTY = 1,
@@ -67,11 +57,14 @@ export interface ListConnection<T extends Resource, C = string>
 
 /** A component that can except a connection */
 export interface ListConnectableComponentProps<T extends Resource> {
-  connection?: ListConnection<T>;
+  connection: ListConnection<T>;
 }
 
 export type ListConnectableComponent<T extends Resource> = (
   props: ListConnectableComponentProps<T>,
 ) => ReactElement | null;
 
-// add project strings for auto complete
+export interface Size {
+  width: number | undefined;
+  height: number | undefined;
+}

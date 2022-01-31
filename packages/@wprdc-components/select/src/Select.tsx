@@ -19,12 +19,12 @@ import { StatelessListBox } from '@wprdc-components/list-box';
 import { SelectProps } from '@wprdc-types/select';
 import { Resource } from '@wprdc-types/shared';
 
-import { Selection } from '@wprdc-types/shared';
-
 // todo: get icons
 import { HiSelector } from 'react-icons/hi';
 
-export function Select<T extends Resource>(props: SelectProps<T>) {
+export function Select<T extends Resource, O extends object = {}>(
+  props: SelectProps<T, O>
+) {
   // Create state based on the incoming props
   const { onSelection, listBoxProps } = props;
 
@@ -44,7 +44,7 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
   let { labelProps, triggerProps, valueProps, menuProps } = useSelect(
     props,
     state,
-    ref,
+    ref
   );
 
   // Get props for the button based on the trigger props from useSelect
@@ -72,7 +72,7 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
         <span
           className={classnames(
             styles.value,
-            state.selectedItem ? styles.selected : styles.placeholder,
+            state.selectedItem ? styles.selected : styles.placeholder
           )}
           {...valueProps}
         >
@@ -91,7 +91,8 @@ export function Select<T extends Resource>(props: SelectProps<T>) {
       {state.isOpen && (
         <Popover isOpen={state.isOpen} onClose={state.close}>
           <div className={styles.popoverContent}>
-            <StatelessListBox<T>
+            <StatelessListBox<T, O>
+              listBoxRef={listBoxRef}
               {...listBoxProps}
               {...(menuProps as AriaListBoxOptions<T>)}
               state={state}

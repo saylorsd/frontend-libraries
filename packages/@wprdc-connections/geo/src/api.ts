@@ -21,12 +21,12 @@ const api = createAPI<Endpoint>(HOST);
 function requestGeoLayers() {
   return api.callAndProcessEndpoint<GeogLevel[]>(
     Endpoint.GeogTypes,
-    Method.GET,
+    Method.GET
   );
 }
 
 export function requestGeogDetails(
-  geog: GeogIdentifier,
+  geog: GeogIdentifier
 ): Promise<ResponsePackage<Geog>> {
   const { geogType, geogID } = geog;
   return api.callAndProcessEndpoint<Geog>(Endpoint.Geog, Method.GET, {

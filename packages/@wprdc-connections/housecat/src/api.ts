@@ -14,21 +14,21 @@ export enum Endpoint {
 const api = createAPI<Endpoint>(HOST);
 
 export function requestAffordableHousingProject(
-  projectID: number,
+  projectID: number
 ): Promise<ResponsePackage<ProjectIndexDetails>> {
   return api.callAndProcessEndpoint<ProjectIndexDetails>(
     Endpoint.PHProject,
     Method.GET,
     {
       id: projectID,
-    },
+    }
   );
 }
 
 export function requestPublicHousingProjectMap() {
   return api.callAndProcessEndpoint<APIMapBoxResponse>(
     Endpoint.PHProjectMap,
-    Method.GET,
+    Method.GET
   );
 }
 

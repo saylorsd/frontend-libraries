@@ -20,8 +20,6 @@ import {
   useListBoxSection,
   useOption,
 } from '@react-aria/listbox';
-
-// todo: get icons
 import { RiCheckFill } from 'react-icons/ri';
 
 import {
@@ -31,8 +29,8 @@ import {
 } from '@wprdc-types/list-box';
 import { Resource } from '@wprdc-types/shared';
 
-export const StatelessListBox = <T extends Resource>(
-  props: StatelessListBoxProps<T>,
+export const StatelessListBox = <T extends Resource, O extends object = {}>(
+  props: StatelessListBoxProps<T, O>
 ): JSX.Element => {
   const defaultRef = React.useRef<HTMLUListElement>(null);
   const {
@@ -61,7 +59,7 @@ export const StatelessListBox = <T extends Resource>(
         {items.map((item) => {
           if (item.type === 'section') {
             return (
-              <ListBoxSection<T>
+              <ListBoxSection<T, O>
                 key={item.key}
                 section={item}
                 state={state}
@@ -72,7 +70,7 @@ export const StatelessListBox = <T extends Resource>(
             );
           }
           return (
-            <Option<T>
+            <Option<T, O>
               key={item.key}
               item={item}
               state={state}
@@ -88,7 +86,7 @@ export const StatelessListBox = <T extends Resource>(
 };
 
 export const ListBoxSection = <T extends Resource, O extends object = {}>(
-  props: ListBoxSectionProps<T, O>,
+  props: ListBoxSectionProps<T, O>
 ) => {
   const { section, state, dense, optionTemplate, optionTemplateOptions } =
     props;
@@ -120,7 +118,7 @@ export const ListBoxSection = <T extends Resource, O extends object = {}>(
           {nodes.map(
             (node) =>
               !!node && (
-                <Option
+                <Option<T, O>
                   key={node.key}
                   item={node}
                   state={state}
@@ -128,7 +126,7 @@ export const ListBoxSection = <T extends Resource, O extends object = {}>(
                   optionTemplate={optionTemplate}
                   optionTemplateOptions={optionTemplateOptions}
                 />
-              ),
+              )
           )}
         </ul>
       </li>
@@ -136,26 +134,28 @@ export const ListBoxSection = <T extends Resource, O extends object = {}>(
   );
 };
 
-export const Option = <T extends Resource, P extends object = {}>({
+export const Option = <T extends Resource, O extends object = {}>({
   item,
   state,
   dense,
-  optionTemplate: Template,
+  optionTemplate,
   optionTemplateOptions,
-}: OptionProps<T, P>) => {
+}: OptionProps<T, O>) => {
   const ref = React.useRef<HTMLLIElement>(null);
-
+  const Template = optionTemplate;
   const { optionProps, isDisabled, isSelected, isFocused } = useOption(
     {
       key: item.key,
     },
     state,
-    ref,
+    ref
   );
 
   const content = React.useMemo(() => {
-    if (!!Template)
+    if (!!Template) {
+      // @ts-ignore
       return <Template item={item.value} {...optionTemplateOptions} />;
+    }
     return item.rendered;
   }, [item, Template]);
 

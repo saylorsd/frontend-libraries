@@ -1,16 +1,12 @@
 .container {
 }
-
 .itemsWrapper {
   @apply pl-2;
 }
-
 .label {
 }
-
 .itemLabel {
 }
-
 .input {
   @apply mr-1;
 }

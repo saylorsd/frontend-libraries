@@ -10,7 +10,7 @@ import {
 import { Resource } from '@wprdc-types/shared';
 
 export function ResourceOptionTemplate<T extends Resource>(
-  props: ResourceOptionTemplateProps<T>,
+  props: ResourceOptionTemplateProps<T>
 ) {
   const {
     item,

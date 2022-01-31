@@ -19,15 +19,17 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --declaration",
+    "build": "tsc --declaration",
     "prepare": "npm run build",
     "watch": "tsc -w --declaration"
   },
   "peerDependencies": {
+    "typescript": "4.5.5",
     "react": "^16.8.0 || ^17.0.0-rc.1",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@types/react": "^17.0.38",
     "@wprdc-types/breadcrumbs": "^0.0.5",
     "@wprdc-types/geo": "^0.0.6"
   },

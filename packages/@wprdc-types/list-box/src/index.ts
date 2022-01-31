@@ -3,7 +3,7 @@
  * ListBox types
  *
  **/
-import { Key, RefObject } from 'react';
+import React, { Key, RefObject } from 'react';
 
 import {
   AriaListBoxOptions,
@@ -22,7 +22,7 @@ import { Resource } from '@wprdc-types/shared';
  * T shape of object represent by list box.
  * P props for option template
  */
-export interface ListBoxOptions<T, O = {}> {
+export interface ListBoxOptions<T, O extends object = {}> {
   /** Whether to make the list fill its parent's width */
   fullWidth?: boolean;
   loadingMessage?: string;
@@ -36,12 +36,14 @@ export interface ListBoxOptions<T, O = {}> {
 /** Function that uses item to generate list box option text */
 export type OptionFieldAccessor<T> = (item: T) => React.ReactNode;
 
-export type OptionTemplateProps<T, O = {}> = O & {
+export type OptionTemplateProps<T, O extends object = {}> = O & {
   item: T;
 };
 
 /** All option template types should derive from this */
-export type OptionTemplate<T, O> = React.FC<OptionTemplateProps<T, O>>;
+export type OptionTemplate<T, O extends object = {}> = React.FC<
+  OptionTemplateProps<T, O>
+>;
 
 export interface ResourceOptionTemplateOptions<T extends Resource> {
   /**
@@ -58,7 +60,7 @@ export interface ResourceOptionTemplateOptions<T extends Resource> {
    *
    * Setting this with getIcon will use it as a fallback/default.
    */
-  Icon?: React.FC<{ item: T } & React.HTMLAttributes<HTMLOrSVGElement>>;
+  Icon?: React.FC<{ item?: T } & React.HTMLAttributes<HTMLOrSVGElement>>;
   /**
    * Field in resource to use for the title
    *  or function to find/generate title text from item
@@ -73,29 +75,29 @@ export interface ResourceOptionTemplateOptions<T extends Resource> {
 
 // Component Props
 
-export interface ListBoxProps<T>
+export interface ListBoxProps<T, O extends object = {}>
   extends AriaListBoxOptions<T>,
-    ListBoxOptions<T> {
+    ListBoxOptions<T, O> {
   children: CollectionChildren<T>;
 }
 
-export interface StatelessListBoxProps<T>
+export interface StatelessListBoxProps<T, O extends object = {}>
   extends AriaListBoxOptions<T>,
-    ListBoxOptions<T> {
+    ListBoxOptions<T, O> {
   /** Externally-managed state to render in the ListBox */
   state: ListBoxState<T>;
   /** Externally-managed ref to use for the listBox */
   listBoxRef?: RefObject<HTMLUListElement>;
 }
 
-export interface ListBoxSectionProps<T, P>
+export interface ListBoxSectionProps<T, O extends object>
   extends AriaListBoxSectionProps,
-    ListBoxOptions<T, P> {
+    ListBoxOptions<T, O> {
   section: Node<T>;
   state: ListState<T>;
 }
 
-export interface OptionProps<T, O = {}>
+export interface OptionProps<T, O extends object = {}>
   extends AriaOptionProps,
     ListBoxOptions<T, O> {
   item: Node<T>;

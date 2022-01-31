@@ -5,7 +5,9 @@
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
     "lib": "src"
   },
@@ -20,13 +22,16 @@
     "url": "git+https://github.com/WPRDC/frontend-libraries.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "rimraf dist && mkdir -p dist && npm run build:types && npm run build:module",
+    "build:types": "cp src/components.ts dist/components.d.ts; cp src/connections.ts dist/connections.d.ts; cp src/index.ts dist/index.d.ts; cp src/types.ts dist/types.d.ts; cp src/viz.ts dist/viz.d.ts; cp src/widgets.ts dist/widgets.d.ts;",
+    "build:module": "cp src/components.ts dist/components.js; cp src/connections.ts dist/connections.js; cp src/index.ts dist/index.js; cp src/types.ts dist/types.js; cp src/viz.ts dist/viz.js; cp src/widgets.ts dist/widgets.js;",
+    "prepare": "npm run build",
+    "watch": "tsc -w --declaration"
   },
   "bugs": {
     "url": "https://github.com/WPRDC/frontend-libraries/issues"
   },
   "dependencies": {
-    "@wprdc-components/basic-map": "^0.0.2",
     "@wprdc-components/breadcrumbs": "^0.0.6",
     "@wprdc-components/button": "^0.0.6",
     "@wprdc-components/checkbox-group": "^0.0.6",
@@ -51,7 +56,6 @@
     "@wprdc-components/spinner": "^0.0.6",
     "@wprdc-components/tabs": "^0.0.6",
     "@wprdc-components/tag": "^0.0.6",
-    "@wprdc-components/tags": "^0.0.6",
     "@wprdc-components/tooltip": "^0.0.6",
     "@wprdc-components/util": "^0.0.6",
     "@wprdc-connections/api": "^0.0.6",

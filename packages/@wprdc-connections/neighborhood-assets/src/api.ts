@@ -37,7 +37,7 @@ export function getAssets(params: Record<string, any>) {
     Method.GET,
     {
       params,
-    },
+    }
   );
 }
 
@@ -59,7 +59,7 @@ export function getCategories() {
   return api.callAndProcessEndpoint<AssetCategory[]>(
     Endpoints.Categories,
     Method.GET,
-    {},
+    {}
   );
 }
 

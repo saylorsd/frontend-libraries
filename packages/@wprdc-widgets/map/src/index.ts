@@ -4,7 +4,6 @@
  *
  */
 export * from './Map';
-export * from './utils';
 
 export * from './layerpanel';
 export * from './legend';
