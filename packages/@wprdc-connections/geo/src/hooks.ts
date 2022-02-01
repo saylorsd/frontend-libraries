@@ -2,10 +2,10 @@ import * as GeoAPI from './api';
 
 import { useEffect, useState } from 'react';
 
-import { Geog, GeogIdentifier } from '@wprdc-types/geo';
+import { Geog } from '@wprdc-types/geo';
 import { ResponsePackage } from '@wprdc-types/api';
 
-export function useGeography(geogID?: GeogIdentifier) {
+export function useGeography(geogSlug?: string) {
   const [geog, setGeog] = useState<Geog>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string>();
@@ -17,13 +17,13 @@ export function useGeography(geogID?: GeogIdentifier) {
       setIsLoading(false);
     }
 
-    if (!!geogID) {
+    if (!!geogSlug) {
       setIsLoading(true);
-      GeoAPI.requestGeogDetails(geogID).then(handleResponse);
+      GeoAPI.requestGeogDetails(geogSlug).then(handleResponse);
     }
 
     return function cleanup() {};
-  }, [geogID]);
+  }, [geogSlug]);
 
   return { geog, isLoading, error };
 }

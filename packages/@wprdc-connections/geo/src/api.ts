@@ -1,13 +1,7 @@
 import { createAPI } from '@wprdc-connections/api';
 import { ResponsePackage, Method } from '@wprdc-types/api';
 
-import {
-  Geog,
-  GeogIdentifier,
-  GeogBrief,
-  GeographyType,
-  GeogLevel,
-} from '@wprdc-types/geo';
+import { Geog, GeogBrief, GeographyType, GeogLevel } from '@wprdc-types/geo';
 
 const HOST = 'https://api.profiles.wprdc.org';
 
@@ -26,11 +20,10 @@ function requestGeoLayers() {
 }
 
 export function requestGeogDetails(
-  geog: GeogIdentifier
+  geog: string
 ): Promise<ResponsePackage<Geog>> {
-  const { geogType, geogID } = geog;
   return api.callAndProcessEndpoint<Geog>(Endpoint.Geog, Method.GET, {
-    id: `${geogType}/${geogID}`,
+    id: geog,
     params: { details: true },
   });
 }

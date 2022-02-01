@@ -11,6 +11,30 @@ import {
 } from '@wprdc-types/list-box';
 import { ResourceOptionTemplate } from '@wprdc-components/list-box';
 
+export function makeGeographyConnection(
+  geogType: GeographyType
+): ListConnection<GeogBrief> {
+  return {
+    async load({ signal, cursor, filterText }) {
+      const res = await fetch(
+        cursor ||
+          `https://api.profiles.wprdc.org/geo/${geogType}/?search=${filterText}&limit=20`,
+        { signal }
+      );
+      const json = await res.json();
+      return {
+        items: json.results,
+        cursor: json.next,
+      };
+    },
+    renderItem: (item) => {
+      return <Item key={item.slug}>{item.title}</Item>;
+    },
+    getKey: (item) => item.slug,
+    getFilterTextFromItem: (item) => item.title,
+  };
+}
+
 export class GeographyConnection implements ListConnection<GeogBrief> {
   geogType: GeographyType;
 
@@ -25,7 +49,7 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
   }: AsyncListLoadOptions<GeogBrief, string>) => {
     const res = await fetch(
       cursor ||
-        `https://api.profiles.wprdc.org/geo/${this.geogType}/?search=${filterText}`,
+        `https://api.profiles.wprdc.org/geo/${this.geogType}/?search=${filterText}&limit=20`,
       { signal }
     );
     const json = await res.json();
@@ -35,10 +59,12 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
     };
   };
 
-  public renderItem = (item: GeogBrief) => (
-    <Item key={item.id}>{item.title}</Item>
-  );
-  public getKey = (item: GeogBrief) => item.id.toString();
+  public renderItem = (item: GeogBrief) => {
+    console.log(item);
+
+    return <Item key={item.slug}>{item.title}</Item>;
+  };
+  public getKey = (item: GeogBrief) => item.slug;
 }
 
 // todo: rename to geographyLevelConnection

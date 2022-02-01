@@ -53,6 +53,7 @@ export interface ListConnection<T extends Resource, C = string>
 
   /** Function that describes how to render each item. */
   renderItem: (item: T) => JSX.Element;
+  getFilterTextFromItem?: (item: T) => string;
 }
 
 /** A component that can except a connection */

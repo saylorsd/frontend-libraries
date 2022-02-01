@@ -12,26 +12,43 @@ export function ConnectedSearchBox<
 >(props: ConnectedSearchBoxProps<T, O>) {
   const { connection, label, onSelection, listBoxProps, ...searchBoxProps } =
     props;
+  const [selectedKey, setSelectedKey] = React.useState<Key>();
+  const [selectedFilterText, setSelectedFilterText] = React.useState<string>();
+
   const list = useAsyncList<T>(connection);
   if (!!list.error) console.error(list.error);
 
   function handleSelection(key: Key) {
+    const item = list.getItem(key);
+    if (!item) return;
+    let filterText = item.name;
+    if (!!connection.getFilterTextFromItem)
+      filterText = connection.getFilterTextFromItem(list.getItem(key));
+
+    setSelectedKey(key);
+    setSelectedFilterText(filterText);
     if (!!onSelection) {
       onSelection(list.getItem(key));
     }
+  }
+
+  function handleInputChange(input: string) {
+    setSelectedFilterText(undefined);
+    list.setFilterText(input);
   }
 
   return (
     <SearchBox<T, O>
       label={label}
       items={list.items}
-      inputValue={list.filterText}
-      onInputChange={list.setFilterText}
+      onInputChange={handleInputChange}
       loadingState={list.loadingState}
       onLoadMore={list.loadMore}
-      onSelectionChange={handleSelection}
       listBoxProps={listBoxProps}
       {...searchBoxProps}
+      selectedKey={selectedKey}
+      inputValue={selectedFilterText || list.filterText}
+      onSelectionChange={handleSelection}
     >
       {connection.renderItem}
     </SearchBox>

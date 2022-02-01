@@ -17,7 +17,6 @@ import { useFilter } from '@react-aria/i18n';
 import { useButton } from '@react-aria/button';
 import { useSearchField } from '@react-aria/searchfield';
 
-//todo: get icons
 import { RiSearchLine, RiCloseLine } from 'react-icons/ri';
 
 import { Popover } from '@wprdc-components/popover';
@@ -58,7 +57,6 @@ export function SearchBox<T extends Resource, O extends object = {}>(
   const [isLoading, setIsLoading] = React.useState<boolean>(
     loadingState === 'loading'
   );
-
   // Get props for the clear button from useSearchField
   const searchProps = {
     label: props.label,

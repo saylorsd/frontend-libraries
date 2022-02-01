@@ -37,7 +37,9 @@ function makeProfilesConnection<T extends Resource>(
         cursor: json.next,
       };
     },
-    renderItem: (item) => <Item key={item.id}>{item.name}</Item>,
+    renderItem: (item) => {
+      return <Item key={item.id}>{item.name}</Item>;
+    },
     getKey: (item) => item.id.toString(),
   };
 }

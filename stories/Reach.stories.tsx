@@ -20,8 +20,8 @@ import { useTaxonomy } from '../packages/@wprdc-connections/profiles';
 import { IndicatorView } from '../packages/@wprdc-widgets/indicator-view';
 import { useProvider } from '../packages/@wprdc-components/provider';
 import { LoadingMessage } from '../packages/@wprdc-components/loading-message';
-import { Indicator } from '../packages/@wprdc-types/profiles/src';
-import { DataVizBase } from '../packages/@wprdc-types/viz/src';
+import { Indicator } from '../packages/@wprdc-types/profiles';
+import { DataVizBase } from '../packages/@wprdc-types/viz';
 
 export default {
   title: 'Demos/REACH Demo',
