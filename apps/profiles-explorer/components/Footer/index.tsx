@@ -1,5 +1,4 @@
 import styles from './Footer.module.css';
-import { Link } from '@wprdc/toolkit';
 
 export default function Footer() {
   return (
@@ -10,13 +9,13 @@ export default function Footer() {
       </div>
       <div className={styles.spacer} />
       <div className={styles.links}>
-        <Link
+        <a
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/wprdc/neighborhood-simulacrum"
         >
           GitHub
-        </Link>
+        </a>
       </div>
     </div>
   );
