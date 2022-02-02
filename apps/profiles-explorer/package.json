@@ -1,0 +1,27 @@
+{
+  "name": "profiles-explorer",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "prepare": "",
+    "start": "next start",
+    "lint": "next lint",
+    "link:toolkit": "npm link @wprdc/toolkit"
+  },
+  "peerDependencies": {
+    "typescript": "4.5.5"
+  },
+  "devDependencies": {
+    "next-transpile-modules": "^9.0.0",
+    "tailwindcss": "^3.0.18"
+  },
+  "dependencies": {
+    "@wprdc/toolkit": "^0.0.5",
+    "classnames": "^2.3.1",
+    "next": "12.0.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

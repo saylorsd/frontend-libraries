@@ -1,0 +1,25 @@
+.wrapper {
+  @apply container mx-auto;
+  @apply lg:flex lg:flex-row-reverse lg:gap-4;
+}
+
+.searchSection {
+  @apply pb-4 lg:pb-0 mb-2 border-b-2 border-black;
+  @apply lg:flex-shrink-0 lg:w-[400px];
+  @apply lg:border-b-0 lg:border-l-2 pl-4;
+}
+
+.mainSection {
+  @apply lg:flex-grow;
+}
+
+.embedWrapper {
+  @apply p-0;
+}
+
+.searchLabel {
+}
+
+.loadingWrapper {
+  @apply container mx-auto my-auto;
+}

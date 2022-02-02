@@ -1,0 +1,93 @@
+.main {
+  @apply flex-grow w-screen justify-center items-center flex flex-col;
+}
+
+.hero {
+  @apply w-full relative h-80;
+}
+
+.titleSection {
+  @apply absolute h-80 w-full;
+  @apply flex flex-col items-center justify-center;
+  @apply bg-white bg-opacity-30;
+}
+
+.welcome {
+  @apply lg:w-2/3;
+}
+
+.title {
+  @apply font-bold;
+  @apply text-3xl md:text-5xl lg:text-6xl xl:text-7xl;
+}
+
+.subtitle {
+  @apply mt-3.5 w-3/6;
+  @apply text-lg lg:text-2xl;
+}
+
+.heroSection {
+  @apply absolute h-80 w-full;
+  @apply flex flex-col items-end justify-end;
+  @apply overflow-hidden;
+  z-index: -1;
+}
+
+.heroImg {
+}
+
+.bigButton {
+  @apply cursor-pointer shadow-lg hover:shadow-2xl;
+  @apply w-56 h-48 border border-black rounded;
+}
+
+.buttonTitle {
+  @apply font-bold text-xl;
+  @apply p-2.5;
+}
+
+.buttonText {
+  @apply p-2.5;
+}
+
+.description {
+  @apply text-lg text-center;
+}
+
+.content {
+  @apply w-2/3 p-2.5;
+}
+
+.menu {
+  @apply mt-3;
+}
+
+.appsMenu {
+  @apply grid grid-cols-3 gap-4;
+  @apply mb-6 mt-2;
+}
+
+.toolsMenu {
+  @apply mb-6 mt-2;
+  @apply grid grid-cols-4 gap-2;
+}
+
+.toolButton {
+  @apply cursor-pointer shadow-lg hover:shadow-2xl;
+  @apply w-56 h-32 border border-black rounded;
+}
+
+.toolButtonTitle {
+  @apply font-bold text-lg;
+  @apply p-2;
+}
+
+.toolButtonText {
+  @apply text-sm;
+  @apply px-2;
+}
+
+.sectionTitle {
+  @apply text-2xl font-semibold text-center;
+  @apply mt-2;
+}

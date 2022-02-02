@@ -1,0 +1,81 @@
+.container {
+  @apply flex-grow;
+  @apply lg:min-h-0 lg:grid lg:grid-cols-12;
+  @apply overflow-x-hidden;
+}
+
+.navMenu {
+  @apply flex-1 flex shadow-lg md:border-b lg:border-r lg:border-b-0;
+  /* on medium screens, it's horizontal */
+  @apply flex-col md:flex-row lg:flex-col;
+
+  @apply md:col-span-12 md:row-span-1 md:w-full;
+  @apply lg:col-span-4 xl:col-span-3;
+}
+
+.content {
+  @apply flex flex-col;
+  @apply md:col-span-12 lg:col-span-8 xl:col-span-9;
+  @apply md:flex-grow;
+  @apply lg:overflow-y-hidden;
+}
+
+/* Navmenu parts */
+.geoMenu {
+  @apply flex-shrink p-3 pb-0;
+}
+
+.map {
+  @apply flex-grow;
+}
+
+/* Content parts */
+.geogContainer {
+  @apply py-4 pl-4 shadow-md border-b;
+}
+
+.geogTitle {
+  @apply text-4xl font-medium;
+}
+
+.taxonomyContainer {
+  @apply p-4;
+  @apply flex-grow overflow-y-auto;
+}
+
+.cta {
+  @apply font-bold text-2xl;
+}
+
+.menuItem {
+  @apply flex align-middle items-center mt-4;
+}
+
+.labelText {
+  @apply m-0 font-semibold text-xs text-gray-700 uppercase block;
+}
+
+.dropdown {
+  @apply ml-3 py-1 flex-grow;
+}
+
+.stepNumber {
+  @apply text-gray-700 font-bold text-4xl;
+}
+
+.orSection {
+  @apply lg:pl-12;
+  @apply md:flex md:flex-col md:justify-end;
+}
+
+.spacer {
+  @apply md:flex-grow;
+}
+
+.orBreak {
+  @apply text-gray-400 font-medium italic;
+  @apply p-0.5 pb-2;
+}
+
+.navTabs {
+}
