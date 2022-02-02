@@ -89,7 +89,7 @@ export function BreadcrumbItem(props: BreadcrumbItemProps) {
         <Link
           {...itemProps}
           ref={ref}
-          href={props.href}
+          href={props.href || '#'}
           className={styles.link}
         >
           {props.children}
