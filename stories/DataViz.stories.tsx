@@ -27,7 +27,7 @@ export const WithSearch = () => {
   );
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
 
-  const { geog } = useGeography(geogBrief);
+  const { geog } = useGeography(geogBrief.slug);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);

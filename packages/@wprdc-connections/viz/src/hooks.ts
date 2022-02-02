@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { GeogBrief } from '@wprdc-types/geo';
 import { DataVizBase, Downloaded } from '@wprdc-types/viz';
 import { ResponsePackage } from '@wprdc-types/api';
 
 import { VizAPI } from './api';
 
-export function useDataViz(dataVizSlug?: string, geog?: GeogBrief) {
+export function useDataViz(dataVizSlug?: string, geogSlug?: string) {
   const [dataViz, setDataViz] = useState<Downloaded<DataVizBase>>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string>();
@@ -15,18 +14,19 @@ export function useDataViz(dataVizSlug?: string, geog?: GeogBrief) {
       data,
       error,
     }: ResponsePackage<Downloaded<DataVizBase>>) {
+      console.log(data);
       setDataViz(data);
       setError(error);
       setIsLoading(false);
     }
 
-    if (!!dataVizSlug && !!geog?.geogID) {
+    if (!!dataVizSlug && !!geogSlug) {
       setIsLoading(true);
-      VizAPI.requestDataViz(dataVizSlug, geog).then(handleResponse);
+      VizAPI.requestDataViz(dataVizSlug, geogSlug).then(handleResponse);
     }
 
     return function cleanup() {};
-  }, [dataVizSlug, geog]);
+  }, [dataVizSlug, geogSlug]);
 
   return { dataViz, error, isLoading };
 }

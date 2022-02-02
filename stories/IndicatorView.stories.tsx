@@ -144,11 +144,12 @@ const OTHER_INDICATOR: Indicator = {
 const Template: Story<IndicatorViewProps> = (args) => {
   const context = useProvider();
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
-  const { geog } = useGeography(geogBrief);
+  const { geog } = useGeography(geogBrief.slug);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
   }, [geog]);
+  console.log(geog);
 
   return (
     <>
@@ -163,7 +164,8 @@ const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
     React.useState<string>('total-population');
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
 
-  const { geog } = useGeography(geogBrief);
+  const { geog } = useGeography(geogBrief.slug);
+  console.log(geog);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
@@ -199,6 +201,6 @@ Connected.args = {};
 
 export const Card = Template.bind({});
 Card.args = {
-  indicator: DEFAULT_INDICATOR,
+  indicator: OTHER_INDICATOR,
   card: true,
 };

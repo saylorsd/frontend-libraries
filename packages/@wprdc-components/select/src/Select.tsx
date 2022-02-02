@@ -53,9 +53,11 @@ export function Select<T extends Resource, O extends object = {}>(
 
   return (
     <div className={styles.container}>
-      <div {...labelProps} className={styles.label}>
-        {props.label}
-      </div>
+      {!!props.label && (
+        <div {...labelProps} className={styles.label}>
+          {props.label}
+        </div>
+      )}
       <HiddenSelect
         state={state}
         triggerRef={ref}

@@ -14,7 +14,7 @@ import { Message } from '../message';
 import { LoadingMessage } from '@wprdc-components/loading-message';
 
 export const DataVizPreview = memo((props: DataVizPreviewProps) => {
-  const { dataViz, geog, colorScheme, CurrentViz, isLoading, error } = props;
+  const { dataViz, geog, colorScheme, Visualization, isLoading, error } = props;
 
   /* Keep track fo dimensions to send to vega charts */
   const [{ width, height }, setDimensions] = React.useState({
@@ -38,8 +38,8 @@ export const DataVizPreview = memo((props: DataVizPreviewProps) => {
           >
             {isLoading && <LoadingMessage name="preview" />}
             {!!error && <Message error={error} />}
-            {!!CurrentViz && !!dataViz && !!geog && (
-              <CurrentViz
+            {!!Visualization && !!dataViz && !!geog && (
+              <Visualization
                 inPreview
                 dataViz={dataViz}
                 geog={geog}

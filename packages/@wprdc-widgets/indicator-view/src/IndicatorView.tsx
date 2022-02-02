@@ -30,6 +30,7 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
   onExploreDataViz,
   onExploreIndicator,
   isLoading,
+  showGeog,
 }) => {
   if (!!isLoading) return <LoadingMessage />;
   if (!indicator) return <div />;
@@ -102,13 +103,15 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
         <div className={styles.titleBar}>
           <div className={styles.titleDiv}>
             <h1 className={styles.bigTitle}>{name}</h1>
-            <p className={styles.geogPicker}>
-              for
-              <GeographyPicker
-                selectedGeog={geog}
-                onSelection={onGeogSelection}
-              />
-            </p>
+            {!!showGeog && (
+              <p className={styles.geogPicker}>
+                for
+                <GeographyPicker
+                  selectedGeog={geog}
+                  onSelection={onGeogSelection}
+                />
+              </p>
+            )}
           </div>
         </div>
       </div>

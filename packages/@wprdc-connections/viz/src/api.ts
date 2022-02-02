@@ -8,7 +8,6 @@
 import { createAPI } from '@wprdc-connections/api';
 import { Method, ResponsePackage } from '@wprdc-types/api';
 
-import { GeogBrief } from '@wprdc-types/geo';
 import { Downloaded, DataVizBase } from '@wprdc-types/viz';
 
 const HOST = 'https://api.profiles.wprdc.org';
@@ -21,12 +20,11 @@ const api = createAPI<Endpoint>(HOST);
 
 function requestDataViz<T extends Downloaded<DataVizBase>>(
   dataVizSlug: string,
-  geog: GeogBrief
+  geogSlug: string
 ): Promise<ResponsePackage<T>> {
-  const { geogType, geogID } = geog;
   return api.callAndProcessEndpoint<T>(Endpoint.DataViz, Method.GET, {
     id: dataVizSlug,
-    params: { geogType: geogType, geogID: geogID },
+    params: { geog: geogSlug },
   });
 }
 

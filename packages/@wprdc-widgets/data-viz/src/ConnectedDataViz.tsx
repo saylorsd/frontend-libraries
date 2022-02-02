@@ -14,11 +14,19 @@ export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
 }) => {
   const { geog } = useProvider();
   const usedGeog = React.useMemo(() => propsGeog || geog, [geog, propsGeog]);
-  const { dataViz, isLoading, error } = useDataViz(dataVizSlug, usedGeog);
+  const { dataViz, isLoading, error } = useDataViz(
+    dataVizSlug,
+    usedGeog && usedGeog.slug
+  );
 
   if (!!error) {
-    return <ErrorMessage title={`$Not Found`} message={`${error}`} />;
+    return <ErrorMessage title={`Not Found`} message={`${error}`} />;
   }
+
+  if (!usedGeog) {
+    return <ErrorMessage title="Error" message="No Geography Provided" />;
+  }
+
   return (
     <DataViz
       dataViz={dataViz}

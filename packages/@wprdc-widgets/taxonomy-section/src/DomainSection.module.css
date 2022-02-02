@@ -1,0 +1,11 @@
+.wrapper {
+  @apply lg:h-auto;
+}
+
+.title {
+  @apply font-bold uppercase text-xs text-gray-500;
+}
+
+.description {
+  @apply text-sm mt-0.5 pb-1 mb-2;
+}

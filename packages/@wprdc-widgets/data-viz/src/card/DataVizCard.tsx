@@ -31,7 +31,7 @@ export function DataVizCard(props: DataVizCardProps) {
     geog,
     showGeog,
     colorScheme,
-    CurrentViz,
+    Visualization,
     isLoading,
     // menu,
     onExplore,
@@ -99,8 +99,8 @@ export function DataVizCard(props: DataVizCardProps) {
                 className={styles.vizPane}
               >
                 {!!error && <Message error={error} />}
-                {!isLoading && !!CurrentViz && !!dataViz && !!geog && (
-                  <CurrentViz
+                {!isLoading && !!Visualization && !!dataViz && !!geog && (
+                  <Visualization
                     dataViz={dataViz}
                     geog={geog}
                     colorScheme={colorScheme}

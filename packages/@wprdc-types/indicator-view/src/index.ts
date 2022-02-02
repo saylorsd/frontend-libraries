@@ -15,6 +15,7 @@ export interface IndicatorViewProps {
   isLoading?: boolean;
   onExploreIndicator?: (indicator: Indicator) => unknown;
   onExploreDataViz?: (dataViz: DataVizBase) => unknown;
+  showGeog?: boolean;
 }
 
 export interface ConnectedIndicatorViewProps

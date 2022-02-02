@@ -10,12 +10,21 @@ export function ConnectedSearchBox<
   T extends Resource,
   O extends object = ResourceOptionTemplateOptions<T>
 >(props: ConnectedSearchBoxProps<T, O>) {
-  const { connection, label, onSelection, listBoxProps, ...searchBoxProps } =
-    props;
-  const [selectedKey, setSelectedKey] = React.useState<Key>();
-  const [selectedFilterText, setSelectedFilterText] = React.useState<string>();
+  const {
+    connection,
+    label,
+    onSelection,
+    listBoxProps,
+    inputValue: propsValue,
+    selectedKey: propsKey,
+    ...searchBoxProps
+  } = props;
+  const [selectedKey, setSelectedKey] = React.useState<Key | undefined>();
+  const [selectedFilterText, setSelectedFilterText] =
+    React.useState<string | undefined>();
 
   const list = useAsyncList<T>(connection);
+
   if (!!list.error) console.error(list.error);
 
   function handleSelection(key: Key) {

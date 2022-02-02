@@ -26,9 +26,7 @@ export function Tabs<T extends Resource>(props: TabsProps<T>) {
     <div className={styles.container}>
       <div {...tabListProps} ref={ref} className={styles.tabList}>
         {Array.from(state.collection).map((item) => (
-          <>
-            <Tab<T> key={item.key} item={item} state={state} />
-          </>
+          <Tab<T> key={item.key} item={item} state={state} />
         ))}
       </div>
       <TabPanel key={state.selectedItem?.key} state={state} />

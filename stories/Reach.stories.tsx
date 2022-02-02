@@ -33,7 +33,7 @@ export const Default = () => {
   const [dataViz, setDataViz] = React.useState<DataVizBase>();
 
   const context = useProvider();
-  const { geog, isLoading, error } = useGeography(geogBrief);
+  const { geog, isLoading, error } = useGeography(geogBrief.slug);
 
   React.useEffect(() => {
     if (!!geog) context.setGeog(geog);

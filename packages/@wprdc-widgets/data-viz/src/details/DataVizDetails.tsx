@@ -22,7 +22,7 @@ export function DataVizDetails(props: DataVizDetailsProps) {
     dataViz,
     geog,
     colorScheme,
-    CurrentViz,
+    Visualization,
     isLoading,
     error,
     headingLevel = 3,
@@ -59,8 +59,8 @@ export function DataVizDetails(props: DataVizDetailsProps) {
             >
               {!!error && <Message error={error} />}
               {isLoading && <LoadingMessage name={dataViz && dataViz.name} />}
-              {!isLoading && !!CurrentViz && !!dataViz && !!geog && (
-                <CurrentViz
+              {!isLoading && !!Visualization && !!dataViz && !!geog && (
+                <Visualization
                   dataViz={dataViz}
                   geog={geog}
                   colorScheme={colorScheme}

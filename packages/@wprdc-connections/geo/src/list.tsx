@@ -60,8 +60,6 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
   };
 
   public renderItem = (item: GeogBrief) => {
-    console.log(item);
-
     return <Item key={item.slug}>{item.title}</Item>;
   };
   public getKey = (item: GeogBrief) => item.slug;

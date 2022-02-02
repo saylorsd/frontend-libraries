@@ -19,7 +19,7 @@ function makeProfilesConnection<T extends Resource>(
     async load({ signal, cursor, filterText }) {
       const res = await fetch(
         cursor ||
-          `https://api.profiles.wprdc.org/${itemType}/?search=${filterText}`,
+          `https://api.profiles.wprdc.org/${itemType}/?search=${filterText}&limit=10`,
         { signal }
       );
       const json = await res.json();

@@ -16,6 +16,7 @@ import {
 import { useBreadcrumbItem, useBreadcrumbs } from '@react-aria/breadcrumbs';
 
 import classNames from 'classnames';
+import { RiArrowRightSLine } from 'react-icons/ri';
 
 export function Breadcrumbs<T>(props: BreadcrumbsProps<T>) {
   const { navProps } = useBreadcrumbs(props);
@@ -32,7 +33,7 @@ export function Breadcrumbs<T>(props: BreadcrumbsProps<T>) {
             return React.cloneElement(child as React.ReactElement, {
               isCurrent: false,
               elementType: 'a',
-              hideDivider: !showCurrent && i == children.length - 2,
+              hideDivider: !showCurrent && i == children.length - 1,
             });
           }
           if (!!showCurrent && !bigTitle) {
@@ -67,7 +68,7 @@ export function BreadcrumbItem(props: BreadcrumbItemProps) {
   const Link = LinkComponent || 'a';
   const dividerContent = divider || (
     <span aria-hidden="true" className={styles.divider}>
-      {'/'}
+      <RiArrowRightSLine />
     </span>
   );
 

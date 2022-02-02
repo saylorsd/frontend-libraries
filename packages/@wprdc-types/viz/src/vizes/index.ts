@@ -98,10 +98,11 @@ export interface VizWrapperProps {
   colorScheme: ColorScheme;
   menu?: JSX.Element;
   dataViz?: Downloaded<DataVizBase>;
-  CurrentViz?: React.FC<DataVizProps>;
+  Visualization?: React.FC<DataVizProps>;
   breadcrumbs?: JSX.Element[];
   onExplore?: (dataViz: DataVizBase) => unknown;
   onBreadcrumbClick?: (path: React.ReactText) => void;
+  onGeogSelection?: (geog: GeogBrief) => void;
 }
 
 export interface AxisItem {

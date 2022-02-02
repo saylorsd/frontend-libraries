@@ -29,6 +29,7 @@ export interface BreadcrumbItemProps<T extends HTMLElement = HTMLElement>
 
 export interface BreadcrumbItemLinkProps<T extends HTMLElement = HTMLElement>
   extends HTMLAttributes<HTMLElement> {
+  href: string;
   ref?: Ref<T>;
 }
 

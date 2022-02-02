@@ -20,6 +20,7 @@ import {
   Downloaded,
   RowRecord,
   Variable,
+  VizWrapperProps,
 } from '@wprdc-types/viz';
 
 import { Message } from './message';
@@ -73,7 +74,11 @@ export function formatValue(
  *
  * @param {DataVizVariant} variant
  */
-export function getVariantComponent(variant: DataVizVariant) {
+export function getVariantComponent(
+  variant: DataVizVariant
+):
+  | React.MemoExoticComponent<(props: VizWrapperProps) => JSX.Element>
+  | ((props: VizWrapperProps) => JSX.Element) {
   switch (variant) {
     case DataVizVariant.Blurb:
       return DataVizMini;

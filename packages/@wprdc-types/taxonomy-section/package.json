@@ -1,0 +1,38 @@
+{
+  "name": "@wprdc-types/taxonomy-section",
+  "version": "0.0.1",
+  "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
+  "keywords": [],
+  "author": "saylorsd <steven.saylor@pitt.edu>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wprdc/frontend-libraries"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --declaration",
+    "prepare": "npm run build",
+    "watch": "tsc -w --declaration"
+  },
+  "peerDependencies": {
+    "typescript": "^4.5.5",
+    "react": "^16.8.0 || ^17.0.0-rc.1",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@wprdc-types/viz": "^0.0.6",
+    "@wprdc-types/geo": "^0.0.6",
+    "@wprdc-types/profiles": "^0.0.6",
+    "@wprdc-types/breadcrumbs": "^0.0.5"
+  },
+  "gitHead": "c23e79bb3828e73c3efa327b9e6cf684549da12c"
+}

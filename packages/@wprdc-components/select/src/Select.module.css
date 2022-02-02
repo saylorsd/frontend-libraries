@@ -19,12 +19,6 @@
 .icon {
   @apply w-5 h-5;
 }
-.clearButton {
-  @apply p-1 pl-3;
-  @apply relative inline-flex flex-row items-center;
-  @apply justify-between rounded-md overflow-hidden cursor-default;
-  @apply shadow outline-none border border-gray-800;
-}
 .popoverContent {
   @apply bg-background;
   @apply border border-gray-300 rounded-md;

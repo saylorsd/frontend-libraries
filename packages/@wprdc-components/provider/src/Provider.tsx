@@ -43,7 +43,7 @@ export const Provider: React.FC<ProviderProps> = (props) => {
 
   const [state, dispatch] = useReducer(reducer, { mapboxAPIToken });
 
-  function setGeog(geog: Geog) {
+  function setGeog(geog?: Geog) {
     dispatch({
       type: 'set-geog',
       payload: geog,

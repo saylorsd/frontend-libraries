@@ -1,6 +1,6 @@
 /* This is required to make the table full-width */
 .container {
-    @apply block max-w-full p-0.5;
+  @apply block max-w-full p-0.5;
 }
 
 .previewContainer {
@@ -8,13 +8,13 @@
 
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
-    @apply block max-w-full overflow-x-scroll overflow-y-hidden;
+  @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 
 .tableElem {
-    /* Make sure the inner table is always as wide as needed */
-    border-spacing: 0;
-    @apply w-full text-sm;
+  /* Make sure the inner table is always as wide as needed */
+  border-spacing: 0;
+  @apply w-full text-sm;
 }
 
 .row {
@@ -24,31 +24,31 @@
 }
 
 .subrow {
-    color: #777;
-    font-style: italic;
+  color: #777;
+  font-style: italic;
 }
 
 .subrow > td {
-    border-top: 0 !important;
-    padding-top: 0;
+  border-top: 0 !important;
+  padding-top: 0;
 }
 
 .subrow > td:first-child {
-    padding-left: 16px;
+  padding-left: 16px;
 }
 
 /* Old stuff */
 tr:first-child > td:not(:first-child) {
-    @apply border-t-2 border-gray-900;
+  @apply border-t-2 border-gray-900;
 }
 
 tr:not(:first-child) > td {
-    @apply border-t;
+  @apply border-t;
 }
 
 .field {
-    white-space: pre;
-    width: 0.001%;
+  white-space: pre;
+  width: 0.001%;
 }
 
 .emptyHeader {
@@ -59,21 +59,21 @@ tr:not(:first-child) > td {
 
 th:last-child,
 td:last-child {
-    border-right: 0;
+  border-right: 0;
 }
 
 td.field {
-    text-align: right;
-    @apply font-mono;
+  text-align: right;
+  @apply font-mono;
 }
 
 th.field {
-    text-align: center;
+  text-align: center;
 }
 
 .moe {
-    @apply cursor-help;
-    @apply text-sky-700;
+  @apply cursor-help;
+  @apply text-sky-700;
 }
 
 .container {
@@ -82,7 +82,7 @@ th.field {
 .previewContainer {
 } /* This is required to make the table full-width */
 .container {
-    @apply block max-w-full p-0.5;
+  @apply block max-w-full p-0.5;
 }
 
 .previewContainer {
@@ -90,13 +90,13 @@ th.field {
 
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
-    @apply block max-w-full overflow-x-scroll overflow-y-hidden;
+  @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 
 .tableElem {
-    /* Make sure the inner table is always as wide as needed */
-    border-spacing: 0;
-    @apply w-full text-sm;
+  /* Make sure the inner table is always as wide as needed */
+  border-spacing: 0;
+  @apply w-full text-sm;
 }
 
 .row {
@@ -106,31 +106,31 @@ th.field {
 }
 
 .subrow {
-    color: #777;
-    font-style: italic;
+  color: #777;
+  font-style: italic;
 }
 
 .subrow > td {
-    border-top: 0 !important;
-    padding-top: 0;
+  border-top: 0 !important;
+  padding-top: 0;
 }
 
 .subrow > td:first-child {
-    padding-left: 16px;
+  padding-left: 16px;
 }
 
 /* Old stuff */
 tr:first-child > td:not(:first-child) {
-    @apply border-t-2 border-gray-900;
+  @apply border-t-2 border-gray-900;
 }
 
 tr:not(:first-child) > td {
-    @apply border-t;
+  @apply border-t;
 }
 
 .field {
-    white-space: pre;
-    width: 0.001%;
+  white-space: pre;
+  width: 0.001%;
 }
 
 .emptyHeader {
@@ -141,30 +141,31 @@ tr:not(:first-child) > td {
 
 th:last-child,
 td:last-child {
-    border-right: 0;
+  border-right: 0;
 }
 
 td.field {
-    text-align: right;
-    @apply font-mono;
+  text-align: right;
+  @apply font-mono;
 }
 
 th.field {
-    text-align: center;
+  text-align: center;
 }
 
 .moe {
-    @apply cursor-help;
-    @apply text-sky-700;
+  @apply cursor-help;
+  @apply text-sky-700;
 }
 
 .tableWrap {
   @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 .tableElem {
-  /* This is required to make the table full-width */
+}
+/* This is required to make the table full-width */
 .container {
-    @apply block max-w-full p-0.5;
+  @apply block max-w-full p-0.5;
 }
 
 .previewContainer {
@@ -172,13 +173,13 @@ th.field {
 
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
-    @apply block max-w-full overflow-x-scroll overflow-y-hidden;
+  @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 
 .tableElem {
-    /* Make sure the inner table is always as wide as needed */
-    border-spacing: 0;
-    @apply w-full text-sm;
+  /* Make sure the inner table is always as wide as needed */
+  border-spacing: 0;
+  @apply w-full text-sm;
 }
 
 .row {
@@ -188,31 +189,31 @@ th.field {
 }
 
 .subrow {
-    color: #777;
-    font-style: italic;
+  color: #777;
+  font-style: italic;
 }
 
 .subrow > td {
-    border-top: 0 !important;
-    padding-top: 0;
+  border-top: 0 !important;
+  padding-top: 0;
 }
 
 .subrow > td:first-child {
-    padding-left: 16px;
+  padding-left: 16px;
 }
 
 /* Old stuff */
 tr:first-child > td:not(:first-child) {
-    @apply border-t-2 border-gray-900;
+  @apply border-t-2 border-gray-900;
 }
 
 tr:not(:first-child) > td {
-    @apply border-t;
+  @apply border-t;
 }
 
 .field {
-    white-space: pre;
-    width: 0.001%;
+  white-space: pre;
+  width: 0.001%;
 }
 
 .emptyHeader {
@@ -223,26 +224,23 @@ tr:not(:first-child) > td {
 
 th:last-child,
 td:last-child {
-    border-right: 0;
+  border-right: 0;
 }
 
 td.field {
-    text-align: right;
-    @apply font-mono;
+  text-align: right;
+  @apply font-mono;
 }
 
 th.field {
-    text-align: center;
+  text-align: center;
 }
 
 .moe {
-    @apply cursor-help;
-    @apply text-sky-700;
+  @apply cursor-help;
+  @apply text-sky-700;
 }
 
-  border-spacing: 0;
-  @apply w-full text-sm;
-}
 .row {
 }
 .mainRow {
@@ -258,8 +256,9 @@ th.field {
 .subrow > td:first-child {
   padding-left: 16px;
 } /* This is required to make the table full-width */
+
 .container {
-    @apply block max-w-full p-0.5;
+  @apply block max-w-full p-0.5;
 }
 
 .previewContainer {
@@ -267,13 +266,13 @@ th.field {
 
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
-    @apply block max-w-full overflow-x-scroll overflow-y-hidden;
+  @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
 
 .tableElem {
-    /* Make sure the inner table is always as wide as needed */
-    border-spacing: 0;
-    @apply w-full text-sm;
+  /* Make sure the inner table is always as wide as needed */
+  border-spacing: 0;
+  @apply w-full text-sm;
 }
 
 .row {
@@ -283,31 +282,31 @@ th.field {
 }
 
 .subrow {
-    color: #777;
-    font-style: italic;
+  color: #777;
+  font-style: italic;
 }
 
 .subrow > td {
-    border-top: 0 !important;
-    padding-top: 0;
+  border-top: 0 !important;
+  padding-top: 0;
 }
 
 .subrow > td:first-child {
-    padding-left: 16px;
+  padding-left: 16px;
 }
 
 /* Old stuff */
 tr:first-child > td:not(:first-child) {
-    @apply border-t-2 border-gray-900;
+  @apply border-t-2 border-gray-900;
 }
 
 tr:not(:first-child) > td {
-    @apply border-t;
+  @apply border-t;
 }
 
 .field {
-    white-space: pre;
-    width: 0.001%;
+  white-space: pre;
+  width: 0.001%;
 }
 
 .emptyHeader {
@@ -318,21 +317,21 @@ tr:not(:first-child) > td {
 
 th:last-child,
 td:last-child {
-    border-right: 0;
+  border-right: 0;
 }
 
 td.field {
-    text-align: right;
-    @apply font-mono;
+  text-align: right;
+  @apply font-mono;
 }
 
 th.field {
-    text-align: center;
+  text-align: center;
 }
 
 .moe {
-    @apply cursor-help;
-    @apply text-sky-700;
+  @apply cursor-help;
+  @apply text-sky-700;
 }
 
 tr:first-child > td:not(:first-child) {

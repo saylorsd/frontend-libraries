@@ -14,7 +14,7 @@ import { Message } from '../message';
 import { DataVizMiniSkeleton } from './DataVizMiniSkeleton';
 
 export const DataVizMini = memo((props: DataVizMiniProps) => {
-  const { dataViz, geog, colorScheme, CurrentViz, isLoading, error } = props;
+  const { dataViz, geog, colorScheme, Visualization, isLoading, error } = props;
 
   /* Keep track fo dimensions to send to vega charts */
   const [{ width, height }, setDimensions] = React.useState({
@@ -41,8 +41,8 @@ export const DataVizMini = memo((props: DataVizMiniProps) => {
               aria-label="data presentation preview"
             >
               {!!error && <Message error={error} />}
-              {!error && !!CurrentViz && !!dataViz && !!geog && (
-                <CurrentViz
+              {!error && !!Visualization && !!dataViz && !!geog && (
+                <Visualization
                   dataViz={dataViz}
                   geog={geog}
                   colorScheme={colorScheme}

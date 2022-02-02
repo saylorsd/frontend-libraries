@@ -20,10 +20,10 @@ function requestGeoLayers() {
 }
 
 export function requestGeogDetails(
-  geog: string
+  geogSlug: string
 ): Promise<ResponsePackage<Geog>> {
   return api.callAndProcessEndpoint<Geog>(Endpoint.Geog, Method.GET, {
-    id: geog,
+    id: geogSlug,
     params: { details: true },
   });
 }

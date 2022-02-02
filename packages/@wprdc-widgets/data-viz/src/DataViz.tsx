@@ -23,8 +23,9 @@ interface Props {
   isLoading?: boolean;
   error?: string;
   colorScheme?: ColorScheme;
-  onExplore?: (dataViz: DataVizBase) => unknown;
+  onExplore?: (dataViz: DataVizBase) => void;
   showGeog?: boolean;
+  onGeogSelection?: (g: GeogBrief) => void;
 }
 
 export function DataViz(props: Props) {
@@ -44,7 +45,7 @@ export function DataViz(props: Props) {
   }
 
   // get correct component for the viz
-  const CurrentViz: React.FC<DataVizProps> | undefined = getSpecificDataViz(
+  const Visualization: React.FC<DataVizProps> | undefined = getSpecificDataViz(
     dataViz,
     error
   );
@@ -58,7 +59,7 @@ export function DataViz(props: Props) {
         dataViz={dataViz}
         geog={geog}
         showGeog={showGeog}
-        CurrentViz={CurrentViz}
+        Visualization={Visualization}
         colorScheme={colorScheme || ColorScheme.Light}
         isLoading={!!isLoading}
         onExplore={handleExplore}
