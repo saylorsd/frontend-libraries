@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/checkbox-group",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -62,6 +62,9 @@
     "@types/react-dom": "^17.0.11",
     "autoprefixer": "^10.4.2",
     "husky": "^7.0.4",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup-plugin-postcss": "^4.0.2",
@@ -69,15 +72,12 @@
     "tailwindcss": "^3.0.18",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^3.9.10",
-    "postcss": "^8.4.5",
-    "postcss-loader": "^6.2.1",
-    "postcss-import": "^14.0.2"
+    "typescript": "^3.9.10"
   },
   "dependencies": {
     "@react-aria/checkbox": "^3.2.3",
     "@react-stately/checkbox": "^3.0.3",
     "@react-types/checkbox": "^3.2.3",
-    "@wprdc-types/checkbox-group": "^0.0.5"
+    "@wprdc-types/checkbox-group": "^0.0.6"
   }
 }
