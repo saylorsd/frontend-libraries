@@ -1,4 +1,4 @@
-import { Geog, GeogIdentifier } from '@wprdc-types/geo';
+import { Geog } from '@wprdc-types/geo';
 import { ColorScheme } from '@wprdc-types/shared';
 import { Dispatch, Reducer } from 'react';
 

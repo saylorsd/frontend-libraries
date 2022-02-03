@@ -15,7 +15,6 @@ import {
   HoverPopupProps,
   ClickPopupProps,
   PopupContentComponent,
-  LayerPanelProps,
 } from '@wprdc-types/map';
 import { DataVizID } from '@wprdc-types/viz';
 import { AssetType } from '@wprdc-types/neighborhood-assets';
@@ -31,11 +30,11 @@ export type MapPluginGetter<T extends Resource, R> = (
   items: T[],
   selected: Selection,
   callback: (r: R) => any,
-  context?: MapPluginContext,
+  context?: MapPluginContext
 ) => any;
 
 export type MapPluginHook<T extends Resource, E> = (
-  args: MapPluginHookArgs<T, E>,
+  args: MapPluginHookArgs<T, E>
 ) => MapPluginToolbox<T, E>;
 
 /** Args for MapPluginConnection.use() */
@@ -50,7 +49,7 @@ export interface MapPluginHookArgs<T extends Resource, E>
 export interface ConnectionProps<
   T extends Resource = Resource,
   E = any,
-  O extends Record<string, any> = Record<string, any>,
+  O extends Record<string, any> = Record<string, any>
 > {
   /** List of objects that represent the layers for the plugin */
   layerItems?: T[];
@@ -110,7 +109,7 @@ export interface MapPluginConnection<T extends Resource, E> {
   /** Generates a LegendSection populated with LegendItems corresponding to provided layers */
   makeLegendSection: (
     setLegendSection: (elem?: JSX.Element) => void,
-    items?: LegendItemProps[],
+    items?: LegendItemProps[]
   ) => void | null;
 
   /** Make element containing the react-map-gl Source and Layer for rendering. */
@@ -118,7 +117,7 @@ export interface MapPluginConnection<T extends Resource, E> {
     /** useState setter from hook to save results */
     setMapSection: (elem?: JSX.Element) => void,
     sources?: SourceProps[],
-    layers?: LayerProps[],
+    layers?: LayerProps[]
   ) => void | null;
 
   /** Function that uses the current selection to filter the fulls set of items. */
@@ -141,7 +140,7 @@ export type LayerPanelSectionMaker<T extends Resource> = (
   setLayerPanelSection: (elem?: JSX.Element) => void,
   items?: T[],
   selectedItems?: T[],
-  handleChange?: (selection: Selection) => void,
+  handleChange?: (selection: Selection) => void
 ) => void;
 
 /**
@@ -227,7 +226,7 @@ export type ConnectionArgProps = Partial<Record<ProjectKey, ConnectionProps>>;
 export type ConnectedMapEventHandler = (
   evt: MapEvent,
   toolboxes?: MapPluginToolbox<any, any>[],
-  toolboxItems?: Partial<ConnectionResourcesRecord>,
+  toolboxItems?: Partial<ConnectionResourcesRecord>
 ) => void;
 
 export type ConnectedLegendProps = WithToolboxes<LegendProps>;
@@ -242,7 +241,5 @@ export type MouseEventHandler = (
   Popup: React.FC<ConnectedPopupProps>,
   setPopup: React.Dispatch<JSX.Element | null | undefined>,
   CustomContentComponent?: PopupContentComponent,
-  callback?: ConnectedMapEventHandler,
+  callback?: ConnectedMapEventHandler
 ) => void;
-
-export type ConnectedLayerPanelProps = WithToolboxes<LayerPanelProps>;

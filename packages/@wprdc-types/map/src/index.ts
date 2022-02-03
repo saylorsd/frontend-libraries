@@ -11,12 +11,7 @@ import {
 
 import { ColorScheme } from '@wprdc-types/shared';
 
-import {
-  ClickPopupProps,
-  HoverPopupProps,
-  PopupContentComponent,
-  PopupProps,
-} from './popup';
+import { PopupContentComponent } from './popup';
 import { LegendItemProps } from './legend';
 import { LayerPanelVariant } from './menu';
 
@@ -97,5 +92,3 @@ export interface MapProps extends InteractiveMapProps {
 
   mapboxApiAccessToken?: string;
 }
-
-export interface LayerPanelProps {}
