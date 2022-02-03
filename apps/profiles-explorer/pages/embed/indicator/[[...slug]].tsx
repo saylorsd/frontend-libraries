@@ -1,10 +1,10 @@
-import Layout from '../../../components/Layout';
+import BlankLayout from '../../../components/BlankLayout';
 import IndicatorPageView from '../../../components/IndicatorPageView';
 
 export default function IndicatorPage() {
-  return <IndicatorPageView />;
+  return <IndicatorPageView embed />;
 }
 
 IndicatorPage.getLayout = function getLayout(page: React.ReactChildren) {
-  return <Layout>{page}</Layout>;
+  return <BlankLayout>{page}</BlankLayout>;
 };

@@ -1,10 +1,10 @@
-import Layout from '../../../components/Layout';
+import BlankLayout from '../../../components/BlankLayout';
 import DataVizPageView from '../../../components/DataVizPageView';
 
 export default function DataVizPage() {
-  return <DataVizPageView />;
+  return <DataVizPageView embed />;
 }
 
 DataVizPage.getLayout = function getLayout(page: React.ReactChildren) {
-  return <Layout>{page}</Layout>;
+  return <BlankLayout>{page}</BlankLayout>;
 };
