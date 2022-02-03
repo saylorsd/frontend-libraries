@@ -13,21 +13,65 @@
     "access": "public"
   },
   "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "module": "dist/toolkit.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "size-limit": [
+    {
+      "path": "dist/mylib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mylib.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "scripts": {
-    "build": "mkdir -p dist && npm run build:types && npm run build:module",
-    "build:types": "cp src/components.ts dist/components.d.ts; cp src/connections.ts dist/connections.d.ts; cp src/index.ts dist/index.d.ts; cp src/types.ts dist/types.d.ts; cp src/viz.ts dist/viz.d.ts; cp src/widgets.ts dist/widgets.d.ts;",
-    "build:module": "cp src/components.ts dist/components.js; cp src/connections.ts dist/connections.js; cp src/index.ts dist/index.js; cp src/types.ts dist/types.js; cp src/viz.ts dist/viz.js; cp src/widgets.ts dist/widgets.js;",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
     "prepare": "npm run build",
-    "start": "npm run build"
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
   "bugs": {
     "url": "https://github.com/WPRDC/frontend-libraries/issues"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.5",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "autoprefixer": "^10.4.2",
+    "husky": "^7.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "size-limit": "^7.0.5",
+    "tailwindcss": "^3.0.18",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5",
+    "postcss": "^8.4.5",
+    "postcss-loader": "^6.2.1",
+    "postcss-import": "^14.0.2"
   },
   "dependencies": {
     "@wprdc-components/breadcrumbs": "^0.0.8",
