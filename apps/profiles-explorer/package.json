@@ -11,9 +11,9 @@
     "link:toolkit": "npm link @wprdc/toolkit"
   },
   "peerDependencies": {
-    "typescript": "4.5.5"
   },
   "devDependencies": {
+    "typescript": "4.5.5",
     "next-transpile-modules": "^9.0.0"
   },
   "dependencies": {
