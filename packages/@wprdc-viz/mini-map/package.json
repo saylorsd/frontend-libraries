@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/mini-map",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@wprdc-components/provider": "^0.0.8",
-    "@wprdc-connections/viz": "^0.0.8",
+    "@wprdc-connections/viz": "^0.0.9",
     "@wprdc-types/geo": "^0.0.8",
     "@wprdc-types/map": "^0.0.7",
     "@wprdc-types/shared": "^0.0.8",

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/viz",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/list-box": "^0.0.8",
+    "@wprdc-components/list-box": "^0.0.9",
     "@wprdc-components/radio-group": "^0.0.8",
     "@wprdc-components/util": "^0.0.7",
     "@wprdc-connections/api": "^0.0.8",
