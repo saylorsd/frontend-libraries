@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import styles from './TaxonomySection.module.css';
 
-import { Item } from '@react-stately/collections';
+import { Item } from '@wprdc-components/util';
 
 import { BreadcrumbItemProps } from '@wprdc-types/breadcrumbs';
 import { DataVizVariant } from '@wprdc-types/data-viz';

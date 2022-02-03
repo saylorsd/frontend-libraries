@@ -74,6 +74,15 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "@wprdc-types/profiles": "^0.0.8"
+    "@wprdc-types/breadcrumbs": "^0.0.7",
+    "@wprdc-types/data-viz":"^0.0.8",
+    "@wprdc-types/taxonomy-section": "^0.0.3",
+    "@wprdc-types/viz": "^0.0.8",
+    "@wprdc-components/breadcrumbs":"^0.0.9",
+    "@wprdc-components/tabs": "^0.0.8",
+    "@wprdc-widgets/data-viz":"^0.0.5",
+    "@wprdc-widgets/indicator-view": "^0.0.5",
+    "@wprdc-types/profiles": "^0.0.8",
+    "@wprdc-components/util": "^0.0.7"
   }
 }

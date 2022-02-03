@@ -31,7 +31,7 @@ import {
 
 import { ProjectKey } from '@wprdc-types/shared';
 
-import { Item } from '@react-stately/collections';
+import { Item } from '@wprdc-components/util';
 
 import { GeographyPickerMenuProps } from '@wprdc-types/geography-picker';
 

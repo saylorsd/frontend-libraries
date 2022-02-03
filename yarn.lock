@@ -4546,6 +4546,11 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@wprdc-types/date-picker@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@wprdc-types/date-picker/-/date-picker-0.0.6.tgz#2d61fc4b3cc1b0ca2997f9befb792879af9cde71"
+  integrity sha512-nTuvTJjiJRHA6jn6Beo1B/Wi3yxSZURSv6R1EKAJjTEV5LnfbUU9s8HmHrNDMrqC3a9zcGsO42yiHSgO/RdIzg==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
