@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/indicator-view",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -80,14 +80,14 @@
     "@wprdc-components/error-message": "^0.0.8",
     "@wprdc-components/loading-message": "^0.0.8",
     "@wprdc-components/provider": "^0.0.8",
-    "@wprdc-connections/profiles": "^0.0.9",
-    "@wprdc-types/connections": "^0.0.5",
-    "@wprdc-types/data-viz": "^0.0.8",
-    "@wprdc-types/indicator-view": "^0.0.5",
+    "@wprdc-connections/profiles": "^0.0.10",
+    "@wprdc-types/connections": "^0.0.6",
+    "@wprdc-types/data-viz": "^0.0.9",
+    "@wprdc-types/indicator-view": "^0.0.6",
     "@wprdc-types/shared": "^0.0.8",
-    "@wprdc-types/viz": "^0.0.8",
-    "@wprdc-widgets/data-viz": "^0.0.6",
-    "@wprdc-widgets/geography-picker": "^0.0.6",
+    "@wprdc-types/viz": "^0.0.9",
+    "@wprdc-widgets/data-viz": "^0.0.7",
+    "@wprdc-widgets/geography-picker": "^0.0.7",
     "classnames": "^2.3.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/taxonomy-section",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Display hierarchy of indicators.",
   "keywords": [],
   "license": "MIT",
@@ -78,11 +78,11 @@
     "@wprdc-components/tabs": "^0.0.9",
     "@wprdc-components/util": "^0.0.7",
     "@wprdc-types/breadcrumbs": "^0.0.7",
-    "@wprdc-types/data-viz": "^0.0.8",
-    "@wprdc-types/profiles": "^0.0.8",
-    "@wprdc-types/taxonomy-section": "^0.0.3",
-    "@wprdc-types/viz": "^0.0.8",
-    "@wprdc-widgets/data-viz": "^0.0.6",
-    "@wprdc-widgets/indicator-view": "^0.0.6"
+    "@wprdc-types/data-viz": "^0.0.9",
+    "@wprdc-types/profiles": "^0.0.9",
+    "@wprdc-types/taxonomy-section": "^0.0.4",
+    "@wprdc-types/viz": "^0.0.9",
+    "@wprdc-widgets/data-viz": "^0.0.7",
+    "@wprdc-widgets/indicator-view": "^0.0.7"
   }
 }

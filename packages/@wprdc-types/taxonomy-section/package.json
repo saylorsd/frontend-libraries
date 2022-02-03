@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/taxonomy-section",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "license": "MIT",
@@ -76,7 +76,7 @@
   "dependencies": {
     "@wprdc-types/breadcrumbs": "^0.0.7",
     "@wprdc-types/geo": "^0.0.8",
-    "@wprdc-types/profiles": "^0.0.8",
-    "@wprdc-types/viz": "^0.0.8"
+    "@wprdc-types/profiles": "^0.0.9",
+    "@wprdc-types/viz": "^0.0.9"
   }
 }
