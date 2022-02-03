@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/spinner",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,8 +75,8 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/shared": "^0.0.7",
-    "@wprdc-types/spinner": "^0.0.7",
+    "@wprdc-types/shared": "^0.0.8",
+    "@wprdc-types/spinner": "^0.0.8",
     "react-spinners": "^0.11.0",
     "svg-loaders-react": "^2.2.1"
   }

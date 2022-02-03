@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/geography-picker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -78,15 +78,15 @@
     "@react-aria/button": "^3.3.4",
     "@react-aria/label": "^3.2.1",
     "@react-stately/collections": "^3.3.4",
-    "@wprdc-components/popover": "^0.0.7",
-    "@wprdc-components/search-box": "^0.0.7",
-    "@wprdc-components/select": "^0.0.7",
-    "@wprdc-connections/geo": "^0.0.7",
-    "@wprdc-types/connections": "^0.0.4",
-    "@wprdc-types/geo": "^0.0.7",
-    "@wprdc-types/map": "^0.0.6",
-    "@wprdc-types/shared": "^0.0.7",
-    "@wprdc-widgets/map": "^0.0.6",
+    "@wprdc-components/popover": "^0.0.8",
+    "@wprdc-components/search-box": "^0.0.8",
+    "@wprdc-components/select": "^0.0.8",
+    "@wprdc-connections/geo": "^0.0.8",
+    "@wprdc-types/connections": "^0.0.5",
+    "@wprdc-types/geo": "^0.0.8",
+    "@wprdc-types/map": "^0.0.7",
+    "@wprdc-types/shared": "^0.0.8",
+    "@wprdc-widgets/map": "^0.0.7",
     "react-icons": "^4.3.1"
   }
 }

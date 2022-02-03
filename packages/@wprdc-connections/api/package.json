@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/api",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,6 +75,6 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/api": "^0.0.6"
+    "@wprdc-types/api": "^0.0.7"
   }
 }

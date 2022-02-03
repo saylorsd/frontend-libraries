@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/button",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@react-aria/button": "^3.3.4",
-    "@wprdc-types/button": "^0.0.6",
+    "@wprdc-types/button": "^0.0.7",
     "classnames": "^2.3.1"
   }
 }

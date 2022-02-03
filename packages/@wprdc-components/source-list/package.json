@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/source-list",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,9 +75,9 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/data-chip": "^0.0.7",
-    "@wprdc-components/link": "^0.0.7",
-    "@wprdc-components/tooltip": "^0.0.7",
-    "@wprdc-types/viz": "^0.0.7"
+    "@wprdc-components/data-chip": "^0.0.8",
+    "@wprdc-components/link": "^0.0.8",
+    "@wprdc-components/tooltip": "^0.0.8",
+    "@wprdc-types/viz": "^0.0.8"
   }
 }

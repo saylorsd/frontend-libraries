@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/error-message",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,6 +75,6 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/error-message": "^0.0.6"
+    "@wprdc-types/error-message": "^0.0.7"
   }
 }

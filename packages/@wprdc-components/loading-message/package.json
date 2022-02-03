@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/loading-message",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/spinner": "^0.0.7",
-    "@wprdc-types/loading-message": "^0.0.7"
+    "@wprdc-components/spinner": "^0.0.8",
+    "@wprdc-types/loading-message": "^0.0.8"
   }
 }

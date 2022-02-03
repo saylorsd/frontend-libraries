@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/map",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -77,14 +77,14 @@
   "dependencies": {
     "@types/mapbox-gl": "^2.6.0",
     "@types/react-map-gl": "^6.1.1",
-    "@wprdc-components/checkbox-group": "^0.0.7",
-    "@wprdc-components/provider": "^0.0.7",
-    "@wprdc-types/connections": "^0.0.4",
-    "@wprdc-types/geo": "^0.0.7",
-    "@wprdc-types/map": "^0.0.6",
-    "@wprdc-types/neighborhood-assets": "^0.0.7",
-    "@wprdc-types/shared": "^0.0.7",
-    "@wprdc-types/viz": "^0.0.7",
+    "@wprdc-components/checkbox-group": "^0.0.8",
+    "@wprdc-components/provider": "^0.0.8",
+    "@wprdc-types/connections": "^0.0.5",
+    "@wprdc-types/geo": "^0.0.8",
+    "@wprdc-types/map": "^0.0.7",
+    "@wprdc-types/neighborhood-assets": "^0.0.8",
+    "@wprdc-types/shared": "^0.0.8",
+    "@wprdc-types/viz": "^0.0.8",
     "mapbox-gl": "^2.6.1",
     "react-map-gl": "^6.1.18"
   }

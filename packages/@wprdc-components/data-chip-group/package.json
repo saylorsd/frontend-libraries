@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/data-chip-group",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/data-chip": "^0.0.6",
-    "@wprdc-types/data-chip-group": "^0.0.6"
+    "@wprdc-types/data-chip": "^0.0.7",
+    "@wprdc-types/data-chip-group": "^0.0.7"
   }
 }
