@@ -37,14 +37,14 @@ export default function DataVizPageView({ embed }: { embed?: boolean }) {
   // handle query params
   useEffect(() => {
     const { slug: _slug, g, ...params } = router.query;
-    // read indicator slug from path
+    // read data viz slug from path
     if (!!_slug && _slug.length) setSlug(_slug[0]);
     // read geography
     if (typeof g === 'string') setGeogSlug(g);
     // if no geog provided, add default param to url
     else if (!g && !!slug) {
       router.push(
-        `/${base_path}/indicator/${slug}/${serializeParams({
+        `/${base_path}/data-viz/${slug}/${serializeParams({
           ...params,
           g: DEFAULT_GEOG_SLUG,
         })}`,
@@ -75,10 +75,10 @@ export default function DataVizPageView({ embed }: { embed?: boolean }) {
     if (!!dvLoading)
       return (
         <div className={styles.loadingWrapper}>
-          <LoadingMessage message="Loading indicator..." />
+          <LoadingMessage message="Loading data viz..." />
         </div>
       );
-    // indicator requested
+    // data viz requested
     if (!!dataViz)
       return (
         <DataViz
