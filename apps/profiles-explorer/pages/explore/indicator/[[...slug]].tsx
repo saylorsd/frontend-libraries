@@ -1,24 +1,24 @@
 import { serializeParams } from '@wprdc/toolkit';
 import { useRouter } from 'next/router';
 import { useEffect, useState, useMemo } from 'react';
-import BlankLayout from '../../../components/BlankLayout';
 
-import { useGeography } from '@wprdc-connections/geo';
-import { ConnectedSearchBox } from '@wprdc-components/search-box';
 import {
+  useGeography,
+  ConnectedSearchBox,
   defaultIndicatorListBoxProps,
   indicatorConnection,
   useIndicator,
-} from '@wprdc-connections/profiles';
-import { IndicatorView } from '@wprdc-widgets/indicator-view';
-import { LoadingMessage } from '@wprdc-components/loading-message';
-import { Indicator } from '@wprdc-types/profiles';
-import { GeogBrief } from '@wprdc-types/geo';
+  IndicatorView,
+  LoadingMessage,
+  Indicator,
+  GeogBrief,
+  ErrorMessage,
+} from '@wprdc/toolkit';
 
 import styles from '../../../styles/Indicator.module.css';
 import Layout from '../../../components/Layout';
+import BlankLayout from '../../../components/BlankLayout';
 import IndicatorLandingPage from '../../../parts/IndicatorLandingPage';
-import { ErrorMessage } from '@wprdc-components/error-message';
 import { DEFAULT_GEOG_SLUG } from '../../../settings';
 
 export default function IndicatorPage() {

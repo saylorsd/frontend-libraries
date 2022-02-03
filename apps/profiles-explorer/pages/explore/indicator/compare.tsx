@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { GeographyPicker, Indicator, IndicatorView } from '@wprdc/toolkit';
-import { GeogBrief } from '@wprdc-types/geo';
+
 import {
+  GeogBrief,
+  ConnectedSearchBox,
+  useGeography,
   defaultIndicatorListBoxProps,
   indicatorConnection,
+  GeographyPicker,
+  Indicator,
+  IndicatorView,
   useIndicator,
-} from '@wprdc-connections/profiles';
-import { ConnectedSearchBox } from '@wprdc-components/search-box';
-import { useGeography } from '@wprdc-connections/geo';
+} from '@wprdc/toolkit';
 
 import styles from '../../../styles/Compare.module.css';
 

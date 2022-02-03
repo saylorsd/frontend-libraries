@@ -35,11 +35,13 @@ import {
 } from '@wprdc/toolkit';
 
 import styles from '../../styles/Explorer.module.css';
-import { LoadingMessage } from '@wprdc-components/loading-message';
-import { BreadcrumbItem } from '@wprdc-components/breadcrumbs';
-import { makeGeographyConnection } from '@wprdc-connections/geo';
-import { TaxonomySection } from '@wprdc-widgets/taxonomy-section';
-import { useProvider } from '@wprdc-components/provider';
+import {
+  LoadingMessage,
+  BreadcrumbItem,
+  makeGeographyConnection,
+  TaxonomySection,
+  useProvider,
+} from '@wprdc/toolkit';
 
 export default function Home() {
   // state

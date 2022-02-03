@@ -1,20 +1,22 @@
 import { DataVizVariant, ErrorMessage, LoadingMessage } from '@wprdc/toolkit';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
-import BlankLayout from '../../../components/BlankLayout';
-import Layout from '../../../components/Layout';
-import { useGeography } from '@wprdc-connections/geo';
+
 import {
+  useGeography,
   dataVizConnection,
   defaultVizListBoxProps,
   useDataViz,
-} from '@wprdc-connections/viz';
+  ConnectedSearchBox,
+  GeogBrief,
+  serializeParams,
+  DataVizID,
+  DataViz,
+} from '@wprdc/toolkit';
+
 import styles from '../../../styles/Indicator.module.css';
-import { ConnectedSearchBox } from '@wprdc-components/search-box';
-import { GeogBrief } from '@wprdc-types/geo';
-import { serializeParams } from '@wprdc-connections/api';
-import { DataVizID } from '@wprdc-types/viz';
-import { DataViz } from '@wprdc-widgets/data-viz';
+import BlankLayout from '../../../components/BlankLayout';
+import Layout from '../../../components/Layout';
 import DataVizLandingPage from '../../../parts/DataVizLandingPage';
 import { DEFAULT_GEOG_SLUG } from '../../../settings';
 

@@ -111,6 +111,7 @@
     "@wprdc-widgets/data-viz": "^0.0.4",
     "@wprdc-widgets/geography-picker": "^0.0.4",
     "@wprdc-widgets/indicator-view": "^0.0.4",
-    "@wprdc-widgets/map": "^0.0.6"
+    "@wprdc-widgets/map": "^0.0.6",
+    "@wprdc-widgets/taxonomy-section": "^0.0.2"
   }
 }
