@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "prepare": "",
-    "start": "next start",
+    "start": "next start --port 3030",
     "lint": "next lint"
   },
   "peerDependencies": {
