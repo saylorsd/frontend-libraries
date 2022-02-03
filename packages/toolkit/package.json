@@ -26,7 +26,7 @@
     "build:types": "cp src/components.ts dist/components.d.ts; cp src/connections.ts dist/connections.d.ts; cp src/index.ts dist/index.d.ts; cp src/types.ts dist/types.d.ts; cp src/viz.ts dist/viz.d.ts; cp src/widgets.ts dist/widgets.d.ts;",
     "build:module": "cp src/components.ts dist/components.js; cp src/connections.ts dist/connections.js; cp src/index.ts dist/index.js; cp src/types.ts dist/types.js; cp src/viz.ts dist/viz.js; cp src/widgets.ts dist/widgets.js;",
     "prepare": "npm run build",
-    "watch": "tsc -w --declaration"
+    "start": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/WPRDC/frontend-libraries/issues"
