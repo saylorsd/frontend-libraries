@@ -5,22 +5,20 @@
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "directories": {
-    "lib": "src"
-  },
-  "files": [
-    "src"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WPRDC/frontend-libraries.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "mkdir -p dist && npm run build:types && npm run build:module",
     "build:types": "cp src/components.ts dist/components.d.ts; cp src/connections.ts dist/connections.d.ts; cp src/index.ts dist/index.d.ts; cp src/types.ts dist/types.d.ts; cp src/viz.ts dist/viz.d.ts; cp src/widgets.ts dist/widgets.d.ts;",
