@@ -15,7 +15,7 @@ import {
   ErrorMessage,
 } from '@wprdc/toolkit';
 
-import styles from '../../styles/Indicator.module.css';
+import styles from '../../styles/ItemPage.module.css';
 import IndicatorLandingPage from '../../parts/IndicatorLandingPage';
 import { DEFAULT_GEOG_SLUG } from '../../settings';
 
@@ -29,6 +29,7 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
   const router = useRouter();
 
   const { geog } = useGeography(geogSlug);
+  console.log(geogSlug, geog);
   const {
     indicator,
     isLoading: indLoading,
@@ -38,6 +39,7 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
   // handle query params
   useEffect(() => {
     const { slug: _slug, g, ...params } = router.query;
+    console.log('g', g);
     // read indicator slug from path
     if (!!_slug && _slug.length) setSlug(_slug[0]);
     // read geography
@@ -55,6 +57,8 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
 
   function handleGeogSelection(g: GeogBrief) {
     const { slug: _, ...params } = router.query;
+    console.log('handlin', g);
+
     router.push(
       `/${base_path}/indicator/${slug}/${serializeParams({
         ...params,
@@ -95,7 +99,7 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
         <ErrorMessage title="Error" message={indError || 'Unknown error'} />
       </div>
     );
-  }, [slug, indicator, indError, indLoading]);
+  }, [slug, indicator, indError, indLoading, geog, embed]);
 
   return (
     <div className={embed ? styles.embedWrapper : styles.wrapper}>

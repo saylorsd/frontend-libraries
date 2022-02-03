@@ -6,6 +6,7 @@ import { useProvider } from '@wprdc-components/provider';
 import { useDataViz } from '@wprdc-connections/viz';
 import classNames from 'classnames';
 import styles from './DataViz.module.css';
+import { LoadingMessage } from '@wprdc-components/loading-message';
 
 export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
   dataVizSlug,
@@ -20,7 +21,6 @@ export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
     dataVizSlug,
     usedGeog && usedGeog.slug
   );
-  console.log('error', error);
 
   let errorContent = null;
   if (!!error && !!error.level) {
@@ -39,14 +39,18 @@ export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
     );
   }
 
-  if (!!errorContent)
+  if (!!errorContent || isLoading)
     return (
       <div
         className={classNames({
           [styles.errorPreviewWrapper]: variant === DataVizVariant.Preview,
         })}
       >
-        {errorContent}
+        {isLoading ? (
+          <LoadingMessage message="Loading data viz" />
+        ) : (
+          errorContent
+        )}
       </div>
     );
 

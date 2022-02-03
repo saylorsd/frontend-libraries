@@ -14,7 +14,7 @@ import {
   DataViz,
 } from '@wprdc/toolkit';
 
-import styles from '../../styles/Indicator.module.css';
+import styles from '../../styles/ItemPage.module.css';
 import DataVizLandingPage from '../../parts/DataVizLandingPage';
 import { DEFAULT_GEOG_SLUG } from '../../settings';
 
@@ -95,7 +95,7 @@ export default function DataVizPageView({ embed }: { embed?: boolean }) {
         <ErrorMessage title="Error" message={dvError || 'Unknown error'} />
       </div>
     );
-  }, [slug, dataViz, dvError, dvLoading]);
+  }, [slug, dataViz, dvError, dvLoading, geog, embed]);
 
   return (
     <div className={embed ? styles.embedWrapper : styles.wrapper}>

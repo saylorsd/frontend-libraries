@@ -4,12 +4,13 @@
 }
 
 .searchSection {
-  @apply pb-4 lg:pb-0 mb-2 border-b-2 border-black;
+  @apply pb-4 lg:pb-0 lg:pt-5 mb-2 border-b-2 border-black;
   @apply lg:flex-shrink-0 lg:w-[400px];
   @apply lg:border-b-0 lg:border-l-2 pl-4;
 }
 
 .mainSection {
+  @apply pt-5;
   @apply lg:flex-grow;
 }
 
