@@ -12,8 +12,6 @@ export default function IndicatorSection({
   onExploreDataViz,
   onExploreIndicator,
 }: Props) {
-  console.log({ indicator });
-
   return (
     <IndicatorView
       card

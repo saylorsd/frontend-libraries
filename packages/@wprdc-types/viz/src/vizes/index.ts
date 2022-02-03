@@ -20,7 +20,7 @@ export * from './value';
 export type Downloaded<
   T extends DataVizBase,
   D = DataVizData,
-  O = Record<string, any>,
+  O = Record<string, any>
 > = T & {
   data: D;
   options: O;
@@ -77,7 +77,7 @@ export type DataVizProps =
 // -----
 export type VizProps<
   T extends DownloadedViz,
-  P extends Record<string, any> = {},
+  P extends Record<string, any> = {}
 > = React.PropsWithChildren<
   {
     dataViz: T;
@@ -93,7 +93,7 @@ export type VizProps<
 export interface VizWrapperProps {
   isLoading: boolean;
   showGeog?: boolean;
-  error?: string;
+  error?: ErrorRecord;
   geog?: GeogBrief;
   colorScheme: ColorScheme;
   menu?: JSX.Element;

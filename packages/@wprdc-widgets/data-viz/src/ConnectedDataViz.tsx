@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { DataViz } from './DataViz';
-import { ConnectedDataVizProps } from '@wprdc-types/data-viz';
+import { ConnectedDataVizProps, DataVizVariant } from '@wprdc-types/data-viz';
 import { ErrorMessage } from '@wprdc-components/error-message';
 import { useProvider } from '@wprdc-components/provider';
 import { useDataViz } from '@wprdc-connections/viz';
+import classNames from 'classnames';
+import styles from './DataViz.module.css';
 
 export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
   dataVizSlug,
@@ -18,14 +20,35 @@ export const ConnectedDataViz: React.FC<ConnectedDataVizProps> = ({
     dataVizSlug,
     usedGeog && usedGeog.slug
   );
+  console.log('error', error);
 
-  if (!!error) {
-    return <ErrorMessage title={`Not Found`} message={`${error}`} />;
+  let errorContent = null;
+  if (!!error && !!error.level) {
+    errorContent = (
+      <ErrorMessage
+        variant="centered"
+        title={error.status}
+        message={`${error.message}`}
+      />
+    );
   }
 
   if (!usedGeog) {
-    return <ErrorMessage title="Error" message="No Geography Provided" />;
+    errorContent = (
+      <ErrorMessage title="Error" message="No Geography Provided" />
+    );
   }
+
+  if (!!errorContent)
+    return (
+      <div
+        className={classNames({
+          [styles.errorPreviewWrapper]: variant === DataVizVariant.Preview,
+        })}
+      >
+        {errorContent}
+      </div>
+    );
 
   return (
     <DataViz

@@ -18,6 +18,7 @@ import {
   DataVizBase,
   DataVizID,
   Downloaded,
+  ErrorRecord,
   RowRecord,
   Variable,
   VizWrapperProps,
@@ -27,7 +28,7 @@ import { Message } from './message';
 
 export function getSpecificDataViz(
   dataViz?: Downloaded<DataVizBase>,
-  error?: string
+  error?: ErrorRecord
 ) {
   if (!!error) return Message;
   if (!dataViz) return undefined;

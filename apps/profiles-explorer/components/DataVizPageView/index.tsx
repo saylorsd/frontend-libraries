@@ -43,7 +43,6 @@ export default function DataVizPageView({ embed }: { embed?: boolean }) {
     if (typeof g === 'string') setGeogSlug(g);
     // if no geog provided, add default param to url
     else if (!g && !!slug) {
-      console.log('what!?');
       router.push(
         `/${base_path}/indicator/${slug}/${serializeParams({
           ...params,

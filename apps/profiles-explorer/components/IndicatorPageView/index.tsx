@@ -44,7 +44,6 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
     if (typeof g === 'string') setGeogSlug(g);
     // if no geog provided, add default param to url
     else if (!g && !!slug) {
-      console.log('what!?');
       router.push(
         `/${base_path}/indicator/${slug}/${serializeParams({
           ...params,
@@ -56,7 +55,6 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
 
   function handleGeogSelection(g: GeogBrief) {
     const { slug: _, ...params } = router.query;
-    console.log(_, params);
     router.push(
       `/${base_path}/indicator/${slug}/${serializeParams({
         ...params,
@@ -67,8 +65,6 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
 
   function handleIndicatorSelection(i: Indicator) {
     const { slug: _, ...params } = router.query;
-    console.log(_, params);
-
     router.push(`/${base_path}/indicator/${i.slug}/${serializeParams(params)}`);
   }
 

@@ -7,7 +7,12 @@ import React from 'react';
 
 import './main.css';
 
-import { DataVizBase, Downloaded, DataVizProps } from '@wprdc-types/viz';
+import {
+  DataVizBase,
+  Downloaded,
+  DataVizProps,
+  ErrorRecord,
+} from '@wprdc-types/viz';
 
 import { DataVizVariant } from '@wprdc-types/data-viz';
 
@@ -21,7 +26,7 @@ interface Props {
   geog?: GeogBrief;
   variant: DataVizVariant;
   isLoading?: boolean;
-  error?: string;
+  error?: ErrorRecord;
   colorScheme?: ColorScheme;
   onExplore?: (dataViz: DataVizBase) => void;
   showGeog?: boolean;
