@@ -39,6 +39,7 @@ import {
   TaxonomySection,
   useProvider,
 } from '@wprdc/toolkit';
+import { GeographyPicker } from '@wprdc-widgets/geography-picker';
 
 export default function Home() {
   // state
@@ -46,7 +47,6 @@ export default function Home() {
   const [geogLevels, setGeogLevels] = useState<GeogLevel[]>();
   const [geogLevel, setGeogLevel] = useState<GeogLevel>();
   const [geogSlug, setGeogSlug] = useState<string>(DEFAULT_GEOG.slug);
-  const [geogBrief, setGeogBrief] = useState<GeogBrief>(DEFAULT_GEOG);
   const [pathSlugs, setPathSlugs] = useState<string[]>([]);
 
   const [domainSlug, subdomainSlug, indicatorSlug, dataVizSlug] = pathSlugs;
@@ -54,9 +54,11 @@ export default function Home() {
   // hooks
   const context = useProvider();
   const { geog } = useGeography(geogSlug);
+
   // handling browser state
   const { width } = useWindowSize();
-  const onSmallScreen = false;
+  const onSmallScreen = !!width && width < 768;
+
   const router = useRouter();
 
   // update state when path updates
@@ -156,61 +158,77 @@ export default function Home() {
   }, [geogLevel]);
 
   // rendering
-  const navContent = !!geogLevel ? (
-    [
-      <div key="geonav" className={styles.geoMenu}>
-        <h2 className={styles.cta}>Select an area to explore</h2>
-        <div className={styles.menuItem}>
-          <div className={styles.stepNumber}>1</div>
-          <div className={styles.dropdown}>
-            <div className={styles.labelText} id="geogLevelSelectLabel">
-              Pick a type of area
-            </div>
-            <ConnectedSelect<GeogLevel>
-              aria-labelledby="geogLevelSelectLabel"
-              connection={geographyTypeConnection}
-              listBoxProps={defaultGeogLevelListBoxProps}
-              onSelection={handleGeogLevelSelection}
-            />
-          </div>
+  const navContent = useMemo(() => {
+    if (!geogLevel) {
+      return <LoadingMessage message="Loading geographies..." />;
+    }
+    if (onSmallScreen) {
+      return (
+        <div className={styles.geoPickerWrapper}>
+          <h2 id="picker-label" className={styles.cta}>
+            Select an area to explore
+          </h2>
+          <GeographyPicker
+            aria-labelledby="picker-label"
+            onSelection={handleGeogSelection}
+            selectedGeog={geog}
+          />
         </div>
-        <div className={styles.menuItem}>
-          <div className={styles.stepNumber}>2</div>
-          <div className={styles.dropdown}>
-            <div className={styles.labelText} id="geogSelectLabel">
-              Search for a {geogLevel.name}
+      );
+    } else {
+      return [
+        <div key="geonav" className={styles.geoMenu}>
+          <h2 className={styles.cta}>Select an area to explore</h2>
+          <div className={styles.menuItem}>
+            <div className={styles.stepNumber}>1</div>
+            <div className={styles.dropdown}>
+              <div className={styles.labelText} id="geogLevelSelectLabel">
+                Pick a type of area
+              </div>
+              <ConnectedSelect<GeogLevel>
+                aria-labelledby="geogLevelSelectLabel"
+                connection={geographyTypeConnection}
+                listBoxProps={defaultGeogLevelListBoxProps}
+                onSelection={handleGeogLevelSelection}
+              />
             </div>
-            <ConnectedSearchBox<GeogBrief>
-              aria-labelledby={'geogSelectLabel'}
-              connection={makeGeographyConnection(geogLevel.id)}
-              listBoxProps={defaultGeogListBoxProps}
-              onSelection={handleGeogSelection}
-            />
           </div>
-        </div>
-      </div>,
-      <div key="or-msg" className={styles.orSection}>
-        <div className={styles.orBreak}>or</div>
-        <div className={styles.labelText}>Use the map</div>
-      </div>,
-      <div key="mapnav" className={styles.map}>
-        <Map
-          defaultViewport={{ zoom: 7 }}
-          layerPanelVariant={LayerPanelVariant.None}
-          connections={[menuLayerConnection] as ConnectionCollection}
-          onClick={handleClick}
-          connectionHookArgs={{
-            [ProjectKey.GeoMenu]: {
-              layerItems: [geogLevel],
-              layerSelection: geogLevelSelection,
-            },
-          }}
-        />
-      </div>,
-    ]
-  ) : (
-    <LoadingMessage message="Loading geographies..." />
-  );
+          <div className={styles.menuItem}>
+            <div className={styles.stepNumber}>2</div>
+            <div className={styles.dropdown}>
+              <div className={styles.labelText} id="geogSelectLabel">
+                Search for a {geogLevel.name}
+              </div>
+              <ConnectedSearchBox<GeogBrief>
+                aria-labelledby={'geogSelectLabel'}
+                connection={makeGeographyConnection(geogLevel.id)}
+                listBoxProps={defaultGeogListBoxProps}
+                onSelection={handleGeogSelection}
+              />
+            </div>
+          </div>
+        </div>,
+        <div key="or-msg" className={styles.orSection}>
+          <div className={styles.orBreak}>or</div>
+          <div className={styles.labelText}>Use the map</div>
+        </div>,
+        <div key="mapnav" className={styles.map}>
+          <Map
+            defaultViewport={{ zoom: 7 }}
+            layerPanelVariant={LayerPanelVariant.None}
+            connections={[menuLayerConnection] as ConnectionCollection}
+            onClick={handleClick}
+            connectionHookArgs={{
+              [ProjectKey.GeoMenu]: {
+                layerItems: [geogLevel],
+                layerSelection: geogLevelSelection,
+              },
+            }}
+          />
+        </div>,
+      ];
+    }
+  }, [geogLevel, onSmallScreen, geogLevelSelection]);
 
   const mainContent = (
     <div className={styles.content}>

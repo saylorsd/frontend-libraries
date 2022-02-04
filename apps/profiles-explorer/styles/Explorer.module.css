@@ -21,6 +21,10 @@
 }
 
 /* Navmenu parts */
+.geoPickerWrapper {
+  @apply p-4;
+}
+
 .geoMenu {
   @apply flex-shrink p-3 pb-0;
 }
