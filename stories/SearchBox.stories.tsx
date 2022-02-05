@@ -12,6 +12,11 @@ import {
   makeGeographyConnection,
 } from '@wprdc-connections/geo';
 import { defaultVizListBoxProps } from '@wprdc-connections/viz';
+import { ProjectIndex } from '@wprdc-types/housecat';
+import {
+  affordableHousingProjectConnection,
+  defaultAffordableHousingListBoxProps,
+} from '../packages/@wprdc-connections/housecat';
 
 export default {
   title: 'Components/SearchBox',
@@ -38,8 +43,25 @@ export const DataViz = () => {
           onSelection={setViz}
         />
       </div>
-
       <pre>{JSON.stringify(viz, null, 2)}</pre>
+    </div>
+  );
+};
+
+export const AffordableHousingProjects = () => {
+  const [project, setProject] = React.useState<ProjectIndex>();
+
+  return (
+    <div>
+      <ConnectedSearchBox<
+        ProjectIndex,
+        ResourceOptionTemplateOptions<ProjectIndex>
+      >
+        connection={affordableHousingProjectConnection}
+        listBoxProps={defaultAffordableHousingListBoxProps}
+        onSelection={setProject}
+      />
+      <pre>{JSON.stringify(project, null, 2)}</pre>
     </div>
   );
 };

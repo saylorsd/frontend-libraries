@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import { ErrorRecord } from '@wprdc-types/viz';
 import { ResponsePackage } from '@wprdc-types/api';
+import { ProjectIndex, ProjectIndexDetails } from '@wprdc-types/housecat';
 
 import { HousecatAPI } from './api';
-import { ProjectIndex, ProjectIndexDetails } from '@wprdc-types/housecat';
 
 export function usePublicHousingProject(identifier: number | ProjectIndex) {
   const [affordableHousingProject, setAffordableHousingProject] =

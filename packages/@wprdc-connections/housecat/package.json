@@ -76,10 +76,16 @@
   },
   "dependencies": {
     "@wprdc-connections/api": "^0.0.8",
+    "@wprdc-types/geo": "^0.0.8",
     "@wprdc-types/api": "^0.0.7",
     "@wprdc-types/connections": "^0.0.6",
     "@wprdc-types/housecat": "^0.0.8",
     "@wprdc-types/map": "^0.0.7",
-    "@wprdc-types/shared": "^0.0.8"
+    "@wprdc-types/viz": "^0.0.9",
+    "@wprdc-types/shared": "^0.0.8",
+    "react-icons": "^4.3.1",
+    "@wprdc-components/list-box": "^0.0.9",
+    "@wprdc-components/util": "^0.0.7",
+    "@wprdc-types/list-box": "^0.0.8"
   }
 }
