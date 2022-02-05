@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/search-box",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "license": "MIT",
@@ -77,8 +77,8 @@
     "@react-stately/data": "^3.4.3",
     "@react-types/shared": "^3.10.1",
     "@types/react": "^17.0.38",
-    "@wprdc-types/combo-box": "^0.0.8",
-    "@wprdc-types/list-box": "^0.0.8",
-    "@wprdc-types/shared": "^0.0.8"
+    "@wprdc-types/combo-box": "^0.0.9",
+    "@wprdc-types/list-box": "^0.0.9",
+    "@wprdc-types/shared": "^0.0.9"
   }
 }

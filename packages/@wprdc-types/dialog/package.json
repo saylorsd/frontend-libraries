@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/dialog",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "license": "MIT",
@@ -77,6 +77,6 @@
     "@react-aria/overlays": "^3.7.3",
     "@react-types/dialog": "^3.3.1",
     "@types/react": "^17.0.38",
-    "@wprdc-types/heading": "^0.0.7"
+    "@wprdc-types/heading": "^0.0.8"
   }
 }

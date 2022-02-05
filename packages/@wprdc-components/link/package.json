@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/link",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -77,7 +77,7 @@
   "dependencies": {
     "@react-aria/focus": "^3.5.0",
     "@react-aria/link": "^3.2.0",
-    "@wprdc-types/link": "^0.0.7",
+    "@wprdc-types/link": "^0.0.8",
     "react-icons": "^4.3.1"
   }
 }

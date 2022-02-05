@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/divider",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/divider": "^0.0.7",
+    "@wprdc-types/divider": "^0.0.8",
     "classnames": "^2.3.1"
   }
 }

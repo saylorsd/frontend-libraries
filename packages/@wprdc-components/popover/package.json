@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/popover",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -77,6 +77,6 @@
   "dependencies": {
     "@react-aria/focus": "^3.5.0",
     "@react-aria/overlays": "^3.7.3",
-    "@wprdc-types/popover": "^0.0.8"
+    "@wprdc-types/popover": "^0.0.9"
   }
 }

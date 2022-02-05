@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/tag",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/tag": "^0.0.7",
+    "@wprdc-types/tag": "^0.0.8",
     "classnames": "^2.3.1"
   }
 }

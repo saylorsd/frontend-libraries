@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/breadcrumbs",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@react-aria/breadcrumbs": "^3.1.5",
-    "@wprdc-types/breadcrumbs": "^0.0.7",
+    "@wprdc-types/breadcrumbs": "^0.0.8",
     "classnames": "^2.3.1",
     "react-icons": "^4.3.1"
   }
