@@ -5,23 +5,28 @@
 }
 
 .indicatorSection {
-  @apply mb-2 px-4 py-4;
+  @apply mb-2 px-4 pt-4;
 }
 
 .cta {
-  @apply text-2xl md:text-3xl lg:text-5xl font-semibold lg:font-bold;
+  @apply text-2xl md:text-3xl lg:text-5xl font-semibold lg:font-semibold;
   @apply mb-2;
 }
 
 .dashboard {
   @apply mt-6;
-  @apply flex-grow md:flex;
+  @apply flex-grow;
+  @apply md:flex;
 }
 
 .dashboardSection {
-  @apply flex-grow flex flex-col;
+  @apply flex-grow;
+  @apply flex flex-col;
   @apply overflow-auto;
-  @apply px-4;
+  @apply px-4 pt-8;
+  @apply first-of-type:border-r-2;
+  @apply border-black;
+  @apply border-t-2;
 }
 
 .geoSection {

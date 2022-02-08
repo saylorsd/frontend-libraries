@@ -49,7 +49,7 @@ export default function IndicatorComparisonPage() {
       if (typeof i === 'string') setIndicatorSlug(i);
       else useDefaults = true;
     }
-    console.log('useDefaults', useDefaults);
+
     if (useDefaults) {
       const path = router.asPath.split('?')[0];
       router.push(
@@ -72,12 +72,21 @@ export default function IndicatorComparisonPage() {
   }
 
   function handleExploreIndicator(ind: Indicator) {
-    console.log(ind.slug);
-    router.push(`indicator/${ind.slug}`);
+    router.push(
+      `indicator/${ind.slug}/${serializeParams({
+        g1: geogSlugA,
+        g2: geogSlugB,
+      })}`,
+    );
   }
 
   function handleExploreDataViz(dv: DataVizBase) {
-    router.push(`../data-viz/${dv.slug}`);
+    router.push(
+      `../data-viz/${dv.slug}/${serializeParams({
+        g1: geogSlugA,
+        g2: geogSlugB,
+      })}`,
+    );
   }
 
   return (
@@ -110,7 +119,6 @@ export default function IndicatorComparisonPage() {
             />
           </div>
         </div>
-        <Divider vertical weight="thick" />
         <div className={styles.dashboardSection}>
           <div className={styles.geoSection}>
             <GeographyPicker
