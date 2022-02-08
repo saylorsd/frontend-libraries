@@ -18,6 +18,12 @@ import { serializeParams } from '@wprdc-connections/api';
 import { DataVizBase } from '@wprdc-types/viz';
 import { Divider } from '@wprdc-components/divider';
 
+const DEFAULT_PARAMS: Record<'g1' | 'g2' | 'i', string> = {
+  g1: 'county-42003',
+  g2: 'county-42003',
+  i: 'total-population',
+};
+
 export default function IndicatorComparisonPage() {
   const [indicatorSlug, setIndicatorSlug] = useState<string>();
   const [geogSlugA, setGeogSlugA] = useState<string>();
@@ -30,11 +36,25 @@ export default function IndicatorComparisonPage() {
   const { indicator } = useIndicator(indicatorSlug);
 
   useEffect(() => {
+    let useDefaults = false;
     if (router.query) {
       const { g1, g2, i } = router.query;
+
       if (typeof g1 === 'string') setGeogSlugA(g1);
+      else useDefaults = true;
+
       if (typeof g2 === 'string') setGeogSlugB(g2);
+      else useDefaults = true;
+
       if (typeof i === 'string') setIndicatorSlug(i);
+      else useDefaults = true;
+    }
+    console.log('useDefaults', useDefaults);
+    if (useDefaults) {
+      const path = router.asPath.split('?')[0];
+      router.push(
+        `${path}/${serializeParams({ ...DEFAULT_PARAMS, ...router.query })}`,
+      );
     }
   }, [router.query]);
 
