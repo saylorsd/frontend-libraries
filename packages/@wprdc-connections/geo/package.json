@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/geo",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -75,18 +75,18 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/radio-group": "^0.0.9",
-    "@wprdc-components/util": "^0.0.8",
-    "@wprdc-connections/api": "^0.0.9",
-    "@wprdc-connections/util": "^0.0.10",
-    "@wprdc-types/api": "^0.0.8",
-    "@wprdc-types/connections": "^0.0.7",
-    "@wprdc-types/geo": "^0.0.9",
-    "@wprdc-types/map": "^0.0.8",
-    "@wprdc-types/neighborhood-assets": "^0.0.9",
-    "@wprdc-types/profiles": "^0.0.10",
-    "@wprdc-types/shared": "^0.0.9",
-    "@wprdc-types/viz": "^0.0.10",
-    "@wprdc-widgets/map": "^0.0.9"
+    "@wprdc-components/radio-group": "^0.0.10",
+    "@wprdc-components/util": "^0.0.9",
+    "@wprdc-connections/api": "^0.0.10",
+    "@wprdc-connections/util": "^0.0.11",
+    "@wprdc-types/api": "^0.0.9",
+    "@wprdc-types/connections": "^0.0.8",
+    "@wprdc-types/geo": "^0.0.10",
+    "@wprdc-types/map": "^0.0.9",
+    "@wprdc-types/neighborhood-assets": "^0.0.10",
+    "@wprdc-types/profiles": "^0.0.11",
+    "@wprdc-types/shared": "^0.0.10",
+    "@wprdc-types/viz": "^0.0.11",
+    "@wprdc-widgets/map": "^0.0.10"
   }
 }

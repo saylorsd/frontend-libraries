@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/loading-message",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "license": "AGPLv3",

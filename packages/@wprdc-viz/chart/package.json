@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/chart",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -76,11 +76,11 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/provider": "^0.0.9",
-    "@wprdc-types/geo": "^0.0.9",
-    "@wprdc-types/shared": "^0.0.9",
-    "@wprdc-types/viz": "^0.0.10",
-    "@wprdc-widgets/map": "^0.0.9",
+    "@wprdc-components/provider": "^0.0.10",
+    "@wprdc-types/geo": "^0.0.10",
+    "@wprdc-types/shared": "^0.0.10",
+    "@wprdc-types/viz": "^0.0.11",
+    "@wprdc-widgets/map": "^0.0.10",
     "react-vega": "^7.4.4",
     "vega": "^5.21.0",
     "vega-lite": "^5.2.0"

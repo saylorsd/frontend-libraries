@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/tag",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -75,7 +75,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/tag": "^0.0.8",
+    "@wprdc-types/tag": "^0.0.9",
     "classnames": "^2.3.1"
   }
 }
