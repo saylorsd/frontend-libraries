@@ -3,7 +3,7 @@
   "version": "0.0.10",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
-  "license": "MIT",
+  "license": "AGPLv3",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "repository": {
     "type": "git",

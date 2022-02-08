@@ -3,7 +3,7 @@
   "version": "0.0.10",
   "description": "",
   "keywords": [],
-  "license": "MIT",
+  "license": "AGPLv3",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "repository": {
     "type": "git",
@@ -86,6 +86,7 @@
     "@wprdc-types/map": "^0.0.8",
     "@wprdc-types/shared": "^0.0.9",
     "@wprdc-types/viz": "^0.0.10",
+    "@wprdc-widgets/map": "^0.0.9",
     "react-icons": "^4.3.1"
   }
 }

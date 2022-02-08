@@ -1,0 +1,19 @@
+import React from 'react';
+import { Story } from '@storybook/react';
+
+import { {{properCase name}} } from '@wprdc-components/{{kebabCase name}}';
+import { {{properCase name}}Props } from '@wprdc-types/{{kebabCase name}}';
+
+
+export default {
+  title: '{{properCase name}}',
+  component: {{properCase name}},
+};
+
+const Template: Story<{{properCase name}}Props> = (args) => <{{properCase name}} {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = { };
+
+export const Secondary = Template.bind({});
+Secondary.args = { };

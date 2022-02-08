@@ -3,6 +3,7 @@ import {
   ListConnection,
   ListConnectableComponentProps,
   ListConnectableComponent,
+  Resource,
 } from '@wprdc-types/shared';
 
 export function withListConnection<

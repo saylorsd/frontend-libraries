@@ -4,7 +4,7 @@
   "description": "Dummy package depending on all WPRDC site building packages.  Useful for development and testing.",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
-  "license": "MIT",
+  "license": "AGPLv3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WPRDC/frontend-libraries.git"

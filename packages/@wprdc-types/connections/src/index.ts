@@ -15,6 +15,7 @@ import {
   HoverPopupProps,
   ClickPopupProps,
   PopupContentComponent,
+  LayerPanelProps,
 } from '@wprdc-types/map';
 import { DataVizID } from '@wprdc-types/viz';
 import { AssetType } from '@wprdc-types/neighborhood-assets';
@@ -243,3 +244,5 @@ export type MouseEventHandler = (
   CustomContentComponent?: PopupContentComponent,
   callback?: ConnectedMapEventHandler
 ) => void;
+
+export type ConnectedLayerPanelProps = WithToolboxes<LayerPanelProps>;

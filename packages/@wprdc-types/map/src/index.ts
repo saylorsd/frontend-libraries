@@ -92,3 +92,5 @@ export interface MapProps extends InteractiveMapProps {
 
   mapboxApiAccessToken?: string;
 }
+
+export interface LayerPanelProps {}

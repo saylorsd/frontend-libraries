@@ -57,7 +57,7 @@ export function DataVizDetails(props: DataVizDetailsProps) {
               })}
               aria-label="data presentation"
             >
-              {!!error && <Message error={error} />}
+              {!!error && <Message error={error.message} />}
               {isLoading && <LoadingMessage name={dataViz && dataViz.name} />}
               {!isLoading && !!Visualization && !!dataViz && !!geog && (
                 <Visualization

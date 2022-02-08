@@ -37,7 +37,7 @@ export const DataVizPreview = memo((props: DataVizPreviewProps) => {
             aria-label="data presentation preview"
           >
             {isLoading && <LoadingMessage name="preview" />}
-            {!!error && <Message error={error} />}
+            {!!error && <Message error={error.message} />}
             {!!Visualization && !!dataViz && !!geog && (
               <Visualization
                 inPreview

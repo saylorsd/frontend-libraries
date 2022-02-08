@@ -1,22 +1,27 @@
 .wrapper {
   @apply border;
   @apply flex flex-col flex-grow;
+  @apply overflow-auto;
 }
 
 .indicatorSection {
-  @apply mb-2 px-2;
+  @apply mb-2 px-4 py-4;
 }
 
 .cta {
   @apply text-2xl md:text-3xl lg:text-5xl font-semibold lg:font-bold;
+  @apply mb-2;
 }
 
 .dashboard {
-  @apply flex-grow md:grid md:gap-8 md:grid-cols-2 px-3;
+  @apply mt-6;
+  @apply flex-grow md:flex;
 }
 
 .dashboardSection {
-  @apply flex flex-col;
+  @apply flex-grow flex flex-col;
+  @apply overflow-auto;
+  @apply px-4;
 }
 
 .geoSection {
@@ -25,4 +30,9 @@
 
 .indSection {
   @apply flex-grow overflow-auto;
+}
+
+.geogTitle {
+  @apply font-medium text-5xl;
+  @apply py-4;
 }

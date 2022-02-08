@@ -15,6 +15,7 @@ import {
   defaultIndicatorListBoxProps,
 } from '../packages/@wprdc-connections/profiles';
 import { Divider } from '../packages/@wprdc-components/divider';
+import { GeographyPicker } from '@wprdc-widgets/geography-picker';
 
 export default {
   title: 'Tools/Indicator Viewer',
@@ -36,7 +37,7 @@ const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
     React.useState<string>('total-population');
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
 
-  const { geog } = useGeography(geogBrief);
+  const { geog } = useGeography(geogBrief.slug);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
@@ -67,5 +68,62 @@ const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
   );
 };
 
+const ComparisonTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
+  const [indicatorSlug, setIndicatorSlug] =
+    React.useState<string>('total-population');
+  const [geogBriefA, setGeogBriefA] = React.useState<GeogBrief>(DEFAULT_GEOG);
+  const [geogBriefB, setGeogBriefB] = React.useState<GeogBrief>(DEFAULT_GEOG);
+
+  const { geog: geogA } = useGeography(geogBriefA.slug);
+  const { geog: geogB } = useGeography(geogBriefB.slug);
+
+  function handleSelection(indicator: Indicator) {
+    if (!!indicator) setIndicatorSlug(indicator.slug);
+  }
+
+  return (
+    <>
+      <ConnectedSearchBox
+        connection={indicatorConnection}
+        label="Pick your indicator"
+        onSelection={handleSelection}
+        listBoxProps={defaultIndicatorListBoxProps}
+      />
+      <br />
+      <br />
+      <Divider weight="thick" />
+      <div className="flex gap-4">
+        <div className="basis-1/2 m-2">
+          <GeographyPicker
+            selectedGeog={geogBriefA}
+            onSelection={setGeogBriefA}
+          />
+          <ConnectedIndicatorView
+            {...args}
+            geog={geogA}
+            indicatorSlug={indicatorSlug}
+            onGeogSelection={setGeogBriefA}
+          />
+        </div>
+        <div className="basis-1/2 m-2">
+          <GeographyPicker
+            selectedGeog={geogBriefB}
+            onSelection={setGeogBriefB}
+          />
+          <ConnectedIndicatorView
+            {...args}
+            geog={geogB}
+            indicatorSlug={indicatorSlug}
+            onGeogSelection={setGeogBriefB}
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+
 export const withSearch = ConnectedTemplate.bind({});
+withSearch.args = {};
+
+export const comparison = ComparisonTemplate.bind({});
 withSearch.args = {};

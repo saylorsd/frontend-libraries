@@ -98,7 +98,7 @@ export function DataVizCard(props: DataVizCardProps) {
                 aria-label="data presentation preview"
                 className={styles.vizPane}
               >
-                {!!error && <Message error={error} />}
+                {!!error && <Message error={error.message} />}
                 {!isLoading && !!Visualization && !!dataViz && !!geog && (
                   <Visualization
                     dataViz={dataViz}

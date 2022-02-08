@@ -24,3 +24,7 @@
 .loadingWrapper {
   @apply container mx-auto my-auto;
 }
+
+.geogSelection {
+  @apply py-4;
+}

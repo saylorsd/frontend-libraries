@@ -40,7 +40,7 @@ export const DataVizMini = memo((props: DataVizMiniProps) => {
               className={styles.vizDiv}
               aria-label="data presentation preview"
             >
-              {!!error && <Message error={error} />}
+              {!!error && <Message error={error.message} />}
               {!error && !!Visualization && !!dataViz && !!geog && (
                 <Visualization
                   dataViz={dataViz}

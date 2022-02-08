@@ -17,6 +17,7 @@ import {
 import styles from '../../styles/ItemPage.module.css';
 import DataVizLandingPage from '../../parts/DataVizLandingPage';
 import { DEFAULT_GEOG_SLUG } from '../../settings';
+import { GeographyPicker } from '@wprdc-widgets/geography-picker';
 
 export default function DataVizPageView({ embed }: { embed?: boolean }) {
   const [slug, setSlug] = useState<string>();
@@ -101,17 +102,21 @@ export default function DataVizPageView({ embed }: { embed?: boolean }) {
     <div className={embed ? styles.embedWrapper : styles.wrapper}>
       {!embed && (
         <div className={styles.searchSection}>
-          <p className={styles.searchLabel} id="search-label">
-            Search for another Data Viz
-          </p>
           <ConnectedSearchBox
-            aria-labelledby="search-label"
+            label="Search for another Data Viz"
             connection={dataVizConnection}
             listBoxProps={defaultVizListBoxProps}
             onSelection={handleDataVizSelection}
             inputValue={dataViz && dataViz.name}
             selectedKey={slug}
           />
+          <div className={styles.geogSelection}>
+            <GeographyPicker
+              label="Select another place"
+              onSelection={handleGeogSelection}
+              selectedGeog={geog}
+            />
+          </div>
         </div>
       )}
       <main className={styles.mainSection}>{mainContent}</main>
