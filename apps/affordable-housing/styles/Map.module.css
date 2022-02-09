@@ -1,0 +1,16 @@
+.wrapper {
+  @apply flex flex-row;
+  @apply h-screen;
+}
+
+.menuSection {
+  @apply lg:w-80;
+}
+
+.mapSection {
+  @apply flex-grow;
+}
+
+.dashboardSection {
+  @apply lg:w-80;
+}

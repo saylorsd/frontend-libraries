@@ -1,20 +1,39 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+/**
+ *
+ * MapPage
+ *
+ */
+import * as React from 'react';
+import { MapFilterForm } from '../parts/MapFilterForm';
+import { MapInterface } from '../parts/MapInterface';
+import { DataDashboard } from '../parts/DataDashboard';
 
-const Home: NextPage = () => {
+import styles from '../styles/Map.module.css';
+import { Item, Tabs } from '@wprdc/toolkit';
+
+interface Props {}
+
+function MapPage(props: Props) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Affordable housing data explorer" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}></main>
+    <div className={styles.wrapper}>
+      <div className={styles.menuSection}>
+        <Tabs>
+          <Item title="Filter">
+            <MapFilterForm />
+          </Item>
+          <Item title="Layer">
+            <MapFilterForm />
+          </Item>
+        </Tabs>
+      </div>
+      <div className={styles.mapSection}>
+        <MapInterface />
+      </div>
+      <div className={styles.dashboardSection}>
+        <DataDashboard />
+      </div>
     </div>
   );
-};
+}
 
-export default Home;
+export default MapPage;

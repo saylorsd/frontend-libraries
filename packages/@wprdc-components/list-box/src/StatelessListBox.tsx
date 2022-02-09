@@ -27,9 +27,8 @@ import {
   OptionProps,
   StatelessListBoxProps,
 } from '@wprdc-types/list-box';
-import { Resource } from '@wprdc-types/shared';
 
-export const StatelessListBox = <T extends Resource, O extends object = {}>(
+export const StatelessListBox = <T extends object, O extends object = {}>(
   props: StatelessListBoxProps<T, O>
 ): JSX.Element => {
   const defaultRef = React.useRef<HTMLUListElement>(null);
@@ -85,7 +84,7 @@ export const StatelessListBox = <T extends Resource, O extends object = {}>(
   );
 };
 
-export const ListBoxSection = <T extends Resource, O extends object = {}>(
+export const ListBoxSection = <T extends object, O extends object = {}>(
   props: ListBoxSectionProps<T, O>
 ) => {
   const { section, state, dense, optionTemplate, optionTemplateOptions } =
@@ -134,7 +133,7 @@ export const ListBoxSection = <T extends Resource, O extends object = {}>(
   );
 };
 
-export const Option = <T extends Resource, O extends object = {}>({
+export const Option = <T extends object, O extends object = {}>({
   item,
   state,
   dense,

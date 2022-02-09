@@ -40,6 +40,7 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
     description,
     dataVizes,
     longDescription,
+    fullDescription,
     limitations,
     provenance,
   } = indicator || {};
@@ -120,7 +121,9 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
         {longDescription && (
           <>
             <h2 className={styles.detailsSectionHeader}>Description</h2>
-            <p className={styles.detailsSection}>{longDescription}</p>
+            <p className={styles.detailsSection}>
+              {fullDescription || longDescription}
+            </p>
           </>
         )}
         {limitations && (

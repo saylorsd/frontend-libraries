@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+}
+
+.input {
+    flex: 1;
+    border: none;
+}
+
+.icon {
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+}

@@ -9,7 +9,6 @@ import { HiddenSelect, useSelect } from '@react-aria/select';
 import { mergeProps } from '@react-aria/utils';
 import { useFocusRing } from '@react-aria/focus';
 import { useButton } from '@react-aria/button';
-import { AriaListBoxOptions } from '@react-aria/listbox';
 
 import { useSelectState } from '@react-stately/select';
 
@@ -17,12 +16,12 @@ import { Popover } from '@wprdc-components/popover';
 import { StatelessListBox } from '@wprdc-components/list-box';
 
 import { SelectProps } from '@wprdc-types/select';
-import { Resource } from '@wprdc-types/shared';
 
 // todo: get icons
 import { HiSelector } from 'react-icons/hi';
+import { AriaListBoxOptions } from '@react-aria/listbox';
 
-export function Select<T extends Resource, O extends object = {}>(
+export function Select<T extends object, O extends object = {}>(
   props: SelectProps<T, O>
 ) {
   // Create state based on the incoming props

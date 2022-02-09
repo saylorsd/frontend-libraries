@@ -1,0 +1,27 @@
+.container{
+    width: 100%
+}
+
+.numberField {
+    @apply rounded border border-gray-300 w-20;
+}
+
+.label {
+    @apply text-xs flex-initial px-1;
+}
+
+.fieldSet{
+
+}
+
+.fieldRow{
+    @apply grid grid-cols-2;
+}
+
+.fieldCol {
+    @apply flex flex-row items-center border-red-800;
+}
+
+.legend {
+    @apply text-sm font-sans font-medium text-gray-700;
+}

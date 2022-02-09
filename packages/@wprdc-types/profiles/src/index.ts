@@ -8,6 +8,7 @@ interface IndicatorHierarchy {
 
 export interface Indicator extends Resource {
   longDescription: string;
+  fullDescription: string;
   limitations: string;
   importance: string;
   source: string;
