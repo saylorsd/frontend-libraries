@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-types/taxonomy-section",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Collection of TypeScript/JS libraries for use in/with WPRDC projects.",
   "keywords": [],
   "license": "AGPLv3",
@@ -76,7 +76,7 @@
   "dependencies": {
     "@wprdc-types/breadcrumbs": "^0.0.9",
     "@wprdc-types/geo": "^0.0.10",
-    "@wprdc-types/profiles": "^0.0.11",
+    "@wprdc-types/profiles": "^0.0.12",
     "@wprdc-types/viz": "^0.0.11"
   }
 }
