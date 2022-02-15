@@ -1,10 +1,10 @@
 {
-  "name": "@wprdc-types/text-field",
-  "version": "0.0.1",
-  "description": "Form field for text input.",
+  "name": "@wprdc-components/number-field",
+  "version": "0.0.0",
+  "description": "Form field for handling numeric data.",
   "keywords": [],
-  "license": "AGPLv3",
-  "author": "Steve Saylor <steven.saylor@pitt.edu>",
+  "license": "AGPL3",
+  "author": "Steve Saylor &lt;steven.saylor@pitt.edu&gt;",
   "repository": {
     "type": "git",
     "url": "git@github.com:WPRDC/frontend-libraries.git"
@@ -13,7 +13,7 @@
     "access": "public"
   },
   "main": "dist/index.js",
-  "module": "dist/text-field.esm.js",
+  "module": "dist/number-field.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -35,11 +35,11 @@
   },
   "size-limit": [
     {
-      "path": "dist/text-field.cjs.production.min.js",
+      "path": "dist/number-field.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/text-field.esm.js",
+      "path": "dist/number-field.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -75,6 +75,12 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "@react-aria/textfield": "^3.5.0"
+    "@react-aria/focus": "^3.5.0",
+    "@react-aria/numberfield": "^3.1.1",
+    "@react-aria/i18n": "^3.3.4",
+    "@react-aria/button": "^3.3.4",
+    "@wprdc-types/number-field": "^0.0.0",
+    "classnames": "^2.3.1",
+    "react-icons": "^4.3.1"
   }
 }

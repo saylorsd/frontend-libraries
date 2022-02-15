@@ -2237,6 +2237,24 @@
     "@react-types/menu" "^3.3.0"
     "@react-types/shared" "^3.10.0"
 
+"@react-aria/numberfield@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/numberfield/-/numberfield-3.1.1.tgz#1e09b964831d15aa78b86fad4b9d99c643cefe9a"
+  integrity sha512-6ep+sgNe4ZymoBHNfsSiqxhwqeTjN6eRQyCjfrq0WUq5ttjrL9a91w3pSoOGQKI7CQ92y7pvvLcCghkeP2meGQ==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/i18n" "^3.3.3"
+    "@react-aria/interactions" "^3.7.0"
+    "@react-aria/live-announcer" "^3.0.1"
+    "@react-aria/spinbutton" "^3.0.1"
+    "@react-aria/textfield" "^3.5.0"
+    "@react-aria/utils" "^3.10.0"
+    "@react-stately/numberfield" "^3.0.2"
+    "@react-types/button" "^3.4.1"
+    "@react-types/numberfield" "^3.1.0"
+    "@react-types/shared" "^3.10.0"
+    "@react-types/textfield" "^3.3.0"
+
 "@react-aria/overlays@^3.7.3":
   version "3.7.3"
   resolved "https://registry.yarnpkg.com/@react-aria/overlays/-/overlays-3.7.3.tgz#b107b1d31c04c538355e566b1034d23e5696c18a"
@@ -2321,6 +2339,18 @@
   dependencies:
     "@babel/runtime" "^7.6.2"
     "@react-aria/utils" "^3.8.2"
+    "@react-types/shared" "^3.8.0"
+
+"@react-aria/spinbutton@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/spinbutton/-/spinbutton-3.0.1.tgz#e0d5595e1c74518ca46acdeebf7bd19022ee5d50"
+  integrity sha512-V2wUhSgJDxSqzo5HPbx7OgGpFeuvxq8/7nNO8mT3cEZfZASUGvjIdCRmAf243qyfo9Yby4zdx9E/BxNOGCZ9cQ==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/i18n" "^3.3.2"
+    "@react-aria/live-announcer" "^3.0.1"
+    "@react-aria/utils" "^3.8.2"
+    "@react-types/button" "^3.4.1"
     "@react-types/shared" "^3.8.0"
 
 "@react-aria/ssr@^3.0.3", "@react-aria/ssr@^3.1.0":
@@ -2463,6 +2493,17 @@
     "@react-stately/overlays" "^3.1.3"
     "@react-stately/utils" "^3.2.2"
     "@react-types/menu" "^3.3.0"
+    "@react-types/shared" "^3.8.0"
+
+"@react-stately/numberfield@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@react-stately/numberfield/-/numberfield-3.0.2.tgz#2e2831e60cafb7cc4b3124fe5f135a7bbd70e590"
+  integrity sha512-hxJt/Bj9cqJ8EPp9Vb0BL2CMWaRROWvxveiy76zcMMAT1TN33Wjhta+r+RjhJeUqDCHyvgcbYUeyxEbqrcipRA==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@internationalized/number" "^3.0.2"
+    "@react-stately/utils" "^3.2.2"
+    "@react-types/numberfield" "^3.0.1"
     "@react-types/shared" "^3.8.0"
 
 "@react-stately/overlays@^3.1.3":
@@ -2635,6 +2676,13 @@
   integrity sha512-9xx7x13h2/DpnD8m2+eN09ViEwXldYXGtD0WSExO99ZulNi4tbzwJfnUBBJWj1aq9v2ZgObECOSqwkIDOJo6qA==
   dependencies:
     "@react-types/overlays" "^3.5.1"
+    "@react-types/shared" "^3.9.0"
+
+"@react-types/numberfield@^3.0.1", "@react-types/numberfield@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@react-types/numberfield/-/numberfield-3.1.0.tgz#30aff4352a24797a235a74e538a8dd86c5c60af3"
+  integrity sha512-+QfvGqWD/QWOIyOCRDX/KyyV6QWdA/BQZKVpkFd0Vyy11GGT0eiKGyBevlN22/mwQkHbu53smVrRKXlHdB1tUQ==
+  dependencies:
     "@react-types/shared" "^3.9.0"
 
 "@react-types/overlays@^3.5.1":
