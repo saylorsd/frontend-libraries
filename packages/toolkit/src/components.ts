@@ -24,6 +24,8 @@ export * from '@wprdc-components/checkbox-group';
 export * from '@wprdc-components/dialog';
 export * from '@wprdc-components/link';
 export * from '@wprdc-components/menu-item';
+export * from '@wprdc-components/number-field';
 export * from '@wprdc-components/search-box';
 export * from '@wprdc-components/tabs';
+export * from '@wprdc-components/text-field';
 export * from '@wprdc-components/util';
