@@ -7,10 +7,10 @@ import * as React from 'react';
 import ReactMapGL, { ViewportProps } from 'react-map-gl';
 import { neighborhoods, zipCodes } from './zoomLists';
 import { MapMenuDropdown } from './MapMenuDropdown';
-import { AddressSearch } from '../../components/AddressSearch';
-import { TimeSlider } from '../../components/TimeSlider';
 
 import styles from './MapInterface.module.css';
+import { ConnectedSearchBox } from '@wprdc-components/search-box';
+import { affordableHousingProjectConnection } from '@wprdc-connections/housecat';
 
 interface Option {
   value: string;
@@ -31,7 +31,7 @@ export function MapInterface(props: Props) {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       <div className={styles.menuSection}>
         <fieldset className={styles.zoomControls}>
           <div className={styles.zoomLabel}>
@@ -53,7 +53,7 @@ export function MapInterface(props: Props) {
           </div>
         </fieldset>
         <div className={styles.searchBox}>
-          <AddressSearch />
+          <ConnectedSearchBox connection={affordableHousingProjectConnection} />
         </div>
       </div>
       <div className={styles.mapSection}>
@@ -65,7 +65,6 @@ export function MapInterface(props: Props) {
           onViewportChange={(v: ViewportProps) => setViewport(v)}
         />
       </div>
-      <div className={styles.timeSection}></div>
     </div>
   );
 }

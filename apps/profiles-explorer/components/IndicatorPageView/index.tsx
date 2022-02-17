@@ -29,7 +29,7 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
   const router = useRouter();
 
   const { geog } = useGeography(geogSlug);
-  console.log(geogSlug, geog);
+
   const {
     indicator,
     isLoading: indLoading,
@@ -39,7 +39,6 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
   // handle query params
   useEffect(() => {
     const { slug: _slug, g, ...params } = router.query;
-    console.log('g', g);
     // read indicator slug from path
     if (!!_slug && _slug.length) setSlug(_slug[0]);
     // read geography
@@ -57,7 +56,6 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
 
   function handleGeogSelection(g: GeogBrief) {
     const { slug: _, ...params } = router.query;
-    console.log('handlin', g);
 
     router.push(
       `/${base_path}/indicator/${slug}/${serializeParams({

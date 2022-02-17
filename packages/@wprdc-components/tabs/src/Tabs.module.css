@@ -1,19 +1,57 @@
-.container {
+.wrapper {
+  @apply flex flex-col w-full h-full;
 }
+
+.tabSection {
+  @apply flex flex-row;
+}
+
 .tabList {
-  @apply flex border-b-2 border-gray-500 overflow-x-auto pt-0.5;
+  @apply flex flex-grow overflow-x-hidden;
+  @apply pt-0.5;
+  @apply border-b;
 }
+
 .tab {
-  @apply px-2 py-1.5 ml-3 first:ml-1 cursor-pointer text-sm font-medium
-    box-border border whitespace-nowrap border-b-0 rounded-t-md
-    transition duration-300 hover:bg-gray-100;
+  @apply px-1.5 py-1.5;
+  @apply text-sm font-medium whitespace-nowrap text-center;
+  @apply cursor-pointer;
+  @apply focus:outline-none focus-visible:border-sky-500 focus-visible:ring-sky-500 focus-visible:ring-1;
+  @apply rounded;
+  @apply border border-transparent;
+  @apply hover:font-semibold hover:border hover:border-gray-300 hover:bg-slate-50;
 }
-.selected {
-  @apply font-semibold bg-primary-200 border-primary-900 border-2 border-b-0 focus:ring-2 focus:ring-blue-700;
+
+.tab::before {
+  content: attr(title);
+  @apply font-bold;
+  @apply h-0 block overflow-hidden;
 }
+
+.tabWrapper {
+  @apply ml-3 first:ml-1;
+  @apply pb-0.5;
+}
+
+.tab.selected {
+  @apply font-bold;
+}
+
+.tabWrapper.selected {
+  @apply border-b-4 border-b-cyan-600;
+}
+
 .disabled {
   @apply opacity-50;
 }
+
+.disabledButton {
+  @apply text-gray-300 cursor-default;
+}
+
 .tabPanel {
-  @apply overflow-y-auto;
+  @apply flex-grow overflow-y-auto;
+}
+
+.scrollButton {
 }

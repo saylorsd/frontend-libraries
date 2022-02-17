@@ -149,7 +149,6 @@ const Template: Story<IndicatorViewProps> = (args) => {
   useEffect(() => {
     if (!!geog) context.setGeog(geog);
   }, [geog]);
-  console.log(geog);
 
   return (
     <>
@@ -165,7 +164,6 @@ const ConnectedTemplate: Story<ConnectedIndicatorViewProps> = (args) => {
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(DEFAULT_GEOG);
 
   const { geog } = useGeography(geogBrief.slug);
-  console.log(geog);
 
   useEffect(() => {
     if (!!geog) context.setGeog(geog);

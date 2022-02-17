@@ -1,61 +1,48 @@
-.container {
-    @apply flex flex-nowrap flex-col justify-center items-stretch;
+.wrapper {
+  @apply flex flex-nowrap flex-col justify-center items-stretch h-full;
 }
 
 .mapSection {
-    @apply flex-auto self-auto;
+  @apply flex-grow self-auto;
 }
 
-
 .timeSection {
-    @apply flex-initial h-24 self-auto;
+  @apply flex-initial h-24 self-auto;
 }
 
 .menuSection {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
-    display: flex;
-
-    height: 3.6rem;
+  @apply flex;
 }
 
 .menuLegend {
-    flex: 0;
+  flex: 0;
 }
 
 .zoomControls {
-    flex: 1;
-    padding: 0.5rem 0;
-    display: flex;
-    border: none;
+  flex: 1;
+  padding: 0.5rem 0;
+  display: flex;
+  border: none;
 }
 
-
 .zoomLabel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .searchBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0.5rem;
-    flex: 0 1 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+  flex: 0 1 15rem;
 }
 
 .zoomSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 0.5rem;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.5rem;
+  flex: 1;
 }

@@ -1,5 +1,5 @@
 .wrapper {
-  @apply flex flex-row;
+  @apply flex flex-row justify-items-stretch;
   @apply h-screen;
 }
 

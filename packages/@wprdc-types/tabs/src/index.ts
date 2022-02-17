@@ -15,11 +15,11 @@ import { Resource } from '@wprdc-types/shared';
 
 export interface TabsProps<T extends Resource> extends AriaTabListProps<T> {}
 
-export interface TabProps<T extends Resource> extends AriaTabProps {
+export interface TabProps<T extends object> extends AriaTabProps {
   item: Node<T>;
   state: TabListState<T>;
 }
 
-export interface TabPanelProps<T extends Resource> extends AriaTabPanelProps {
+export interface TabPanelProps<T extends object> extends AriaTabPanelProps {
   state: TabListState<T>;
 }
