@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Item, Select } from '../packages/@wprdc-components/select';
+
+import { Item } from '../packages/@wprdc-components/util';
+import { Select } from '../packages/@wprdc-components/select';
 
 export default {
   title: 'Components/Select',
@@ -8,7 +10,7 @@ export default {
 
 export const Default = () => (
   <div>
-    <Select label="Select an Animal">
+    <Select label="Select an Animal" onSelection={console.log}>
       <Item key="red panda">Red Panda</Item>
       <Item key="cat">Cat</Item>
       <Item key="dog">Dog</Item>

@@ -29,7 +29,8 @@ export function Select<T extends object, O extends object = {}>(
 
   const selectionShim = (key: React.Key) => {
     if (!!onSelection) {
-      onSelection(state.collection.getItem(key).value);
+      const node = state.collection.getItem(key);
+      onSelection(node.value || key);
     }
   };
 

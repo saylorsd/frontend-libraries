@@ -6,11 +6,12 @@
 import * as React from 'react';
 import ReactMapGL, { ViewportProps } from 'react-map-gl';
 import { neighborhoods, zipCodes } from './zoomLists';
-import { MapMenuDropdown } from './MapMenuDropdown';
 
 import styles from './MapInterface.module.css';
 import { ConnectedSearchBox } from '@wprdc-components/search-box';
 import { affordableHousingProjectConnection } from '@wprdc-connections/housecat';
+import { Select } from '@wprdc-components/select';
+import { Item } from '@wprdc-components/util';
 
 interface Option {
   value: string;
@@ -38,22 +39,33 @@ export function MapInterface(props: Props) {
             <legend className={styles.menuLegend}>Zoom Map To</legend>
           </div>
           <div className={styles.zoomSection}>
-            <MapMenuDropdown<Option>
+            <Select<Option>
+              label="Zip code"
+              aria-label="zoom to zip code"
               id="zip-code-zoom"
               name="zip-code-zoom"
               items={zipCodes}
               placeholder="Zip code"
-            />
+            >
+              {(item) => <Item key={item.value}>{item.label}</Item>}
+            </Select>
           </div>
           <div className={styles.zoomSection}>
-            <MapMenuDropdown<Option>
+            <Select<Option>
+              label="Neighborhood"
+              aria-label="zoom to neighborhood"
               items={neighborhoods}
               placeholder="Neighborhood"
-            />
+            >
+              {(item) => <Item key={item.value}>{item.label}</Item>}
+            </Select>
           </div>
         </fieldset>
         <div className={styles.searchBox}>
-          <ConnectedSearchBox connection={affordableHousingProjectConnection} />
+          <ConnectedSearchBox
+            label="Project"
+            connection={affordableHousingProjectConnection}
+          />
         </div>
       </div>
       <div className={styles.mapSection}>

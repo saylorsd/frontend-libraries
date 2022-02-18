@@ -10,7 +10,7 @@ interface Props {}
 
 export function DataDashboard(props: Props) {
   return (
-    <Tabs>
+    <Tabs aria-label="data viz sections">
       <Item title="Data in View">TBD</Item>
       <Item title="All Data">TBD</Item>
     </Tabs>

@@ -17,7 +17,7 @@ function MapPage(props: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.menuSection}>
-        <Tabs>
+        <Tabs aria-label="menu sections">
           <Item title="Filter">
             <MapFilterForm />
           </Item>
