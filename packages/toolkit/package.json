@@ -1,6 +1,6 @@
 {
   "name": "@wprdc/toolkit",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Dummy package depending on all WPRDC site building packages.  Useful for development and testing.",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
@@ -94,7 +94,7 @@
     "@wprdc-components/provider": "^0.0.10",
     "@wprdc-components/radio-group": "^0.0.10",
     "@wprdc-components/search-box": "^0.0.12",
-    "@wprdc-components/select": "^0.0.12",
+    "@wprdc-components/select": "^0.0.13",
     "@wprdc-components/source-list": "^0.0.11",
     "@wprdc-components/spinner": "^0.0.10",
     "@wprdc-components/tabs": "^0.0.12",
@@ -141,7 +141,7 @@
     "@wprdc-types/provider": "^0.0.10",
     "@wprdc-types/radio-group": "^0.0.9",
     "@wprdc-types/search-box": "^0.0.10",
-    "@wprdc-types/select": "^0.0.10",
+    "@wprdc-types/select": "^0.0.11",
     "@wprdc-types/shared": "^0.0.10",
     "@wprdc-types/source-list": "^0.0.11",
     "@wprdc-types/spinner": "^0.0.10",
@@ -157,9 +157,9 @@
     "@wprdc-viz/table": "^0.0.11",
     "@wprdc-viz/value": "^0.0.11",
     "@wprdc-widgets/data-viz": "^0.0.11",
-    "@wprdc-widgets/geography-picker": "^0.0.10",
-    "@wprdc-widgets/indicator-view": "^0.0.11",
+    "@wprdc-widgets/geography-picker": "^0.0.11",
+    "@wprdc-widgets/indicator-view": "^0.0.12",
     "@wprdc-widgets/map": "^0.0.10",
-    "@wprdc-widgets/taxonomy-section": "^0.0.10"
+    "@wprdc-widgets/taxonomy-section": "^0.0.11"
   }
 }
