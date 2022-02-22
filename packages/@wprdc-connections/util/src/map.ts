@@ -82,6 +82,10 @@ export function useMapPlugin<T extends Resource, E>({
 
   // Update map data on selection or option change
   useEffect(() => {
+    console.groupCollapsed('Map connection update');
+    console.log({ layerItems, selection, options });
+    console.groupEnd();
+    // todo:
     if (!!layerItems) {
       // signal that the first layer is the only layer to render, and is always rendered
       if (!!options && !!options.permanentLayer) {
@@ -113,7 +117,7 @@ export function useMapPlugin<T extends Resource, E>({
 
       setSelectedItems(connection.getSelectedItems(layerItems, selection));
     }
-  }, [layerItems, selection]);
+  }, [layerItems, selection, options]);
 
   // Update the section element when the legend items change
   useEffect(() => {

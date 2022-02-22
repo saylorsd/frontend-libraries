@@ -18,6 +18,20 @@ export interface ProjectIndex extends Resource {
   status?: string | null;
 }
 
+export interface ProjectIndexMapProperties {
+  id: number;
+  property_street_address?: string;
+  census_tract?: string;
+  latitude?: string;
+  house_cat_id?: string;
+  zip_code?: string;
+  property_id?: string;
+  city?: string;
+  hud_property_name?: string;
+  units?: string;
+  scattered_sites: boolean;
+}
+
 export interface ProjectIndexDetails extends ProjectIndex {
   activeHudMultifamilyInsuredMortgages: ActiveHUDMultifamilyInsuredMortgages[];
   hudMultifamilyFiscalYearProduction: HUDMultifamilyFiscalYearProduction[];

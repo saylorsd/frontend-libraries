@@ -13,7 +13,7 @@ export enum Method {
 export type Endpoint = string;
 
 export interface APIOptions {
-  id?: string | number;
+  id?: string | number | null;
   params?: Record<string, string | number | boolean>;
   headers?: Record<string, string | number | boolean>;
   fetchInit?: {};

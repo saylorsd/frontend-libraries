@@ -256,7 +256,7 @@ export function Map({
         tbLayers: [] as LayerProps[],
       }
     );
-  }, [toolboxes]);
+  }, [toolboxes, connections, connectionHookArgs]);
 
   return (
     <div className={styles.container}>

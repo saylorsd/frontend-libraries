@@ -1,14 +1,14 @@
 import React from 'react';
-import { MapPluginConnection } from '@wprdc-types/connections';
+import { ConnectionProps, MapPluginConnection } from '@wprdc-types/connections';
 
 import { Layer, LegendItem, LegendSection, Source } from '@wprdc-widgets/map';
 import { useMapPlugin } from '@wprdc-connections/util';
 
 import { ProjectKey, Resource } from '@wprdc-types/shared';
 import { HousecatAPI } from './api';
-import { ProjectIndex } from '@wprdc-types/housecat';
+import { ProjectIndexMapProperties } from '@wprdc-types/housecat';
 
-const VIZ_SOURCE_ID = '@viz';
+import styles from './PopupContent.module.css';
 
 interface AffordableHousingLayer extends Resource {}
 
@@ -21,28 +21,31 @@ export const housingProjectLayer: AffordableHousingLayer = {
 
 export const affordableHousingProjectMapConnection: MapPluginConnection<
   AffordableHousingLayer,
-  ProjectIndex
+  ProjectIndexMapProperties
 > = {
   name: ProjectKey.Housecat,
   use: useMapPlugin,
-  getSources(_, __, setSources) {
-    HousecatAPI.requestPublicHousingProjectMap().then(
+  getSources(_, __, setSources, options) {
+    const { filterParams } = options || {};
+    HousecatAPI.requestPublicHousingProjectMap(filterParams).then(
       (r) => {
         if (r.data) setSources([r.data.source]);
       },
       (err) => console.error(err)
     );
   },
-  getLayers(_, __, setLayers) {
-    HousecatAPI.requestPublicHousingProjectMap().then(
+  getLayers(_, __, setLayers, options) {
+    const { filterParams } = options || {};
+    HousecatAPI.requestPublicHousingProjectMap(filterParams).then(
       (r) => {
         if (r.data) setLayers(r.data.layers);
       },
       (err) => console.error(err)
     );
   },
-  getLegendItems(_, __, setLegendItems) {
-    HousecatAPI.requestPublicHousingProjectMap().then(
+  getLegendItems(_, __, setLegendItems, options) {
+    const { filterParams } = options || {};
+    HousecatAPI.requestPublicHousingProjectMap(filterParams).then(
       (r) => {
         if (r.data) setLegendItems(r.data.extras.legendItems);
       },
@@ -54,14 +57,18 @@ export const affordableHousingProjectMapConnection: MapPluginConnection<
   },
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
+      console.log({ event });
       const features = event.features.filter(
         (feature) =>
           !!feature &&
           !!feature.source &&
           !!feature.properties &&
-          feature.source === VIZ_SOURCE_ID
+          feature.source === 'all-public-housing-projects'
       );
-      return features.map(({ properties }) => properties as ProjectIndex);
+
+      return features.map(
+        ({ properties }) => properties as ProjectIndexMapProperties
+      );
     }
     return [];
   },
@@ -97,10 +104,32 @@ export const affordableHousingProjectMapConnection: MapPluginConnection<
   makeLayerPanelSection() {
     // todo: implement
   },
-  makeHoverContent: () => {
-    return null; // todo: implement
+  makeHoverContent: (hoveredItems) => {
+    if (!!hoveredItems && !!hoveredItems.length)
+      return (
+        <div className={styles.title}>
+          {hoveredItems[0]['hud_property_name']}
+        </div>
+      );
+    return null;
   },
-  makeClickContent: () => {
-    return null; // todo: implement
+  makeClickContent: (clickedItems) => {
+    if (!!clickedItems && !!clickedItems.length)
+      return (
+        <div>
+          <div className={styles.title}>
+            {clickedItems[0]['hud_property_name']}
+          </div>
+          <div className={styles.details}>
+            {clickedItems[0]['property_street_address']}
+          </div>
+        </div>
+      );
+    return null;
   },
 };
+
+export const defaultAffordableHousingProjectMapConnectionProps: ConnectionProps =
+  {
+    layerItems: [{ id: 'default', name: 'default', slug: 'default' }],
+  };

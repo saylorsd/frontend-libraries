@@ -4,32 +4,42 @@
  *
  */
 import * as React from 'react';
-import ReactMapGL, { ViewportProps } from 'react-map-gl';
 import { neighborhoods, zipCodes } from './zoomLists';
 
 import styles from './MapInterface.module.css';
 import { ConnectedSearchBox } from '@wprdc-components/search-box';
-import { affordableHousingProjectConnection } from '@wprdc-connections/housecat';
+import {
+  affordableHousingProjectConnection,
+  affordableHousingProjectMapConnection,
+  defaultAffordableHousingProjectMapConnectionProps,
+} from '@wprdc-connections/housecat';
 import { Select } from '@wprdc-components/select';
 import { Item } from '@wprdc-components/util';
+import { Map } from '@wprdc-widgets/map';
+import { ProjectKey } from '@wprdc-types/shared';
+import { FilterFormValues } from '../../types';
 
 interface Option {
   value: string;
   label: string;
 }
 
-interface Props {}
+interface Props {
+  filterParams?: FilterFormValues;
+}
 
-const API_KEY =
-  'pk.eyJ1Ijoic3RldmVuZHNheWxvciIsImEiOiJja295ZmxndGEwbGxvMm5xdTc3M2MwZ2xkIn0' +
-  '.WDBLMZYfh-ZGFjmwO82xvw';
+function makeConnectionHookArgs(filterParams?: FilterFormValues) {
+  return {
+    ...defaultAffordableHousingProjectMapConnectionProps,
+    options: {
+      ...defaultAffordableHousingProjectMapConnectionProps.options,
+      filterParams,
+    },
+  };
+}
 
-export function MapInterface(props: Props) {
-  const [viewport, setViewport] = React.useState<ViewportProps>({
-    latitude: 40.442258956262904,
-    longitude: -79.99870495366592,
-    zoom: 10,
-  });
+export function MapInterface({ filterParams }: Props) {
+  console.log({ filterParams });
 
   return (
     <div className={styles.wrapper}>
@@ -69,12 +79,11 @@ export function MapInterface(props: Props) {
         </div>
       </div>
       <div className={styles.mapSection}>
-        <ReactMapGL
-          mapboxApiAccessToken={API_KEY}
-          {...viewport}
-          width="100%"
-          height="100%"
-          onViewportChange={(v: ViewportProps) => setViewport(v)}
+        <Map
+          connections={[affordableHousingProjectMapConnection]}
+          connectionHookArgs={{
+            [ProjectKey.Housecat]: makeConnectionHookArgs(filterParams),
+          }}
         />
       </div>
     </div>

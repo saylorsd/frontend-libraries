@@ -49,7 +49,7 @@ class API<E extends Endpoint> {
       fetchInit: {},
     };
 
-    const idPath = ['null', 'undefined'].includes(typeof id) ? '' : `${id}/`;
+    const idPath = ['object', 'undefined'].includes(typeof id) ? '' : `${id}/`;
     const urlParams = serializeParams(params);
     const url = `${this.host}/${endpoint}/${idPath}${urlParams}`;
 

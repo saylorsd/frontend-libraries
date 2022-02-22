@@ -12,7 +12,7 @@
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "@wprdc/toolkit": "^0.0.19"
+    "@wprdc/toolkit": "^0.0.20"
   },
   "devDependencies": {
     "@types/node": "17.0.0",
