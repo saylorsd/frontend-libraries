@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/api",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -75,6 +75,6 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/api": "^0.0.9"
+    "@wprdc-types/api": "^0.0.10"
   }
 }

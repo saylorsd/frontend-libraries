@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-viz/chart",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -80,7 +80,7 @@
     "@wprdc-types/geo": "^0.0.10",
     "@wprdc-types/shared": "^0.0.10",
     "@wprdc-types/viz": "^0.0.11",
-    "@wprdc-widgets/map": "^0.0.10",
+    "@wprdc-widgets/map": "^0.0.11",
     "react-vega": "^7.4.4",
     "vega": "^5.21.0",
     "vega-lite": "^5.2.0"
