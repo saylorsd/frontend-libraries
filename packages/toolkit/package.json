@@ -1,6 +1,6 @@
 {
   "name": "@wprdc/toolkit",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Dummy package depending on all WPRDC site building packages.  Useful for development and testing.",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
@@ -95,12 +95,12 @@
     "@wprdc-components/radio-group": "^0.0.11",
     "@wprdc-components/search-box": "^0.0.13",
     "@wprdc-components/select": "^0.0.15",
-    "@wprdc-components/source-list": "^0.0.12",
+    "@wprdc-components/source-list": "^0.0.13",
     "@wprdc-components/spinner": "^0.0.11",
     "@wprdc-components/tabs": "^0.0.13",
     "@wprdc-components/tag": "^0.0.11",
     "@wprdc-components/text-field": "^0.0.2",
-    "@wprdc-components/tooltip": "^0.0.11",
+    "@wprdc-components/tooltip": "^0.0.12",
     "@wprdc-components/util": "^0.0.9",
     "@wprdc-connections/api": "^0.0.11",
     "@wprdc-connections/geo": "^0.0.14",
@@ -156,10 +156,10 @@
     "@wprdc-viz/sentence": "^0.0.13",
     "@wprdc-viz/table": "^0.0.12",
     "@wprdc-viz/value": "^0.0.12",
-    "@wprdc-widgets/data-viz": "^0.0.13",
+    "@wprdc-widgets/data-viz": "^0.0.14",
     "@wprdc-widgets/geography-picker": "^0.0.13",
-    "@wprdc-widgets/indicator-view": "^0.0.14",
+    "@wprdc-widgets/indicator-view": "^0.0.15",
     "@wprdc-widgets/map": "^0.0.12",
-    "@wprdc-widgets/taxonomy-section": "^0.0.13"
+    "@wprdc-widgets/taxonomy-section": "^0.0.14"
   }
 }
