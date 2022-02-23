@@ -7,16 +7,16 @@ import * as React from 'react';
 import { neighborhoods, zipCodes } from './zoomLists';
 
 import styles from './MapInterface.module.css';
-import { ConnectedSearchBox } from '@wprdc-components/search-box';
 import {
+  ConnectedSearchBox,
   affordableHousingProjectConnection,
   affordableHousingProjectMapConnection,
   defaultAffordableHousingProjectMapConnectionProps,
-} from '@wprdc-connections/housecat';
-import { Select } from '@wprdc-components/select';
-import { Item } from '@wprdc-components/util';
-import { Map } from '@wprdc-widgets/map';
-import { ProjectKey } from '@wprdc-types/shared';
+  Select,
+  Item,
+  Map,
+  ProjectKey,
+} from '@wprdc/toolkit';
 import { FilterFormValues } from '../../types';
 
 interface Option {
