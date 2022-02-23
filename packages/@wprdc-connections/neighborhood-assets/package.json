@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/neighborhood-assets",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -76,17 +76,17 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-components/checkbox-group": "^0.0.10",
+    "@wprdc-components/checkbox-group": "^0.0.11",
     "@wprdc-components/util": "^0.0.9",
     "@wprdc-connections/api": "^0.0.11",
-    "@wprdc-connections/util": "^0.0.12",
+    "@wprdc-connections/util": "^0.0.13",
     "@wprdc-types/api": "^0.0.10",
-    "@wprdc-types/connections": "^0.0.8",
-    "@wprdc-types/geo": "^0.0.10",
-    "@wprdc-types/map": "^0.0.9",
-    "@wprdc-types/neighborhood-assets": "^0.0.10",
-    "@wprdc-types/shared": "^0.0.10",
-    "@wprdc-widgets/map": "^0.0.11",
+    "@wprdc-types/connections": "^0.0.9",
+    "@wprdc-types/geo": "^0.0.11",
+    "@wprdc-types/map": "^0.0.10",
+    "@wprdc-types/neighborhood-assets": "^0.0.11",
+    "@wprdc-types/shared": "^0.0.11",
+    "@wprdc-widgets/map": "^0.0.12",
     "chroma-js": "^2.1.2"
   }
 }

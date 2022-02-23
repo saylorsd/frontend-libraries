@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-components/spinner",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -75,8 +75,8 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@wprdc-types/shared": "^0.0.10",
-    "@wprdc-types/spinner": "^0.0.10",
+    "@wprdc-types/shared": "^0.0.11",
+    "@wprdc-types/spinner": "^0.0.11",
     "react-spinners": "^0.11.0",
     "svg-loaders-react": "^2.2.1"
   }
