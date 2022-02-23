@@ -74,8 +74,8 @@ export function Tooltip(props: TooltipProps) {
 
   const state = useOverlayTriggerState(props);
 
-  const triggerRef = React.useRef(null);
-  const overlayRef = React.useRef(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const overlayRef = React.useRef<HTMLDivElement>(null);
 
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
