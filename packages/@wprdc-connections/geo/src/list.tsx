@@ -37,9 +37,11 @@ export function makeGeographyConnection(
 
 export class GeographyConnection implements ListConnection<GeogBrief> {
   geogType: GeographyType;
+  limit = 20;
 
-  constructor(geogType: GeographyType) {
+  constructor(geogType: GeographyType, limit?: number) {
     this.geogType = geogType;
+    if (limit) this.limit = limit;
   }
 
   public load = async ({
@@ -49,7 +51,7 @@ export class GeographyConnection implements ListConnection<GeogBrief> {
   }: AsyncListLoadOptions<GeogBrief, string>) => {
     const res = await fetch(
       cursor ||
-        `https://api.profiles.wprdc.org/geo/${this.geogType}/?search=${filterText}&limit=20`,
+        `https://api.profiles.wprdc.org/geo/${this.geogType}/?search=${filterText}&limit=${this.limit}`,
       { signal }
     );
     const json = await res.json();

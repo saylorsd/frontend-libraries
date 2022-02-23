@@ -52,7 +52,7 @@ export interface ResourceOptionTemplateOptions<T extends Resource> {
    * If the function returns null or undefined, `Icon` or nothing will be used
    */
   getIcon?: (
-    item: T,
+    item: T
   ) => React.FC<React.HTMLAttributes<HTMLOrSVGElement>> | null | undefined;
   /**
    * Icon component. Will be overridden by result of `getIcon` if `getIcon` is

@@ -5,6 +5,7 @@ import { AppProps } from 'next/app';
 import { NextPage } from 'next';
 import { ReactElement, ReactNode } from 'react';
 
+import 'mapbox-gl/dist/mapbox-gl.css';
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };

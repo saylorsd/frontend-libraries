@@ -1,19 +1,25 @@
 .container {
 }
+
 .list {
   @apply flex;
 }
+
 .listItem {
   @apply flex;
 }
+
 .title {
   @apply font-medium;
 }
+
 .bigTitle {
   @apply font-semibold text-2xl;
 }
+
 .link {
 }
+
 .divider {
   @apply mx-1 font-bold text-gray-400;
   @apply flex flex-col justify-center;

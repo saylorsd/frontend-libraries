@@ -8,7 +8,6 @@ import * as React from 'react';
 import '../main.css';
 
 import { ConnectedHoverPopupProps } from '@wprdc-types/connections';
-// import { PopupSection } from './PopupSection';
 import { Popup } from './Popup';
 
 export const HoverPopup: React.FC<ConnectedHoverPopupProps> = ({

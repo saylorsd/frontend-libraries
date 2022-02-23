@@ -1,13 +1,12 @@
-import { BasemapStyle, ViewportOptions } from '@wprdc-types/map';
+import { BasemapStyle } from '@wprdc-types/map';
+import { ViewState } from 'react-map-gl';
 
 export const CARTO_USER = 'wprdc';
 
 export const MAPS_API_ENDPOINT = `https://${CARTO_USER}.carto.com/api/v1/map`;
 
 /** Viewport centered on Pittsburgh */
-export const DEFAULT_VIEWPORT: ViewportOptions = {
-  width: '100%',
-  height: '100%',
+export const DEFAULT_VIEWSTATE: Partial<ViewState> = {
   latitude: 40.440624,
   longitude: -79.995888,
   zoom: 12,

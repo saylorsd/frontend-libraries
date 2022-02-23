@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Expression } from 'mapbox-gl';
-import { LayerProps, MapEvent, SourceProps } from 'react-map-gl';
+import { LayerProps, MapLayerMouseEvent, SourceProps } from 'react-map-gl';
 
 import { Selection } from '@react-types/shared';
 
@@ -102,7 +102,7 @@ export interface MapPluginConnection<T extends Resource, E> {
   getInteractiveLayerIDs: (items: T[], selected: Selection) => string[];
 
   /** Function to read MapEvent data and extract project items from it */
-  parseMapEvent: (event: MapEvent, ctx?: MapPluginContext) => E[];
+  parseMapEvent: (event: MapLayerMouseEvent, ctx?: MapPluginContext) => E[];
 
   /** Make mapbox filter expression that limits map to item or items provided. */
   makeFilter: (item: E[] | E) => Expression;
@@ -128,10 +128,16 @@ export interface MapPluginConnection<T extends Resource, E> {
   makeLayerPanelSection: LayerPanelSectionMaker<T>;
 
   /** Generates content for hover popup */
-  makeHoverContent: (hoveredItems: E[], event: MapEvent) => JSX.Element | null;
+  makeHoverContent: (
+    hoveredItems: E[],
+    event: MapLayerMouseEvent
+  ) => JSX.Element | null;
 
   /** Generates content for hover popup */
-  makeClickContent: (clickedItems: E[], event: MapEvent) => JSX.Element | null;
+  makeClickContent: (
+    clickedItems: E[],
+    event: MapLayerMouseEvent
+  ) => JSX.Element | null;
 }
 
 export type LayerPanelChangeHandler = (value: string | string[]) => void;
@@ -173,10 +179,10 @@ export interface MapPluginToolbox<T extends Resource, E> {
   handleLayerSelection: (selection: Selection) => void;
 
   /** Callback fired on hover events */
-  handleHover: (event: MapEvent) => E[];
+  handleHover: (event: MapLayerMouseEvent) => E[];
 
   /** Callback fired on click events */
-  handleClick: (event: MapEvent) => E[];
+  handleClick: (event: MapLayerMouseEvent) => E[];
 
   /**  */
   content?: JSX.Element;
@@ -191,10 +197,16 @@ export interface MapPluginToolbox<T extends Resource, E> {
   selectedItems?: T[];
 
   /** Generates content for hover popup */
-  makeHoverContent: (hoveredItems: E[], event: MapEvent) => JSX.Element | null;
+  makeHoverContent: (
+    hoveredItems: E[],
+    event: MapLayerMouseEvent
+  ) => JSX.Element | null;
 
   /** Generates content for hover popup */
-  makeClickContent: (clickedItems: E[], event: MapEvent) => JSX.Element | null;
+  makeClickContent: (
+    clickedItems: E[],
+    event: MapLayerMouseEvent
+  ) => JSX.Element | null;
 }
 
 export interface APIMapBoxResponse {
@@ -225,7 +237,7 @@ export interface ConnectionResourcesRecord {
 export type ConnectionArgProps = Partial<Record<ProjectKey, ConnectionProps>>;
 
 export type ConnectedMapEventHandler = (
-  evt: MapEvent,
+  evt: MapLayerMouseEvent,
   toolboxes?: MapPluginToolbox<any, any>[],
   toolboxItems?: Partial<ConnectionResourcesRecord>
 ) => void;
@@ -238,7 +250,7 @@ export type ConnectedClickPopupProps = Connected<ClickPopupProps>;
 
 export type MouseEventHandler = (
   eventType: 'click' | 'hover',
-  event: MapEvent,
+  event: MapLayerMouseEvent,
   Popup: React.FC<ConnectedPopupProps>,
   setPopup: React.Dispatch<JSX.Element | null | undefined>,
   CustomContentComponent?: PopupContentComponent,

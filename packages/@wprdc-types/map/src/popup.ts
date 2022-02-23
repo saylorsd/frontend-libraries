@@ -1,5 +1,5 @@
 import { PopupProps as RMGPopupProps } from 'react-map-gl/src/components/popup';
-import { MapEvent } from 'react-map-gl';
+import { MapLayerMouseEvent } from 'react-map-gl';
 import React from 'react';
 
 export interface PopupProps extends RMGPopupProps {}
@@ -17,10 +17,10 @@ export interface PopupSectionProps {
 
 export interface PopupContentProps<
   G extends GeoJSON.Geometry | null = GeoJSON.Geometry,
-  P = GeoJSON.GeoJsonProperties,
+  P = GeoJSON.GeoJsonProperties
 > {
   /** Event responsible for this popup. */
-  event: MapEvent;
+  event: MapLayerMouseEvent;
   /**
    * The features associated withe the event.
    * (shortcut - should be set `event.features`
@@ -34,7 +34,7 @@ export interface PopupContentProps<
 }
 
 export type PopupContentComponent<
-  P extends PopupContentProps = PopupContentProps,
+  P extends PopupContentProps = PopupContentProps
 > = React.FC<P>;
 
 export interface UserPopupContentProps {

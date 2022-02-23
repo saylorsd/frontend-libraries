@@ -4,17 +4,21 @@
   @apply rounded border-gray-400 border  hover:border-gray-600;
   @apply transition duration-300;
 }
+
 .default {
   @apply hover:bg-gray-100;
 }
+
 .primary {
   @apply bg-primary-400;
   @apply hover:bg-primary-500;
 }
+
 .secondary {
   @apply bg-secondary-400;
   @apply hover:bg-secondary-500;
 }
+
 .elevated {
   @apply shadow;
   @apply hover:shadow-md;
