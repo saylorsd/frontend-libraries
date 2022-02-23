@@ -16,6 +16,7 @@ export interface ProjectIndex extends Resource {
   crowdsourcedId?: string | null;
   houseCatId?: string | null;
   status?: string | null;
+  centroid?: [number, number];
 }
 
 export interface ProjectIndexMapProperties {

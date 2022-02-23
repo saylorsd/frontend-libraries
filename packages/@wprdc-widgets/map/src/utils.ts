@@ -1,5 +1,5 @@
 import { Feature } from 'geojson';
-import { LayerProps, MapEvent, SourceProps } from 'react-map-gl';
+import { LayerProps, MapLayerMouseEvent, SourceProps } from 'react-map-gl';
 import {
   ASSETS_SOURCE_ID,
   MAPS_API_ENDPOINT,
@@ -14,21 +14,23 @@ import {
   MapPluginToolbox,
 } from '@wprdc-types/connections';
 
-export function makeContentProps(event: MapEvent): PopupContentProps {
+export function makeContentProps(event: MapLayerMouseEvent): PopupContentProps {
   const features: Feature[] = event.features || [];
   const primaryFeatureProps = !!features.length ? features[0].properties : {};
 
   return { event, features, primaryFeatureProps };
 }
 
-export function extractFeatureFromEvent(event: MapEvent): Feature | undefined {
+export function extractFeatureFromEvent(
+  event: MapLayerMouseEvent
+): Feature | undefined {
   if (event && event.features && event.features.length) {
     return event.features[0];
   }
   return undefined;
 }
 
-export function hasFeatures(event: MapEvent): boolean {
+export function hasFeatures(event: MapLayerMouseEvent): boolean {
   return !!extractFeatureFromEvent(event);
 }
 
@@ -57,7 +59,7 @@ export function fetchCartoVectorSource(
   id: string,
   sql: string,
   apiKey?: string,
-  type = 'vector',
+  type: 'vector' = 'vector',
   minzoom = 0,
   maxzoom = 22
 ): PromiseLike<SourceProps> {
@@ -188,7 +190,7 @@ export function getLayerType(layer: LayerProps) {
  */
 export function handleMouseEventForToolboxes(
   toolboxes: MapPluginToolbox<any, any>[],
-  event: MapEvent,
+  event: MapLayerMouseEvent,
   eventType: 'click' | 'hover'
 ): {
   toolboxContents: JSX.Element[];

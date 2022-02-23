@@ -79,8 +79,11 @@ th.field {
 .container {
   @apply block max-w-full p-0.5;
 }
+
 .previewContainer {
-} /* This is required to make the table full-width */
+}
+
+/* This is required to make the table full-width */
 .container {
   @apply block max-w-full p-0.5;
 }
@@ -161,8 +164,10 @@ th.field {
 .tableWrap {
   @apply block max-w-full overflow-x-scroll overflow-y-hidden;
 }
+
 .tableElem {
 }
+
 /* This is required to make the table full-width */
 .container {
   @apply block max-w-full p-0.5;
@@ -243,19 +248,25 @@ th.field {
 
 .row {
 }
+
 .mainRow {
 }
+
 .subrow {
   color: #777;
   font-style: italic;
 }
+
 .subrow > td {
   border-top: 0 !important;
   padding-top: 0;
 }
+
 .subrow > td:first-child {
   padding-left: 16px;
-} /* This is required to make the table full-width */
+}
+
+/* This is required to make the table full-width */
 
 .container {
   @apply block max-w-full p-0.5;
@@ -337,28 +348,36 @@ th.field {
 tr:first-child > td:not(:first-child) {
   @apply border-t-2 border-gray-900;
 }
+
 tr:not(:first-child) > td {
   @apply border-t;
 }
+
 .field {
   white-space: pre;
   width: 0.001%;
 }
+
 .emptyHeader {
 }
+
 .categoryHeader {
 }
+
 th:last-child,
 td:last-child {
   border-right: 0;
 }
+
 td.field {
   text-align: right;
   @apply font-mono;
 }
+
 th.field {
   text-align: center;
 }
+
 .moe {
   @apply cursor-help;
   @apply text-sky-700;

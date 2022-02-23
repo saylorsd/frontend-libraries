@@ -1,47 +1,47 @@
 .container {
-    @apply flex flex-row align-middle inline;
-    @apply rounded-md border border-gray-300;
-    @apply py-1 pl-2 pr-2 w-max;
-    @apply bg-white shadow-sm sm:text-sm;
+  @apply flex flex-row align-middle inline;
+  @apply rounded-md border border-gray-300;
+  @apply py-1 pl-2 pr-2 w-max;
+  @apply bg-white shadow-sm sm:text-sm;
 }
 
 .label {
-    @apply px-1 border-r rounded-l;
-    @apply flex-grow-0 flex items-center;
-    @apply font-medium text-sm text-gray-600;
+  @apply px-1 border-r rounded-l;
+  @apply flex-grow-0 flex items-center;
+  @apply font-medium text-sm text-gray-600;
 }
 
 .value {
-    @apply px-1.5 flex-auto overflow-auto;
+  @apply px-1.5 flex-auto overflow-auto;
 }
 
 .icon {
 }
 
 .labelText {
-    @apply px-0.5;
+  @apply px-0.5;
 }
 
 .text {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: inherit;
-    max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+  max-width: 100%;
 }
 
 .size-S {
-    @apply text-xs;
+  @apply text-xs;
 }
 
 .size-M {
-    @apply text-sm;
+  @apply text-sm;
 }
 
 .size-L {
-    /*@apply;*/
+  /*@apply;*/
 }
 
 .full {
-    @apply w-full;
+  @apply w-full;
 }

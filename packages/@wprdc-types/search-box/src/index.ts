@@ -19,7 +19,7 @@ export interface SearchBoxProps<T extends Resource, O extends object = {}>
 
 export interface ConnectedSearchBoxProps<
   T extends Resource,
-  O extends object = {},
+  O extends object = {}
 > extends ListConnectableComponentProps<T>,
     Omit<SearchBoxProps<T, O>, 'children'> {
   label?: string;

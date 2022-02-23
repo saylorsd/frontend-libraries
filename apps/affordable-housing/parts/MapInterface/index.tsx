@@ -4,25 +4,23 @@
  *
  */
 import * as React from 'react';
-import { neighborhoods, zipCodes } from './zoomLists';
 
 import styles from './MapInterface.module.css';
 import {
-  ConnectedSearchBox,
   affordableHousingProjectConnection,
   affordableHousingProjectMapConnection,
+  ConnectedSearchBox,
+  ConnectedSelect,
   defaultAffordableHousingProjectMapConnectionProps,
-  Select,
-  Item,
+  GeogBrief,
+  GeographyConnection,
+  GeographyType,
   Map,
+  ProjectIndex,
   ProjectKey,
 } from '@wprdc/toolkit';
 import { FilterFormValues } from '../../types';
-
-interface Option {
-  value: string;
-  label: string;
-}
+import { MapRef } from 'react-map-gl';
 
 interface Props {
   filterParams?: FilterFormValues;
@@ -39,7 +37,17 @@ function makeConnectionHookArgs(filterParams?: FilterFormValues) {
 }
 
 export function MapInterface({ filterParams }: Props) {
-  console.log({ filterParams });
+  const mapRef = React.useRef<MapRef>(null);
+
+  const handleZoomSelect = React.useCallback(
+    ({ centroid }: { centroid?: [number, number] }) => {
+      console.log({ centroid });
+      if (!!centroid) {
+        mapRef.current?.flyTo({ center: centroid, zoom: 11, duration: 1000 });
+      }
+    },
+    [],
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -49,37 +57,36 @@ export function MapInterface({ filterParams }: Props) {
             <legend className={styles.menuLegend}>Zoom Map To</legend>
           </div>
           <div className={styles.zoomSection}>
-            <Select<Option>
+            <ConnectedSelect<GeogBrief>
               label="Zip code"
               aria-label="zoom to zip code"
               id="zip-code-zoom"
-              name="zip-code-zoom"
-              items={zipCodes}
-              placeholder="Zip code"
-            >
-              {(item) => <Item key={item.value}>{item.label}</Item>}
-            </Select>
+              connection={new GeographyConnection(GeographyType.ZCTA, 100)}
+              onSelection={handleZoomSelect}
+            />
           </div>
           <div className={styles.zoomSection}>
-            <Select<Option>
+            <ConnectedSelect<GeogBrief>
               label="Neighborhood"
               aria-label="zoom to neighborhood"
-              items={neighborhoods}
-              placeholder="Neighborhood"
-            >
-              {(item) => <Item key={item.value}>{item.label}</Item>}
-            </Select>
+              connection={
+                new GeographyConnection(GeographyType.Neighborhood, 100)
+              }
+              onSelection={handleZoomSelect}
+            />
           </div>
         </fieldset>
         <div className={styles.searchBox}>
-          <ConnectedSearchBox
+          <ConnectedSearchBox<ProjectIndex>
             label="Project"
             connection={affordableHousingProjectConnection}
+            onSelection={handleZoomSelect}
           />
         </div>
       </div>
       <div className={styles.mapSection}>
         <Map
+          ref={mapRef}
           connections={[affordableHousingProjectMapConnection]}
           connectionHookArgs={{
             [ProjectKey.Housecat]: makeConnectionHookArgs(filterParams),

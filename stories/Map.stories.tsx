@@ -20,8 +20,6 @@ export const Default: React.FC = () => {
   return (
     <div style={{ height: '400px', border: '2px solid black' }}>
       <Map
-        height="100%"
-        width="100%"
         connections={[menuLayerConnection] as ConnectionCollection}
         connectionHookArgs={{
           'geo-menu': {

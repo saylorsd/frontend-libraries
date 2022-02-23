@@ -62,7 +62,7 @@ export interface ListConnectableComponentProps<T extends Resource> {
 }
 
 export type ListConnectableComponent<T extends Resource> = (
-  props: ListConnectableComponentProps<T>,
+  props: ListConnectableComponentProps<T>
 ) => ReactElement | null;
 
 export interface Size {

@@ -61,18 +61,20 @@ export const menuLayerConnection: MapPluginConnection<GeogLevel, GeogBrief> = {
           !!feature.properties &&
           feature.source.substring(0, 4) === 'menu'
       );
-      return features.map(
-        ({ properties }) =>
-          ({
-            id: properties.id,
-            name: properties.name,
-            title: properties.display_name,
-            slug: properties.slug,
-            description: properties.description,
-            geogType: properties.geog_type,
-            geogID: properties.global_geoid,
-          } as GeogBrief)
-      );
+      let result: GeogBrief[] = [];
+      for (const feature of features) {
+        if (feature.properties)
+          result.push({
+            id: feature.properties.id,
+            name: feature.properties.name,
+            title: feature.properties.display_name,
+            slug: feature.properties.slug,
+            description: feature.properties.description,
+            geogType: feature.properties.geog_type,
+            geogID: feature.properties.global_geoid,
+          } as GeogBrief);
+      }
+      return result;
     }
     return [];
   },

@@ -1,12 +1,13 @@
 import React from 'react';
 
 import {
-  InteractiveMapProps,
+  MapProps as RMGMapProps,
   LayerProps,
-  MapEvent,
+  MapLayerMouseEvent,
+  MapLayerTouchEvent,
   PopupProps as RMGPopupProps,
   SourceProps,
-  ViewportProps,
+  MapRef,
 } from 'react-map-gl';
 
 import { ColorScheme } from '@wprdc-types/shared';
@@ -20,30 +21,26 @@ export * from './menu';
 export * from './popup';
 
 export { Expression, ExpressionName } from 'mapbox-gl';
-export { LayerProps, MapEvent, RMGPopupProps, SourceProps, ViewportProps };
+export {
+  LayerProps,
+  MapLayerMouseEvent,
+  MapLayerTouchEvent,
+  RMGPopupProps,
+  SourceProps,
+};
 
 export type MapFormat = 'vector' | 'raster';
 
 export type BasemapStyle = 'light' | 'dark' | 'streets';
 
-export interface ViewportOptions
-  extends Omit<ViewportProps, 'width' | 'height'> {
-  /** Width of viewport valid css height value string or number of pixels */
-  width: string | number;
-
-  /** Height of viewport valid css height value string or number of pixels */
-  height: string | number;
-}
-
-export interface MapProps extends InteractiveMapProps {
-  /** Viewport to use on first render */
-  defaultViewport?: Partial<ViewportOptions>;
-
+export interface MapProps extends RMGMapProps {
   /**
    * ID of the mapbox style to use as a basemap.
    * @default 'light'
    **/
   basemapStyle?: BasemapStyle;
+
+  mapRef?: React.RefObject<MapRef>;
 
   /** mapbox source props */
   sources?: SourceProps[];

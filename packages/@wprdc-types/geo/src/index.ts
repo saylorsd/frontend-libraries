@@ -10,6 +10,7 @@ export interface Geog extends GeogBrief {
 
 export interface GeogBrief extends GeogIdentifier, Resource {
   title: string;
+  centroid?: [number, number];
 }
 
 export enum GeographyType {

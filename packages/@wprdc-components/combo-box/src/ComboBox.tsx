@@ -35,7 +35,7 @@ export function ComboBox<T extends Resource>(props: ComboBoxProps<T>) {
       listBoxRef,
       popoverRef,
     },
-    state,
+    state
   );
 
   let { buttonProps } = useButton(triggerProps, buttonRef);

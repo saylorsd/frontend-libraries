@@ -1,16 +1,21 @@
 .container {
 }
+
 .title {
   @apply font-medium text-sm text-gray-600 mb-0.5;
 }
+
 .popover {
 }
+
 .list {
   @apply inline-block;
 }
+
 .listItem {
   @apply pl-1 mb-1;
 }
+
 .sourceButtonText {
   @apply italic underline;
 }

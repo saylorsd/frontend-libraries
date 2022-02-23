@@ -4,6 +4,7 @@
 .mapboxgl-popup-tip {
   visibility: hidden !important;
 }
+
 .mapboxgl-popup-content {
   background: transparent !important;
   border: none !important;

@@ -18,9 +18,8 @@ import { useCheckboxGroup, useCheckboxGroupItem } from '@react-aria/checkbox';
 
 import { CheckboxGroupProps, CheckboxProps } from '@wprdc-types/checkbox-group';
 
-const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
-  null
-);
+const CheckboxGroupContext =
+  React.createContext<CheckboxGroupState | null>(null);
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
   const { children, label, items } = props;
