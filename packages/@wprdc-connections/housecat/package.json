@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/housecat",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -79,14 +79,14 @@
     "@wprdc-components/util": "^0.0.9",
     "@wprdc-connections/api": "^0.0.11",
     "@wprdc-types/api": "^0.0.10",
-    "@wprdc-types/connections": "^0.0.9",
+    "@wprdc-types/connections": "^0.0.10",
     "@wprdc-types/geo": "^0.0.11",
     "@wprdc-types/housecat": "^0.0.12",
     "@wprdc-types/list-box": "^0.0.11",
     "@wprdc-types/map": "^0.0.10",
     "@wprdc-types/shared": "^0.0.11",
-    "@wprdc-types/viz": "^0.0.12",
-    "@wprdc-widgets/map": "^0.0.12",
+    "@wprdc-types/viz": "^0.0.13",
+    "@wprdc-widgets/map": "^0.0.13",
     "react-icons": "^4.3.1"
   }
 }
