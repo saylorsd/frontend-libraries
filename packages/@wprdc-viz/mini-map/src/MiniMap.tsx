@@ -50,13 +50,12 @@ export function MiniMap(props: MiniMapVizProps) {
 
   return (
     <Map
-      defaultViewport={{ zoom: 9, longitude: -79.9925 }}
+      initialViewState={{ zoom: 9, longitude: -79.9925, latitude: 40.440624 }}
       layerPanelVariant={LayerPanelVariant.None}
       CustomHoverContents={PopupContent}
       legendItems={legends}
       sources={sources}
       layers={layers}
-      getCursor={() => 'crosshair'}
       hideLegendTitle
       {...mapOptions}
     />

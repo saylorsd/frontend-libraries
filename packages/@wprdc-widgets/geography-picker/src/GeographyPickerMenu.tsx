@@ -108,7 +108,11 @@ export const GeographyPickerMenu: React.FC<GeographyPickerMenuProps> = ({
       </div>
       <div className={styles.map}>
         <Map
-          defaultViewport={{ zoom: 7 }}
+          initialViewState={{
+            zoom: 7,
+            longitude: -79.995888,
+            latitude: 40.440624,
+          }}
           layerPanelVariant={LayerPanelVariant.None}
           connections={[menuLayerConnection] as ConnectionCollection}
           onClick={handleClick}

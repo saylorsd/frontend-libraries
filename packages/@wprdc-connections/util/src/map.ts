@@ -11,7 +11,7 @@ import {
   LayerProps,
   LegendItemProps,
   Expression,
-  MapEvent,
+  MapLayerMouseEvent,
 } from '@wprdc-types/map';
 import { ColorScheme, Resource, Selection } from '@wprdc-types/shared';
 
@@ -149,7 +149,7 @@ export function useMapPlugin<T extends Resource, E>({
    *
    * @param event
    */
-  const handleHover = (event: MapEvent) => {
+  const handleHover = (event: MapLayerMouseEvent) => {
     const hoveredItems: E[] = connection.parseMapEvent(event, {
       selectedLayers: selection,
     });
@@ -162,7 +162,7 @@ export function useMapPlugin<T extends Resource, E>({
    * it does on click events.
    * @param event
    */
-  const handleClick = (event: MapEvent) => {
+  const handleClick = (event: MapLayerMouseEvent) => {
     const clickedItems = connection.parseMapEvent(event);
     setSelectedFilter(connection.makeFilter(clickedItems));
     return clickedItems;
@@ -218,7 +218,7 @@ export function fetchCartoVectorSource(
   id: string,
   sql: string,
   apiKey?: string,
-  type = 'vector',
+  type: 'vector' = 'vector',
   minzoom = 0,
   maxzoom = 22
 ): PromiseLike<SourceProps> {

@@ -22,7 +22,7 @@ const PLACEHOLDER = 'Click here to search for a geography...';
 export function GeographyPicker(props: GeographyPickerProps) {
   const [isOpen, setIsOpen] = useState<boolean>();
   const [geog, setGeog] = useState<GeogBrief>();
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLButtonElement>(null);
 
   const { onSelection } = props;
   const onPress = () => setIsOpen(true);
