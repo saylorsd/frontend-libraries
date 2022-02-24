@@ -9,6 +9,9 @@ import * as React from 'react';
 
 import classnames from 'classnames';
 
+import { marked } from 'marked';
+import sanitizeHtml from 'sanitize-html';
+
 import './main.css';
 import styles from './IndicatorView.module.css';
 
@@ -41,6 +44,7 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
     dataVizes,
     longDescription,
     fullDescription,
+    importance,
     limitations,
     provenance,
   } = indicator || {};
@@ -60,6 +64,12 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
     { blurbs: [], vizes: [] }
   );
 
+  function parseAndSanitize(content: string) {
+    console.log(content);
+    return {
+      __html: sanitizeHtml(marked.parse(content)),
+    };
+  }
   function handleExploreIndicator() {
     if (!!onExploreIndicator && !!indicator) onExploreIndicator(indicator);
   }
@@ -115,28 +125,12 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
             )}
           </div>
         </div>
-      </div>
+        <p className={styles.detailsItem}>{description}</p>
 
-      <div className={classnames(styles.details)}>
-        {longDescription && (
-          <>
-            <h2 className={styles.detailsSectionHeader}>Description</h2>
-            <p className={styles.detailsSection}>
-              {fullDescription || longDescription}
-            </p>
-          </>
-        )}
-        {limitations && (
-          <>
-            <h2 className={styles.detailsSectionHeader}>Limitations</h2>
-            <p className={styles.detailsSection}>{limitations}</p>
-          </>
-        )}
-        {provenance && (
-          <>
-            <h2 className={styles.detailsSectionHeader}>Provenance</h2>
-            <p className={styles.detailsSection}>{provenance}</p>
-          </>
+        {!!importance && (
+          <div>
+            <p className={styles.importance}>{importance}</p>
+          </div>
         )}
       </div>
 
@@ -174,6 +168,37 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
           </ul>
         </div>
       )}
+      <div className={classnames(styles.details)}>
+        {(fullDescription || longDescription) && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Description</h2>
+            <div
+              className={styles.detailsItem}
+              dangerouslySetInnerHTML={parseAndSanitize(
+                fullDescription || longDescription
+              )}
+            />
+          </>
+        )}
+        {limitations && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Limitations</h2>
+            <div
+              className={styles.detailsItem}
+              dangerouslySetInnerHTML={parseAndSanitize(limitations)}
+            />
+          </>
+        )}
+        {provenance && (
+          <>
+            <h2 className={styles.detailsSectionHeader}>Provenance</h2>
+            <div
+              className={styles.detailsItem}
+              dangerouslySetInnerHTML={parseAndSanitize(provenance)}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

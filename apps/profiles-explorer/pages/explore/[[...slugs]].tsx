@@ -214,7 +214,11 @@ export default function Home() {
         </div>,
         <div key="mapnav" className={styles.map}>
           <Map
-            defaultViewport={{ zoom: 7 }}
+            initialViewState={{
+              zoom: 7,
+              longitude: -79.9925,
+              latitude: 40.440624,
+            }}
             layerPanelVariant={LayerPanelVariant.None}
             connections={[menuLayerConnection] as ConnectionCollection}
             onClick={handleClick}
