@@ -14,8 +14,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "formik": "^2.2.9",
-    "mapbox-gl": "^2.7.0",
-    "react-aria": "^3.13.2"
+    "mapbox-gl": "^2.7.0"
   },
   "devDependencies": {
     "classnames": "^2.3.1",
