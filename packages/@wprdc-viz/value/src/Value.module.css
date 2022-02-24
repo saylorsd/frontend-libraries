@@ -4,6 +4,7 @@
 
 .inPreview {
   @apply flex h-full items-center justify-center;
+  @apply p-2;
 }
 
 .name {
