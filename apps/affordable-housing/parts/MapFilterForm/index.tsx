@@ -45,7 +45,7 @@ export function MapFilterForm({ onSubmit }: Props) {
                     selectedKey={field.value}
                     onSelection={(x) => {
                       field.onChange({
-                        target: { value: x as string, name: field.name },
+                        target: { value: x, name: field.name },
                       });
                     }}
                     errorMessage={meta.touched && meta.error}
