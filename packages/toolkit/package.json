@@ -1,6 +1,6 @@
 {
   "name": "@wprdc/toolkit",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Dummy package depending on all WPRDC site building packages.  Useful for development and testing.",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
@@ -160,6 +160,6 @@
     "@wprdc-widgets/geography-picker": "^0.0.15",
     "@wprdc-widgets/indicator-view": "^0.0.17",
     "@wprdc-widgets/map": "^0.0.13",
-    "@wprdc-widgets/taxonomy-section": "^0.0.16"
+    "@wprdc-widgets/taxonomy-section": "^0.0.17"
   }
 }
