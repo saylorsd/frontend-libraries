@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/indicator-view",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -88,7 +88,7 @@
     "@wprdc-types/indicator-view": "^0.0.11",
     "@wprdc-types/shared": "^0.0.11",
     "@wprdc-types/viz": "^0.0.13",
-    "@wprdc-widgets/data-viz": "^0.0.16",
+    "@wprdc-widgets/data-viz": "^0.0.17",
     "@wprdc-widgets/geography-picker": "^0.0.15",
     "classnames": "^2.3.1",
     "marked": "^4.0.12",

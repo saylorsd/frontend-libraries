@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/data-viz",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -95,7 +95,7 @@
     "@wprdc-viz/mini-map": "^0.0.17",
     "@wprdc-viz/sentence": "^0.0.14",
     "@wprdc-viz/table": "^0.0.13",
-    "@wprdc-viz/value": "^0.0.13",
+    "@wprdc-viz/value": "^0.0.14",
     "classnames": "^2.3.1",
     "react-icons": "^4.3.1",
     "react-measure": "^2.5.2"
