@@ -54,12 +54,7 @@ export function BigValue(props: ValueVizProps) {
     const content = percent.toLocaleString('en-US', { style: 'percent' });
     const isShownAlone = options.format === 'PCT';
     displayPercent = (
-      <span
-        className={classNames({
-          [styles.denom]: !isShownAlone,
-          [styles.value]: isShownAlone,
-        })}
-      >
+      <span className={styles.value}>
         {' '}
         {isShownAlone ? (
           content
@@ -72,10 +67,7 @@ export function BigValue(props: ValueVizProps) {
     );
   }
 
-  if (
-    ['PLN', 'FRN', 'BTH'].includes(options.format) &&
-    typeof denom === 'number'
-  ) {
+  if (['FRN', 'BTH'].includes(options.format) && typeof denom === 'number') {
     displayDenom = (
       <span className={styles.denom}>
         {' /'}

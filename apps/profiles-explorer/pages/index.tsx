@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Profiles - Home</title>
+        <title>WPRDC Indicators - Home</title>
         <meta name="description" content="New WPRDC App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -17,10 +17,7 @@ export default function Home() {
               <h1 className={styles.title}>
                 Find information about your neighborhood.
               </h1>
-              <div className={styles.subtitle}>
-                With Profiles you can explore, visualize and share open data
-                about your community.
-              </div>
+              <div className={styles.subtitle}>The fut</div>
             </div>
           </div>
           <div className={styles.heroSection}></div>
