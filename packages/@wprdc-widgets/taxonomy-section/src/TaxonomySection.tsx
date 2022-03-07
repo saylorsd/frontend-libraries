@@ -42,7 +42,9 @@ export const TaxonomySection: React.FC<TaxonomySectionProps> = ({
     if (!!onExploreDataViz) onExploreDataViz(dataViz);
   }
 
-  const currentDomain = taxonomy.find((d) => d.slug === currentDomainSlug);
+  const currentDomain = taxonomy.domains.find(
+    (d) => d.slug === currentDomainSlug
+  );
 
   const currentSubdomain = React.useMemo(
     () =>
@@ -134,7 +136,7 @@ export const TaxonomySection: React.FC<TaxonomySectionProps> = ({
         )}
         {!currentDataViz && !currentIndicator && (
           <Tabs<Domain>
-            items={taxonomy}
+            items={taxonomy.domains}
             selectedKey={selectedDomain}
             onSelectionChange={onTabsChange}
           >
@@ -154,5 +156,3 @@ export const TaxonomySection: React.FC<TaxonomySectionProps> = ({
     </div>
   );
 };
-
-export default TaxonomySection;

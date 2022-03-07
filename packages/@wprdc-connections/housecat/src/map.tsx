@@ -57,7 +57,6 @@ export const affordableHousingProjectMapConnection: MapPluginConnection<
   },
   parseMapEvent: (event) => {
     if (!!event && !!event.features) {
-      console.log({ event });
       const features = event.features.filter(
         (feature) =>
           !!feature &&

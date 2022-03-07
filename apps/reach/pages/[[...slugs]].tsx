@@ -1,13 +1,11 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 import React from 'react';
 
 import { Map } from '@wprdc-widgets/map';
 
-import { GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
+import { Geog, GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
 import { Indicator } from '@wprdc-types/profiles';
 import { DataVizBase } from '@wprdc-types/viz';
 import { useProvider } from '@wprdc-components/provider';
@@ -19,16 +17,40 @@ import {
 } from '@wprdc-types/connections';
 import { ProjectKey } from '@wprdc-types/shared';
 import { LayerPanelVariant } from '@wprdc-types/map';
-import { IndicatorView } from '@wprdc-widgets/indicator-view';
 import { LoadingMessage } from '@wprdc-components/loading-message';
+import { TaxonomySection } from '@wprdc-widgets/taxonomy-section';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { serializeParams } from '@wprdc-connections/api';
 
 const Home: NextPage = () => {
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(defaultGeogBrief);
-  const [selectedIndicator, setSelectedIndicator] = React.useState<Indicator>();
-  const [dataViz, setDataViz] = React.useState<DataVizBase>();
+  const [pathSlugs, setPathSlugs] = React.useState<string[]>([]);
 
   const context = useProvider();
   const { geog, isLoading, error } = useGeography(geogBrief.slug);
+  const router = useRouter();
+
+  function handleTabChange(domain: React.Key): void {
+    router.push(`/${domain}/${serializeParams(router.query)}`, undefined, {
+      shallow: true,
+    });
+  }
+
+  const [domainSlug, subdomainSlug, indicatorSlug, dataVizSlug] = pathSlugs;
+
+  // update state when path updates
+  React.useEffect(() => {
+    if (!!router.query.slugs) {
+      const slugs: string[] =
+        typeof router.query.slugs === 'string'
+          ? [router.query.slugs]
+          : router.query.slugs;
+      setPathSlugs(slugs);
+    } else {
+      setPathSlugs([]);
+    }
+  }, [router.query.slugs]);
 
   React.useEffect(() => {
     if (!!geog) context.setGeog(geog);
@@ -38,7 +60,7 @@ const Home: NextPage = () => {
     taxonomy,
     isLoading: taxonomyIsLoading,
     error: taxonomyError,
-  } = useTaxonomy();
+  } = useTaxonomy('reach');
 
   const handleClick: ConnectedMapEventHandler = (_, __, toolboxItems) => {
     if (!!toolboxItems) {
@@ -49,26 +71,35 @@ const Home: NextPage = () => {
     }
   };
 
-  function handleExploreIndicator(indicator: Indicator) {
-    setSelectedIndicator(indicator);
+  function handleExploreDataViz(dataViz: DataVizBase): void {
+    router.push(
+      `${domainSlug}/${subdomainSlug}/${indicatorSlug}/${
+        dataViz.slug
+      }/${serializeParams(router.query)}`,
+    );
   }
 
-  function handleExploreDataViz(dataViz: DataVizBase) {
-    setDataViz(dataViz);
+  function handleExploreIndicator(indicator: Indicator): void {
+    let domain: string, subdomain: string;
+    if (!!indicator.hierarchies && !!indicator.hierarchies.length) {
+      domain = indicator.hierarchies[0].domain.slug;
+      subdomain = indicator.hierarchies[0].subdomain.slug;
+      router.push(
+        `${domain}/${subdomain}/${indicator.slug}/${serializeParams(
+          router.query,
+        )}`,
+      );
+    }
   }
-
-  const domain = React.useMemo(() => {
-    if (!!taxonomy)
-      return taxonomy.find((d) => (d.slug = 'reach-sustainable-pgh'));
-    return undefined;
-  }, [taxonomy]);
 
   return (
     <div className="p-3">
       <div className={styles.wrapper}>
         <div className={styles.main}>
           <div className={styles.intro}>
-            <div className={styles.title}>REACH/SSPGH</div>
+            <div className={styles.title}>
+              <a href="/">REACH/SSPGH</a>
+            </div>
             <div className={styles.subtitle}>Indicators of some sort</div>
             <p className={styles.description}>
               Grandis visus satis manifestums brabeuta est. Candidatus de
@@ -113,20 +144,16 @@ const Home: NextPage = () => {
 
         <div className={styles.details}>
           <div className={styles.geoDetails}>
-            {!!geog && <div className={styles.geogTitle}>{geog.title}</div>}
+            {!!geog && (
+              <div>
+                <div className={styles.geogTitle}>{geog.title}</div>
+              </div>
+            )}
+            {!!geog && <GeogOverlapListing geog={geog} />}
           </div>
         </div>
 
-        {!!selectedIndicator && (
-          <IndicatorView
-            indicator={selectedIndicator}
-            geog={geog}
-            onExploreIndicator={handleExploreIndicator}
-            onExploreDataViz={handleExploreDataViz}
-          />
-        )}
-
-        {!selectedIndicator && !taxonomyIsLoading && !!domain && (
+        {!taxonomyIsLoading && !!taxonomy && (
           <div className={styles.dashboard}>
             {!!taxonomyIsLoading && (
               <div className={styles.loader}>
@@ -134,27 +161,19 @@ const Home: NextPage = () => {
               </div>
             )}
 
-            {domain.subdomains.map((subdomain) => (
-              <div
-                className={styles.subdomainSection}
-                style={{ display: !!selectedIndicator ? 'hidden' : 'visible' }}
-              >
-                <div className={styles.subdomainTitle}>{subdomain.name}</div>
-                <div className={styles.subdomainContent}>
-                  {subdomain.indicators.map((indicator) => (
-                    <div className={styles.indicatorSection}>
-                      <IndicatorView
-                        card
-                        indicator={indicator}
-                        geog={geog}
-                        onExploreIndicator={handleExploreIndicator}
-                        onExploreDataViz={handleExploreDataViz}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+            {taxonomy && (
+              <TaxonomySection
+                taxonomy={taxonomy}
+                currentDomainSlug={domainSlug}
+                currentSubdomainSlug={subdomainSlug}
+                currentIndicatorSlug={indicatorSlug}
+                currentDataVizSlug={dataVizSlug}
+                onExploreDataViz={handleExploreDataViz}
+                onExploreIndicator={handleExploreIndicator}
+                onTabsChange={handleTabChange}
+                LinkComponent={Link}
+              />
+            )}
           </div>
         )}
         <footer className={styles.footer}></footer>
@@ -180,6 +199,50 @@ const geogLevels: GeogLevel[] = [
     description: 'Census Tracts',
   },
 ];
+
+interface GeogOverlapListingProps {
+  geog: Geog;
+}
+
+function GeogOverlapListing({ geog }: GeogOverlapListingProps) {
+  const hoods = geog.overlap.neighborhood;
+  const munis = geog.overlap.countySubdivision;
+
+  return (
+    <div>
+      {!!hoods && !!hoods.length && (
+        <div>
+          <div className={styles.overlapTitle}>Overlapping Neighborhoods</div>
+          {hoods.map((hood) => (
+            <a
+              className={styles.overlapLink}
+              target="_blank"
+              rel="noreferrer noopener"
+              href={`https://profiles.wprdc.org/explore?geog=${hood.slug}`}
+            >
+              {hood.name}
+            </a>
+          ))}
+        </div>
+      )}
+      {!!munis && !!munis.length && (
+        <div>
+          <div className={styles.overlapTitle}>Overlapping Towns/Cities</div>
+          {munis.map((muni) => (
+            <a
+              className={styles.overlapLink}
+              target="_blank"
+              rel="noreferrer noopener"
+              href={`https://profiles.wprdc.org/explore?geog=${muni.slug}`}
+            >
+              {muni.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 const selectedGeogLevel: Set<React.Key> = new Set([GeographyType.Tract]);
 

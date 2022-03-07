@@ -247,8 +247,6 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
       );
     }, [toolboxes, connections, connectionHookArgs]);
 
-    console.log({ initialViewState });
-
     return (
       <div className={styles.container}>
         {layerPanelVariant === LayerPanelVariant.Left ? (

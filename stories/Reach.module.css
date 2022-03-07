@@ -17,7 +17,6 @@
 .subtitle {
   @apply font-semibold text-xl mt-1;
 }
-
 .description {
   @apply pt-6;
 }

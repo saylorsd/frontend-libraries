@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Domain, Indicator } from '@wprdc-types/profiles';
+import { Indicator, Taxonomy } from '@wprdc-types/profiles';
 import { ResponsePackage } from '@wprdc-types/api';
 import { ProfilesAPI } from './api';
 
@@ -29,13 +29,17 @@ export function useIndicator(indicatorSlug?: string) {
   return { indicator, isLoading, error };
 }
 
-export function useTaxonomy(slug: string) {
-  const [taxonomy, setTaxonomy] = useState<Domain[]>();
+export function useTaxonomy(slug: string): {
+  taxonomy?: Taxonomy;
+  isLoading?: boolean;
+  error?: string;
+} {
+  const [taxonomy, setTaxonomy] = useState<Taxonomy | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string>();
 
   useEffect(() => {
-    function handleResponse({ data, error }: ResponsePackage<Domain[]>) {
+    function handleResponse({ data, error }: ResponsePackage<Taxonomy>) {
       setTaxonomy(data);
       setError(error);
       setIsLoading(false);

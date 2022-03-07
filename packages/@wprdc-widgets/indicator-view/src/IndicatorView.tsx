@@ -65,7 +65,6 @@ export const IndicatorView: React.FC<IndicatorViewProps> = ({
   );
 
   function parseAndSanitize(content: string) {
-    console.log(content);
     return {
       __html: sanitizeHtml(marked.parse(content)),
     };

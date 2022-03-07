@@ -83,7 +83,6 @@ export function useMapPlugin<T extends Resource, E>({
   // Update map data on selection or option change
   useEffect(() => {
     console.groupCollapsed('Map connection update');
-    console.log({ layerItems, selection, options });
     console.groupEnd();
     // todo:
     if (!!layerItems) {
