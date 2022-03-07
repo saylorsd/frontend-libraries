@@ -3,25 +3,29 @@ import styles from '../styles/Home.module.css';
 
 import React from 'react';
 
-import { Map } from '@wprdc-widgets/map';
-
-import { Geog, GeogBrief, GeogLevel, GeographyType } from '@wprdc-types/geo';
-import { Indicator } from '@wprdc-types/profiles';
-import { DataVizBase } from '@wprdc-types/viz';
-import { useProvider } from '@wprdc-components/provider';
-import { menuLayerConnection, useGeography } from '@wprdc-connections/geo';
-import { useTaxonomy } from '@wprdc-connections/profiles';
 import {
+  Map,
+  Geog,
+  GeogBrief,
+  GeogLevel,
+  GeographyType,
+  Indicator,
+  DataVizBase,
+  useProvider,
+  menuLayerConnection,
+  useGeography,
+  useTaxonomy,
   ConnectedMapEventHandler,
   ConnectionCollection,
-} from '@wprdc-types/connections';
-import { ProjectKey } from '@wprdc-types/shared';
-import { LayerPanelVariant } from '@wprdc-types/map';
-import { LoadingMessage } from '@wprdc-components/loading-message';
-import { TaxonomySection } from '@wprdc-widgets/taxonomy-section';
+  ProjectKey,
+  LayerPanelVariant,
+  LoadingMessage,
+  TaxonomySection,
+  serializeParams,
+} from '@wprdc/toolkit';
+
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { serializeParams } from '@wprdc-connections/api';
 
 const Home: NextPage = () => {
   const [geogBrief, setGeogBrief] = React.useState<GeogBrief>(defaultGeogBrief);
