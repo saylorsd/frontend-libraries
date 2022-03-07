@@ -29,7 +29,7 @@ export function useIndicator(indicatorSlug?: string) {
   return { indicator, isLoading, error };
 }
 
-export function useTaxonomy() {
+export function useTaxonomy(slug: string) {
   const [taxonomy, setTaxonomy] = useState<Domain[]>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string>();
@@ -40,9 +40,8 @@ export function useTaxonomy() {
       setError(error);
       setIsLoading(false);
     }
-
     setIsLoading(true);
-    ProfilesAPI.requestTaxonomy().then(handleResponse);
+    ProfilesAPI.requestTaxonomy(slug).then(handleResponse);
 
     return function cleanup() {};
   }, []);

@@ -13,6 +13,7 @@ import { Domain, Indicator } from '@wprdc-types/profiles';
 const HOST = 'https://api.profiles.wprdc.org';
 
 enum Endpoint {
+  Taxonomy = 'taxonomy',
   Domain = 'domain',
   // Subdomain = 'subdomain', // might not be necessary to use here
   Indicator = 'indicator', //   or here
@@ -20,8 +21,10 @@ enum Endpoint {
 
 const api = createAPI<Endpoint>(HOST);
 
-function requestTaxonomy() {
-  return api.callAndProcessListEndpoint<Domain>(Endpoint.Domain, Method.GET);
+function requestTaxonomy(slug?: string) {
+  return api.callAndProcessListEndpoint<Domain>(Endpoint.Taxonomy, Method.GET, {
+    id: slug,
+  });
 }
 
 function requestIndicator(slug: string) {
