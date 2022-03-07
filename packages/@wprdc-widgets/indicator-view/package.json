@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/indicator-view",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -82,7 +82,7 @@
     "@wprdc-components/error-message": "^0.0.11",
     "@wprdc-components/loading-message": "^0.0.11",
     "@wprdc-components/provider": "^0.0.11",
-    "@wprdc-connections/profiles": "^0.0.16",
+    "@wprdc-connections/profiles": "^0.0.17",
     "@wprdc-types/connections": "^0.0.10",
     "@wprdc-types/data-viz": "^0.0.13",
     "@wprdc-types/indicator-view": "^0.0.11",

@@ -1,6 +1,6 @@
 {
   "name": "@wprdc/toolkit",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Dummy package depending on all WPRDC site building packages.  Useful for development and testing.",
   "author": "Steve Saylor <steven.saylor@pitt.edu>",
   "homepage": "https://github.com/WPRDC/frontend-libraries#readme",
@@ -106,7 +106,7 @@
     "@wprdc-connections/geo": "^0.0.16",
     "@wprdc-connections/housecat": "^0.0.15",
     "@wprdc-connections/neighborhood-assets": "^0.0.15",
-    "@wprdc-connections/profiles": "^0.0.16",
+    "@wprdc-connections/profiles": "^0.0.17",
     "@wprdc-connections/util": "^0.0.15",
     "@wprdc-connections/viz": "^0.0.17",
     "@wprdc-types/api": "^0.0.10",
@@ -158,8 +158,8 @@
     "@wprdc-viz/value": "^0.0.14",
     "@wprdc-widgets/data-viz": "^0.0.17",
     "@wprdc-widgets/geography-picker": "^0.0.15",
-    "@wprdc-widgets/indicator-view": "^0.0.18",
+    "@wprdc-widgets/indicator-view": "^0.0.19",
     "@wprdc-widgets/map": "^0.0.13",
-    "@wprdc-widgets/taxonomy-section": "^0.0.18"
+    "@wprdc-widgets/taxonomy-section": "^0.0.19"
   }
 }
