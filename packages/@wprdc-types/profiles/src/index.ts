@@ -25,7 +25,9 @@ export interface Domain extends Resource {
   subdomains: Subdomain[];
 }
 
-export type Taxonomy = Domain[];
+export interface Taxonomy extends Resource {
+  domains: Domain[];
+}
 
 type URLNavParamKeys =
   | 'geogType'

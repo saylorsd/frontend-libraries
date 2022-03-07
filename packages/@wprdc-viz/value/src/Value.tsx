@@ -13,7 +13,7 @@ import classNames from 'classnames';
 
 export function BigValue(props: ValueVizProps) {
   const { dataViz, inPreview } = props;
-  const { data, error } = dataViz;
+  const { data, options, error } = dataViz;
 
   if (!data || !data[0]) return <div />;
   if (!!error && !!error.level) {
@@ -32,30 +32,43 @@ export function BigValue(props: ValueVizProps) {
       ? primaryVariable.denominators[0]
       : undefined;
 
-  const displayValue =
-    typeof value === 'number' ? (
+  let displayValue: React.ReactNode;
+  let displayPercent: React.ReactNode;
+  let displayDenom: React.ReactNode;
+
+  if (
+    ['PLN', 'FRN', 'BTH'].includes(options.format) &&
+    typeof value === 'number'
+  ) {
+    displayValue = (
       <span className={styles.value}>
         {value.toLocaleString(
           'en-US',
           primaryVariable ? primaryVariable.localeOptions : undefined
         )}
       </span>
-    ) : undefined;
+    );
+  }
 
-  const displayPercent =
-    typeof percent === 'number' ? (
-      <span
-        className={classNames({
-          [styles.denom]: !!denomVariable,
-        })}
-      >
+  if (['PCT', 'BTH'].includes(options.format) && typeof percent === 'number') {
+    const content = percent.toLocaleString('en-US', { style: 'percent' });
+    const isShownAlone = options.format === 'PCT';
+    displayPercent = (
+      <span className={styles.value}>
         {' '}
-        ({percent.toLocaleString('en-US', { style: 'percent' })})
+        {isShownAlone ? (
+          content
+        ) : (
+          <span>
+            (<span>{content}</span>)
+          </span>
+        )}
       </span>
-    ) : undefined;
+    );
+  }
 
-  const displayDenom =
-    typeof denom === 'number' ? (
+  if (['FRN', 'BTH'].includes(options.format) && typeof denom === 'number') {
+    displayDenom = (
       <span className={styles.denom}>
         {' /'}
         {denom.toLocaleString(
@@ -63,7 +76,8 @@ export function BigValue(props: ValueVizProps) {
           denomVariable ? denomVariable.localeOptions : undefined
         )}
       </span>
-    ) : undefined;
+    );
+  }
   return (
     <div
       className={classNames({

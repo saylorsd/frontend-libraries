@@ -1,8 +1,29 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import { Provider } from '@wprdc/toolkit';
+import { AppProps } from 'next/app';
+import { NextPage } from 'next';
+import { ReactElement, ReactNode } from 'react';
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const MAPBOX_KEY =
+  'pk.eyJ1Ijoic3RldmVuZHNheWxvciIsImEiOiJja295ZmxndGEwbGxvMm5xdTc3M2MwZ2xkIn0' +
+  '.WDBLMZYfh-ZGFjmwO82xvw';
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  return (
+    <Provider usingSSR mapboxAPIToken={MAPBOX_KEY}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;

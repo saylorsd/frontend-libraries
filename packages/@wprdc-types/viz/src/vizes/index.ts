@@ -2,7 +2,7 @@ import { DataVizBase, ErrorRecord, TabularData } from './common';
 import { TableOptions, TableViz } from './table';
 import { MiniMapData, MiniMapOptions, MiniMapViz } from './mini-map';
 import { SentenceViz } from './sentence';
-import { BigValueViz } from './value';
+import { BigValueViz, BigValueVizOptions } from './value';
 import { GeogBrief } from '@wprdc-types/geo';
 import * as React from 'react';
 import { ColorScheme } from '@wprdc-types/shared';
@@ -56,7 +56,11 @@ export type DownloadedChartViz = Downloaded<ChartViz, TabularData>;
 
 export type DownloadedSentenceViz = Downloaded<SentenceViz>;
 
-export type DownloadedValueViz = Downloaded<BigValueViz>;
+export type DownloadedValueViz = Downloaded<
+  BigValueViz,
+  DataVizData,
+  BigValueVizOptions
+>;
 
 export type BaseVizProps = VizProps<DownloadedViz>;
 export type TableVizProps = VizProps<DownloadedTableViz>;

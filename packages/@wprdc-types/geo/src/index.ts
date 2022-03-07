@@ -5,7 +5,10 @@ import { MapboxGeoJSONFeature } from 'mapbox-gl';
 import { Resource } from '@wprdc-types/shared';
 
 export interface Geog extends GeogBrief {
+  /** List of geogs that contain this geog. In order of size, descending */
   hierarchy: GeogBrief[];
+  /** Record of overlapping geog slugs by type */
+  overlap: Partial<Record<GeographyType, GeogBrief[]>>;
 }
 
 export interface GeogBrief extends GeogIdentifier, Resource {

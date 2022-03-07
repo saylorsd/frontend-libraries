@@ -43,7 +43,7 @@
 }
 
 .taxonomyContainer {
-  @apply p-4;
+  @apply p-4 pt-1;
   @apply flex-grow overflow-y-auto;
 }
 

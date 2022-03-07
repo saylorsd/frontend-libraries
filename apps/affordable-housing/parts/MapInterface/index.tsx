@@ -41,7 +41,6 @@ export function MapInterface({ filterParams }: Props) {
 
   const handleZoomSelect = React.useCallback(
     ({ centroid }: { centroid?: [number, number] }) => {
-      console.log({ centroid });
       if (!!centroid) {
         mapRef.current?.flyTo({ center: centroid, zoom: 11, duration: 1000 });
       }

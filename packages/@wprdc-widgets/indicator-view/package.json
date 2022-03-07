@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-widgets/indicator-view",
-  "version": "0.0.16",
+  "version": "0.0.20",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -58,8 +58,10 @@
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.5",
+    "@types/marked": "^4.0.2",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/sanitize-html": "^2.6.2",
     "autoprefixer": "^10.4.2",
     "husky": "^7.0.4",
     "postcss": "^8.4.5",
@@ -79,15 +81,17 @@
     "@wprdc-components/divider": "^0.0.11",
     "@wprdc-components/error-message": "^0.0.11",
     "@wprdc-components/loading-message": "^0.0.11",
-    "@wprdc-components/provider": "^0.0.11",
-    "@wprdc-connections/profiles": "^0.0.15",
-    "@wprdc-types/connections": "^0.0.9",
-    "@wprdc-types/data-viz": "^0.0.12",
-    "@wprdc-types/indicator-view": "^0.0.10",
+    "@wprdc-components/provider": "^0.0.12",
+    "@wprdc-connections/profiles": "^0.0.18",
+    "@wprdc-types/connections": "^0.0.11",
+    "@wprdc-types/data-viz": "^0.0.14",
+    "@wprdc-types/indicator-view": "^0.0.12",
     "@wprdc-types/shared": "^0.0.11",
-    "@wprdc-types/viz": "^0.0.12",
-    "@wprdc-widgets/data-viz": "^0.0.15",
-    "@wprdc-widgets/geography-picker": "^0.0.14",
-    "classnames": "^2.3.1"
+    "@wprdc-types/viz": "^0.0.14",
+    "@wprdc-widgets/data-viz": "^0.0.18",
+    "@wprdc-widgets/geography-picker": "^0.0.16",
+    "classnames": "^2.3.1",
+    "marked": "^4.0.12",
+    "sanitize-html": "^2.7.0"
   }
 }

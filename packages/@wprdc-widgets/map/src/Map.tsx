@@ -93,6 +93,7 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
     >({});
     // Internal state
     // ------------------------------------------------------------------------
+    const [cursor, setCursor] = React.useState<string>('auto');
     const [hoverPopup, setHoverPopup] = React.useState<React.ReactNode>();
     const [clickPopup, setClickPopup] = React.useState<React.ReactNode>();
 
@@ -133,8 +134,14 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
         !!interactiveLayerIDs &&
         interactiveLayerIDs.includes(event.features[0].layer.id);
 
+      const overInteractiveLayer = _isOverInteractiveLayer(event);
+
+      if (overInteractiveLayer) setCursor('pointer');
+      else setCursor('');
+
       if (useFeaturelessEvents || hasFeatures(event)) {
-        if (_isOverInteractiveLayer(event)) {
+        if (overInteractiveLayer) {
+          // use pointer cursor when over interactive item
           const { lng, lat } = event.lngLat;
           // allow for outside provided content
           let customContents: React.ReactNode = undefined;
@@ -159,6 +166,7 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
             callback(event, toolboxes, toolboxItems);
           }
         } else {
+          // if not over an interactive layer, set cursor to
           setPopup(null);
         }
       }
@@ -239,8 +247,6 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
       );
     }, [toolboxes, connections, connectionHookArgs]);
 
-    console.log({ initialViewState });
-
     return (
       <div className={styles.container}>
         {layerPanelVariant === LayerPanelVariant.Left ? (
@@ -251,10 +257,11 @@ export const Map = React.forwardRef<MapRef, ConnectableMapProps>(
         <div className={styles.mapContainer}>
           <ReactMapGLMap
             ref={ref}
+            cursor={cursor}
             initialViewState={initialViewState || DEFAULT_VIEWSTATE}
             mapboxAccessToken={mapboxToken}
             mapStyle={mapStyle}
-            onMouseOver={handleHover}
+            onMouseMove={handleHover}
             onClick={handleClick}
             onMouseLeave={handleMouseLeave}
             // onMove={handleViewportChange}  todo: implement this

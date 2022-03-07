@@ -86,7 +86,7 @@ export default function IndicatorPageView({ embed }: { embed?: boolean }) {
       return (
         <IndicatorView
           indicator={indicator}
-          showGeog={!embed}
+          showGeog
           onGeogSelection={handleGeogSelection}
           geog={geog}
         />
