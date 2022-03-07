@@ -1,6 +1,6 @@
 {
   "name": "@wprdc-connections/viz",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "keywords": [],
   "license": "AGPLv3",
@@ -79,16 +79,16 @@
     "@wprdc-components/radio-group": "^0.0.11",
     "@wprdc-components/util": "^0.0.9",
     "@wprdc-connections/api": "^0.0.11",
-    "@wprdc-connections/util": "^0.0.15",
+    "@wprdc-connections/util": "^0.0.16",
     "@wprdc-types/api": "^0.0.10",
-    "@wprdc-types/connections": "^0.0.10",
-    "@wprdc-types/geo": "^0.0.11",
+    "@wprdc-types/connections": "^0.0.11",
+    "@wprdc-types/geo": "^0.0.12",
     "@wprdc-types/list-box": "^0.0.11",
-    "@wprdc-types/map": "^0.0.10",
-    "@wprdc-types/profiles": "^0.0.14",
+    "@wprdc-types/map": "^0.0.11",
+    "@wprdc-types/profiles": "^0.0.15",
     "@wprdc-types/shared": "^0.0.11",
-    "@wprdc-types/viz": "^0.0.13",
-    "@wprdc-widgets/map": "^0.0.13",
+    "@wprdc-types/viz": "^0.0.14",
+    "@wprdc-widgets/map": "^0.0.14",
     "react-icons": "^4.3.1"
   }
 }
